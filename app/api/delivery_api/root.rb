@@ -1,8 +1,11 @@
 module DeliveryApi
   class Root < Grape::API
-    format  :json
+    version 'v1', using: :header, vendor: 'delivery'
+    format :json
 
     rescue_from :all
+
+    mount DeliveryApi::Control::ProductApi
 
     add_swagger_documentation(
       api_version: 'v1',
