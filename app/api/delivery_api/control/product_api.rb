@@ -5,7 +5,6 @@ module DeliveryApi
         get 'products' do
           Product.all
         end
-
         params do
           requires :product, type: Hash do
             requires :title,       type: String
@@ -14,7 +13,7 @@ module DeliveryApi
           end
         end
         post do 
-          product = Product.create(declared(params, include_missing: false)[:product])
+          product = Product.create(declared_params[:product])
           present product, with: DeliveryApi::Entities::ProductResponce
         end
       end
