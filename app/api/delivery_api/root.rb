@@ -16,6 +16,6 @@ module DeliveryApi
       hide_format: true,
       info: {
         title: 'API documantation'
-  })
+      })
   end
 end

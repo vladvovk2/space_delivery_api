@@ -2,7 +2,7 @@ module DeliveryApi
   module Control
     class ProductApi < Grape::API
       helpers do
-        params :products_params do 
+        params :products_params do
           requires :product, type: Hash do
             requires :title,       type: String,  desc: 'Product title.'
             requires :description, type: String,  desc: 'Product description.'
@@ -24,7 +24,7 @@ module DeliveryApi
         params do
           use :products_params
         end
-        post 'create' do 
+        post 'create' do
           product = Product.create(declared_params[:product])
           present_with_entities(product)
         end
@@ -42,7 +42,7 @@ module DeliveryApi
         params do
           use :product_id
         end
-        get 'show/:id' do 
+        get 'show/:id' do
           product = Product.find(params[:id])
           present_with_entities(product)
         end
