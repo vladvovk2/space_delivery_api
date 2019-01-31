@@ -4,9 +4,11 @@ module DeliveryApi
     format :json
 
     rescue_from :all
+
     helpers Api::BaseHelpers
-    
+
     mount DeliveryApi::Control::ProductApi
+    mount DeliveryApi::Control::CategoryApi
 
     add_swagger_documentation(
       api_version: 'v1',

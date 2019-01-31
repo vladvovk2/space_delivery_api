@@ -4,6 +4,7 @@ module DeliveryApi
       format_with(:iso_timestamp) { |dt| dt.strftime("%B %d, %Y") }
 
       expose :id,           documentation: { type: 'integer', values: ['1'] }
+      expose :category_id,  documentation: { type: 'integer', values: ['2'] }
       expose :title,        documentation: { type: 'string',  values: ['Apple'] }
       expose :price,        documentation: { type: 'integer', values: ['22'] }
       expose :description,  documentation: { type: 'string',  values: ['About something...'] }
