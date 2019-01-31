@@ -12,6 +12,15 @@ gem 'jbuilder', '~> 2.5'
 gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 
+# Gems which iʼm used for made Grape API
+gem 'grape'
+gem 'grape-entity'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
+gem 'grape-swagger-entity'
+gem 'hashie-forbidden_attributes'
+
+
 # DataBase gems
 gem 'pg'
 gem 'dotenv-rails'
