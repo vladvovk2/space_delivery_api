@@ -35,8 +35,11 @@ module DeliveryApi
         end
         post 'update/:id' do
           product = Product.find(params[:id])
-          product.update(declared_params[:product])
-          present_with_entities(product)
+          if product.update(declared_params[:product])
+            present_with_entities(product)
+          else
+            error!(product.errors)
+          end
         end
 
         params do
@@ -52,11 +55,7 @@ module DeliveryApi
         end
         delete 'delete/:id' do
           product = Product.find(params[:id])
-          if product.destroy
-            { message: 'Product deleted' }
-          else
-            error!(product.errors, 404)
-          end
+          { message: 'Product deleted' } if product.destroy
         end
       end
     end

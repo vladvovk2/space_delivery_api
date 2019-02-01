@@ -6,9 +6,12 @@ module DeliveryApi
     rescue_from :all
 
     helpers Api::BaseHelpers
+    helpers Api::SessionHelpers
 
     mount DeliveryApi::Control::ProductApi
     mount DeliveryApi::Control::CategoryApi
+    mount DeliveryApi::Control::LineItemApi
+    mount DeliveryApi::Control::CartApi
 
     add_swagger_documentation(
       api_version: 'v1',
