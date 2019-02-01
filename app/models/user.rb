@@ -4,4 +4,6 @@ class User < ApplicationRecord
   def serializer_clazz
     DeliveryApi::Entities::UserResponce
   end
+  
+  has_secure_password
 end

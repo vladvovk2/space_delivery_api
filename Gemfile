@@ -7,7 +7,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
+gem 'bootsnap', '>= 1.1.0', require: false
+# gem 'mini_magick', '~> 4.8'
 
 gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
@@ -20,15 +21,15 @@ gem 'grape-swagger-rails'
 gem 'grape-swagger-entity'
 gem 'hashie-forbidden_attributes'
 
-
 # DataBase gems
 gem 'pg'
 gem 'dotenv-rails'
 
-gem 'bcrypt', '~> 3.1.7'
+# Gems which iʼm used for made Authentication
+gem 'jwt'
+gem 'bcrypt'
 
-# gem 'mini_magick', '~> 4.8'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'simple_command'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
