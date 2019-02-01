@@ -12,7 +12,8 @@ module DeliveryApi
     mount DeliveryApi::Control::CategoryApi
     mount DeliveryApi::Control::LineItemApi
     mount DeliveryApi::Control::CartApi
-
+    mount DeliveryApi::Control::OrderApi
+    
     add_swagger_documentation(
       api_version: 'v1',
       hide_documantation_path: true,

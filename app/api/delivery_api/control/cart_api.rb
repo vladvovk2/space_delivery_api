@@ -10,14 +10,19 @@ module DeliveryApi
         post 'add_product' do
           product = Product.find(params[:id])
           if current_cart.add_product(product).try(:save)
-            { message: 'Added to cart' }
+            { message: 'Added to cart.' }
           else
-            { message: 'Quantity  increased' }
+            { message: 'Quantity  increased.' }
           end
         end
 
         get 'cart' do
-          current_cart.line_items
+          unless current_cart.line_items.empty?
+            line_items = LineItem.where(cart_id: current_cart.id).order(:product_id)
+            present_with_entities(line_items)
+          else
+            { message: 'Cart is empty.'}
+          end
         end
       end
     end

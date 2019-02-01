@@ -10,7 +10,7 @@ module DeliveryApi
       private
 
       def price
-        find_product.price
+        product.price
       end
 
       def total_price
@@ -18,10 +18,10 @@ module DeliveryApi
       end
 
       def product_id
-        find_product.title
+        product.title
       end
 
-      def find_product
+      def product
         Product.find(object.product_id)
       end
     end
