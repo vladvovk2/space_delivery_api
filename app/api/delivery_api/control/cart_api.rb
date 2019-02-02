@@ -24,6 +24,10 @@ module DeliveryApi
             { message: 'Cart is empty.'}
           end
         end
+
+        post :test do
+          session[:cart_id] = nil
+        end
       end
     end
   end

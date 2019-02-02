@@ -9,10 +9,5 @@ module Api
       end
       @cart
     end
-
-    def destroy_cart
-      current_cart.destroy
-      session[:cart_id] = nil
-    end
   end
 end
