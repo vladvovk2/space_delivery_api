@@ -5,9 +5,9 @@ module DeliveryApi
         params :products_params do
           requires :product, type: Hash do
             requires :title,       type: String,  desc: 'Product title.'
-            requires :description, type: String,  desc: 'Product description.'
+            optional :description, type: String,  desc: 'Product description.'
             requires :price,       type: Integer, desc: 'Product price'
-            requires :category_id, type: Integer, desc: 'Assign category ID to product'
+            optional :category_id, type: Integer, desc: 'Assign category ID to product'
           end
         end
         params :product_id do
@@ -16,7 +16,7 @@ module DeliveryApi
       end
 
       resources :products do
-        get 'list' do
+        get :list do
           products = Product.all
           present_with_entities(products)
         end
@@ -24,7 +24,7 @@ module DeliveryApi
         params do
           use :products_params
         end
-        post 'create' do
+        post :create do
           product = Product.create(declared_params[:product])
           present_with_entities(product)
         end
@@ -33,7 +33,7 @@ module DeliveryApi
           use :products_params
           use :product_id
         end
-        post 'update/:id' do
+        post :update do
           product = Product.find(params[:id])
           if product.update(declared_params[:product])
             present_with_entities(product)
@@ -45,7 +45,7 @@ module DeliveryApi
         params do
           use :product_id
         end
-        get 'show/:id' do
+        get :show do
           product = Product.find(params[:id])
           present_with_entities(product)
         end
@@ -53,7 +53,7 @@ module DeliveryApi
         params do
           use :product_id
         end
-        delete 'delete/:id' do
+        delete :delete do
           product = Product.find(params[:id])
           { message: 'Product deleted' } if product.destroy
         end

@@ -18,7 +18,7 @@ module DeliveryApi
           use :order_params
         end
         post 'create' do
-          order = Order.new(declared_params[:order].merge(total_price: current_cart.total_price))
+          order = current_user.orders.build(declared_params[:order].merge(total_price: current_cart.total_price))
           if order.save
             destroy_cart if order.get_product(current_cart)
             present_with_entities(order)
@@ -28,7 +28,7 @@ module DeliveryApi
         end
 
         get 'all' do
-          order = Order.all #where(user_id: current_user.id)
+          order = Order.where(user_id: current_user.id)
           present_with_entities(order)
         end
       end

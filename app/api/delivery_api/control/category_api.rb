@@ -14,7 +14,7 @@ module DeliveryApi
       end
 
       resources :categories do
-        get 'list' do
+        get :list do
           categories = Category.all
           present_with_entities(categories)
         end
@@ -22,7 +22,7 @@ module DeliveryApi
         params do
           use :category_params
         end
-        post 'create' do
+        post :create do
           category = Category.create(declared_params[:category])
           present_with_entities(category)
         end
@@ -30,7 +30,7 @@ module DeliveryApi
         params do
           use :category_id
         end
-        get 'show/:id' do
+        get :show do
           category = Category.find(params[:id])
           products = Product.where(category_id: category.id)
           present_with_entities(products)
