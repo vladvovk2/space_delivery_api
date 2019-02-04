@@ -4,6 +4,7 @@ module DeliveryApi
       expose :id,           documentation: { type: 'integer', values: ['1'] }
       expose :title,        documentation: { type: 'string',  values: ['Apple'] }
       expose :price,        documentation: { type: 'integer', values: ['22'] }
+      expose :weight,       documentation: { type: 'integer', values: ['22'] }
 
       with_options(expose_nil: false) do
         expose :description, documentation: { type: 'string',  values: ['So tasty.'] }

@@ -7,6 +7,7 @@ module DeliveryApi
             requires :title,       type: String,  desc: 'Product title.'
             optional :description, type: String,  desc: 'Product description.'
             requires :price,       type: Integer, desc: 'Product price'
+            optional :weight,      type: Integer, desc: '290'
             optional :category_id, type: Integer, desc: 'Assign category ID to product'
           end
         end

@@ -5,10 +5,13 @@ module DeliveryApi
       helpers do
         params :order_params do
           requires :order, type: Hash do
-            requires :name,        type: String, desc: 'Client name.'
-            requires :adress,      type: String, desc: 'Delivery address.'
-            requires :user_number, type: String, desc: 'Client number.'
-            optional :description, type: String, desc: 'Wishes.'
+            requires :firt_name,      type: String, desc: 'Client name.'
+            requires :second_name,    type: String, desc: 'Client surname.'
+            requires :adress,         type: String, desc: 'Delivery address.'
+            requires :user_number,    type: String, desc: 'Client number.'
+            requires :delivery_type,  type: String, desc: 'Take out || Delivery.'
+            requires :pay_type,       type: String, desc: 'Cash || Terminal.'
+            optional :description,    type: String, desc: 'Wishes.'
           end
         end
       end

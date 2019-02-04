@@ -6,6 +6,7 @@ module DeliveryApi
           requires :user, type: Hash do
             requires :email,                  type: String, desc: 'User email.'
             requires :user_name,              type: String, desc: 'User nickname.'
+            requires :number,                 type: String, desc: 'User number.'
             requires :password,               type: String, desc: 'User password.'
             requires :password_confirmation,  type: String, desc: 'Confirm user password typed above.'
           end
