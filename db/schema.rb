@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_201528) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,11 +40,16 @@ ActiveRecord::Schema.define(version: 2019_02_04_201528) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "second_name"
     t.string "adress"
     t.string "user_number"
     t.string "total_price"
+    t.string "delivery_type"
+    t.string "pay_type"
     t.text "description"
+    t.boolean "status", default: false
+    t.string "promo_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -52,7 +58,9 @@ ActiveRecord::Schema.define(version: 2019_02_04_201528) do
 
   create_table "products", force: :cascade do |t|
     t.string "title"
+    t.string "image"
     t.string "description"
+    t.string "weight"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,7 +80,9 @@ ActiveRecord::Schema.define(version: 2019_02_04_201528) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
+    t.string "number", null: false
     t.string "user_name", null: false
+    t.string "image"
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
