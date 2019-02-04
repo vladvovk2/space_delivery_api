@@ -6,4 +6,12 @@ class User < ApplicationRecord
   def serializer_clazz
     DeliveryApi::Entities::UserResponce
   end
+
+  after_create :assign_promo
+
+  private
+
+  def assign_promo
+    PromoCode.create(user_id: self.id)
+  end
 end
