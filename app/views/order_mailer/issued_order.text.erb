@@ -1,1 +1,6 @@
-Спасибо за заказ!
+Спасибо за заказ, <%= @user.user_name %>!
+
+<% @order.line_items.each do |item| %>
+ <%= item.product.title %> x<%= item.quantity%>: <%= item.product.price * item.quantity %>,00грн.
+<% end %>
+Сума к оплате: <%= @order.total_price %>,00грн.

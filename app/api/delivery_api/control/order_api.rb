@@ -19,6 +19,7 @@ module DeliveryApi
         end
         post :create do
           CreateOrder.call(current_user, current_cart, declared_params[:order]) do
+            on(:empty_cart) { present({ message: 'Cart is empty.' }) }
             on(:ok)   { |order| present_with_entities(order) }
             on(:fail) { |order| { errors: order.errors} }
           end
