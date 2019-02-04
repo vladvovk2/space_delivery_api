@@ -11,6 +11,7 @@ module DeliveryApi
             requires :user_number,    type: String, desc: 'Client number.'
             requires :delivery_type,  type: String, desc: 'Take out || Delivery.'
             requires :pay_type,       type: String, desc: 'Cash || Terminal.'
+            optional :promo_code,     type: String, desc: 'invite_7a8ccc0e35'
             optional :description,    type: String, desc: 'Wishes.'
           end
         end
