@@ -5,7 +5,7 @@ module DeliveryApi
       helpers do
         params :order_params do
           requires :order, type: Hash do
-            requires :name,        type: String, desc: 'Client name.', default: 'vladvovk2'
+            requires :name,        type: String, desc: 'Client name.'
             requires :adress,      type: String, desc: 'Delivery address.'
             requires :user_number, type: String, desc: 'Client number.'
             optional :description, type: String, desc: 'Wishes.'
@@ -18,13 +18,9 @@ module DeliveryApi
           use :order_params
         end
         post :create do
-          order = current_user.orders.build(declared_params[:order].merge(total_price: current_cart.total_price))
-          if order.save
-            order.get_product(current_cart)
-            OrderMailer.issued_order(current_user).deliver_now
-            present_with_entities(order)
-          else
-            error!(order.errors)
+          CreateOrder.call(current_user, current_cart, declared_params[:order]) do
+            on(:ok)   { |order| present_with_entities(order) }
+            on(:fail) { |order| { errors: order.errors} }
           end
         end
       end

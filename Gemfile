@@ -29,6 +29,7 @@ gem 'dotenv-rails'
 gem 'jwt'
 gem 'bcrypt'
 
+gem 'rectify'
 gem 'simple_command'
 
 group :development, :test do
