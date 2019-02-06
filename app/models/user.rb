@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+
   has_many :orders
   has_one  :promo_code
   has_one  :user_balance

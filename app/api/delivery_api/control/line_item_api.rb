@@ -1,12 +1,6 @@
 module DeliveryApi
   module Control
     class LineItemApi < Grape::API
-      helpers do
-        params :line_item_id do
-          requires :id, type: Integer
-        end
-      end
-
       resources :line_items do
         get do
           line_items = LineItem.all
@@ -14,27 +8,15 @@ module DeliveryApi
         end
 
         params do
-          use :line_item_id
+          requires :quantity, type: Integer
         end
-        post 'increase_quantity/:id' do
+        patch ':id/quantity' do
           line_item = LineItem.find(params[:id])
-          line_item.increase_quantity
+          line_item.change_quantity([:quantity])
           present_with_entities(line_item)
         end
 
-        params do
-          use :line_item_id
-        end
-        post 'reduce_quantity/:id' do
-          line_item = LineItem.find(params[:id])
-          line_item.reduce_quantity
-          present_with_entities(line_item)
-        end
-
-        params do
-          use :line_item_id
-        end
-        delete do
+        delete ':id' do
           line_item = LineItem.find(params[:id])
           { message: 'Successfully deleted.' } if line_item.destroy
         end

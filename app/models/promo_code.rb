@@ -3,9 +3,10 @@ class PromoCode < ApplicationRecord
 
   private
 
-  after_create :generate
+  before_create :generate
 
   def generate
-    update(code: "invite_#{SecureRandom.hex(5)}")
+    self.code = "INVITE-#{SecureRandom.hex(5)}"
+    generate if PromoCode.where(code: code).exists?
   end
 end

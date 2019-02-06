@@ -3,15 +3,11 @@ class LineItem < ApplicationRecord
   belongs_to :product, optional: true
   belongs_to :order, optional: true
 
-  def increase_quantity
-    self.quantity += 1
-    self.save
-  end
-
-  def reduce_quantity
-    if self.quantity.positive? && self.quantity.nonzero?
-      self.quantity -= 1
-      self.save
+  def change_quantity(value)
+    if value.first.nonzero?
+      self.update(quantity: value)
+    else
+      
     end
   end
 
