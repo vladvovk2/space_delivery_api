@@ -18,7 +18,7 @@ class Order < ApplicationRecord
   before_update :charge_bonuses_to_promo_code_owner
 
   def charge_bonuses_to_promo_code_owner
-    if status_changed? && (self.status == true) && (!self.promo_code.nil?)
+    if status_changed? && (self.status == true) && self.promo_code
       ChargeBonusesJob.perform_later(self.promo_code)
     end
   end

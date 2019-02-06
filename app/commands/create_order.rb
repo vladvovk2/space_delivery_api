@@ -3,17 +3,17 @@ class CreateOrder < Rectify::Command
     @user         = user
     @cart         = cart
     @order_params = order_params
-    @promo = order_params[:promo_code]
+    @promo_code   = order_params[:promo_code]
   end
 
   def call
     return broadcast(:empty_cart) if cart.line_items.empty?
-    return broadcast(:promo_invalid) unless promo_valid?
+    return broadcast(:promo_invalid) unless promo_code_valid?
 
     order = user.orders.build(order_params.merge(total_price: order_total_price))
     if order.save
       order.get_product(cart)
-      send_receipt(order)
+      send_receipt(user, order)
       broadcast(:ok, order)
     else
       broadcast(:fail, order)
@@ -22,21 +22,30 @@ class CreateOrder < Rectify::Command
 
   private
 
-  attr_reader :user, :cart, :order_params, :promo
+  attr_reader :user, :cart, :order_params, :promo_code
 
-  def send_receipt(order)
-    OrderMailer.issued_order(user, order).deliver
+  def send_receipt(customer, order)
+    OrderMailer.issued_order(customer, order).deliver
   end
 
   def order_total_price
-    cart.total_price.to_i - promo_amount
+    return cart.total_price.to_i - promo_code_amount unless promo_code.nil?
+
+    cart.total_price
   end
 
-  def promo_valid?
-    !promo.nil? && PromoCode.where(code: promo).exists? && user.promo_code.code != promo && (user.orders.where(status: true).count <= 1)
+  def promo_code_valid?
+    if promo_code.nil?
+      true
+    elsif
+      obj = PromoCode.where(code: promo_code)
+      obj.exists? && obj.user_id != user.id
+    else
+      false
+    end
   end
 
-  def promo_amount
-    PromoCode.find_by(code: promo).amount
+  def promo_code_amount
+    PromoCode.find_by(code: promo_code).amount
   end
 end

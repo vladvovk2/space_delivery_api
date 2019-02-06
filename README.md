@@ -1,26 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+How to install:
 
-Things you may want to cover:
+* docker-compose up --build
 
-* Ruby version
+* docker-compose run backend rails db:create
 
-* System dependencies
+* docker-compose run backend rails db:migrate
 
-* Configuration
+* docker-compose run backend rails db:seed
 
-* Database creation
+* Create .env file in root directory end a config from .env.example
 
-* Database initialization
+* Go to http://localhost:3000/swagger
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-rails generate rubocop_rails_config:install

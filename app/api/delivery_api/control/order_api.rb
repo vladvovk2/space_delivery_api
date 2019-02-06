@@ -30,11 +30,11 @@ module DeliveryApi
           end
         end
 
-        params do 
+        params do
           requires :id, type: Integer
           requires :status, type: Boolean
         end
-        patch do 
+        patch do
           order = Order.find(params[:id])
           order.update(status: params[:status])
         end
