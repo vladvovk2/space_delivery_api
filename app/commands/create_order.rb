@@ -29,14 +29,14 @@ class CreateOrder < Rectify::Command
   end
 
   def order_total_price
-    cart.total_price.to_i - promo_value
+    cart.total_price.to_i - promo_amount
   end
 
   def promo_valid?
-    !promo.nil? && PromoCode.where(code: promo).exists? && user.promo_code.code != promo
+    !promo.nil? && PromoCode.where(code: promo).exists? && user.promo_code.code != promo && (user.orders.where(status: true).count <= 1)
   end
 
-  def promo_value
+  def promo_amount
     PromoCode.find_by(code: promo).amount
   end
 end

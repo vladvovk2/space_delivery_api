@@ -29,6 +29,15 @@ module DeliveryApi
             on(:fail) { |order| { errors: order.errors} }
           end
         end
+
+        params do 
+          requires :id, type: Integer
+          requires :status, type: Boolean
+        end
+        patch do 
+          order = Order.find(params[:id])
+          order.update(status: params[:status])
+        end
       end
     end
   end

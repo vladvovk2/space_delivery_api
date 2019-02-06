@@ -7,5 +7,3 @@ AllCops:
     - config/**
     - script/**
     - bin/**
-  Documentation:
-    Enabled: false
