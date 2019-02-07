@@ -12,8 +12,13 @@ class User < ApplicationRecord
   private
 
   after_create :assign_promo
+  after_create :assign_balance
 
   def assign_promo
     PromoCode.create(user_id: id)
+  end
+
+  def assign_balance
+    UserBalance.create(user_id: id)
   end
 end
