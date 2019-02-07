@@ -1,8 +1,9 @@
 class CreatePromoCodes < ActiveRecord::Migration[5.2]
   def change
     create_table :promo_codes do |t|
-      t.integer :amount, default: 40
-      t.string  :code
+      t.integer  :amount, default: 40
+      t.string   :code
+      t.boolean  :invite, default: false
       t.timestamps
     end
 

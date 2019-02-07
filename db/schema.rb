@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_233801) do
     t.string "second_name"
     t.string "adress"
     t.string "user_number"
-    t.string "total_price"
+    t.integer "total_price", default: 0
     t.string "delivery_type"
     t.string "pay_type"
     t.text "description"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_233801) do
   create_table "promo_codes", force: :cascade do |t|
     t.integer "amount", default: 40
     t.string "code"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

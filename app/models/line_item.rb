@@ -4,11 +4,7 @@ class LineItem < ApplicationRecord
   belongs_to :order, optional: true
 
   def change_quantity(value)
-    if value.first.nonzero?
-      self.update(quantity: value)
-    else
-      
-    end
+    update(quantity: value) if value.positive?
   end
 
   def serializer_clazz

@@ -12,7 +12,7 @@ module DeliveryApi
         end
         patch ':id/quantity' do
           line_item = LineItem.find(params[:id])
-          line_item.change_quantity([:quantity])
+          line_item.change_quantity(params[:quantity])
           present_with_entities(line_item)
         end
 

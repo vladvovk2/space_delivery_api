@@ -10,14 +10,7 @@ class CreateOrder < Rectify::Command
     return broadcast(:empty_cart) if cart.line_items.empty?
     return broadcast(:promo_invalid) unless promo_code_valid?
 
-    order = user.orders.build(order_params.merge(total_price: order_total_price))
-    if order.save
-      order.get_product(cart)
-      send_receipt(user, order)
-      broadcast(:ok, order)
-    else
-      broadcast(:fail, order)
-    end
+    order
   end
 
   private
@@ -28,8 +21,19 @@ class CreateOrder < Rectify::Command
     OrderMailer.issued_order(customer, order).deliver
   end
 
+  def order
+    order = user.orders.build(order_params.merge(total_price: order_total_price))
+    if order.save
+      order.get_product(cart)
+      send_receipt(user, order)
+      broadcast(:ok, order)
+    else
+      broadcast(:fail, order)
+    end
+  end
+
   def order_total_price
-    return cart.total_price.to_i - promo_code_amount unless promo_code.nil?
+    return cart.total_price - promo_code_amount unless promo_code.nil?
 
     cart.total_price
   end
@@ -39,7 +43,7 @@ class CreateOrder < Rectify::Command
       true
     elsif
       obj = PromoCode.where(code: promo_code)
-      obj.exists? && obj.user_id != user.id
+      obj.exists? && obj.first.user_id != user.id
     else
       false
     end

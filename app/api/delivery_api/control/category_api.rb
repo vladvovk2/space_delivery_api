@@ -7,10 +7,6 @@ module DeliveryApi
             requires :title, type: String, desc: 'Category title.'
           end
         end
-
-        params :category_id do
-          requires :id, type: String, desc: 'Category ID.'
-        end
       end
 
       resources :categories do
@@ -27,12 +23,8 @@ module DeliveryApi
           present_with_entities(category)
         end
 
-        params do
-          use :category_id
-        end
-        get :show do
-          category = Category.find(params[:id])
-          products = Product.where(category_id: category.id)
+        get ':id/show' do
+          products = Product.where(category_id: params[:id])
           present_with_entities(products)
         end
       end

@@ -32,6 +32,7 @@ gem 'bcrypt'
 gem 'rectify'
 gem 'simple_command'
 
+# gem 'rubocop'
 # gem 'rubocop-rails_config'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

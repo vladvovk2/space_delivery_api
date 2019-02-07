@@ -11,9 +11,6 @@ module DeliveryApi
             optional :category_id, type: Integer, desc: 'Assign category ID to product'
           end
         end
-        params :product_id do
-          requires :id, type: Integer, desc: 'Product ID.'
-        end
       end
 
       resources :products do
@@ -32,9 +29,8 @@ module DeliveryApi
 
         params do
           use :products_params
-          use :product_id
         end
-        post :update do
+        put ':id/update' do
           product = Product.find(params[:id])
           if product.update(declared_params[:product])
             present_with_entities(product)
@@ -43,18 +39,12 @@ module DeliveryApi
           end
         end
 
-        params do
-          use :product_id
-        end
-        get :show do
+        get ':id/show' do
           product = Product.find(params[:id])
           present_with_entities(product)
         end
 
-        params do
-          use :product_id
-        end
-        delete :delete do
+        delete ':id/destroy' do
           product = Product.find(params[:id])
           { message: 'Product deleted' } if product.destroy
         end

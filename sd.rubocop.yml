@@ -1,9 +1,0 @@
-inherit_gem:
-  rubocop-rails_config:
-    - config/rails.yml
-AllCops:
-  Excludes:
-    - db/**
-    - config/**
-    - script/**
-    - bin/**
