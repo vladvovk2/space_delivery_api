@@ -1,9 +1,9 @@
 module DeliveryApi
   module Control
     class SessionApi < Grape::API
-      helpers do 
+      helpers do
         params :session_params do
-          requires :session, type: Hash do 
+          requires :session, type: Hash do
             requires :email,    type: String, desc: 'User email'
             requires :password, type: String, desc: 'User password'
           end
@@ -11,7 +11,7 @@ module DeliveryApi
       end
 
       resources :session do
-        get :user do
+        get :profile do
           present_with_entities(current_user)
         end
         params do

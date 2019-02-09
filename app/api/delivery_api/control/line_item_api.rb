@@ -2,11 +2,6 @@ module DeliveryApi
   module Control
     class LineItemApi < Grape::API
       resources :line_items do
-        get do
-          line_items = LineItem.all
-          present_with_entities(line_items)
-        end
-
         params do
           requires :quantity, type: Integer
         end

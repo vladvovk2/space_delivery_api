@@ -15,14 +15,6 @@ module DeliveryApi
           present_with_entities(categories)
         end
 
-        params do
-          use :category_params
-        end
-        post :create do
-          category = Category.create(declared_params[:category])
-          present_with_entities(category)
-        end
-
         get ':id/show' do
           products = Product.where(category_id: params[:id])
           present_with_entities(products)
