@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :orders
   has_one  :promo_code
   has_one  :user_balance
+  has_many :favorites
 
   def serializer_clazz
     DeliveryApi::Entities::UserResponce
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   after_create :assign_balance
 
   def assign_promo_code
-    PromoCode.create(user_id: id)
+    PromoCode.create(user_id: id, invite: true)
   end
 
   def assign_balance

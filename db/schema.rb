@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_233801) do
+ActiveRecord::Schema.define(version: 2019_02_10_133517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2019_02_04_233801) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -71,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_233801) do
   create_table "promo_codes", force: :cascade do |t|
     t.integer "amount", default: 40
     t.string "code"
-    t.string "type"
+    t.boolean "invite", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -90,13 +99,16 @@ ActiveRecord::Schema.define(version: 2019_02_04_233801) do
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "number", null: false
-    t.string "user_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.string "image"
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "favorites", "products"
+  add_foreign_key "favorites", "users"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"

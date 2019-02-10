@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 
-# Gems which iʼm used for made Grape API
+# Gems which iʼm used for made Grape API.
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
@@ -21,19 +21,21 @@ gem 'grape-swagger-rails'
 gem 'grape-swagger-entity'
 gem 'hashie-forbidden_attributes'
 
-# DataBase gems
+# DataBase gems.
 gem 'pg'
 gem 'dotenv-rails'
 
-# Gems which iʼm used for made Authentication
+# Gems which iʼm used for made Authentication.
 gem 'jwt'
 gem 'bcrypt'
 
 gem 'rectify'
 gem 'simple_command'
 
+# Gems which iʼm used for clear code.
 # gem 'rubocop'
 # gem 'rubocop-rails_config'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
