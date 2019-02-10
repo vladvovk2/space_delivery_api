@@ -2,6 +2,7 @@ module DeliveryApi
   class Root < Grape::API
     version 'v1', using: :header, vendor: 'delivery'
     format :json
+    prefix :api
 
     rescue_from :all
 
@@ -16,6 +17,7 @@ module DeliveryApi
     mount DeliveryApi::Control::UserApi
     mount DeliveryApi::Control::SessionApi
     mount DeliveryApi::Control::FavoriteApi
+
     add_swagger_documentation(
       api_version: 'v1',
       hide_documantation_path: true,

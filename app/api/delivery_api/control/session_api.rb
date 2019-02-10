@@ -18,8 +18,8 @@ module DeliveryApi
           use :session_params
         end
         post :login do
-          user = AuthenticateUser.call(params[:session][:email], params[:session][:password])
-          user.success? ? login(user) : { error: user.errors }
+          user = AuthenticateUser.call(declared_params[:session])
+          user.success? ? login(user) : error!(user.errors.full_messages)
         end
 
         delete :logout do

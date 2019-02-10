@@ -23,15 +23,15 @@ module DeliveryApi
         end
         post :create do
           PromoCodeValidate.call(current_user, declared_params[:order][:promo_code]) do
-            on(:nil) { present({ message: 'Ok.' }) }
-            on(:not_exist) { return present({ message: 'Promo code is invalid' }) }
-            on(:owner) { return present({ message: 'You cant use your own referal promo.' })}
+            on(:nil) { present(message: 'Ok.') }
+            on(:not_exist) { return present(message: 'Promo code is invalid.') }
+            on(:owner) { return present(message: 'You cant use your own referal promo.') }
           end
 
           CreateOrder.call(current_user, current_cart, declared_params[:order]) do
-            on(:empty_cart) { present({ message: 'Cart is empty.' }) }
+            on(:empty_cart) { present(message: 'Cart is empty.') }
             on(:ok)   { |order| present_with_entities(order) }
-            on(:fail) { |order| { errors: order.errors} }
+            on(:fail) { |order| error!(order.errors.full_messages) }
           end
         end
 

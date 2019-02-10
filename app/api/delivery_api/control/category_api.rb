@@ -1,14 +1,6 @@
 module DeliveryApi
   module Control
     class CategoryApi < Grape::API
-      helpers do
-        params :category_params do
-          requires :category, type: Hash do
-            requires :title, type: String, desc: 'Category title.'
-          end
-        end
-      end
-
       resources :categories do
         get :list do
           categories = Category.all
