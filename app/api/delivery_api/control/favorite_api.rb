@@ -11,8 +11,11 @@ module DeliveryApi
           requires :id, type: Integer, desc: 'Product ID.'
         end
         post :create do
-          favorite = current_user.favorites.create(product_id: declared_params[:id])
-          present_with_entity(favorite)
+          MakeFavorite.call(current_user, declared_params[:id]) do
+            on(:include){ present(message: 'Already added.') }
+            on(:ok) { present(message: 'Successfully added to Favorites.') }
+            on(:fail){ present(message: 'Cant add to favorites.') }
+          end
         end
 
         delete ':id' do

@@ -18,7 +18,7 @@ module DeliveryApi
             line_items = LineItem.where(cart_id: current_cart.id).order(:product_id)
             present_with_entities(line_items)
           else
-            { message: 'Cart is empty.'}
+            { message: 'Cart is empty.' }
           end
         end
 
