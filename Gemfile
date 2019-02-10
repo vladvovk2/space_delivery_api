@@ -32,6 +32,11 @@ gem 'bcrypt'
 gem 'rectify'
 gem 'simple_command'
 
+# gem 'redis'
+# gem 'connection_pool', '~> 2.2', '>= 2.2.2'
+# gem 'sidekiq'
+
+
 # Gems which iʼm used for clear code.
 # gem 'rubocop'
 # gem 'rubocop-rails_config'

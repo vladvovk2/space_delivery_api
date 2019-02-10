@@ -4,9 +4,6 @@ module DeliveryApi
       helpers Api::CartHelpers
 
       resources :carts do
-        params do
-          requires :id, type: Integer, desc: 'Product ID which you wnat add to cart.'
-        end
         post 'add_product/:product_id' do
           product = Product.find(params[:product_id])
           if current_cart.add_product(product).try(:save)

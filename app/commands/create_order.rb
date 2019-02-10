@@ -3,12 +3,10 @@ class CreateOrder < Rectify::Command
     @user         = user
     @cart         = cart
     @order_params = order_params
-    @promo_code   = order_params[:promo_code]
   end
 
   def call
     return broadcast(:empty_cart) if cart.line_items.empty?
-    return broadcast(:promo_invalid) unless promo_code_valid?
 
     order
   end
@@ -33,23 +31,11 @@ class CreateOrder < Rectify::Command
   end
 
   def order_total_price
-    return cart.total_price - promo_code_amount unless promo_code.nil?
-
-    cart.total_price
-  end
-
-  def promo_code_valid?
-    if promo_code.nil?
-      true
-    elsif
-      obj = PromoCode.where(code: promo_code)
-      obj.exists? && obj.first.user_id != user.id
-    else
-      false
-    end
+    cart.total_price - promo_code_amount
   end
 
   def promo_code_amount
-    PromoCode.find_by(code: promo_code).amount
+    promo_code = PromoCode.find_by(code: order_params[:promo_code])
+    promo_code.present? ? promo_code.amount : 0
   end
 end

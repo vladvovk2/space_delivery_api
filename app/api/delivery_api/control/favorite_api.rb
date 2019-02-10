@@ -4,6 +4,7 @@ module DeliveryApi
       resources :favorites do
         get do
           favorites = Favorite.where(user_id: current_user.id).order(:product_id)
+          present_with_entities(favorites)
         end
 
         params do
@@ -11,6 +12,7 @@ module DeliveryApi
         end
         post :create do
           favorite = current_user.favorites.create(product_id: declared_params[:id])
+          present_with_entity(favorite)
         end
 
         delete ':id' do
