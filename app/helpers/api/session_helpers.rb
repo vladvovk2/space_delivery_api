@@ -6,7 +6,7 @@ module Api
 
     def login(user)
       session[:token] = user.result
-      { message: 'Successfully logged '}
+      { message: 'Successfully logged ' }
     end
 
     def current_user
@@ -20,7 +20,7 @@ module Api
     def logout
       unless session[:token].nil?
         session[:token] = nil
-        { message: 'Successfully logout.'}
+        { message: 'Successfully logout.' }
       else
         error!('Must login!', 404)
       end

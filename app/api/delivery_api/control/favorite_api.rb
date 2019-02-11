@@ -12,9 +12,9 @@ module DeliveryApi
         end
         post :create do
           MakeFavorite.call(current_user, declared_params[:id]) do
-            on(:include){ present(message: 'Already added.') }
+            on(:include) { present(message: 'Already added.') }
             on(:ok) { present(message: 'Successfully added to Favorites.') }
-            on(:fail){ present(message: 'Cant add to favorites.') }
+            on(:fail) { present(message: 'Cant add to favorites.') }
           end
         end
 

@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :orders
-  has_one  :promo_code
-  has_one  :user_balance
-  has_many :favorites
+  has_many :orders, dependent: :destroy
+  has_one  :promo_code, dependent: :destroy
+  has_one  :user_balance, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def serializer_clazz
     DeliveryApi::Entities::UserResponce

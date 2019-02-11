@@ -4,6 +4,7 @@ AllCops:
     - db/schema.rb
     - bin/*
     - config/**/*
+    - Gemfile
 Rails:
   Enabled: true
 Style/FrozenStringLiteralComment:

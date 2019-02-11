@@ -19,6 +19,6 @@ class AuthorizeRequest
   end
 
   def decode_token
-    @decoded_auth_token ||= JsonWebToken.decode(token)
+    @decode_token ||= JsonWebToken.decode(token)
   end
 end

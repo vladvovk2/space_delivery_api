@@ -16,7 +16,7 @@ class MakeFavorite < Rectify::Command
 
   def favorite_responce
     favorite = current_user.favorites.build(product_id: product_id)
-    favorite.save ? broadcast(:ok) : broadcast(:false)
+    favorite.save ? broadcast(:ok) : broadcast(:fail)
   end
 
   def user_have_favorite?
