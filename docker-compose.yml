@@ -40,5 +40,6 @@ services:
       - backend
 
 volumes:
+  
   data-postgres:
  

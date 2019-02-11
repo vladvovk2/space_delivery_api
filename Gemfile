@@ -1,15 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
-gem 'bootsnap', '>= 1.1.0', require: false
-# gem 'mini_magick', '~> 4.8'
-
 gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 
@@ -32,15 +23,15 @@ gem 'bcrypt'
 gem 'rectify'
 gem 'simple_command'
 
+# Gems which iʼm used for background works.
 gem 'redis'
 gem 'redis-namespace'
 gem 'sidekiq'
 gem 'sinatra', require: false
 
-
 # Gems which iʼm used for clear code.
-# gem 'rubocop'
-# gem 'rubocop-rails_config'
+gem 'rubocop'
+gem 'rubocop-rails_config'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -60,3 +51,11 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'turbolinks', '~> 5'
+gem 'jbuilder', '~> 2.5'
+gem 'bootsnap', '>= 1.1.0', require: false
+# gem 'mini_magick', '~> 4.8'
