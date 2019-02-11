@@ -10,7 +10,7 @@ module DeliveryApi
         end
       end
 
-      resources :session do
+      resources :sessions do
         get :profile do
           present_with_entities(current_user)
         end

@@ -18,6 +18,7 @@ module DeliveryApi
       end
 
       resources :orders do
+        desc 'Make order', entity: DeliveryApi::Entities::OrderResponce
         params do
           use :order_params
         end

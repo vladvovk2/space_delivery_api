@@ -32,9 +32,10 @@ gem 'bcrypt'
 gem 'rectify'
 gem 'simple_command'
 
-# gem 'redis'
-# gem 'connection_pool', '~> 2.2', '>= 2.2.2'
-# gem 'sidekiq'
+gem 'redis'
+gem 'redis-namespace'
+gem 'sidekiq'
+gem 'sinatra', require: false
 
 
 # Gems which iʼm used for clear code.
