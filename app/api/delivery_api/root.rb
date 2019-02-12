@@ -1,10 +1,14 @@
 module DeliveryApi
   class Root < Grape::API
-    version 'v1', using: :header, vendor: 'delivery'
+    version 'v1', using: :path, vendor: 'delivery'
     format :json
     prefix :api
 
     rescue_from :all
+
+    rescue_from ActiveRecord::RecordNotFound do
+      error!('Record not found!', 404)
+    end
 
     helpers Api::BaseHelpers
     helpers Api::SessionHelpers
