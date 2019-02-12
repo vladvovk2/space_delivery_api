@@ -16,7 +16,7 @@ class CreateOrder < Rectify::Command
   attr_reader :user, :cart, :order_params, :promo_code
 
   def send_receipt(customer, order)
-    OrderMailer.issued_order(customer, order).deliver
+    OrderMailer.issued_order(customer, order).deliver_later
   end
 
   def order

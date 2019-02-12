@@ -10,7 +10,7 @@ module Api
     end
 
     def current_user
-      unless session[:token].nil?
+      if !session[:token].nil?
         AuthorizeRequest.call(session[:token]).result
       else
         error!('Must login!', 404)
@@ -18,7 +18,7 @@ module Api
     end
 
     def logout
-      unless session[:token].nil?
+      if !session[:token].nil?
         session[:token] = nil
         { message: 'Successfully logout.' }
       else

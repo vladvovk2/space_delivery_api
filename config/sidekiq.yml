@@ -1,4 +1,3 @@
 :queues:
-  - export
-  - import
+  - mailers
   - default

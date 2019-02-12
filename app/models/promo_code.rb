@@ -6,7 +6,7 @@ class PromoCode < ApplicationRecord
   before_create :generate
 
   def generate
-    self.code = SecureRandom.hex(5)
+    self.code = SecureRandom.hex(6)
     generate if PromoCode.where(code: code).exists?
   end
 end

@@ -7,9 +7,11 @@ module DeliveryApi
           present_with_entities(categories)
         end
 
-        get ':id/show' do
-          products = Product.where(category_id: params[:id])
-          present_with_entities(products)
+        route_param :id do
+          get :products do
+            products = Category.find(params[:id]).products
+            present_with_entities(products)
+          end
         end
       end
     end
