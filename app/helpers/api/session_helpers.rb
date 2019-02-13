@@ -6,14 +6,14 @@ module Api
 
     def login(user)
       session[:token] = user.result
-      { message: 'Successfully logged ' }
+      { message: 'Successfully logged.' }
     end
 
     def current_user
       if !session[:token].nil?
         AuthorizeRequest.call(session[:token]).result
       else
-        error!('Must login!', 404)
+        error!('Must login!', 401)
       end
     end
 
@@ -22,8 +22,12 @@ module Api
         session[:token] = nil
         { message: 'Successfully logout.' }
       else
-        error!('Must login!', 404)
+        error!('Must login!', 401)
       end
+    end
+
+    def authorized!
+      error!('Must login', 401) unless current_user
     end
   end
 end

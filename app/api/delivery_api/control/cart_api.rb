@@ -4,6 +4,10 @@ module DeliveryApi
       helpers Api::CartHelpers
 
       resources :carts do
+        before do
+          authorized!
+        end
+
         post 'add_product/:product_id' do
           product = Product.find(params[:product_id])
           if current_cart.add_product(product).try(:save)

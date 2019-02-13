@@ -2,6 +2,10 @@ module DeliveryApi
   module Control
     class FavoriteApi < Grape::API
       resources :favorites do
+        before do
+          authorized!
+        end
+
         get do
           favorites = current_user.favorites.order(:product_id)
           present_with_entities(favorites)

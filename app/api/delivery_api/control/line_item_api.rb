@@ -2,6 +2,10 @@ module DeliveryApi
   module Control
     class LineItemApi < Grape::API
       resources :line_items do
+        before do
+          authorized!
+        end
+
         route_param :id do
           params do
             requires :quantity, type: Integer

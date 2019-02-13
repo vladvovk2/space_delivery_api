@@ -18,6 +18,10 @@ module DeliveryApi
       end
 
       resources :orders do
+        before do
+          authorized!
+        end
+
         desc 'Make order', entity: DeliveryApi::Entities::OrderResponce
         params do
           use :order_params
