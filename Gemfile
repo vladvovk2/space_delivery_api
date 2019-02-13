@@ -5,6 +5,7 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 
 # Gems which iʼm used for made Grape API.
+gem 'rack-cors'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
