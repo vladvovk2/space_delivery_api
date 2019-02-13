@@ -21,13 +21,13 @@ module DeliveryApi
     mount DeliveryApi::Control::UserApi
     mount DeliveryApi::Control::SessionApi
     mount DeliveryApi::Control::FavoriteApi
-
+    mount DeliveryApi::Control::PhoneVerificationApi
     add_swagger_documentation(
       api_version: 'v1',
       hide_documantation_path: true,
       hide_format: true,
       info: {
-        title: 'API documantation'
+        title: 'Kryla API documantation'
       }
     )
   end
