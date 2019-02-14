@@ -25,11 +25,21 @@ module DeliveryApi
           use :user_params
         end
         post :sing_up do
-          if User.create(declared_params[:user])
-            { message: 'Successfully registered!' }
+          user = User.new(declared_params[:user])
+          if user.save
+            user.phone_verification.update(phone_number: declared_params[:user][:number])
+
+            SendVerificationMessageJob.perform_later(
+              number: user.phone_verification.phone_number,
+              code: user.phone_verification.verifycation_code
+            )
           else
             error!(user.errors.full_messages)
           end
+        end
+
+        delete ':id' do
+          User.find(params[:id]).destroy
         end
       end
     end

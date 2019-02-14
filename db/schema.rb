@@ -68,9 +68,12 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
   create_table "phone_verifications", force: :cascade do |t|
     t.boolean "verifycation", default: false
     t.string "phone_number"
+    t.string "verifycation_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["phone_number"], name: "index_phone_verifications_on_phone_number", unique: true
+    t.index ["user_id"], name: "index_phone_verifications_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -109,12 +112,10 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
     t.string "number", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "image"
     t.string "password_digest", null: false
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "phone_verifications_id"
-    t.index ["phone_verifications_id"], name: "index_users_on_phone_verifications_id"
   end
 
   add_foreign_key "favorites", "products"
