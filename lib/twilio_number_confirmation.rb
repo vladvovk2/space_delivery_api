@@ -1,10 +1,10 @@
 class TwilioNumberConfirmation
   class << self
-    def send_verify_message(number: nil, code: nil)
+    def send_verification_message(number: nil, code: nil)
       client.messages.create(
         from: ENV['TWILIO_NUMBER'],
-        to: "+380#{number}",
-        body: "Your verification code: #{code}!"
+        to: number,
+        body: "Your verification code: #{code}"
       )
     end
 

@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
   end
 
   create_table "phone_verifications", force: :cascade do |t|
-    t.boolean "verifycation", default: false
+    t.boolean "verification", default: false
     t.string "phone_number"
-    t.string "verifycation_code"
+    t.string "verification_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -109,10 +109,10 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "number", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "password_digest", null: false
+    t.integer "number", null: false
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

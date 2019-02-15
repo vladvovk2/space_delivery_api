@@ -1,8 +1,8 @@
 class SendVerificationMessageJob < ApplicationJob
-  queue_as :default
+  queue_as :messages
 
   def perform(number: nil, code: nil)
-    TwilioNumberConfirmation.send_verify_message(
+    TwilioNumberConfirmation.send_verification_message(
       number: number,
       code: code
     )

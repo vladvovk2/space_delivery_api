@@ -94,6 +94,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    fastri (0.3.1.1)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -196,6 +197,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rcodetools (0.8.5.0)
     rectify (0.13.0)
       activemodel (>= 4.1.0)
       activerecord (>= 4.1.0)
@@ -300,6 +302,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
+  fastri
   grape
   grape-entity
   grape-swagger
@@ -314,6 +317,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.2)
+  rcodetools
   rectify
   redis
   redis-namespace
