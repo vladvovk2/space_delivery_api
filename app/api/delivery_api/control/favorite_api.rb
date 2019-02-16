@@ -4,9 +4,9 @@ module DeliveryApi
       resources :favorites do
         before { authorized! }
 
-        get(:list) { present_with_entities(current_user.favorites.order(:product_id)) }
+        get(:list) { @response = current_user.favorites.order(:product_id) }
 
-        route_param :id do
+        route_param :id, type: Integer do
           desc 'Added to favorites form.'
           post :create do
             MakeFavorite.call(current_user, params[:id]) do

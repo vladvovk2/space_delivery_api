@@ -20,8 +20,7 @@ module DeliveryApi
         desc 'List of products added to cart.'
         get :current_cart do
           if !current_cart.line_items.empty?
-            line_items = current_cart.line_items.order(:product_id)
-            present_with_entities(line_items)
+            @response = current_cart.line_items.order(:product_id)
           else
             { message: 'Cart is empty.' }
           end

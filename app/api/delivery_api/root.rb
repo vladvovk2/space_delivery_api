@@ -4,10 +4,14 @@ module DeliveryApi
     format :json
     prefix :api
 
-    rescue_from :all
+    after { present_with_entities(@response) unless @response.nil? }
 
+    rescue_from :all
     rescue_from ActiveRecord::RecordNotFound do
       error!('Record not found!', 404)
+    end
+    rescue_from NoMethodError do
+      error!('Empty!')
     end
 
     helpers Api::BaseHelpers

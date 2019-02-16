@@ -5,8 +5,8 @@ module Api
     end
 
     def present_with_entities(object)
-      return present object, with: object.first.serializer_clazz if object.try(:count)
-
+      present object, with: object.first.serializer_clazz
+    rescue NoMethodError
       present object, with: object.serializer_clazz
     end
   end

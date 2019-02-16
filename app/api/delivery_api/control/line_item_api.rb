@@ -12,13 +12,10 @@ module DeliveryApi
       resources :line_items do
         before { authorized! }
 
-        route_param :id do
+        route_param :id, type: Integer do
           desc 'Change product quantity.'
           params { requires :quantity, type: Integer }
-          patch :quantity do
-            line_item.change_quantity(declared_params[:quantity])
-            present_with_entities(line_item)
-          end
+          patch(:quantity) { @response = line_item.change_quantity(declared_params[:quantity]) }
 
           desc 'Delete product from cart.'
           delete(:destroy) { { message: 'Deleted.' } if line_item.destroy }

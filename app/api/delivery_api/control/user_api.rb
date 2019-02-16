@@ -15,7 +15,7 @@ module DeliveryApi
       end
 
       resources :users do
-        get(:all) { present_with_entities(User.all) }
+        get(:all) { @response = User.all }
 
         desc 'User registration form.', entity: DeliveryApi::Entities::UserResponce
         params { use :user_params }
