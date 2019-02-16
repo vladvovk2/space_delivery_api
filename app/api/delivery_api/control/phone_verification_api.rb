@@ -20,9 +20,7 @@ module DeliveryApi
         end
 
         desc 'Activation account with verification code.'
-        params do
-          requires :responce, type: Boolean
-        end
+        params { requires :responce, type: Boolean }
         post(:confirmation) { current_user.verify(declared_params[:responce]) }
       end
     end

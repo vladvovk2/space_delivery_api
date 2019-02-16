@@ -21,9 +21,7 @@ module DeliveryApi
         before { authorized! }
 
         desc 'Make order', entity: DeliveryApi::Entities::OrderResponce
-        params do
-          use :order_params
-        end
+        params { use :order_params }
         post :create do
           PromoCodeValidate.call(current_user, declared_params[:order][:promo_code]) do
             on(:not_exist) { return present(message: 'Promo code is invalid.') }

@@ -7,8 +7,8 @@ module DeliveryApi
         desc 'Information about all products.'
         get(:list) { present_with_entities(Product.all) }
 
-        desc 'Information about selected product.'
         route_param :id do
+          desc 'Information about selected product.'
           get(:show) { present_with_entities(Product.find(params[:id])) }
         end
       end

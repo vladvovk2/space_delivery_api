@@ -15,9 +15,7 @@ module DeliveryApi
         get(:profile) { present_with_entities(current_user) }
 
         desc 'User login form.'
-        params do
-          use :session_params
-        end
+        params { use :session_params }
         post :login do
           user = AuthenticateUser.call(declared_params[:session])
           user.success? ? login(user) : error!(user.errors.full_messages)

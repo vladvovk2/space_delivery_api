@@ -7,17 +7,19 @@ module DeliveryApi
         get(:list) { present_with_entities(current_user.favorites.order(:product_id)) }
 
         route_param :id do
+          desc 'Added to favorites form.'
           post :create do
             MakeFavorite.call(current_user, params[:id]) do
-              on(:ok)      { present(message: 'Successfully added to Favorites.') }
+              on(:ok)      { present(message: 'Added to favorites.') }
               on(:fail)    { present(message: 'Cant add to favorites.') }
               on(:include) { present(message: 'Already added.') }
             end
           end
 
+          desc 'Deleted from favorites form.'
           delete :destroy do
             favorite = current_user.favorites.find(params[:id])
-            { message: 'Successfully deleted from favorites.' } if favorite.destroy
+            { message: 'Deleted from favorites.' } if favorite.destroy
           end
         end
       end
