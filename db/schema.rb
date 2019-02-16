@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_133517) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_categories_on_title"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -53,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_133517) do
   create_table "orders", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "adress"
+    t.string "address"
     t.string "user_number"
     t.integer "total_price", default: 0
     t.string "delivery_type"
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_133517) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["title"], name: "index_products_on_title"
   end
 
   create_table "promo_codes", force: :cascade do |t|
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_133517) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email", "phone_number"], name: "index_users_on_email_and_phone_number"
   end
 
   add_foreign_key "carts", "users"

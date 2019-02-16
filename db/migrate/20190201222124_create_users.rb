@@ -12,6 +12,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     end
     add_reference :orders, :user, foreign_key: true
     add_reference :carts,  :user, foreign_key: true
-    add_index :users, %i[email first_name last_name phone_number]
+    add_index :users, %i[email phone_number]
   end
 end

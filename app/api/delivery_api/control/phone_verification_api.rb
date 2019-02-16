@@ -1,7 +1,7 @@
 module DeliveryApi
   module Control
     class PhoneVerificationApi < Grape::API
-      helpers do 
+      helpers do
         def verification_code
           rand(1000..9999)
         end

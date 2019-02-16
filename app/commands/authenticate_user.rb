@@ -2,8 +2,8 @@ class AuthenticateUser
   prepend SimpleCommand
 
   def initialize(params)
-    @phone_number    = params[:phone_number]
-    @password = params[:password]
+    @password     = params[:password]
+    @phone_number = params[:phone_number]
   end
 
   def call

@@ -28,7 +28,7 @@ module Api
 
     def authorized!
       true
-      #error!('Must login', 401) unless current_user
+      # error!('Must login', 401) unless current_user
     end
   end
 end
