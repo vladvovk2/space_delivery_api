@@ -23,9 +23,7 @@ module DeliveryApi
         params do
           requires :responce, type: Boolean
         end
-        post :confirmation do
-          current_user.verify(declared_params[:responce])
-        end
+        post(:confirmation) { current_user.verify(declared_params[:responce]) }
       end
     end
   end

@@ -2,20 +2,14 @@ module DeliveryApi
   module Control
     class ProductApi < Grape::API
       resources :products do
-        before do
-          authorized!
-        end
+        before { authorized! }
 
-        get :list do
-          products = Product.all
-          present_with_entities(products)
-        end
+        desc 'Information about all products.'
+        get(:list) { present_with_entities(Product.all) }
 
+        desc 'Information about selected product.'
         route_param :id do
-          get :show do
-            product = Product.find(params[:id])
-            present_with_entities(product)
-          end
+          get(:show) { present_with_entities(Product.find(params[:id])) }
         end
       end
     end

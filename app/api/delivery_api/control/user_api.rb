@@ -15,10 +15,7 @@ module DeliveryApi
       end
 
       resources :users do
-        get :all do
-          user = User.all
-          present_with_entities(user)
-        end
+        get(:all) { present_with_entities(User.all) }
 
         desc 'User registration form.', entity: DeliveryApi::Entities::UserResponce
         params do
@@ -27,8 +24,6 @@ module DeliveryApi
         post :sing_up do
           user = User.new(declared_params[:user])
           if user.save
-            user = AuthenticateUser.call(declared_params[:user])
-            login(user)
             { message: 'Registration complite.' }
           else
             error!(user.errors.full_messages)

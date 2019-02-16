@@ -2,20 +2,14 @@ module DeliveryApi
   module Control
     class CategoryApi < Grape::API
       resources :categories do
-        before do
-          authorized!
-        end
+        before { authorized! }
 
-        get :list do
-          categories = Category.all
-          present_with_entities(categories)
-        end
+        desc 'Information about all categories.'
+        get(:list) { present_with_entities(Category.all) }
 
+        desc 'List of products belonging to the category.'
         route_param :id do
-          get :products do
-            products = Category.find(params[:id]).products
-            present_with_entities(products)
-          end
+          get(:products) { present_with_entities(Category.find(params[:id]).products) }
         end
       end
     end

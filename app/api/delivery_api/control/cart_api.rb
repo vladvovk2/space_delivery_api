@@ -4,10 +4,9 @@ module DeliveryApi
       helpers Api::CartHelpers
 
       resources :carts do
-        before do
-          authorized!
-        end
+        before { authorized! }
 
+        desc 'Form for add product to cart.'
         post 'add_product/:product_id' do
           product = Product.find(params[:product_id])
           if current_cart.add_product(product).try(:save)
@@ -17,6 +16,8 @@ module DeliveryApi
           end
         end
 
+
+        desc 'List of products added to cart.'
         get :current_cart do
           if !current_cart.line_items.empty?
             line_items = current_cart.line_items.order(:product_id)

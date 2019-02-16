@@ -4,16 +4,17 @@ module DeliveryApi
       helpers do
         params :session_params do
           requires :session, type: Hash do
-            requires :phone_number,    type: String, desc: 'User email'
-            requires :password, type: String, desc: 'User password'
+            requires :phone_number, type: String, desc: 'User email'
+            requires :password,     type: String, desc: 'User password'
           end
         end
       end
 
       resources :sessions do
-        get :profile do
-          present_with_entities(current_user)
-        end
+        desc 'User information.'
+        get(:profile) { present_with_entities(current_user) }
+
+        desc 'User login form.'
         params do
           use :session_params
         end
@@ -22,9 +23,8 @@ module DeliveryApi
           user.success? ? login(user) : error!(user.errors.full_messages)
         end
 
-        delete :logout do
-          logout
-        end
+        desc 'User logout form.'
+        delete(:logout) { logout }
       end
     end
   end

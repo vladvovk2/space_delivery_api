@@ -4,9 +4,7 @@ module DeliveryApi
       helpers Api::CartHelpers
 
       resources :line_items do
-        before do
-          authorized!
-        end
+        before { authorized! }
 
         route_param :id do
           params do
