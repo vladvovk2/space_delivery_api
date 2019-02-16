@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   has_one  :promo_code,         dependent: :destroy
   has_one  :user_balance,       dependent: :destroy
