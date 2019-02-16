@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.string    :first_name
       t.string    :last_name
-      t.string    :adress
+      t.string    :address
       t.string    :user_number
       t.integer   :total_price, default: 0
       t.string    :delivery_type
@@ -13,7 +13,6 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string    :promo_code
       t.timestamps
     end
-
     add_reference :line_items, :order, foreign_key: true
   end
 end
