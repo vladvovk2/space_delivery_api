@@ -6,7 +6,7 @@ module DeliveryApi
         params :order_params do
           requires :order, type: Hash do
             requires :first_name,     type: String, desc: 'Client name.'
-            requires :second_name,    type: String, desc: 'Client surname.'
+            requires :last_name,    type: String, desc: 'Client surname.'
             requires :adress,         type: String, desc: 'Delivery address.'
             requires :user_number,    type: String, desc: 'Client number.'
             requires :delivery_type,  type: String, desc: 'TakeOut | Delivery.'

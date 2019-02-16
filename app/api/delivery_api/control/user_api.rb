@@ -5,7 +5,7 @@ module DeliveryApi
         params :user_params do
           requires :user, type: Hash do
             requires :email,                  type: String, desc: 'User email.'
-            requires :number,                 type: String, desc: 'User number.'
+            requires :phone_number,           type: String, desc: 'User number.'
             requires :first_name,             type: String, desc: 'User nickname.'
             requires :last_name,              type: String, desc: 'User nickname.'
             requires :password,               type: String, desc: 'User password.'

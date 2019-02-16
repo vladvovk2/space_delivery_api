@@ -2,7 +2,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
   def change
     create_table :orders do |t|
       t.string    :first_name
-      t.string    :second_name
+      t.string    :last_name
       t.string    :adress
       t.string    :user_number
       t.integer   :total_price, default: 0

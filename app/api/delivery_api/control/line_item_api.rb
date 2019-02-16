@@ -1,6 +1,8 @@
 module DeliveryApi
   module Control
     class LineItemApi < Grape::API
+      helpers Api::CartHelpers
+
       resources :line_items do
         before do
           authorized!

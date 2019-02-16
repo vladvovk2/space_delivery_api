@@ -4,7 +4,7 @@ module DeliveryApi
       format_with(:iso_timestamp) { |dt| dt.strftime('%B %d, %Y') }
 
       expose :first_name,     documentation: { type: 'String',  values: ['Vlad'] }
-      expose :second_name,    documentation: { type: 'String',  values: ['Vovk'] }
+      expose :last_name,    documentation: { type: 'String',  values: ['Vovk'] }
       expose :delivery_type,  documentation: { type: 'String',  values: ['Take out'] }
       expose :pay_type,       documentation: { type: 'String',  values: ['Cash'] }
       expose :adress,         documentation: { type: 'String',  values: ['Gogolya, 24'] }

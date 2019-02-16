@@ -2,7 +2,7 @@ class AuthenticateUser
   prepend SimpleCommand
 
   def initialize(params)
-    @email    = params[:email]
+    @phone_number    = params[:phone_number]
     @password = params[:password]
   end
 
@@ -12,10 +12,10 @@ class AuthenticateUser
 
   private
 
-  attr_accessor :email, :password
+  attr_accessor :phone_number, :password
 
   def user
-    user = User.find_by(email: email)
+    user = User.find_by(phone_number: phone_number)
     return user if user&.authenticate(password)
 
     errors.add :user_authentication, 'Invalid data.'

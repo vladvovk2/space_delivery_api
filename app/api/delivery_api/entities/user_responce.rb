@@ -5,7 +5,7 @@ module DeliveryApi
       expose :first_name,      documentation: { type: 'String',  values: ['Vlad'] }
       expose :last_name,       documentation: { type: 'String',  values: ['Vovk'] }
       expose :email,           documentation: { type: 'String',  values: ['vlad.vovk.844@gmail.com'] }
-      expose :number,          documentation: { type: 'String',  values: ['687285102'] }
+      expose :phone_number,    documentation: { type: 'String',  values: ['687285102'] }
       expose :user_balance,    documentation: { type: 'String',  values: ['121'] }
       expose :user_promo_code, documentation: { type: 'String',  values: ['3F1ds3k1jc'] }
 

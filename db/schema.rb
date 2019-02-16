@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_203014) do
+ActiveRecord::Schema.define(version: 2019_02_10_133517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -50,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
 
   create_table "orders", force: :cascade do |t|
     t.string "first_name"
-    t.string "second_name"
+    t.string "last_name"
     t.string "adress"
     t.string "user_number"
     t.integer "total_price", default: 0
@@ -63,17 +65,6 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "phone_verifications", force: :cascade do |t|
-    t.boolean "verification", default: false
-    t.string "phone_number"
-    t.string "verification_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["phone_number"], name: "index_phone_verifications_on_phone_number", unique: true
-    t.index ["user_id"], name: "index_phone_verifications_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -109,15 +100,17 @@ ActiveRecord::Schema.define(version: 2019_02_13_203014) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "first_name", null: false
     t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "phone_number", null: false
     t.string "password_digest", null: false
-    t.integer "number", null: false
-    t.string "image"
+    t.boolean "verification", default: false
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "carts", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "line_items", "carts"

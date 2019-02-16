@@ -4,7 +4,7 @@ module DeliveryApi
       helpers do
         params :session_params do
           requires :session, type: Hash do
-            requires :email,    type: String, desc: 'User email'
+            requires :phone_number,    type: String, desc: 'User email'
             requires :password, type: String, desc: 'User password'
           end
         end
