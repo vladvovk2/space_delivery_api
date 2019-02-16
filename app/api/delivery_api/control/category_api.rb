@@ -17,13 +17,6 @@ module DeliveryApi
             present_with_entities(products)
           end
         end
-
-        params do 
-          requires :id, type: Integer
-        end
-        get :test do 
-          products = Category.find(params[:id]).products
-        end
       end
     end
   end
