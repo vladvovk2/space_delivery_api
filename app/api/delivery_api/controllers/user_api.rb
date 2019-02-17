@@ -1,5 +1,5 @@
 module DeliveryApi
-  module Control
+  module Controllers
     class UserApi < Grape::API
       helpers do
         params :user_params do

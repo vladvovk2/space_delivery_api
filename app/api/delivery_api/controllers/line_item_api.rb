@@ -1,5 +1,5 @@
 module DeliveryApi
-  module Control
+  module Controllers
     class LineItemApi < Grape::API
       helpers Api::CartHelpers
 

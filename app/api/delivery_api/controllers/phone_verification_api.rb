@@ -1,5 +1,5 @@
 module DeliveryApi
-  module Control
+  module Controllers
     class PhoneVerificationApi < Grape::API
       helpers do
         def verification_code

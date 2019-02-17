@@ -1,5 +1,5 @@
 module DeliveryApi
-  module Control
+  module Controllers
     class OrderApi < Grape::API
       helpers Api::CartHelpers
       helpers do

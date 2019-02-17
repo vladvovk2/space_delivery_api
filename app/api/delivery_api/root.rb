@@ -17,15 +17,15 @@ module DeliveryApi
     helpers Api::BaseHelpers
     helpers Api::SessionHelpers
 
-    mount DeliveryApi::Control::ProductApi
-    mount DeliveryApi::Control::CategoryApi
-    mount DeliveryApi::Control::LineItemApi
-    mount DeliveryApi::Control::CartApi
-    mount DeliveryApi::Control::OrderApi
-    mount DeliveryApi::Control::UserApi
-    mount DeliveryApi::Control::SessionApi
-    mount DeliveryApi::Control::FavoriteApi
-    mount DeliveryApi::Control::PhoneVerificationApi
+    mount DeliveryApi::Controllers::ProductApi
+    mount DeliveryApi::Controllers::CategoryApi
+    mount DeliveryApi::Controllers::LineItemApi
+    mount DeliveryApi::Controllers::CartApi
+    mount DeliveryApi::Controllers::OrderApi
+    mount DeliveryApi::Controllers::UserApi
+    mount DeliveryApi::Controllers::SessionApi
+    mount DeliveryApi::Controllers::FavoriteApi
+    mount DeliveryApi::Controllers::PhoneVerificationApi
 
     add_swagger_documentation(
       api_version: 'v1',

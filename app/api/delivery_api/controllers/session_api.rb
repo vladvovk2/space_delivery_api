@@ -1,5 +1,5 @@
 module DeliveryApi
-  module Control
+  module Controllers
     class SessionApi < Grape::API
       helpers do
         params :session_params do

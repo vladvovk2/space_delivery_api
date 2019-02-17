@@ -1,5 +1,5 @@
 module DeliveryApi
-  module Control
+  module Controllers
     class CategoryApi < Grape::API
       resources :categories do
         before  { authorized! }
