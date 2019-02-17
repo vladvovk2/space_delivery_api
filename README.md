@@ -53,30 +53,59 @@ I am use docker to run the application locally. The commands below will help you
 * Go to `http://localhost:3000/swagger`
 
 ### API Documentation
-
   If you want to see all requests and answers, you can follow to `http://localhost:3000/swagger` after setup application.
   The information below will provide details on each request. 
 
 ---
 
 #### Product
-
-Product have next request:
+Product have next request: 
 
 * `GET /api/v1/products/list` - Returns an array of all products.
-* `GET /api/v1/products/{id}/show` - Returns the hash of the parameters of the selected product.
+* `GET /api/v1/products/{id}/show ` - Returns the hash of the parameters of the selected product.
 
 Requests given above return the parameters described below.
 
 Success response format:
-
 ```json
-      {
-        "id": Integer,
-        "title": String,
-        "price": Integer,
-        "weight": Integer,
-        "description": String,
-        "category_id": Integer
-      }
+  {
+    id: Integer,
+    title: String,
+    price: Integer,
+    weight: Integer,
+    description: String,
+    image: String
+    category_id: Integer
+  }
 ```
+
+#### Category
+
+Product have next request:
+
+* `GET /api/v1/categories/list` - Returns a list of all categories.
+
+    Success response format:
+    ```json
+      {
+        id: Integer,
+        title: String,
+        image: String
+      }
+    ```
+
+* `GET /api/v1/categories/{id}/products`  - Returns a list of products belonging to the selected category.
+
+   Success response format:
+   ```json
+     {
+       id: Integer,
+       title: String,
+       price: Integer,
+       weight: Integer,
+       description: String,
+       image: String
+       category_id: Integer
+     }
+   ```
+
