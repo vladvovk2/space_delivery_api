@@ -85,6 +85,7 @@ GEM
     crass (1.0.4)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
+    diff-lcs (1.3)
     dotenv (2.6.0)
     dotenv-rails (2.6.0)
       dotenv (= 2.6.0)
@@ -94,7 +95,6 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    fastri (0.3.1.1)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -197,7 +197,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rcodetools (0.8.5.0)
     rectify (0.13.0)
       activemodel (>= 4.1.0)
       activerecord (>= 4.1.0)
@@ -208,6 +207,19 @@ GEM
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
     regexp_parser (1.3.0)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
     rubocop (0.64.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -302,7 +314,6 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
-  fastri
   grape
   grape-entity
   grape-swagger
@@ -317,10 +328,10 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.2)
-  rcodetools
   rectify
   redis
   redis-namespace
+  rspec
   rubocop
   rubocop-rails_config
   sass-rails (~> 5.0)

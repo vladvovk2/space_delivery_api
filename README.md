@@ -1,6 +1,6 @@
 # Kryla API
 
-- [About project](#about)
+- [About project](#about-project)
   - [Instruments](#instruments)
 - [How to setup](#how-to-setup)
 - [API Documentation](#api-documentation)
@@ -15,7 +15,7 @@
 
 ---
 
-### About project
+## About project
 
  This project is a work with the help of which I want to
 show what skills I achieved during the course of MasterAcademy courses.
@@ -58,54 +58,66 @@ I am use docker to run the application locally. The commands below will help you
 
 ---
 
-#### Product
+### Product
 Product have next request: 
 
-* `GET /api/v1/products/list` - Returns an array of all products.
-* `GET /api/v1/products/{id}/show ` - Returns the hash of the parameters of the selected product.
+* `GET /api/v1/products/list`
 
+    **Description:** returns an array of all products.
+
+* `GET /api/v1/products/{id}/show ` 
+
+    **Description:** returns the hash of the parameters of the selected product.
+                         
 Requests given above return the parameters described below.
 
-Success response format:
+**Success response format:**
 ```json
   {
-    id: Integer,
-    title: String,
-    price: Integer,
-    weight: Integer,
-    description: String,
-    image: String
-    category_id: Integer
+    "id": "Integer",
+    "title": "String",
+    "price": "Integer",
+    "weight": "Integer",
+    "description": "String",
+    "image": "String",
+    "category_id": "Integer"
   }
 ```
-
-#### Category
+---
+### Category
 
 Product have next request:
 
-* `GET /api/v1/categories/list` - Returns a list of all categories.
+* `GET /api/v1/categories/list`
 
-    Success response format:
+    **Description:** returns a list of all categories.
+    
+    **Success response format:**
     ```json
       {
-        id: Integer,
-        title: String,
-        image: String
+        "id": "Integer",
+        "title": "String",
+        "image": "String"
       }
     ```
 
-* `GET /api/v1/categories/{id}/products`  - Returns a list of products belonging to the selected category.
+* `GET /api/v1/categories/{id}/products`
 
-   Success response format:
-   ```json
-     {
-       id: Integer,
-       title: String,
-       price: Integer,
-       weight: Integer,
-       description: String,
-       image: String
-       category_id: Integer
-     }
+   **Description:** returns a list of products belonging to the selected category.
+   
+   **Success response format:**
+  ```json
+    {
+      "id": "Integer",
+      "title": "String",
+      "price": "Integer",
+      "weight": "Integer",
+      "description": "String",
+      "image": "String",
+      "category_id": "Integer"
+    }
    ```
 
+---
+
+### Cart
