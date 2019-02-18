@@ -19,7 +19,7 @@ module DeliveryApi
           desc 'Deleted from favorites form.'
           delete :destroy do
             favorite = current_user.favorites.find(params[:id])
-            { message: 'Deleted from favorites.' } if favorite.destroy
+            present(message: 'Deleted.') if favorite.destroy
           end
         end
       end

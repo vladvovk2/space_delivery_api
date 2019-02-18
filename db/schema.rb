@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_133517) do
     t.string "title"
     t.string "image"
     t.string "description"
-    t.string "weight"
+    t.integer "weight"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_133517) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email", "phone_number"], name: "index_users_on_email_and_phone_number"
+    t.index ["email", "phone_number"], name: "index_users_on_email_and_phone_number", unique: true
   end
 
   add_foreign_key "carts", "users"

@@ -13,8 +13,10 @@ gem 'grape-swagger-rails'
 gem 'grape-swagger-entity'
 gem 'hashie-forbidden_attributes'
 
-# DataBase gems.
+# DataBase gem.
 gem 'pg'
+
+# ENV gem.
 gem 'dotenv-rails'
 
 # Gems which iʼm used for made Authentication.

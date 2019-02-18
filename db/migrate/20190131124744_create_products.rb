@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string  :title, unique: true
       t.string  :image
       t.string  :description
-      t.string  :weight
+      t.integer :weight
       t.integer :price
       t.timestamps
     end

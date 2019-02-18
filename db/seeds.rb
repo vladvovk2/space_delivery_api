@@ -1,6 +1,6 @@
-burgers    = %i['Черный бургер' 'Романтический бургер']
-salats     = %i['Цезарь' 'Домашний']
-categories = %i['Бургеры' 'Салаты']
+burgers    = ['Черный бургер', 'Романтический бургер']
+salats     = ['Цезарь', 'Домашний']
+categories = ['Бургеры', 'Салаты']
 
 categories.each { |title| Category.create(title: title) }
 

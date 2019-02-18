@@ -9,10 +9,11 @@ module DeliveryApi
         desc 'Form for add product to cart.'
         post 'add_product/:product_id' do
           product = Product.find(params[:product_id])
+
           if current_cart.add_product(product).try(:save)
-            { message: 'Added to cart.' }
+            present(message: 'Added to cart.')
           else
-            { message: 'Quantity  increased.' }
+            present(message: 'Quantity  increased.')
           end
         end
 
@@ -22,7 +23,7 @@ module DeliveryApi
           if !current_cart.line_items.empty?
             @response = current_cart.line_items.order(:product_id)
           else
-            { message: 'Cart is empty.' }
+            present(message: 'Cart is empty.')
           end
         end
       end

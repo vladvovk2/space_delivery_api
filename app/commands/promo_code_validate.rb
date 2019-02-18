@@ -1,6 +1,6 @@
 class PromoCodeValidate < Rectify::Command
   def initialize(user, promo_code)
-    @user = user
+    @user       = user
     @promo_code = promo_code
   end
 

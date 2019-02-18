@@ -24,7 +24,7 @@ module DeliveryApi
           if user.save
             { message: 'Done.' }
           else
-            error!(user.errors.full_messages)
+            error!(user.errors)
           end
         end
 

@@ -30,7 +30,7 @@ module DeliveryApi
 
           CreateOrder.call(current_user, current_cart, declared_params[:order]) do
             on(:ok)   { |order| @response = order }
-            on(:fail) { |order| error!(order.errors.full_messages) }
+            on(:fail) { |order| error!(order.errors) }
             on(:empty_cart) { error!('Cart is empty.') }
           end
         end

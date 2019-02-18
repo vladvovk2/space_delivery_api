@@ -18,7 +18,7 @@ module DeliveryApi
           patch(:quantity) { @response = line_item.change_quantity(declared_params[:quantity]) }
 
           desc 'Delete product from cart.'
-          delete(:destroy) { { message: 'Deleted.' } if line_item.destroy }
+          delete(:destroy) { present(message: 'Deleted.') if line_item.destroy }
         end
       end
     end

@@ -16,12 +16,13 @@ module DeliveryApi
             number: current_user.phone_number,
             code: code
           )
-          { verification_code: code }
+
+          present(verification_code: code)
         end
 
         desc 'Activation account with verification code.'
-        params { requires :responce, type: Boolean }
-        post(:confirmation) { current_user.verify(declared_params[:responce]) }
+        params { requires :validation, type: Boolean }
+        post(:confirmation) { current_user.verify(declared_params[:validation]) }
       end
     end
   end

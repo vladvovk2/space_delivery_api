@@ -1,6 +1,6 @@
 class MakeFavorite < Rectify::Command
   def initialize(user, product_id)
-    @user = user
+    @user       = user
     @product_id = product_id
   end
 

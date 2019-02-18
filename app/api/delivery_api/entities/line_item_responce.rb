@@ -1,11 +1,11 @@
 module DeliveryApi
   module Entities
     class LineItemResponce < Grape::Entity
-      expose :id,           documentation: { type: 'integer', values: ['2'] }
-      expose :product_id,   documentation: { type: 'string',  values: ['Potato'] }, as: :title
-      expose :quantity,     documentation: { type: 'integer', values: ['10'] }
-      expose :price,        documentation: { type: 'integer', values: ['10'] }
-      expose :total_price,  documentation: { type: 'integer', values: ['100'] }
+      expose :id,           documentation: { type: 'Integer', values: ['2'] }
+      expose :product_id,   documentation: { type: 'String',  values: ['Potato'] }, as: :title
+      expose :quantity,     documentation: { type: 'Integer', values: ['10'] }
+      expose :price,        documentation: { type: 'Integer', values: ['10'] }
+      expose :total_price,  documentation: { type: 'Integer', values: ['100'] }
 
       private
 
