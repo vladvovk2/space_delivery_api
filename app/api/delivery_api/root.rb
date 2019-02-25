@@ -4,8 +4,6 @@ module DeliveryApi
     format :json
     prefix :api
 
-    after { present_with_entities(@response) unless @response.nil? }
-
     rescue_from :all
 
     rescue_from ActiveRecord::RecordNotFound do

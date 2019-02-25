@@ -11,8 +11,4 @@ class Product < ApplicationRecord
   validates :description, presence: true,
                           length: { in: 10..250 }
  # validates :image, :weight, presence: true
-
-  def serializer_clazz
-    DeliveryApi::Entities::ProductResponce
-  end
 end

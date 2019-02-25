@@ -19,10 +19,6 @@ class Order < ApplicationRecord
     end
   end
 
-  def serializer_clazz
-    DeliveryApi::Entities::OrderResponce
-  end
-
   private
 
   before_update :charge_bonuses_to_promo_code_owner

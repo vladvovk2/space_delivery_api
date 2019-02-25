@@ -1,4 +1,18 @@
 class User < ApplicationRecord
+
+  def favorite_records
+    @favorite_records ||= self.favorites
+  end
+
+  def balance_record
+    @balance ||= user_balance.balance
+  end
+
+
+  def verify(value)
+    update(verification: value)
+  end
+
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
@@ -17,14 +31,6 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-
-  def verify(value)
-    update(verification: value)
-  end
-
-  def serializer_clazz
-    DeliveryApi::Entities::UserResponce
-  end
 
   private
 

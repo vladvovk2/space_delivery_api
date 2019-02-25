@@ -12,7 +12,7 @@ module DeliveryApi
 
       resources :sessions do
         desc 'User information.'
-        get(:profile) { @response = current_user }
+        get(:profile) { present current_user, with: DeliveryApi::Entities::UserResponce }
 
         desc 'User login form.'
         params { use :session_params }

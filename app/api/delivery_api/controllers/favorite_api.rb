@@ -4,7 +4,10 @@ module DeliveryApi
       resources :favorites do
         before { authorized! }
 
-        get(:list) { @response = current_user.favorites.order(:product_id) }
+        get :list do
+          favorites = current_user.favorite_records
+          present favorites, with: DeliveryApi::Entities::FavoriteResponce
+        end
 
         route_param :id, type: Integer do
           desc 'Added to favorites form.'

@@ -14,8 +14,4 @@ class Cart < ApplicationRecord
   def total_price
     line_items.map { |item| item.quantity * item.product.price }.sum
   end
-
-  def serializer_clazz
-    DeliveryApi::Entities::CartResponce
-  end
 end

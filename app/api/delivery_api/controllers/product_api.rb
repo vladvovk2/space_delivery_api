@@ -4,12 +4,9 @@ module DeliveryApi
       resources :products do
         before { authorized! }
 
-        desc 'Information about all products.'
-        get(:list) { @response = Product.all }
-
-        route_param :id, type: Integer do
-          desc 'Information about selected product.'
-          get(:show) { @response = Product.find(params[:id]) }
+        get :all do
+          products = Product.all
+          present products, with: DeliveryApi::Entities::ProductResponce
         end
       end
     end

@@ -5,11 +5,26 @@ module DeliveryApi
         before  { authorized! }
 
         desc 'Information about all categories.'
-        get(:list) { @response = Category.all }
+        get :list do
+          categories = Category.all
+          present categories, with: DeliveryApi::Entities::CategoryResponce
+        end
 
         desc 'List of products belonging to the category.'
-        route_param :id, type: Integer do
-          get(:products) { @response = Category.find(params[:id]).products }
+        route_param :category_id, type: Integer do
+          get :products do
+            product_list = Category.includes(:products).find(params[:category_id]).products
+            present product_list, with: DeliveryApi::Entities::ProductResponce
+          end
+
+          namespace :products do
+            route_param :product_id, type: Integer do
+              get :products do
+                product = Category.find(params[:category_id]).products.find(params[:product_id])
+                present product, with: DeliveryApi::Entities::ProductResponce
+              end
+            end
+          end
         end
       end
     end

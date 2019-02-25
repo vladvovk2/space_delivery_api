@@ -5,9 +5,6 @@ class LineItem < ApplicationRecord
 
   def change_quantity(value)
     update(quantity: value) if value.positive?
-  end
-
-  def serializer_clazz
-    DeliveryApi::Entities::LineItemResponce
+    self
   end
 end

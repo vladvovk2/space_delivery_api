@@ -5,8 +5,4 @@ class Category < ApplicationRecord
                     length: { in: 2..30 },
                     uniqueness: true
   #validates :image, presence: true
-
-  def serializer_clazz
-    DeliveryApi::Entities::CategoryResponce
-  end
 end

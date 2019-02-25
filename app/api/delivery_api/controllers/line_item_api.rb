@@ -15,7 +15,10 @@ module DeliveryApi
         route_param :id, type: Integer do
           desc 'Change product quantity.'
           params { requires :quantity, type: Integer }
-          patch(:quantity) { @response = line_item.change_quantity(declared_params[:quantity]) }
+          patch :quantity do
+            item = line_item.change_quantity(declared_params[:quantity])
+            present(message: "Quantity updated to #{params[:quantity]}") if item
+          end
 
           desc 'Delete product from cart.'
           delete(:destroy) { present(message: 'Deleted.') if line_item.destroy }
