@@ -17,7 +17,6 @@ module DeliveryApi
           end
         end
 
-
         desc 'List of products added to cart.'
         get :current_cart do
           if !current_cart.line_items.empty?

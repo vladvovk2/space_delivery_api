@@ -1,15 +1,19 @@
-default: &default
+defaults: &defaults
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV["DB_HOST"]%>
-  database: <%= ENV["DB_NAME"] %>
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  database: <%= ENV['POSTGRES_DB'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  pool: <%= ENV['POSTGRES_POOL'] %>
+
 development:
-  <<: *default
+  <<: *defaults
+
 test:
-  <<: *default
+  <<: *defaults
   database: kryla_api_test
+
 production:
-<<: *default
+  <<: *defaults

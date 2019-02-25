@@ -3,13 +3,13 @@ version: '3'
 services:
 
   db:
-    container_name: "kryla_api_db"
     image: postgres:9.5-alpine
+    container_name: "kryla_api_db"
     volumes:
-      - data-postgres:/var/lib/postgresql/data
+      - kryla_api_database-postgres:/var/lib/postgresql/data
 
   backend:
-    container_name: "kryla_api_s_rails"
+    container_name: "kryla_api_rails"
     build: .
     command: /bin/sh -c "rm -f /myapp/tmp/pids/server.pid && bundle exec rails s -p 3000 -b 0.0.0.0"
     volumes:
@@ -27,6 +27,8 @@ services:
     image: redis:4
     ports:
       - '6379:6379'
+    volumes:
+      - kryla_api_test-redis:/var/lib/redis/data
 
 
   sidekiq:
@@ -40,6 +42,6 @@ services:
       - backend
 
 volumes:
-  
-  data-postgres:
- 
+
+  kryla_api_database-postgres:
+  kryla_api_test-redis:

@@ -1,4 +1,4 @@
-FROM ruby:2.5.3
+FROM ruby:2.6.1
 
 RUN apt-get update && apt-get install -qq -y \
     build-essential git nodejs libpq-dev libgit2-dev pkg-config \
