@@ -1,7 +1,7 @@
 module DeliveryApi
   module Controllers
     class CartApi < Grape::API
-      helpers Api::CartHelpers
+      helpers DeliveryApi::Helpers::CartHelpers
 
       resources :carts do
         before { authorized! }

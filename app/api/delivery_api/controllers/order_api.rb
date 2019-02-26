@@ -1,7 +1,7 @@
 module DeliveryApi
   module Controllers
     class OrderApi < Grape::API
-      helpers Api::CartHelpers
+      helpers DeliveryApi::Helpers::CartHelpers
       helpers do
         params :order_params do
           requires :order, type: Hash do

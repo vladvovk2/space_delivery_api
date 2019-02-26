@@ -10,8 +10,8 @@ module DeliveryApi
       error!('Record not found!', 404)
     end
 
-    helpers Api::BaseHelpers
-    helpers Api::SessionHelpers
+    helpers DeliveryApi::Helpers::BaseHelpers
+    helpers DeliveryApi::Helpers::SessionHelpers
 
     mount DeliveryApi::Controllers::ProductApi
     mount DeliveryApi::Controllers::CategoryApi

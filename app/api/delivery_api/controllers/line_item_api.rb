@@ -1,7 +1,7 @@
 module DeliveryApi
   module Controllers
     class LineItemApi < Grape::API
-      helpers Api::CartHelpers
+      helpers DeliveryApi::Helpers::CartHelpers
 
       helpers do
         def line_item
