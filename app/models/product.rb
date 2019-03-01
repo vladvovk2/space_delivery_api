@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   belongs_to :favorite, optional: true
   has_many   :line_items, dependent: :destroy
 
+  has_one_attached :image
+
   validates :title, presence: true,
                     length: { in: 2..30 },
                     uniqueness: true
