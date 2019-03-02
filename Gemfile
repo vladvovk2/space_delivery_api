@@ -39,9 +39,14 @@ gem 'rubocop-rails_config'
 
 # Gem which iʼm used for upload files.
 gem 'mini_magick', '~> 4.8'
+gem 'aws-sdk-s3', require: false
+gem 'paperclip'
 
 # Gem which iʼm used for send verify message to user sing_up.
 gem 'twilio-ruby'
+
+# Gem which iʼm used for admin panel.
+gem 'activeadmin'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

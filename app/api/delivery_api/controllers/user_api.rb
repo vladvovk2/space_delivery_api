@@ -31,9 +31,8 @@ module DeliveryApi
           end
         end
 
-        delete ':id' do
-          User.find(params[:id]).destroy
-        end
+        desc 'User information.'
+        get(:profile) { present current_user, with: DeliveryApi::Entities::UserResponce }
       end
     end
   end

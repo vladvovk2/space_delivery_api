@@ -4,14 +4,14 @@ module DeliveryApi
       resources :favorites do
         before { authorized! }
 
-        get :list do
+        get do
           favorites = current_user.favorite_records
           present favorites, with: DeliveryApi::Entities::FavoriteResponce
         end
 
         route_param :id, type: Integer do
           desc 'Added to favorites form.'
-          post :create do
+          post do
             MakeFavorite.call(current_user, params[:id]) do
               on(:ok)      { present(message: 'Added to favorites.') }
               on(:fail)    { present(message: 'Cant add to favorites.') }
@@ -20,8 +20,8 @@ module DeliveryApi
           end
 
           desc 'Deleted from favorites form.'
-          delete :destroy do
-            favorite = current_user.favorites.find(params[:id])
+          delete do
+            favorite = current_user.favorite_records.find(params[:id])
             present(message: 'Deleted.') if favorite.destroy
           end
         end

@@ -11,9 +11,6 @@ module DeliveryApi
       end
 
       resources :sessions do
-        desc 'User information.'
-        get(:profile) { present current_user, with: DeliveryApi::Entities::UserResponce }
-
         desc 'User login form.'
         params { use :session_params }
         post :login do

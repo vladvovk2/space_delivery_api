@@ -5,12 +5,12 @@ class Product < ApplicationRecord
 
   has_one_attached :image
 
-  validates :title, presence: true,
-                    length: { in: 2..30 },
-                    uniqueness: true
-  validates :price, presence: true,
-                    numericality: { only_integer: true, greater_than: 0 }
-  validates :description, presence: true,
-                          length: { in: 10..250 }
+  #validates :title, presence: true,
+  #                  length: { in: 2..30 },
+  #                  uniqueness: true
+  #validates :price, presence: true,
+  #                  numericality: { only_integer: true, greater_than: 0 }
+  #validates :description, presence: true,
+  #                        length: { in: 10..250 }
  # validates :image, :weight, presence: true
 end

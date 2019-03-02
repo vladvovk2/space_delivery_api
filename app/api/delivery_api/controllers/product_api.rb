@@ -4,7 +4,7 @@ module DeliveryApi
       resources :products do
         before { authorized! }
 
-        get :all do
+        get do
           products = Product.all
           present products, with: DeliveryApi::Entities::ProductResponce
         end
