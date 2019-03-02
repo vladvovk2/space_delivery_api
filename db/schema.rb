@@ -97,6 +97,10 @@ ActiveRecord::Schema.define(version: 2019_03_02_142454) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.bigint "image_file_size"
+    t.datetime "image_updated_at"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["title"], name: "index_products_on_title"

@@ -5,15 +5,18 @@ ActiveAdmin.register Product do
   filter :price
 
   index do
+    selectable_column
     id_column
     column :title
     column :category
     column :price
     column :weight
     column :image
+    actions
   end
 
   form do |f|
+    f.semantic_errors
     f.inputs 'Atributes' do
       f.input :title
     end

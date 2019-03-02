@@ -3,7 +3,8 @@ class Product < ApplicationRecord
   belongs_to :favorite, optional: true
   has_many   :line_items, dependent: :destroy
 
-  has_one_attached :image
+  #has_one_attached :image, styles: { medium: "300x300" }
+  #validates_uniqueness_of :image_file_name # this is a standard ActiveRecord validator
 
   #validates :title, presence: true,
   #                  length: { in: 2..30 },

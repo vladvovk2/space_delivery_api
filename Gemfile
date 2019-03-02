@@ -40,7 +40,7 @@ gem 'rubocop-rails_config'
 # Gem which iʼm used for upload files.
 gem 'mini_magick', '~> 4.8'
 gem 'aws-sdk-s3', require: false
-gem 'paperclip'
+gem "paperclip"
 
 # Gem which iʼm used for send verify message to user sing_up.
 gem 'twilio-ruby'
