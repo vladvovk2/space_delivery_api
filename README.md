@@ -2,6 +2,7 @@
 
 - [About project](#about-project)
   - [Instruments](#instruments)
+  - [Helpful links](#helpful-links)
 - [How to setup](#how-to-setup)
 - [API Documentation](#api-documentation)
   - [Product](#product)
@@ -33,6 +34,12 @@ In this project I am used next instruments:
  * Docker
  * AWS S3
  * Sidekiq
+
+### Helpful links
+
+ * Admin panel `http://localhost:3000/admin`
+ * Swagger documentation `http://localhost:3000/swagger`
+ * Sidkiq `http://localhost:3000/sidekiq`
 
 ### How to setup
 

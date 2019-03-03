@@ -4,14 +4,14 @@ module DeliveryApi
       helpers DeliveryApi::Helpers::CartHelpers
       helpers do
         def line_item
-          current_cart.line_items.find(params[:id])
+          current_cart.line_items.find(params[:line_item_id])
         end
       end
 
       resources :line_items do
         before { authenticate! }
 
-        route_param :id, type: Integer do
+        route_param :line_item_id, type: Integer do
           desc 'Change product quantity.'
           params { requires :quantity, type: Integer }
           patch :quantity do
