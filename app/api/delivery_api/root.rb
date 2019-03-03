@@ -13,15 +13,15 @@ module DeliveryApi
     helpers DeliveryApi::Helpers::AuthenticationHelpers
     helpers DeliveryApi::Helpers::BaseHelpers
 
-    mount DeliveryApi::Controllers::ProductApi
-    mount DeliveryApi::Controllers::CategoryApi
-    mount DeliveryApi::Controllers::LineItemApi
-    mount DeliveryApi::Controllers::CartApi
-    mount DeliveryApi::Controllers::OrderApi
-    mount DeliveryApi::Controllers::UserApi
     mount DeliveryApi::Controllers::AuthApi
+    mount DeliveryApi::Controllers::CartApi
+    mount DeliveryApi::Controllers::CategoryApi
     mount DeliveryApi::Controllers::FavoriteApi
+    mount DeliveryApi::Controllers::LineItemApi
+    mount DeliveryApi::Controllers::OrderApi
     mount DeliveryApi::Controllers::PhoneVerificationApi
+    mount DeliveryApi::Controllers::ProductApi
+    mount DeliveryApi::Controllers::UserApi
 
     add_swagger_documentation(
       api_version: 'v1',

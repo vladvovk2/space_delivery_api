@@ -29,8 +29,10 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true,
                                      length: { in: 2..20 }
   validates :phone_number, presence: true,
+                           length: { is: 9 },
                            uniqueness: true,
-                           numericality: { only_integer: true }
+                           numericality: { only_integer: true },
+                           on: :create
   validates :email, presence: true,
                     format: { with: EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }

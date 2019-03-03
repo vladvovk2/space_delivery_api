@@ -15,9 +15,9 @@ module DeliveryApi
 
         params :update_user_params do
           requires :user, type: Hash do
-            optional :email,                  type: String, desc: 'User email.'
-            optional :first_name,             type: String, desc: 'User first name.'
-            optional :last_name,              type: String, desc: 'User last name.'
+            optional :email,      type: String, desc: 'User email.'
+            optional :first_name, type: String, desc: 'User first name.'
+            optional :last_name,  type: String, desc: 'User last name.'
           end
         end
       end
@@ -42,11 +42,10 @@ module DeliveryApi
 
           params { use :update_user_params }
           put do
-            user = User.find(current_user.id)
-            if user.update(declared_params[:user])
-              present :user, user, with: DeliveryApi::Entities::UserResponce
+            if current_user.update(declared_params[:user])
+              present :user, current_user, with: DeliveryApi::Entities::UserResponce
             else
-              error!(user.errors.messages, 422)
+              error!(current_user.errors.messages, 422)
             end
           end
         end
