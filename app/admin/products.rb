@@ -19,7 +19,9 @@ ActiveAdmin.register Product do
     attributes_table do
       row :title
       row :description
-      row :image
+      row :image do |product_image|
+        image_tag product_image.image.url if product_image
+      end
     end
   end
 
