@@ -2,7 +2,6 @@ module DeliveryApi
   module Controllers
     class LineItemApi < Root
       helpers DeliveryApi::Helpers::CartHelpers
-
       helpers do
         def line_item
           current_cart.line_items.find(params[:id])
@@ -10,7 +9,7 @@ module DeliveryApi
       end
 
       resources :line_items do
-        before { authorized! }
+        before { authenticate! }
 
         route_param :id, type: Integer do
           desc 'Change product quantity.'

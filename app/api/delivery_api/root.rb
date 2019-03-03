@@ -1,6 +1,6 @@
 module DeliveryApi
   class Root < Grape::API
-    version 'v1', using: :path, vendor: 'delivery'
+    version 'v1', using: :accept_version_header, vendor: 'delivery'
     format :json
     prefix :api
 
@@ -10,8 +10,8 @@ module DeliveryApi
       error!('Record not found!', 404)
     end
 
+    helpers DeliveryApi::Helpers::AuthenticationHelpers
     helpers DeliveryApi::Helpers::BaseHelpers
-    helpers DeliveryApi::Helpers::SessionHelpers
 
     mount DeliveryApi::Controllers::ProductApi
     mount DeliveryApi::Controllers::CategoryApi
@@ -19,7 +19,7 @@ module DeliveryApi
     mount DeliveryApi::Controllers::CartApi
     mount DeliveryApi::Controllers::OrderApi
     mount DeliveryApi::Controllers::UserApi
-    mount DeliveryApi::Controllers::SessionApi
+    mount DeliveryApi::Controllers::AuthApi
     mount DeliveryApi::Controllers::FavoriteApi
     mount DeliveryApi::Controllers::PhoneVerificationApi
 

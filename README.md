@@ -32,6 +32,7 @@ In this project I am used next instruments:
  * RSpec
  * Docker
  * AWS S3
+ * Sidekiq
 
 ### How to setup
 

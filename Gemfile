@@ -25,7 +25,6 @@ gem 'bcrypt'
 
 # Gems which iʼm used for made commands.
 gem 'rectify'
-gem 'simple_command'
 
 # Gems which iʼm used for background works.
 gem 'redis'

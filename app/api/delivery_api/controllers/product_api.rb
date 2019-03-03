@@ -2,7 +2,7 @@ module DeliveryApi
   module Controllers
     class ProductApi < Root
       resources :products do
-        before { authorized! }
+        before { authenticate! }
 
         get do
           products = Product.all

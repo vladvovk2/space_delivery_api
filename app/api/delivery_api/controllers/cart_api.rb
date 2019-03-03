@@ -4,7 +4,7 @@ module DeliveryApi
       helpers DeliveryApi::Helpers::CartHelpers
 
       resources :carts do
-        before { authorized! }
+        before { authenticate! }
 
         desc 'Form for add product to cart.'
         post 'add_product/:product_id' do

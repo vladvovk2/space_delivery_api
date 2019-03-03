@@ -2,7 +2,7 @@ module DeliveryApi
   module Controllers
     class CategoryApi < Root
       resources :categories do
-        before { authorized! }
+        before { authenticate! }
 
         desc 'Information about all categories.'
         get do

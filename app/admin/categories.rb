@@ -23,7 +23,7 @@ ActiveAdmin.register Category do
     f.inputs 'Atributes' do
       f.input :title
     end
-    f.inputs "Upload" do
+    f.inputs 'Upload' do
       f.input :image, required: true, as: :file
     end
     f.actions

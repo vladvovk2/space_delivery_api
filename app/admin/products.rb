@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :title, :price, :weight, :description, :category, :image
+  permit_params :title, :price, :weight, :description, :category_id, :image
   filter :title
   filter :weight
   filter :price
@@ -34,7 +34,7 @@ ActiveAdmin.register Product do
       f.input :weight
       f.input :category, as: :select, collection: Category.all
     end
-    f.inputs "Upload" do
+    f.inputs 'Upload' do
       f.input :image, required: true, as: :file
     end
     f.actions

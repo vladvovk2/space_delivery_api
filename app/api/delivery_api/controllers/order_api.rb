@@ -18,7 +18,7 @@ module DeliveryApi
       end
 
       resources :orders do
-        before { authorized! }
+        before { authenticate! }
 
         desc 'Make order', entity: DeliveryApi::Entities::OrderResponce
         params { use :order_params }

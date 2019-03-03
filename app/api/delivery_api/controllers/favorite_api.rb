@@ -2,7 +2,7 @@ module DeliveryApi
   module Controllers
     class FavoriteApi < Root
       resources :favorites do
-        before { authorized! }
+        before { authenticate! }
 
         get do
           favorites = current_user.favorite_records
