@@ -91,11 +91,10 @@ ActiveRecord::Schema.define(version: 2019_03_02_142454) do
 
   create_table "products", force: :cascade do |t|
     t.string "title"
-    t.string "description"
-    t.integer "weight"
     t.integer "price"
     t.string "image"
-    t.string "image_url"
+    t.integer "weight"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
