@@ -12,7 +12,6 @@ ActiveAdmin.register Product do
     column :category
     column :price
     column :weight
-    column :image
     actions
   end
 
@@ -21,7 +20,7 @@ ActiveAdmin.register Product do
       row :title
       row :description
       row :image do |product_image|
-        image_tag product_image.image.url(:medium) if product_image
+        image_tag product_image.image.url(:medium) if product_image.present?
       end
     end
   end
@@ -33,7 +32,7 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :price
       f.input :weight
-      f.input :category
+      f.input :category, as: :select, collection: Category.all
     end
     f.inputs "Upload" do
       f.input :image, required: true, as: :file

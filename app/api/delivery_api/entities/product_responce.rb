@@ -10,11 +10,9 @@ module DeliveryApi
         expose :description, documentation: { type: 'String',  values: ['So tasty.'] }
         expose :category_id, documentation: { type: 'Integer', values: ['2'] }
       end
-
       expose :large_image_url
       expose :medium_image_url
       expose :small_image_url
-
       private
 
       def large_image_url
