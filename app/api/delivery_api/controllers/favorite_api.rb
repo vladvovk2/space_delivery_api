@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class FavoriteApi < Grape::API
+    class FavoriteApi < Root
       resources :favorites do
         before { authorized! }
 

@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class UserApi < Grape::API
+    class UserApi < Root
       helpers do
         params :user_params do
           requires :user, type: Hash do

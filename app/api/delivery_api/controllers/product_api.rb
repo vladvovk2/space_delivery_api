@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class ProductApi < Grape::API
+    class ProductApi < Root
       resources :products do
         before { authorized! }
 

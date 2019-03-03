@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class SessionApi < Grape::API
+    class SessionApi < Root
       helpers do
         params :session_params do
           requires :session, type: Hash do

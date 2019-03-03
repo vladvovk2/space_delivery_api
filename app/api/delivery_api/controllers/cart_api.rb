@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class CartApi < Grape::API
+    class CartApi < Root
       helpers DeliveryApi::Helpers::CartHelpers
 
       resources :carts do

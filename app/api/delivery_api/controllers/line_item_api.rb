@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class LineItemApi < Grape::API
+    class LineItemApi < Root
       helpers DeliveryApi::Helpers::CartHelpers
 
       helpers do

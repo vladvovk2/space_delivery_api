@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :title, :image
+  permit_params :title, :image, :image_url
   filter :title
   filter :weight
   filter :price
@@ -15,7 +15,15 @@ ActiveAdmin.register Product do
     actions
   end
 
-  form do |f|
+  show do
+    attributes_table do
+      row :title
+      row :description
+      row :image
+    end
+  end
+
+  form(html: { multipart: true }) do |f|
     f.semantic_errors
     f.inputs 'Atributes' do
       f.input :title

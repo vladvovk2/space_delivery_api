@@ -91,19 +91,16 @@ ActiveRecord::Schema.define(version: 2019_03_02_142454) do
 
   create_table "products", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "description"
     t.integer "weight"
     t.integer "price"
+    t.string "image"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.bigint "image_file_size"
-    t.datetime "image_updated_at"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["title"], name: "index_products_on_title"
+    t.index ["title", "weight", "price"], name: "index_products_on_title_and_weight_and_price"
   end
 
   create_table "promo_codes", force: :cascade do |t|

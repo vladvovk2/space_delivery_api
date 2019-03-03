@@ -1,6 +1,6 @@
 module DeliveryApi
   module Controllers
-    class OrderApi < Grape::API
+    class OrderApi < Root
       helpers DeliveryApi::Helpers::CartHelpers
       helpers do
         params :order_params do
