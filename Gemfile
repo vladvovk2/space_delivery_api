@@ -23,7 +23,7 @@ gem 'dotenv-rails'
 gem 'jwt'
 gem 'bcrypt'
 
-# Gems which iʼm used for made commands.
+# Gem which iʼm used for made commands.
 gem 'rectify'
 
 # Gems which iʼm used for background works.
@@ -37,17 +37,17 @@ gem 'rubocop'
 gem 'rubocop-rails_config'
 
 # Gem which iʼm used for upload files.
-gem 'mini_magick', '~> 4.8'
-gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
-
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 1.0'
 
 # Gem which iʼm used for send verify message to user sing_up.
 gem 'twilio-ruby'
 
 # Gem which iʼm used for admin panel.
 gem 'activeadmin'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

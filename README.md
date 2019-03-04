@@ -39,7 +39,7 @@ In this project I am used next instruments:
 
  * Admin panel `http://localhost:3000/admin`
  * Swagger documentation `http://localhost:3000/swagger`
- * Sidkiq `http://localhost:3000/sidekiq`
+ * Sidekiq `http://localhost:3000/sidekiq`
 
 ### How to setup
 

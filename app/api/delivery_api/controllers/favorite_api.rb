@@ -2,7 +2,7 @@ module DeliveryApi
   module Controllers
     class FavoriteApi < Root
       helpers do
-        def have_favorite?
+        def favorite?
           current_user.favorites.where(product_id: params[:product_id]).exists?
         end
       end
@@ -18,7 +18,7 @@ module DeliveryApi
         route_param :product_id, type: Integer do
           desc 'Added to favorites form.'
           post do
-            return present(message: 'Already added') if have_favorite?
+            return present(message: 'Already added') if favorite?
 
             favorite = current_user.favorites.build(product_id: declared_params[:product_id])
             if favorite.save

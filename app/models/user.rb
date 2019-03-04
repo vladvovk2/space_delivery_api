@@ -1,11 +1,10 @@
 class User < ApplicationRecord
-
   def favorite_records
-    @favorite_records ||= self.favorites
+    @favorite_records ||= favorites
   end
 
   def balance_record
-    @balance ||= self.user_balance.balance
+    @balance_record ||= user_balance.balance
   end
 
   def auth_token
