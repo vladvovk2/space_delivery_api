@@ -1,8 +1,10 @@
 class Product < ApplicationRecord
-  has_one    :image, as: :imageable
+  has_one    :picture, as: :imageable
   has_many   :line_items, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :favorite, optional: true
+
+  accepts_nested_attributes_for :picture
 
   # validates :title, presence: true,
   #                   length: { in: 2..30 },

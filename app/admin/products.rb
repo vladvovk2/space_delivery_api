@@ -1,5 +1,11 @@
 ActiveAdmin.register Product do
-  permit_params :title, :price, :weight, :description, :category_id, :image
+  permit_params :title,
+                :price,
+                :weight,
+                :description,
+                :category_id,
+                picture_attributes: :image_name
+
   filter :title
   filter :weight
   filter :price
@@ -19,8 +25,8 @@ ActiveAdmin.register Product do
     attributes_table do
       row :title
       row :description
-      row :image do |product_image|
-        image_tag product_image.image.url(:medium) if product_image.present?
+      row :image do |product|
+        image_tag product.picture.image_name.url(:medium)
       end
     end
   end
@@ -35,7 +41,9 @@ ActiveAdmin.register Product do
       f.input :category, as: :select, collection: Category.all
     end
     f.inputs 'Upload' do
-      f.input :image, required: true, as: :file
+      f.has_many :picture, as: :imageable do |b|
+        b.input :image_name, required: true, as: :file
+      end
     end
     f.actions
   end

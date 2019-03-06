@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-  permit_params :title, :image
+  permit_params :title, picture_attributes: :image_name
   filter :title
 
   index do
@@ -12,8 +12,8 @@ ActiveAdmin.register Category do
   show do
     attributes_table do
       row :title
-      row :image do |category_image|
-        image_tag category_image.image.url(:medium) if category_image.present?
+      row :image do |category|
+        image_tag category.picture.image_name.url(:medium)
       end
     end
   end
@@ -24,7 +24,9 @@ ActiveAdmin.register Category do
       f.input :title
     end
     f.inputs 'Upload' do
-      f.input :image, required: true, as: :file
+      f.has_many :picture, as: :imageable do |b|
+        b.input :image_name, required: true, as: :file
+      end
     end
     f.actions
   end
