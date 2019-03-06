@@ -1,3 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  mount DeliveryApi::Root => '/'
+  mount GrapeSwaggerRails::Engine => '/swagger'
+  mount Sidekiq::Web => '/sidekiq'
 end

@@ -1,24 +1,66 @@
-# README
+# Kryla API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- [About project](#about-project)
+  - [Instruments](#instruments)
+  - [Helpful links](#helpful-links)
+- [How to setup](#how-to-setup)
+- [API Documentation](#api-documentation)
+  - [Product](#product)
+  - [Category](#category)
+  - [Cart](#cart)
+  - [Order](#order)
+  - [User](#user)
+    - [Phone verification](#phone-verification)
+    - [Favorites](#favorites)
+  - [Session](#session)
 
-Things you may want to cover:
+---
 
-* Ruby version
+## About project
 
-* System dependencies
+ This project is a work with the help of which I want to
+show what skills I achieved during the course of MasterAcademy courses.
 
-* Configuration
+#### Instruments
 
-* Database creation
+In this project I am used next instruments:
+ * Ruby version: 2.6.1
+ * Rails version: 5.2.2
+ * PG version: 9.5
+ * Grape
+ * Grape-Entities
+ * Swagger
+ * RSpec
+ * Docker
+ * AWS S3
+ * Sidekiq
 
-* Database initialization
+### Helpful links
 
-* How to run the test suite
+ * Admin panel `http://localhost:3000/admin`
+ * Swagger documentation `http://localhost:3000/swagger`
+ * Sidekiq `http://localhost:3000/sidekiq`
 
-* Services (job queues, cache servers, search engines, etc.)
+### How to setup
 
-* Deployment instructions
+I am use docker to run the application locally. The commands below will help you launch the application.
 
-* ...
+```bash
+  # Build images and start application
+  docker-compose up --build
+
+  # Created database
+  docker-compose run backend rails db:create
+
+  # Run migration
+  docker-compose run backend rails db:migrate
+
+  # Added redords into database
+  docker-compose run backend rails db:seed
+```
+
+### API Documentation
+  If you want to see all requests and answers, you can follow to `http://localhost:3000/swagger` after setup application.
+  The information below will provide details on each request.
+
+---
