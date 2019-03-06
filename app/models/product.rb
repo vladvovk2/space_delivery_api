@@ -1,6 +1,5 @@
 class Product < ApplicationRecord
-  mount_uploader :image, ImageUploader
-
+  has_one    :image, as: :imageable
   has_many   :line_items, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :favorite, optional: true
@@ -12,5 +11,5 @@ class Product < ApplicationRecord
   #                   numericality: { only_integer: true, greater_than: 0 }
   # validates :description, presence: true,
   #                        length: { in: 10..250 }
-  # validates :image, :weight, presence: true
+  # validates :weight, presence: true
 end

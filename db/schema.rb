@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_190231) do
+ActiveRecord::Schema.define(version: 2019_03_06_161835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_190231) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_categories_on_title"
@@ -86,11 +85,20 @@ ActiveRecord::Schema.define(version: 2019_03_04_190231) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "line_items", force: :cascade do |t|
-    t.integer "quantity", default: 1
-    t.bigint "product_id"
+  create_table "images", force: :cascade do |t|
+    t.string "image"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_id"
     t.bigint "cart_id"
     t.bigint "order_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
@@ -118,7 +126,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_190231) do
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.integer "price"
-    t.string "image"
     t.integer "weight"
     t.string "description"
     t.datetime "created_at", null: false

@@ -3,7 +3,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.string  :title, unique: true
       t.integer :price
-      t.string  :image
       t.integer :weight
       t.string  :description
       t.timestamps
