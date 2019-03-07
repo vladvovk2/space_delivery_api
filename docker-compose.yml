@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
 
@@ -26,7 +26,7 @@ services:
     container_name: kryla_api_redis
     image: redis:4
     ports:
-      - '6379:6379'
+      - "6379:6379"
     volumes:
       - kryla_api_test-redis:/var/lib/redis/data
 

@@ -3,10 +3,6 @@ class User < ApplicationRecord
     @favorite_records ||= favorites
   end
 
-  def balance_record
-    @balance_record ||= user_balance.balance
-  end
-
   def auth_token
     payload = { user_id: id }
     JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256'

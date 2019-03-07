@@ -3,7 +3,7 @@ module DeliveryApi
     class FavoriteApi < Root
       helpers do
         def favorite?
-          current_user.favorites.where(product_id: params[:product_id]).exists?
+          current_user.favorite_records.where(product_id: params[:product_id]).exists?
         end
       end
 

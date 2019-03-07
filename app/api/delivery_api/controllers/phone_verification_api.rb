@@ -22,7 +22,7 @@ module DeliveryApi
 
         desc 'Activation account with verification code.'
         params { requires :validation, type: Boolean }
-        post(:confirmation) { current_user.verify(declared_params[:validation]) }
+        patch(:confirmation) { current_user.verify(declared_params[:validation]) }
       end
     end
   end

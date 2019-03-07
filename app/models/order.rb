@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
   belongs_to :user
 
   validates :first_name, :last_name, presence: true,
