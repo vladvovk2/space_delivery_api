@@ -12,7 +12,7 @@ module DeliveryApi
       private
 
       def user_balance
-        object.balance_record
+        object.user_balance.balance
       end
 
       def user_promo_code
