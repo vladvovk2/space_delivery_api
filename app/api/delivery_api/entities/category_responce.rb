@@ -10,15 +10,15 @@ module DeliveryApi
       private
 
       def large_image_url
-        object.image.url(:large)
+        object.picture&.image_name&.url(:large)
       end
 
       def medium_image_url
-        object.image.url(:medium)
+        object.picture&.image_name&.url(:medium)
       end
 
       def small_image_url
-        object.image.url(:small)
+        object.picture&.image_name&.url(:small)
       end
     end
   end

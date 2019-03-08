@@ -22,7 +22,7 @@ module DeliveryApi
 
         desc 'Make order', entity: DeliveryApi::Entities::OrderResponce
         params { use :order_params }
-        post :create do
+        post do
           PromoCodeValidate.call(current_user, declared_params[:order][:promo_code]) do
             on(:not_exist) { return present(message: 'Promo code is invalid.') }
             on(:owner) { return present(message: 'You cant use your own referal promo.') }

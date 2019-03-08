@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 version: '3'
+=======
+version: "3"
+>>>>>>> project
 
 services:
 
@@ -26,7 +30,11 @@ services:
     container_name: kryla_api_redis
     image: redis:4
     ports:
+<<<<<<< HEAD
       - '6379:6379'
+=======
+      - "6379:6379"
+>>>>>>> project
     volumes:
       - kryla_api_test-redis:/var/lib/redis/data
 

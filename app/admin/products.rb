@@ -26,7 +26,7 @@ ActiveAdmin.register Product do
       row :title
       row :description
       row :image do |product|
-        image_tag product.picture.image_name.url(:medium)
+        image_tag product.picture&.image_name&.url(:medium)
       end
     end
   end

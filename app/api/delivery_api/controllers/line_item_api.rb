@@ -15,12 +15,13 @@ module DeliveryApi
           desc 'Change product quantity.'
           params { requires :quantity, type: Integer }
           patch :quantity do
-            item = line_item.change_quantity(declared_params[:quantity])
-            present(message: "Quantity updated to #{params[:quantity]}") if item
+            command = line_item.change_quantity(declared_params[:quantity])
+            present(message: 'Quantity updated!',
+                    quantity: declared_params[:quantity]) if command
           end
 
           desc 'Delete product from cart.'
-          delete(:destroy) { present(message: 'Deleted.') if line_item.destroy }
+          delete { present(message: 'Deleted.') if line_item.destroy }
         end
       end
     end
