@@ -1,11 +1,12 @@
 class Product < ApplicationRecord
+  PRODUCT_TYPE = %i[default small medium large].freeze
+
   has_one    :picture, as: :imageable, dependent: :destroy
   has_many   :line_items, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :favorite, optional: true
 
   accepts_nested_attributes_for :picture
-
   # validates :title, presence: true,
   #                   length: { in: 2..30 },
   #                   uniqueness: true

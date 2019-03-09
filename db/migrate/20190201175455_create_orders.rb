@@ -13,6 +13,5 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string    :promo_code
       t.timestamps
     end
-    add_reference :line_items, :order, foreign_key: true
   end
 end
