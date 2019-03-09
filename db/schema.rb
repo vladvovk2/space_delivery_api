@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_161835) do
+ActiveRecord::Schema.define(version: 2019_03_09_133129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,41 +73,41 @@ ActiveRecord::Schema.define(version: 2019_03_06_161835) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_categories_on_title"
+    t.index ["title"], name: "index_categories_on_title", unique: true
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_favorites_on_product_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "product_id"
     t.bigint "cart_id"
     t.bigint "order_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.string "address"
-    t.string "user_number"
-    t.integer "total_price", default: 0
-    t.string "delivery_type"
     t.string "pay_type"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "promo_code"
+    t.string "user_number"
+    t.string "delivery_type"
     t.text "description"
     t.boolean "status", default: false
-    t.string "promo_code"
+    t.integer "total_price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -120,24 +120,36 @@ ActiveRecord::Schema.define(version: 2019_03_06_161835) do
     t.bigint "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["image_name"], name: "index_pictures_on_image_name"
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "proportion"
+    t.integer "price"
+    t.integer "weight"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price"], name: "index_product_types_on_price"
+    t.index ["product_id"], name: "index_product_types_on_product_id"
+    t.index ["proportion"], name: "index_product_types_on_proportion"
+    t.index ["weight"], name: "index_product_types_on_weight"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "title"
-    t.integer "price"
-    t.integer "weight"
     t.string "description"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["title", "weight", "price"], name: "index_products_on_title_and_weight_and_price"
+    t.index ["title"], name: "index_products_on_title", unique: true
   end
 
   create_table "promo_codes", force: :cascade do |t|
-    t.integer "amount", default: 40
     t.string "code"
+    t.integer "amount", default: 40
     t.boolean "invite", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -148,9 +160,9 @@ ActiveRecord::Schema.define(version: 2019_03_06_161835) do
 
   create_table "user_balances", force: :cascade do |t|
     t.integer "balance", default: 0
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_user_balances_on_user_id"
   end
 
@@ -171,9 +183,6 @@ ActiveRecord::Schema.define(version: 2019_03_06_161835) do
   add_foreign_key "carts", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
-  add_foreign_key "line_items", "carts"
-  add_foreign_key "line_items", "orders"
-  add_foreign_key "line_items", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "promo_codes", "users"
