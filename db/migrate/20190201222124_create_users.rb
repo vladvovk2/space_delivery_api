@@ -10,8 +10,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string  :avatar
       t.timestamps
     end
+    add_index :users, %i[email phone_number], unique: true
     add_reference :orders, :user, foreign_key: true
     add_reference :carts,  :user, foreign_key: true
-    add_index :users, %i[email phone_number], unique: true
   end
 end

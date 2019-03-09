@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_161835) do
+ActiveRecord::Schema.define(version: 2019_03_09_133129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,16 +98,16 @@ ActiveRecord::Schema.define(version: 2019_03_06_161835) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.string "address"
-    t.string "user_number"
-    t.integer "total_price", default: 0
-    t.string "delivery_type"
     t.string "pay_type"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "promo_code"
+    t.string "user_number"
+    t.string "delivery_type"
     t.text "description"
     t.boolean "status", default: false
-    t.string "promo_code"
+    t.integer "total_price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -124,20 +124,28 @@ ActiveRecord::Schema.define(version: 2019_03_06_161835) do
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+  create_table "product_types", force: :cascade do |t|
     t.string "type"
     t.integer "price"
     t.integer "weight"
+    t.string "type_type"
+    t.bigint "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price"], name: "index_product_types_on_price"
+    t.index ["type"], name: "index_product_types_on_type"
+    t.index ["type_type", "type_id"], name: "index_product_types_on_type_type_and_type_id"
+    t.index ["weight"], name: "index_product_types_on_weight"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["price"], name: "index_products_on_price"
     t.index ["title"], name: "index_products_on_title", unique: true
-    t.index ["type"], name: "index_products_on_type"
-    t.index ["weight"], name: "index_products_on_weight"
   end
 
   create_table "promo_codes", force: :cascade do |t|
