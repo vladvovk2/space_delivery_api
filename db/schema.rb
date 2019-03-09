@@ -125,16 +125,15 @@ ActiveRecord::Schema.define(version: 2019_03_09_133129) do
   end
 
   create_table "product_types", force: :cascade do |t|
-    t.string "type"
+    t.string "proportions"
     t.integer "price"
     t.integer "weight"
-    t.string "type_type"
-    t.bigint "type_id"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["price"], name: "index_product_types_on_price"
-    t.index ["type"], name: "index_product_types_on_type"
-    t.index ["type_type", "type_id"], name: "index_product_types_on_type_type_and_type_id"
+    t.index ["product_id"], name: "index_product_types_on_product_id"
+    t.index ["proportions"], name: "index_product_types_on_proportions"
     t.index ["weight"], name: "index_product_types_on_weight"
   end
 
