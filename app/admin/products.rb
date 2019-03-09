@@ -3,7 +3,7 @@ ActiveAdmin.register Product do
                 :description,
                 :category_id,
                 picture_attributes: :image_name,
-                product_types_attributes: %i[proportions price weight]
+                product_types_attributes: %i[proportion price weight]
 
   filter :title
   filter :weight
@@ -15,6 +15,9 @@ ActiveAdmin.register Product do
     id_column
     column :title
     column :category
+    column :type do |product|
+      product.product_types.first
+    end
     column :price
     column :weight
     actions
@@ -25,7 +28,7 @@ ActiveAdmin.register Product do
       row :title
       row :description
       row :image do |product|
-        image_tag product.picture&.image_name&.url(:medium)
+        image_tag product.picture.image_name.url(:medium) unless product.picture.nil?
       end
     end
   end
@@ -39,7 +42,7 @@ ActiveAdmin.register Product do
     end
     f.inputs 'Product type' do
       f.has_many :product_types do |b|
-        b.input :proportions, as: :select, collection: ProductType::PRODUCT_TYPE
+        b.input :proportion, as: :select, collection: ProductType::PRODUCT_TYPE
         b.input :price
         b.input :weight
       end

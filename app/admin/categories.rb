@@ -13,7 +13,7 @@ ActiveAdmin.register Category do
     attributes_table do
       row :title
       row :image do |category|
-        image_tag category.picture&.image_name&.url(:medium)
+        image_tag category.picture.image_name.url(:medium) unless product.picture.nil?
       end
     end
   end
