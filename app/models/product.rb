@@ -10,12 +10,11 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_types
   accepts_nested_attributes_for :picture
 
-  # validates :title, presence: true,
-  #                   length: { in: 2..30 },
-  #                   uniqueness: true
-  # validates :price, presence: true,
-  #                   numericality: { only_integer: true, greater_than: 0 }
-  # validates :description, presence: true,
-  #                        length: { in: 10..250 }
-  # validates :weight, presence: true
+  validates :title,
+            presence: true,
+            length: { in: 2..30 },
+            uniqueness: true
+  validates :description,
+            presence: true,
+            length: { in: 10..250 }
 end

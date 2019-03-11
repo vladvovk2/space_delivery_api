@@ -2,8 +2,10 @@
 
 Ваш заказ:
 <% @order.line_items.each do |item| %>
- <%= item.product.title %> x<%= item.quantity%>: <%= item.product.price * item.quantity %>,00грн.
+ <%= item.product_type.product.title %> x<%= item.quantity%>: <%= item.product_type.price * item.quantity %>,00грн.
 <% end %>
+Тип доставки: <%= @order.delivery_type %>
+Адрес: <%= @order.address %>
 Сума к оплате: <%= @order.total_price %>,00грн.
 
 Обращайтесь к нам еще.
