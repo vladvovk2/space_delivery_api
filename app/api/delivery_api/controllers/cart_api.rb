@@ -8,18 +8,18 @@ module DeliveryApi
 
         desc 'List of products added to cart.'
         get do
-          if !current_cart.line_items.empty?
-            line_items = current_cart.line_items.order(:product_id)
-            present line_items, with: DeliveryApi::Entities::LineItemResponce
-          else
-            present(message: 'Cart is empty.')
-          end
+          return present(message: 'Cart is empty.') unless current_cart.line_items
+
+          products = current_cart.line_items
+
+          present total_price: current_cart.total_price
+          present :products, products, with: DeliveryApi::Entities::LineItemResponce
         end
 
-        route_param :product_id, type: Integer do
+        route_param :product_type_id, type: Integer do
           desc 'Form for add product to cart.'
           post do
-            product = Product.find(params[:product_id])
+            product = ProductType.find(params[:product_type_id])
 
             if current_cart.add_product(product).try(:save)
               present(message: 'Added to cart.')

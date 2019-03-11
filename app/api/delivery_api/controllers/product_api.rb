@@ -5,8 +5,8 @@ module DeliveryApi
         before { authenticate! }
 
         get do
-          products = Product.all
-          present products, with: DeliveryApi::Entities::ProductResponce
+          products = Product.includes(:product_types, :picture).all
+          present products, with: DeliveryApi::Entities::ProductResponce::List
         end
       end
     end

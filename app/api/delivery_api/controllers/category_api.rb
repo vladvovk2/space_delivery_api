@@ -6,7 +6,7 @@ module DeliveryApi
 
         desc 'Information about all categories.'
         get do
-          categories = Category.all
+          categories = Category.includes(:picture).all
           present categories, with: DeliveryApi::Entities::CategoryResponce
         end
 
@@ -15,13 +15,13 @@ module DeliveryApi
           namespace :products do
             get do
               product_list = Category.includes(products: :picture).find(params[:category_id]).products
-              present product_list, with: DeliveryApi::Entities::ProductResponce
+              present product_list, with: DeliveryApi::Entities::ProductResponce::List
             end
 
             route_param :product_id, type: Integer do
               get do
                 product = Category.find(params[:category_id]).products.find(params[:product_id])
-                present product, with: DeliveryApi::Entities::ProductResponce
+                present product, with: DeliveryApi::Entities::ProductResponce::Show
               end
             end
           end
