@@ -6,7 +6,7 @@ module DeliveryApi
 
         get do
           products = Product.all
-          present products, with: DeliveryApi::Entities::ProductResponce
+          present products, with: DeliveryApi::Entities::ProductResponce::List
         end
       end
     end
