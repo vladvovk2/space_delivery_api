@@ -6,7 +6,7 @@ module DeliveryApi
 
         desc 'Information about all categories.'
         get do
-          categories = Category.all
+          categories = Category.includes(:picture).all
           present categories, with: DeliveryApi::Entities::CategoryResponce
         end
 

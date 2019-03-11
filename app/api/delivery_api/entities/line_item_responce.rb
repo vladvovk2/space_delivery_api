@@ -16,7 +16,7 @@ module DeliveryApi
       end
 
       def product_type_id
-        product_type.product.title
+        product_type.product_record.title
       end
 
       def total_price

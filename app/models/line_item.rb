@@ -7,8 +7,4 @@ class LineItem < ApplicationRecord
     update(quantity: value) if value.positive?
     self
   end
-
-  def product_record
-    @product_record ||= product
-  end
 end
