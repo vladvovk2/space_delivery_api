@@ -16,7 +16,7 @@ module DeliveryApi
       end
 
       def product_type_id
-        Product.find(product_type.product_id).title
+        product_type.product.title
       end
 
       def total_price
@@ -24,7 +24,7 @@ module DeliveryApi
       end
 
       def product_type
-        ProductType.find(object.product_type_id)
+        object.product_type
       end
     end
   end
