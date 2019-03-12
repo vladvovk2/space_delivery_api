@@ -14,7 +14,7 @@ module DeliveryApi
           desc 'List of products belonging to the category.'
           namespace :products do
             get do
-              product_list = Category.includes(products: :picture).find(params[:category_id]).products
+              product_list = Category.includes(products: %i[picture product_types]).find(params[:category_id]).products
               present product_list, with: DeliveryApi::Entities::ProductResponce::List
             end
 
