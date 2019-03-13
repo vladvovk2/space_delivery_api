@@ -62,6 +62,7 @@ ActiveAdmin.register Order do
       row :promo_code
       row :description
       row(:total_price) { |order| number_to_currency(order.total_price) }
+
       panel 'Product list' do
         table_for order.line_items do
           column(:image) do |order|
