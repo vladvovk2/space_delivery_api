@@ -17,8 +17,9 @@ class PromoCodeValidate < Rectify::Command
   end
 
   def promo_code_responce
-    return broadcast(:not_exist) unless promo_code_present?
+    return broadcast(:nil)       if promo_code.nil?
     return broadcast(:owner)     if user_is_owner?
+    return broadcast(:not_exist) unless promo_code_present?
   end
 
   def promo_code_present?
