@@ -15,7 +15,7 @@ ActiveAdmin.register Category do
     attributes_table do
       row :title
       row :image do |category|
-        image_tag category.picture.image_name.url(:medium) unless category.picture.nil?
+        image_tag category.picture.image_name.url(:medium) if category.picture.image_name.present?
       end
     end
   end
@@ -25,9 +25,9 @@ ActiveAdmin.register Category do
     f.inputs 'Atributes' do
       f.input :title
     end
-    f.inputs 'Upload' do
-      f.has_many :picture, as: :imageable do |b|
-        b.input :image_name, required: true, as: :file
+    f.inputs 'Upload image' do
+      f.has_many :picture, as: :imageable do |i|
+        i.input :image_name, require: true, as: :file
       end
     end
     f.actions

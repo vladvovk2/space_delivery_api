@@ -7,9 +7,10 @@ class Product < ApplicationRecord
   belongs_to :category, optional: true
   belongs_to :favorite, optional: true
 
-  accepts_nested_attributes_for :product_types
-  accepts_nested_attributes_for :picture
+  accepts_nested_attributes_for :product_types, allow_destroy: true
+  accepts_nested_attributes_for :picture, allow_destroy: true
 
+  validates :product_types, :picture, presence: true
   validates :title,
             presence: true,
             length: { in: 2..30 },
