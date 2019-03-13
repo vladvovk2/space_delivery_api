@@ -3,7 +3,7 @@ class Category < ApplicationRecord
   has_many :products
 
   accepts_nested_attributes_for :picture
-
+  validates :picture, presence: true
   validates :title, presence: true,
                     length: { in: 2..30 },
                     uniqueness: true

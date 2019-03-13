@@ -8,6 +8,7 @@ module DeliveryApi
       expose :quantity,     documentation: { type: 'Integer', values: ['10'] }
       expose :price,        documentation: { type: 'Integer', values: ['10'] }
       expose :total_price,  documentation: { type: 'Integer', values: ['100'] }
+      expose :small_image_url
 
       private
 
@@ -25,6 +26,10 @@ module DeliveryApi
 
       def product_type
         object.product_type
+      end
+
+      def small_image_url
+        product_type.product.picture&.image_name&.url(:small)
       end
     end
   end

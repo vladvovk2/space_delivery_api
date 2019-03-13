@@ -2,6 +2,10 @@ class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   belongs_to :user
 
+  scope :pending, -> { where(status: 'Pending') }
+  scope :complete, -> { where(status: 'Complete') }
+  scope :processing, -> { where(status: 'Processing') }
+
   validates :first_name, :last_name, presence: true, length: { in: 2..20 }
   validates :user_number,
             presence: true,
@@ -19,7 +23,12 @@ class Order < ApplicationRecord
 
   private
 
+  before_create :set_status
   before_update :charge_bonuses_to_promo_code_owner
+
+  def set_status
+    self.status = 'Pending'
+  end
 
   def charge_bonuses_to_promo_code_owner
     validation_conditions = status_changed? && (status.eql? true) && promo_code

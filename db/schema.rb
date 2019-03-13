@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2019_03_09_133129) do
     t.string "promo_code"
     t.string "user_number"
     t.string "delivery_type"
+    t.string "status"
     t.text "description"
-    t.boolean "status", default: false
     t.integer "total_price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -140,9 +140,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_133129) do
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["title"], name: "index_products_on_title", unique: true
   end
