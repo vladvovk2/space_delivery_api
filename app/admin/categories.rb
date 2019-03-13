@@ -1,4 +1,6 @@
 ActiveAdmin.register Category do
+  menu priority: 5
+
   permit_params :title, picture_attributes: :image_name
   filter :title
 

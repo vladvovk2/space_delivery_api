@@ -1,4 +1,6 @@
 ActiveAdmin.register Product do
+  menu priority: 4
+
   permit_params :title,
                 :description,
                 :category_id,
@@ -16,10 +18,14 @@ ActiveAdmin.register Product do
     column :title
     column :category
     column :type do |product|
-      product.product_types.first
+      product.product_types.first.proportion
     end
-    column :price
-    column :weight
+    column :price do |product|
+      product.product_types.first.price
+    end
+    column :weight do |product|
+      product.product_types.first.weight
+    end
     actions
   end
 
