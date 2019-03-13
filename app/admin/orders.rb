@@ -1,6 +1,9 @@
 ActiveAdmin.register Order do
   menu priority: 3
+
   actions :all, except: %i[edit destroy]
+
+  before_action :set_order, only: %i[in_process deliver]
 
   scope :all
   scope :complete
@@ -13,28 +16,36 @@ ActiveAdmin.register Order do
   filter :created_at
 
   action_item :in_process, only: :show do
-    link_to 'Accomplish', in_process_admin_order_path, method: :put unless order.status.eql? 'Complete'
+    link_to 'Accomplish', in_process_admin_order_path, method: :put unless status_complite?
   end
 
-  action_item :delivered, only: :show do
-    link_to 'Completed', deliver_admin_order_path, method: :put unless order.status.eql? 'Complete'
+  action_item :deliver, only: :show do
+    link_to 'Completed', deliver_admin_order_path, method: :put unless status_complite?
   end
 
   member_action :in_process, method: :put do
-    order = Order.find(params[:id])
-    order.update(status: 'Processing')
-    redirect_to admin_order_path(order)
+    @order.update(status: 'Processing')
+    redirect_to admin_order_path(@order)
   end
 
   member_action :deliver, method: :put do
-    order = Order.find(params[:id])
-    order.update(status: 'Complete')
-    redirect_to admin_order_path(order)
+    @order.update(status: 'Complete')
+    redirect_to admin_order_path(@order)
   end
 
   controller do
+    helper_method :status_complite?
+
     def scoped_collection
-      super.includes(:user)
+      super.includes(:user, line_items: { product_type: { product: :picture } })
+    end
+
+    def status_complite?
+      @order.status.eql? 'Complete'
+    end
+
+    def set_order
+      @order = Order.find(params[:id])
     end
   end
 

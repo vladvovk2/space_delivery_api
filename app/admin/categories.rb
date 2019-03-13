@@ -1,8 +1,16 @@
 ActiveAdmin.register Category do
   menu priority: 5
 
-  permit_params :title, picture_attributes: %i[id image_name]
+  permit_params(:title,
+                picture_attributes: %i[id image_name])
+
   filter :title
+
+  controller do
+    def scoped_collection
+      super.includes(:picture)
+    end
+  end
 
   index do
     id_column

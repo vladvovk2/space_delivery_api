@@ -1,14 +1,20 @@
 ActiveAdmin.register Product do
   menu priority: 4
 
-  permit_params :title,
+  permit_params(:title,
                 :description,
                 :category_id,
                 picture_attributes: %i[id image_name],
-                product_types_attributes: %i[id proportion price weight _destroy]
+                product_types_attributes: %i[id proportion price weight _destroy])
 
   filter :title
   filter :category
+
+  controller do
+    def scoped_collection
+      super.includes(:product_types, :category, :picture)
+    end
+  end
 
   index do
     id_column
