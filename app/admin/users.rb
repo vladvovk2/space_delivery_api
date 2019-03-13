@@ -9,7 +9,6 @@ ActiveAdmin.register User do
   filter :verification
 
   index do
-    selectable_column
     id_column
     column :first_name
     column :last_name

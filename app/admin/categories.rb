@@ -5,7 +5,6 @@ ActiveAdmin.register Category do
   filter :title
 
   index do
-    selectable_column
     id_column
     column :image do |category|
       image_tag category.picture.image_name.url(:small) if category.picture.image_name.present?

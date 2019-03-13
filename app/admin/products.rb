@@ -11,7 +11,6 @@ ActiveAdmin.register Product do
   filter :category
 
   index do
-    selectable_column
     id_column
     column :image do |product|
       image_tag product.picture.image_name.url(:small) if product.picture.image_name.present?

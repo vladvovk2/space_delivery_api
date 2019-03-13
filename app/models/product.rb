@@ -1,7 +1,5 @@
 class Product < ApplicationRecord
   has_one    :picture, as: :imageable, dependent: :destroy
-
-  has_many   :line_items,    dependent: :destroy
   has_many   :product_types, dependent: :destroy
 
   belongs_to :category, optional: true

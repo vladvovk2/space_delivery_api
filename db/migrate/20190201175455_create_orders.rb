@@ -8,8 +8,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string    :promo_code
       t.string    :user_number
       t.string    :delivery_type
+      t.string    :status
       t.text      :description
-      t.boolean   :status,      default: false
       t.integer   :total_price, default: 0
       t.timestamps
     end
