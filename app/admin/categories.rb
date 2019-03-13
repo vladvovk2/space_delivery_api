@@ -1,12 +1,15 @@
 ActiveAdmin.register Category do
   menu priority: 5
 
-  permit_params :title, picture_attributes: :image_name
+  permit_params :title, picture_attributes: %i[id image_name]
   filter :title
 
   index do
     selectable_column
     id_column
+    column :image do |category|
+      image_tag category.picture.image_name.url(:small) if category.picture.image_name.present?
+    end
     column :title
     actions
   end

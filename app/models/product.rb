@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   belongs_to :favorite, optional: true
 
   accepts_nested_attributes_for :product_types, allow_destroy: true
-  accepts_nested_attributes_for :picture, allow_destroy: true
+  accepts_nested_attributes_for :picture
 
   validates :product_types, :picture, presence: true
   validates :title,

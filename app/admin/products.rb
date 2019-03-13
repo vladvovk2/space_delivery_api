@@ -4,7 +4,7 @@ ActiveAdmin.register Product do
   permit_params :title,
                 :description,
                 :category_id,
-                picture_attributes: %i[id image_name _destroy],
+                picture_attributes: %i[id image_name],
                 product_types_attributes: %i[id proportion price weight _destroy]
 
   filter :title
@@ -13,6 +13,9 @@ ActiveAdmin.register Product do
   index do
     selectable_column
     id_column
+    column :image do |product|
+      image_tag product.picture.image_name.url(:small) if product.picture.image_name.present?
+    end
     column :title
     column :category
     column :type do |product|
