@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   menu priority: 2
+  actions :all, except: %i[edit destroy]
 
   filter :first_name
   filter :last_name
@@ -16,9 +17,10 @@ ActiveAdmin.register User do
     column :phone_number
     column :verification
     column :created_at
+    actions
   end
 
   show do
-    
+
   end
 end

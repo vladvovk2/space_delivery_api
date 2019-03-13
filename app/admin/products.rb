@@ -6,11 +6,9 @@ ActiveAdmin.register Product do
                 :category_id,
                 picture_attributes: :image_name,
                 product_types_attributes: %i[proportion price weight]
-
   filter :title
-  filter :weight
-  filter :price
   filter :category
+  filter :product_types
 
   index do
     selectable_column
