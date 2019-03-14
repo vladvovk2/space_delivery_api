@@ -10,6 +10,15 @@ module DeliveryApi
       def medium_image_url
         object.picture&.image_name&.url(:medium)
       end
+      class CategoryList < CategoryResponce
+        expose :products, using: DeliveryApi::Entities::ProductResponce::List
+
+        private
+
+        def products
+          object.products
+        end
+      end
     end
   end
 end

@@ -12,7 +12,7 @@ module DeliveryApi
         end
         get do
           categories = Category.includes(:picture).all
-          present categories, with: DeliveryApi::Entities::CategoryResponce
+          present categories, with: DeliveryApi::Entities::CategoryResponce::CategoryList
         end
 
         route_param :category_id, type: Integer do

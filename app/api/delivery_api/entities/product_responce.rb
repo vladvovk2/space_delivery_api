@@ -5,9 +5,7 @@ module DeliveryApi
         expose :id,    documentation: { type: 'Integer', values: ['1'] }
         expose :title, documentation: { type: 'String',  values: ['Apple'] }
         expose :price, documentation: { type: 'Integer', values: ['13'] }
-        expose :category_id,
-               expose_nil: false,
-               documentation: { type: 'Integer', values: ['2'] }
+        expose :description
         expose :medium_image_url
 
         private
