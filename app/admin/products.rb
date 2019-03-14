@@ -11,6 +11,8 @@ ActiveAdmin.register Product do
   filter :category
 
   controller do
+    include ActiveAdmin::ProductsHelper
+
     def scoped_collection
       super.includes(:product_types, :category, :picture)
     end
@@ -24,10 +26,10 @@ ActiveAdmin.register Product do
     column :title
     column :category
     column :type do |product|
-      product.product_types.first.proportion
+      status_tag product.product_types.first.proportion, color_for_type(product.product_types.first.proportion)
     end
     column :price do |product|
-      product.product_types.first.price
+      number_to_currency product.product_types.first.price
     end
     column :weight do |product|
       product.product_types.first.weight
@@ -45,7 +47,7 @@ ActiveAdmin.register Product do
       end
       panel 'Product types' do
         table_for product.product_types do
-          column :proportion
+          column(:proportion) { |type| status_tag type.proportion, color_for_type(type.proportion) }
           column(:price) { |type| number_to_currency(type.price) }
           column :weight
         end

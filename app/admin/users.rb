@@ -8,12 +8,16 @@ ActiveAdmin.register User do
   filter :phone_number
   filter :verification
 
+  controller do
+    include ActiveAdmin::OrdersHelper
+  end
+
   index do
     id_column
     column :email
     column :first_name
     column :last_name
-    column :verification
+    column(:verification) { |user| status_tag user.verification }
     column :created_at
     actions
   end
@@ -24,7 +28,7 @@ ActiveAdmin.register User do
       row :phone_number
       row :first_name
       row :last_name
-      row :verification
+      row(:verification) { |user| status_tag user.verification }
       row(:promo_code) { |user| user.promo_code.code }
       row(:balance)    { |user| user.user_balance.balance }
       row :created_at
@@ -32,7 +36,7 @@ ActiveAdmin.register User do
       panel 'Order History' do
         table_for user.orders do
           column(:id) { |order| link_to "Order ##{order.id}", admin_order_path(order) }
-          column :status
+          column(:status) { |order| status_tag order.status, color_for_status(order.status) }
           column(:total_price) { |order| number_to_currency(order.total_price) }
           column :created_at
         end
