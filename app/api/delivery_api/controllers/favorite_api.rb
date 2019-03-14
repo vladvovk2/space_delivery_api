@@ -18,7 +18,7 @@ module DeliveryApi
         end
         get do
           favorites = current_user.favorite_records
-          present favorites, with: DeliveryApi::Entities::FavoriteResponce
+          present :favorites, favorites, with: DeliveryApi::Entities::FavoriteResponce
         end
 
         route_param :product_id, type: Integer do

@@ -35,9 +35,20 @@ ActiveAdmin.register Order do
 
   controller do
     helper_method :status_complite?
+    def index
+      def scoped_collection
+        super.includes(:user)
+      end
 
-    def scoped_collection
-      super.includes(:user, line_items: { product_type: { product: :picture } })
+      super
+    end
+
+    def show
+      def scoped_collection
+        super.includes(:user, line_items: { product_type: { product: :picture } })
+      end
+
+      super
     end
 
     def status_complite?
