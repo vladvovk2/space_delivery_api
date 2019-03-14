@@ -29,7 +29,7 @@ module DeliveryApi
             on(:owner)     { return present(message: 'You cant use your own referal promo.') }
           end
           CreateOrder.call(current_user, current_cart, declared_params[:order]) do
-            on(:ok)         { |order| present order, with: DeliveryApi::Entities::OrderResponce }
+            on(:ok)         { |order| present :order, order, with: DeliveryApi::Entities::OrderResponce }
             on(:fail)       { |order| error!(order.errors.messages, 422) }
             on(:empty_cart) { error!('Cart is empty.') }
           end

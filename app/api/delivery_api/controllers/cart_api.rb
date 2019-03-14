@@ -8,7 +8,7 @@ module DeliveryApi
 
         desc 'List of products added to cart.'
         get do
-          return present(message: 'Cart is empty.') unless current_cart.line_items
+          return present(message: 'Cart is empty.') if current_cart.line_items.empty?
 
           products = current_cart.line_items
 

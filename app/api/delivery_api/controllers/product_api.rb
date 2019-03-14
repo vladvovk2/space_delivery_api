@@ -12,7 +12,7 @@ module DeliveryApi
         end
         get do
           products = Product.includes(:product_types, :picture).all
-          present products, with: DeliveryApi::Entities::ProductResponce::List
+          present :products, products, with: DeliveryApi::Entities::ProductResponce::List
         end
       end
     end
