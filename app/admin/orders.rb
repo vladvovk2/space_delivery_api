@@ -77,7 +77,7 @@ ActiveAdmin.register Order do
 
   show do
     attributes_table do
-      row(:user, &:user)
+      row :user, &:user
       row :first_name
       row :last_name
       row :user_number

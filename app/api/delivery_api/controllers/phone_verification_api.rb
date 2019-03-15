@@ -8,6 +8,8 @@ module DeliveryApi
       end
 
       resources :phone_verification do
+        before { authenticate! }
+
         desc 'Send to user verification code.'
         get :message do
           code = verification_code
