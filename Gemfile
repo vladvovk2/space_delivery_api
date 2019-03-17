@@ -33,6 +33,7 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 
 # Gems which iʼm used for clear code.
+gem 'fasterer'
 gem 'rubocop'
 gem 'rubocop-rails_config'
 

@@ -1,9 +1,7 @@
 module DeliveryApi
   module Helpers
     module AuthenticationHelpers
-      def current_user
-        @current_user
-      end
+      attr_reader :current_user
 
       def unauthorized!
         formatted_error!('NOT_AUTHORIZED', 401, 'Invalid email or password')
