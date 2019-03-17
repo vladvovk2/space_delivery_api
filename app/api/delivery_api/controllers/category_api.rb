@@ -7,7 +7,7 @@ module DeliveryApi
         desc 'Categories list' do
           detail <<-NOTE
             Make a query for categories.
-            Returns an array of all categories &&  belonging products.
+            Returns an array of all categories and belonging products.
           NOTE
         end
         get do

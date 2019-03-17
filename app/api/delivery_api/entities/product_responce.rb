@@ -6,7 +6,7 @@ module DeliveryApi
         expose :title, documentation: { type: 'String',  values: ['Apple'] }
         expose :price, documentation: { type: 'Integer', values: ['13'] }
         expose :description
-        expose :medium_image_url
+        expose :image_url
 
         private
 
@@ -14,14 +14,14 @@ module DeliveryApi
           object.product_types.first.price
         end
 
-        def medium_image_url
-          object.picture&.image_name&.url(:medium)
+        def image_url
+          object.picture&.image_name&.url
         end
       end
 
       class Show < Grape::Entity
         expose :id, documentation: { type: 'Integer', values: ['1'] }
-        expose :large_image_url
+        expose :image_url
         expose :description,
                expose_nil: false,
                documentation: { type: 'String', values: ['So tasty.'] }
@@ -33,8 +33,8 @@ module DeliveryApi
           object.product_types
         end
 
-        def large_image_url
-          object.picture&.image_name&.url(:large)
+        def image_url
+          object.picture&.image_name&.url
         end
       end
     end
