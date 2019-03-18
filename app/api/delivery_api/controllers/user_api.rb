@@ -51,7 +51,7 @@ module DeliveryApi
 
           namespace :email do
             get :confirm do
-              # some code
+              UserMailer.confirm_email(current_user).deliver_later
             end
           end
         end

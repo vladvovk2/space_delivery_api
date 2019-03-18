@@ -21,6 +21,12 @@ class User < ApplicationRecord
     update(verification: value)
   end
 
+  def email_activate
+    self.email_confirm = true
+    self.confirm_token = nil
+    save!(validate: false)
+  end
+
   validates :first_name, :last_name, presence: true,
                                      length: { in: 2..20 }
   validates :phone_number, presence: true,
