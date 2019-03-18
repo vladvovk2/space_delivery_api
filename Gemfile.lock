@@ -323,6 +323,14 @@ GEM
     rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
+    rspec-rails (3.8.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     rubocop (0.64.0)
       jaro_winkler (~> 1.5.1)
@@ -443,11 +451,13 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rack-cors
+  rack-test
   rails (~> 5.2.2)
   rectify
   redis
   redis-namespace
   rspec
+  rspec-rails
   rubocop
   rubocop-rails_config
   sass-rails (~> 5.0)
