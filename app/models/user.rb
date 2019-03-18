@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  has_secure_password
+  EMAIL_REGEXP = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/.freeze
+
+  has_one  :promo_code,   dependent: :destroy
+  has_one  :user_balance, dependent: :destroy
+  has_one  :cart,         dependent: :destroy
+  has_many :favorites,    dependent: :destroy
+  has_many :orders,       dependent: :destroy
+
   def favorite_records
     @favorite_records ||= favorites
   end
@@ -12,14 +21,19 @@ class User < ApplicationRecord
     update(verification: value)
   end
 
-  has_secure_password
-  EMAIL_REGEXP = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/.freeze
+  def email_activate
+    self.email_confirm = true
+    self.confirm_token = nil
+    save!(validate: false)
+  end
 
-  has_one  :promo_code,         dependent: :destroy
-  has_one  :user_balance,       dependent: :destroy
-  has_one  :cart,               dependent: :destroy
-  has_many :favorites,          dependent: :destroy
-  has_many :orders,             dependent: :destroy
+  def change_get_receipt_status
+    if get_receipt
+      update(get_receipt: false)
+    else
+      update(get_receipt: true)
+    end
+  end
 
   validates :first_name, :last_name, presence: true,
                                      length: { in: 2..20 }
@@ -38,6 +52,7 @@ class User < ApplicationRecord
   after_create  :assign_balance
   after_create  :assign_cart
   before_create :convert_phone_number
+  before_create :confirmation_token
 
   def assign_promo_code
     PromoCode.create(user_id: id, invite: true)
@@ -53,5 +68,9 @@ class User < ApplicationRecord
 
   def convert_phone_number
     self.phone_number = "+380#{phone_number}"
+  end
+
+  def confirmation_token
+    self.confirm_token = SecureRandom.urlsafe_base64.to_s if confirm_token.blank?
   end
 end

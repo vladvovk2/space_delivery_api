@@ -1,0 +1,6 @@
+Привет, <%= @user.first_name %>
+Для того что бы подтвердить email перейдите по ссилке:
+
+<%= confirm_email_user_url(@user.confirm_token) %>
+
+С уважением, Крыла.

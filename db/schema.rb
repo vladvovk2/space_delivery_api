@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_133129) do
+ActiveRecord::Schema.define(version: 2019_03_18_164929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,7 +176,12 @@ ActiveRecord::Schema.define(version: 2019_03_09_133129) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "get_receipt", default: false
+    t.boolean "email_confirm", default: false
+    t.string "confirm_token"
+    t.index ["confirm_token"], name: "index_users_on_confirm_token"
     t.index ["email", "phone_number"], name: "index_users_on_email_and_phone_number", unique: true
+    t.index ["email_confirm"], name: "index_users_on_email_confirm"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -48,6 +48,26 @@ module DeliveryApi
               error!(current_user.errors.messages, 422)
             end
           end
+
+          namespace :email do
+            get { present(receipt_status: current_user.get_receipt) }
+
+            get :confirm do
+              if current_user.email_confirm
+                present(message: 'Email already confirmed.')
+              else
+                UserMailer.confirm_email(current_user).deliver_later
+                present(message: 'Email was sent.')
+              end
+            end
+
+            patch :get_receipt do
+              return present('You must confirm email.') unless current_user.email_confirm
+
+              current_user.change_get_receipt_status
+              present(status: current_user.get_receipt)
+            end
+          end
         end
       end
     end
