@@ -179,8 +179,9 @@ ActiveRecord::Schema.define(version: 2019_03_18_164929) do
     t.boolean "get_receipt", default: false
     t.boolean "email_confirm", default: false
     t.string "confirm_token"
-    t.index ["confirm_token", "email_confirm"], name: "index_users_on_confirm_token_and_email_confirm"
+    t.index ["confirm_token"], name: "index_users_on_confirm_token"
     t.index ["email", "phone_number"], name: "index_users_on_email_and_phone_number", unique: true
+    t.index ["email_confirm"], name: "index_users_on_email_confirm"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
