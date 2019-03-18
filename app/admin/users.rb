@@ -28,7 +28,8 @@ ActiveAdmin.register User do
       row :phone_number
       row :first_name
       row :last_name
-      row(:verification) { |user| status_tag user.verification }
+      row(:email_confirm) { |user| status_tag user.email_confirm }
+      row(:verification)  { |user| status_tag user.verification }
       row(:promo_code) { |user| user.promo_code.code }
       row(:balance)    { |user| user.user_balance.balance }
       row :created_at

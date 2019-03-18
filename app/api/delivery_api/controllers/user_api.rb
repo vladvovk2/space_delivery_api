@@ -48,6 +48,12 @@ module DeliveryApi
               error!(current_user.errors.messages, 422)
             end
           end
+
+          namespace :email do
+            get :confirm do
+              # some code
+            end
+          end
         end
       end
     end
