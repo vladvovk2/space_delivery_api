@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_164929) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "get_receipt", default: false
     t.boolean "email_confirm", default: false
     t.string "confirm_token"
     t.index ["confirm_token", "email_confirm"], name: "index_users_on_confirm_token_and_email_confirm"

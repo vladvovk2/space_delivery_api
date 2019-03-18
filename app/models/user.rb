@@ -27,6 +27,14 @@ class User < ApplicationRecord
     save!(validate: false)
   end
 
+  def change_get_receipt_status
+    if get_receipt
+      update(get_receipt: false)
+    else
+      update(get_receipt: true)
+    end
+  end
+
   validates :first_name, :last_name, presence: true,
                                      length: { in: 2..20 }
   validates :phone_number, presence: true,
