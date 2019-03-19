@@ -65,7 +65,10 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
+
   gem 'rack-test'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
 
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
