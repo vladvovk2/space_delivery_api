@@ -1,6 +1,5 @@
 RSpec.configure do |config|
   config.before(:suite) do
-    FactoryBot.find_definitions
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
