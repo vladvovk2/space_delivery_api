@@ -1,17 +1,13 @@
-require 'rubygems'
-
-ENV['RAILS_ENV'] = 'test'
-
 require File.expand_path('../config/environment', __dir__)
 
-require 'rspec/rails'
 RSpec.configure do |config|
-  config.mock_with :rspec
-  config.expect_with :rspec
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
 
-  config.color = true
-  config.formatter = :documentation
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
 
-  config.include Rack::Test::Methods
-  config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: %r{spec/delivery_api}
+  config.shared_context_metadata_behavior = :apply_to_host_groups
 end

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe DeliveryApi::Controllers::ProductApi do
+describe DeliveryApi::Controllers::ProductApi, type: :api do
   def app
     DeliveryApi::Controllers::ProductApi
   end
