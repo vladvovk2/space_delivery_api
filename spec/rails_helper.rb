@@ -1,3 +1,5 @@
+require 'factory_bot_rails'
+require 'database_cleaner'
 require 'spec_helper'
 require 'rspec/rails'
 require 'support/database_cleaner'
@@ -21,6 +23,6 @@ RSpec.configure do |config|
 
   config.include HelpersRspec
   config.include Rack::Test::Methods
-  config.include(FactoryBot::Syntax::Methods)
+  config.include FactoryBot::Syntax::Methods
   config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: %r{spec/delivery_api}
 end

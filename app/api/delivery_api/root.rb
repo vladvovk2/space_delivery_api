@@ -20,7 +20,6 @@ module DeliveryApi
     mount DeliveryApi::Controllers::LineItemApi
     mount DeliveryApi::Controllers::OrderApi
     mount DeliveryApi::Controllers::PhoneVerificationApi
-    mount DeliveryApi::Controllers::ProductApi
     mount DeliveryApi::Controllers::UserApi
 
     add_swagger_documentation(

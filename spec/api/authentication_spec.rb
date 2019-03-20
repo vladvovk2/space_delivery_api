@@ -7,7 +7,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
 
   describe 'User authentication' do
     context 'POST /api/authentication' do
-      let!(:user)  { FactoryBot.create(:user) }
+      let!(:user)  { create(:user) }
       let(:header) { { 'Content-Type' => 'application/json' } }
       let(:valid_body) do
         {
@@ -28,6 +28,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
         }
       end
 
+      # <--- RSPONCE STATUS --->
       context 'responce status' do
         it 'valid params should return status 201' do
           post '/api/authentication', valid_body, header
@@ -40,6 +41,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
         end
       end
 
+      # <--- ERROR MESSAGES --->
       context 'error messages' do
         it 'ensure error if params invalid' do
           post '/api/authentication', invalid_body, header
@@ -62,6 +64,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
         end
       end
 
+      # <--- RESPONCE PARAMS --->
       context 'responce params' do
         before { post '/api/authentication', valid_body, header }
 
