@@ -1,14 +1,23 @@
 FactoryBot.define do
   factory :category do
     title { 'Title' }
-    picture
+
+    factory :category_with_products do
+      transient do
+        products_count { 2 }
+      end
+
+      after(:create) do |category, evaluator|
+        create_list(:product, evaluator.posts_count, category: category)
+      end
+    end
   end
 
   factory :product do
     title       { 'Title' }
     description { 'So testy....' }
     product_types { |i| [i.association(:product_type)] }
-    category
+    category 
     picture
   end
 

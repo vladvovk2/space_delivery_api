@@ -63,10 +63,10 @@ group :development do
 end
 
 group :test do
+  gem 'faker'
   gem 'rspec'
-  gem 'rspec-rails'
-
   gem 'rack-test'
+  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
 

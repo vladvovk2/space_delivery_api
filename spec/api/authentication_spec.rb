@@ -28,7 +28,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
         }
       end
 
-      # <--- RSPONCE STATUS --->
+      # <--- RESPONCE STATUS --->
       context 'responce status' do
         it 'valid params should return status 201' do
           post '/api/authentication', valid_body, header
