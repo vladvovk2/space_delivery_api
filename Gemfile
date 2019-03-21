@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
+gem 'rails', '~> 5.2.2'
 
 # Gems which iʼm used for made Grape API.
 gem 'rack-cors'
@@ -28,13 +28,13 @@ gem 'rectify'
 
 # Gems which iʼm used for background works.
 gem 'redis'
-gem 'redis-namespace'
 gem 'sidekiq'
 gem 'sinatra', require: false
+gem 'redis-namespace'
 
 # Gems which iʼm used for clear code.
-gem 'fasterer'
 gem 'rubocop'
+gem 'fasterer'
 gem 'rubocop-rails_config'
 
 # Gem which iʼm used for upload files.
@@ -47,19 +47,19 @@ gem 'carrierwave', '~> 1.0'
 gem 'twilio-ruby'
 
 # Gem which iʼm used for admin panel.
-gem 'activeadmin'
 gem 'devise'
+gem 'activeadmin'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'bullet'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
+  gem 'web-console', '>= 3.3.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'bullet'
 end
 
 group :test do
@@ -77,9 +77,9 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'jbuilder', '~> 2.5'
+gem 'turbolinks', '~> 5'
+gem 'sass-rails', '~> 5.0'
+gem 'coffee-rails', '~> 4.2'

@@ -7,8 +7,27 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
 
   describe 'Categories' do
     let(:user) { create(:user) }
-    let!(:category) { create(:category) }
-    let(:product) { build(:product)}
+    let(:category_with_products) { create(:category_with_products, products_count: 1) }
+    let(:category_responce) do
+      {
+        categories: [
+          {
+            id: category_with_products.id,
+            title: category_with_products.title,
+            image_url: category_with_products.picture.image_name.url,
+            products: [
+              {
+                id: category_with_products.products.first.id,
+                title: category_with_products.products.first.title,
+                price: category_with_products.products.first.product_types.first.price,
+                image_url: category_with_products.products.first.picture.image_name.url,
+                description: category_with_products.products.first.description
+              }
+            ]
+          }
+        ]
+      }
+    end
     before { header 'Authorization', user.auth_token }
 
     context 'GET /api/categories' do
@@ -17,13 +36,10 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
         expect(last_response.status).to eq(200)
       end
 
-      # <--- RESPONCE PARAMS --->
-      context 'Responce params' do
-        before { get '/api/categories' }
-
-        it 'should return category[:title]' do
-          expect(responce_body[:categories]).to eq(category.title)
-        end
+      it 'should return valid params' do
+        category_with_products
+        get '/api/categories'
+        expect(responce_body).to eq(category_responce)
       end
     end
   end

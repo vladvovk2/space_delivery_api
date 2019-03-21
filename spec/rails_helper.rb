@@ -1,11 +1,8 @@
-require 'factory_bot_rails'
-require 'database_cleaner'
-require 'spec_helper'
+require 'rails/all'
 require 'rspec/rails'
-require 'support/database_cleaner'
-require 'support/helpers_rspec'
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
-abort('The Rails environment is running in production mode!') if Rails.env.production?
+abort('The Rails environment is running in production mode!') unless Rails.env.test?
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
