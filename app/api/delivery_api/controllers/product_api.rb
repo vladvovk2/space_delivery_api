@@ -2,7 +2,7 @@ module DeliveryApi
   module Controllers
     class ProductApi < Root
       resources :products do
-        before { authenticate! }
+        # before { authenticate! }
 
         desc 'Products list' do
           detail <<-NOTE

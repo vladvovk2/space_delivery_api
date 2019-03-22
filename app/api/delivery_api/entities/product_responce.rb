@@ -5,6 +5,7 @@ module DeliveryApi
         expose :id,    documentation: { type: 'Integer', values: ['1'] }
         expose :title, documentation: { type: 'String',  values: ['Apple'] }
         expose :price, documentation: { type: 'Integer', values: ['13'] }
+        expose :weight, documentation: { type: 'Integer', values: ['13'] }
         expose :description
         expose :image_url
 
@@ -12,6 +13,10 @@ module DeliveryApi
 
         def price
           object.product_types.first.price
+        end
+
+        def weight
+          object.product_types.first.weight
         end
 
         def image_url
