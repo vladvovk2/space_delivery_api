@@ -37,7 +37,7 @@ module DeliveryApi
               end
               get do
                 product = Category.find(params[:category_id]).products.find(params[:product_id])
-                present :product, product, with: DeliveryApi::Entities::ProductResponce::Show
+                present :product, product, with: DeliveryApi::Entities::ProductResponce::List
               end
             end
           end

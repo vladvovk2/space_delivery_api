@@ -21,21 +21,6 @@ module DeliveryApi
           object.picture&.image_name&.url
         end
       end
-
-      class Show < Grape::Entity
-        expose :id, documentation: { type: 'Integer', values: ['1'] }
-        expose :image_url
-        expose :description,
-               expose_nil: false,
-               documentation: { type: 'String', values: ['So tasty.'] }
-        expose :product_types, using: DeliveryApi::Entities::ProductTypeResponce
-
-        private
-
-        def image_url
-          object.picture&.image_name&.url
-        end
-      end
     end
   end
 end

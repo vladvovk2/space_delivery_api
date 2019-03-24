@@ -7,8 +7,9 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
 
   describe 'Categories' do
     let(:user)       { create(:user) }
-    let(:categories) { create(:category_with_products, products_count: 3) }
-
+    let(:category_1) { create(:category_with_products, products_count: 1) }
+    let(:category_2) { create(:category_with_products, products_count: 2) }
+    let(:category_3) { create(:category_with_products, products_count: 3) }
     let(:category_responce) do
       lambda do |category|
         {
@@ -62,7 +63,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
       end
 
       it 'should return valid params' do
-        responce = categories
+        responce = category_1
         get '/api/categories'
         expect(responce_body[:categories][0]).to eq(category_responce[responce])
       end
@@ -70,13 +71,13 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
 
     context 'GET /api/categories/:id/products' do
       it 'shoud return positive status' do
-        get "/api/categories/#{categories.id}/products"
+        get "/api/categories/#{category_1.id}/products"
         expect(last_response.status).to eq(200)
       end
 
       it 'should return valid params' do
-        responce = categories
-        get "/api/categories/#{categories.id}/products"
+        responce = category_2
+        get "/api/categories/#{category_2.id}/products"
         expect(responce_body[:category]).to eq(category_responce[responce])
       end
 
@@ -89,6 +90,25 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
 
         it 'should return status 404' do
           expect(last_response.status).to eq(404)
+        end
+      end
+
+      context 'GET /api/categories/:id/products/id' do
+        it 'shoud return positive status' do
+          get "/api/categories/#{category_3.id}/products/#{category_3.products.first.id}"
+          expect(last_response.status).to eq(200)
+        end
+
+        context 'invalid :id' do
+          before { get "/api/categories/#{category_3.id}/products/0" }
+
+          it 'should return error message' do
+            expect(responce_body).to eq(error: 'Product not found!')
+          end
+
+          it 'should return status 404' do
+            expect(last_response.status).to eq(404)
+          end
         end
       end
     end
