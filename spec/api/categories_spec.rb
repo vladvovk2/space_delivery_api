@@ -7,7 +7,6 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
 
   describe 'Categories' do
     let(:user)       { create(:user) }
-    let(:category)   { create(:category_with_products, products_count: 1) }
     let(:categories) { create(:category_with_products, products_count: 3) }
 
     let(:category_responce) do
@@ -63,7 +62,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
       end
 
       it 'should return valid params' do
-        responce = category
+        responce = categories
         get '/api/categories'
         expect(responce_body[:categories][0]).to eq(category_responce[responce])
       end
@@ -85,11 +84,11 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
         before { get '/api/categories/0/products' }
 
         it 'should return error message' do
-          expect(responce_body).to eq(error: 'Record not found!')
+          expect(responce_body).to eq(error: 'Category not found!')
         end
 
         it 'should return status 404' do
-          expect(responce_body).to eq(error: 'Record not found!')
+          expect(last_response.status).to eq(404)
         end
       end
     end

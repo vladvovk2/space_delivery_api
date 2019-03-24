@@ -6,8 +6,9 @@ module DeliveryApi
 
     rescue_from :all
 
-    rescue_from ActiveRecord::RecordNotFound do
-      error!('Record not found!', 404)
+    rescue_from ActiveRecord::RecordNotFound do |e|
+      record_class = e.to_s.split(' ').fetch(2)
+      error!("#{record_class} not found!", 404)
     end
 
     helpers DeliveryApi::Helpers::AuthenticationHelpers
