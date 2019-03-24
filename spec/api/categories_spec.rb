@@ -6,8 +6,22 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
   end
 
   describe 'Categories' do
-    let(:user) { create(:user) }
-    let(:category) { create(:category_with_products, products_count: 1) }
+    let(:user)       { create(:user) }
+    let(:category)   { create(:category_with_products, products_count: 1) }
+    let(:categories) { create(:category_with_products, products_count: 3) }
+
+    let(:category_responce) do
+      lambda do |category|
+        {
+          id: category.id,
+          title: category.title,
+          image_url: category.picture.image_name.url,
+          products: [
+            product_attributes[category]
+          ].flatten
+        }
+      end
+    end
 
     let(:product_attributes) do
       lambda do |category|
@@ -39,21 +53,6 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
         end
       end
     end
-
-    let(:category_responce) do
-      lambda do |category|
-        {
-          id: category.id,
-          title: category.title,
-          image_url: category.picture.image_name.url,
-          products: [
-            product_attributes[category]
-          ].flatten
-        }
-      end
-    end
-
-    let(:categories) { create(:category_with_products, products_count: 3) }
 
     before { header 'Authorization', user.auth_token }
 
