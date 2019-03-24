@@ -1,5 +1,6 @@
 require 'rails/all'
 require 'rspec/rails'
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 abort('The Rails environment is running in production mode!') unless Rails.env.test?

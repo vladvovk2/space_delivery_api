@@ -23,8 +23,9 @@ FactoryBot.define do
   end
 
   factory :product_type do
-    price  { Faker::Number.number(3) }
-    weight { Faker::Number.number(3) }
+    price      { Faker::Number.number(3) }
+    weight     { Faker::Number.number(3) }
+    proportion { Faker::Food.measurement }
   end
 
   factory :picture do
