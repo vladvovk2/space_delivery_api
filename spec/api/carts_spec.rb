@@ -31,12 +31,12 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
 
   # <--- Authenticate --->
   context 'Authenticate' do
-    it 'ensure error in /api/cart' do
+    it 'ensure error in GET /api/cart' do
       get '/api/cart'
       expect(response_body).to eq(auth_error)
     end
 
-    it 'ensure error in /api/cart/add/:id' do
+    it 'ensure error in POST /api/cart/add/:id' do
       post "/api/cart/add/#{product.product_types.first.id}"
       expect(response_body).to eq(auth_error)
     end

@@ -52,17 +52,17 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
 
   # <--- Authenticate --->
   context 'Authenticate' do
-    it 'ensure error in /api/categories' do
+    it 'ensure error in GET /api/categories' do
       get '/api/categories'
       expect(response_body).to eq(auth_error)
     end
 
-    it 'ensure error in /api/categories/:id/products/:id' do
+    it 'ensure error in GET /api/categories/:id/products/:id' do
       get "/api/categories/#{category_3.id}/products/#{category_3.products.first.id}"
       expect(response_body).to eq(auth_error)
     end
 
-    it 'ensure error in /api/cart/add/1' do
+    it 'ensure error in GET /api/cart/add/1' do
       get '/api/categories/:id/products/:id'
       expect(response_body).to eq(auth_error)
     end
