@@ -15,6 +15,8 @@ module DeliveryApi
           desc 'Change product quantity.'
           params { requires :quantity, type: Integer }
           patch :quantity do
+            return error!('Quantity must be positive!', 400) unless params[:quantity].positive?
+
             command = line_item.change_quantity(declared_params[:quantity])
             present(message: 'Quantity updated!', quantity: declared_params[:quantity]) if command
           end
