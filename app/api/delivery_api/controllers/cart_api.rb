@@ -16,16 +16,14 @@ module DeliveryApi
           present :products, products, with: DeliveryApi::Entities::LineItemResponce
         end
 
-        route_param :product_type_id, type: Integer do
-          desc 'Form for add product to cart.'
-          post do
-            product = ProductType.find(params[:product_type_id])
+        desc 'Form for add product to cart.'
+        put 'add/:product_type_id' do
+          product = ProductType.find(params[:product_type_id])
 
-            if current_cart.add_product(product).try(:save)
-              present(message: 'Added to cart.')
-            else
-              present(message: 'Quantity  increased.')
-            end
+          if current_cart.add_product(product).try(:save)
+            present(message: 'Added to cart.')
+          else
+            present(message: 'Quantity  increased.')
           end
         end
       end

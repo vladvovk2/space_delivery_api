@@ -5,6 +5,7 @@ module DeliveryApi
       expose :product_type_id,
              documentation: { type: 'String', values: ['Potato'] },
              as: :title
+      expose :proportion
       expose :quantity,     documentation: { type: 'Integer', values: ['10'] }
       expose :price,        documentation: { type: 'Integer', values: ['10'] }
       expose :total_price,  documentation: { type: 'Integer', values: ['100'] }
@@ -26,6 +27,10 @@ module DeliveryApi
 
       def product_type
         object.product_type
+      end
+
+      def proportion
+        product_type.proportion
       end
 
       def image_url

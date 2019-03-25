@@ -12,7 +12,7 @@ module DeliveryApi
         end
         get do
           categories = Category.includes(:picture, products: %i[picture product_types]).all
-          present :categories, categories, with: DeliveryApi::Entities::CategoryResponce::CategoryList
+          present :categories, categories, with: DeliveryApi::Entities::CategoryResponce::List
         end
 
         route_param :category_id, type: Integer do
@@ -24,8 +24,8 @@ module DeliveryApi
               NOTE
             end
             get do
-              products = Category.includes(products: %i[picture product_types]).find(params[:category_id]).products
-              present :products, products, with: DeliveryApi::Entities::ProductResponce::List
+              products = Category.includes(products: %i[picture product_types]).find(params[:category_id])
+              present :category, products, with: DeliveryApi::Entities::CategoryResponce::List
             end
 
             route_param :product_id, type: Integer do
@@ -37,7 +37,7 @@ module DeliveryApi
               end
               get do
                 product = Category.find(params[:category_id]).products.find(params[:product_id])
-                present :product, product, with: DeliveryApi::Entities::ProductResponce::Show
+                present :product, product, with: DeliveryApi::Entities::ProductResponce::List
               end
             end
           end

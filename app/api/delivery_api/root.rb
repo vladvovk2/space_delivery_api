@@ -6,8 +6,9 @@ module DeliveryApi
 
     rescue_from :all
 
-    rescue_from ActiveRecord::RecordNotFound do
-      error!('Record not found!', 404)
+    rescue_from ActiveRecord::RecordNotFound do |e|
+      record_class = e.to_s.split(' ')[2]
+      error!("#{record_class} not found!", 404)
     end
 
     helpers DeliveryApi::Helpers::AuthenticationHelpers
@@ -20,7 +21,6 @@ module DeliveryApi
     mount DeliveryApi::Controllers::LineItemApi
     mount DeliveryApi::Controllers::OrderApi
     mount DeliveryApi::Controllers::PhoneVerificationApi
-    mount DeliveryApi::Controllers::ProductApi
     mount DeliveryApi::Controllers::UserApi
 
     add_swagger_documentation(
