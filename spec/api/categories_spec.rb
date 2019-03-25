@@ -6,7 +6,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
   let(:category_2) { create(:category_with_products, products_count: 2) }
   let(:category_3) { create(:category_with_products, products_count: 3) }
 
-  let(:category_responce) do
+  let(:category_response) do
     lambda do |category|
       {
         id: category.id,
@@ -80,7 +80,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
     it 'should return valid params' do
       responce = category_1
       get '/api/categories'
-      expect(response_body[:categories][0]).to eq(category_responce[responce])
+      expect(response_body[:categories][0]).to eq(category_response[responce])
     end
   end
 
@@ -96,7 +96,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
     it 'should return valid params' do
       responce = category_2
       get "/api/categories/#{category_2.id}/products"
-      expect(response_body[:category]).to eq(category_responce[responce])
+      expect(response_body[:category]).to eq(category_response[responce])
     end
 
     context 'invalid :id' do

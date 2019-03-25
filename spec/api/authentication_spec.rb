@@ -18,8 +18,8 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
 
   context 'POST /api/authentication' do
 
-    # <--- RESPONCE STATUS --->
-    context 'responce status' do
+    # <--- RESPONSE STATUS --->
+    context 'response status' do
       it 'valid params should return status 201' do
         post '/api/authentication', valid_body, header
         expect(last_response.status).to eq(201)
@@ -54,8 +54,8 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
       end
     end
 
-    # <--- RESPONCE PARAMS --->
-    context 'responce params' do
+    # <--- RESPONSE PARAMS --->
+    context 'response params' do
       before { post '/api/authentication', valid_body, header }
 
       it 'should return token' do

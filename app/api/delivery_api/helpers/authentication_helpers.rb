@@ -8,12 +8,12 @@ module DeliveryApi
       end
 
       def authenticate!
-        @current_user = User.find(decoded_token!.try(:dig, :user_id))
+        @current_user = User.find(decoded_token[:user_id])
       rescue JWT::DecodeError, ActiveRecord::RecordNotFound
         unauthorized!
       end
 
-      def decoded_token!
+      def decoded_token
         JWT.decode(
           headers['Authorization'],
           Rails.application.secrets.secret_key_base,

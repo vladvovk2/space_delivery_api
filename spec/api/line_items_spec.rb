@@ -26,7 +26,7 @@ describe DeliveryApi::Controllers::LineItemApi, type: :api do
     context 'invalid data' do
       context 'quantity negative value' do
         before do
-          post "/api/cart/add/#{product.product_types.first.id}"
+          put "/api/cart/add/#{product.product_types.first.id}"
           patch "/api/line_items/#{cart.line_items.first.id}/quantity?quantity=-1"
         end
 
@@ -67,7 +67,7 @@ describe DeliveryApi::Controllers::LineItemApi, type: :api do
     # <--- VALID DATA --->
     context 'valid data' do
       before do
-        post "/api/cart/add/#{product.product_types.first.id}"
+        put "/api/cart/add/#{product.product_types.first.id}"
         patch "/api/line_items/#{cart.line_items.first.id}/quantity?quantity=#{rand(1..3)}"
       end
 
@@ -85,7 +85,7 @@ describe DeliveryApi::Controllers::LineItemApi, type: :api do
   context 'DELETE /api/line_items/:id' do
     before do
       header 'Authorization', user.auth_token
-      post "/api/cart/add/#{product.product_types.first.id}"
+      put "/api/cart/add/#{product.product_types.first.id}"
     end
 
     # <--- INVALID DATA --->

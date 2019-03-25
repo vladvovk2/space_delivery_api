@@ -4,7 +4,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
   let(:user) { create(:user) }
   let(:cart) { user.cart }
   let(:product) { create(:product) }
-  let(:product_responce) do
+  let(:product_response) do
     lambda do |cart|
       cart.line_items.map do |line_item|
         {
@@ -24,7 +24,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
     {
       total_price: cart.total_price,
       products: [
-        product_responce[cart]
+        product_response[cart]
       ].flatten
     }
   end
@@ -37,7 +37,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
     end
 
     it 'ensure error in POST /api/cart/add/:id' do
-      post "/api/cart/add/#{product.product_types.first.id}"
+      put "/api/cart/add/#{product.product_types.first.id}"
       expect(response_body).to eq(auth_error)
     end
   end
@@ -60,7 +60,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
 
     context 'non-empty cart' do
       before do
-        post "/api/cart/add/#{product.product_types.first.id}"
+        put "/api/cart/add/#{product.product_types.first.id}"
         get '/api/cart'
       end
 
@@ -79,10 +79,10 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
     before { header 'Authorization', user.auth_token }
 
     context 'valid data' do
-      before { post "/api/cart/add/#{product.product_types.first.id}" }
+      before { put "/api/cart/add/#{product.product_types.first.id}" }
 
-      it 'should return status 201' do
-        expect(last_response.status).to eq(201)
+      it 'should return status 200' do
+        expect(last_response.status).to eq(200)
       end
 
       it 'should return confirm message' do
@@ -90,7 +90,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
       end
 
       it 'should return other message if product already added to cart' do
-        post "/api/cart/add/#{product.product_types.first.id}"
+        put "/api/cart/add/#{product.product_types.first.id}"
         expect(response_body).to eq(message: 'Quantity  increased.')
       end
     end
@@ -98,7 +98,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
     context 'invalid data' do
       before do
         header 'Authorization', user.auth_token
-        post '/api/cart/add/0'
+        put '/api/cart/add/0'
       end
 
       it 'should return status 404' do
