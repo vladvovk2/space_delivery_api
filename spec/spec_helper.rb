@@ -1,6 +1,10 @@
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../config/environment', __dir__)
 
+def app
+  DeliveryApi::Root
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
