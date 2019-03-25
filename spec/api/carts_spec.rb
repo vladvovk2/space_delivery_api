@@ -34,9 +34,30 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
       }
     end
 
-    before { header 'Authorization', user.auth_token }
+    let(:auth_error) do
+      {
+        code: 'NOT_AUTHORIZED',
+        message: 'Invalid email or password'
+      }
+    end
 
+    # <--- Authenticate --->
+    context 'Authenticate' do
+      it 'ensure error in /api/cart' do
+        get '/api/cart'
+        expect(response_body).to eq(auth_error)
+      end
+
+      it 'ensure error in /api/cart/add/:id' do
+        post "/api/cart/add/#{product.product_types.first.id}"
+        expect(response_body).to eq(auth_error)
+      end
+    end
+
+    # <--- GET /api/cart --->
     context 'GET /api/cart' do
+      before { header 'Authorization', user.auth_token }
+
       context 'empty cart' do
         it 'should return status 200' do
           get '/api/cart'
@@ -51,6 +72,7 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
 
       context 'non-empty cart' do
         before { post "/api/cart/add/#{product.product_types.first.id}" }
+
         it 'should return status 200' do
           get '/api/cart'
           expect(last_response.status).to eq(200)
@@ -63,7 +85,10 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
       end
     end
 
+    # <--- POST /api/cart/add/:id --->
     context 'POST /api/cart/add/:id' do
+      before { header 'Authorization', user.auth_token }
+
       context 'valid data' do
         before { post "/api/cart/add/#{product.product_types.first.id}" }
 
@@ -82,7 +107,10 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
       end
 
       context 'invalid data' do
-        before { post '/api/cart/add/0' }
+        before do
+          header 'Authorization', user.auth_token
+          post '/api/cart/add/0'
+        end
 
         it 'should return status 404' do
           expect(last_response.status).to eq(404)

@@ -55,9 +55,35 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
       end
     end
 
-    before { header 'Authorization', user.auth_token }
+    let(:auth_error) do
+      {
+        code: 'NOT_AUTHORIZED',
+        message: 'Invalid email or password'
+      }
+    end
 
+    # <--- Authenticate --->
+    context 'Authenticate' do
+      it 'ensure error in /api/categories' do
+        get '/api/categories'
+        expect(response_body).to eq(auth_error)
+      end
+
+      it 'ensure error in /api/categories/:id/products/:id' do
+        get "/api/categories/#{category_3.id}/products/#{category_3.products.first.id}"
+        expect(response_body).to eq(auth_error)
+      end
+
+      it 'ensure error in /api/cart/add/1' do
+        get '/api/categories/:id/products/:id'
+        expect(response_body).to eq(auth_error)
+      end
+    end
+
+    # <--- GET /api/categories --->
     context 'GET /api/categories' do
+      before { header 'Authorization', user.auth_token }
+
       it 'shoud return positive status' do
         get '/api/categories'
         expect(last_response.status).to eq(200)
@@ -70,7 +96,10 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
       end
     end
 
+    # <--- GET /api/categories/:id/products --->
     context 'GET /api/categories/:id/products' do
+      before { header 'Authorization', user.auth_token }
+
       it 'shoud return positive status' do
         get "/api/categories/#{category_1.id}/products"
         expect(last_response.status).to eq(200)
@@ -93,23 +122,26 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
           expect(last_response.status).to eq(404)
         end
       end
+    end
 
-      context 'GET /api/categories/:id/products/:id' do
-        it 'shoud return positive status' do
-          get "/api/categories/#{category_3.id}/products/#{category_3.products.first.id}"
-          expect(last_response.status).to eq(200)
+    # <--- GET /api/categories/:id/products/:id --->
+    context 'GET /api/categories/:id/products/:id' do
+      before { header 'Authorization', user.auth_token }
+
+      it 'shoud return positive status' do
+        get "/api/categories/#{category_3.id}/products/#{category_3.products.first.id}"
+        expect(last_response.status).to eq(200)
+      end
+
+      context 'invalid :id' do
+        before { get "/api/categories/#{category_3.id}/products/0" }
+
+        it 'should return error message' do
+          expect(response_body).to eq(error: 'Product not found!')
         end
 
-        context 'invalid :id' do
-          before { get "/api/categories/#{category_3.id}/products/0" }
-
-          it 'should return error message' do
-            expect(response_body).to eq(error: 'Product not found!')
-          end
-
-          it 'should return status 404' do
-            expect(last_response.status).to eq(404)
-          end
+        it 'should return status 404' do
+          expect(last_response.status).to eq(404)
         end
       end
     end
