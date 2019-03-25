@@ -34,13 +34,6 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
       }
     end
 
-    let(:auth_error) do
-      {
-        code: 'NOT_AUTHORIZED',
-        message: 'Invalid email or password'
-      }
-    end
-
     # <--- Authenticate --->
     context 'Authenticate' do
       it 'ensure error in /api/cart' do

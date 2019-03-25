@@ -21,12 +21,6 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
           password: '@!@#'
         }
       end
-      let(:error) do
-        {
-          code: 'NOT_AUTHORIZED',
-          message: 'Invalid email or password'
-        }
-      end
 
       # <--- RESPONCE STATUS --->
       context 'responce status' do
@@ -45,7 +39,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
       context 'error messages' do
         it 'ensure error if params invalid' do
           post '/api/authentication', invalid_body, header
-          expect(response_body).to eq(error)
+          expect(response_body).to eq(auth_error)
         end
 
         it 'ensure error if params empty' do

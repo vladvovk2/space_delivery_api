@@ -55,13 +55,6 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
       end
     end
 
-    let(:auth_error) do
-      {
-        code: 'NOT_AUTHORIZED',
-        message: 'Invalid email or password'
-      }
-    end
-
     # <--- Authenticate --->
     context 'Authenticate' do
       it 'ensure error in /api/categories' do
