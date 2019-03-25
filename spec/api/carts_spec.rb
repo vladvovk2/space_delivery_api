@@ -1,0 +1,97 @@
+require 'rails_helper'
+
+describe DeliveryApi::Controllers::CartApi, type: :api do
+  def app
+    DeliveryApi::Controllers::CartApi
+  end
+
+  describe 'Cart' do
+    let(:user) { create(:user) }
+    let(:cart) { user.cart }
+    let(:product) { create(:product) }
+    let(:product_responce) do
+      lambda do |cart|
+        cart.line_items.map do |line_item|
+          {
+            id: line_item.id,
+            title: line_item.product_type.product.title,
+            proportion: line_item.product_type.proportion,
+            quantity: line_item.quantity,
+            price: line_item.product_type.price,
+            total_price: line_item.quantity * line_item.product_type.price,
+            image_url: line_item.product_type.product.picture.image_name.url
+          }
+        end
+      end
+    end
+
+    let(:cart_response) do
+      {
+        total_price: cart.total_price,
+        products: [
+          product_responce[cart]
+        ].flatten
+      }
+    end
+
+    before { header 'Authorization', user.auth_token }
+
+    context 'GET /api/cart' do
+      context 'empty cart' do
+        it 'should return status 200' do
+          get '/api/cart'
+          expect(last_response.status).to eq(200)
+        end
+
+        it 'should return message' do
+          get '/api/cart'
+          expect(response_body).to eq(message: 'Cart is empty.')
+        end
+      end
+
+      context 'non-empty cart' do
+        before { post "/api/cart/add/#{product.product_types.first.id}" }
+        it 'should return status 200' do
+          get '/api/cart'
+          expect(last_response.status).to eq(200)
+        end
+
+        it 'should return valid responce' do
+          get '/api/cart'
+          expect(response_body).to eq(cart_response)
+        end
+      end
+    end
+
+    context 'POST /api/cart/add/:id' do
+      context 'valid data' do
+        before { post "/api/cart/add/#{product.product_types.first.id}" }
+
+        it 'should return status 201' do
+          expect(last_response.status).to eq(201)
+        end
+
+        it 'should return confirm message' do
+          expect(response_body).to eq(message: 'Added to cart.')
+        end
+
+        it 'should return other message if product already added to cart' do
+          post "/api/cart/add/#{product.product_types.first.id}"
+          expect(response_body).to eq(message: 'Quantity  increased.')
+        end
+      end
+
+      context 'invalid data' do
+        before { post '/api/cart/add/0' }
+
+        it 'should return status 404' do
+          expect(last_response.status).to eq(404)
+        end
+
+        it 'should return error message' do
+          expect(response_body).to eq(error: 'ProductType not found!')
+        end
+      end
+    end
+  end
+end
