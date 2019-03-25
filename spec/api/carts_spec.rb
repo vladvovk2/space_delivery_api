@@ -52,27 +52,28 @@ describe DeliveryApi::Controllers::CartApi, type: :api do
       before { header 'Authorization', user.auth_token }
 
       context 'empty cart' do
+        before { get '/api/cart' }
+
         it 'should return status 200' do
-          get '/api/cart'
           expect(last_response.status).to eq(200)
         end
 
         it 'should return message' do
-          get '/api/cart'
           expect(response_body).to eq(message: 'Cart is empty.')
         end
       end
 
       context 'non-empty cart' do
-        before { post "/api/cart/add/#{product.product_types.first.id}" }
+        before do
+          post "/api/cart/add/#{product.product_types.first.id}"
+          get '/api/cart'
+        end
 
         it 'should return status 200' do
-          get '/api/cart'
           expect(last_response.status).to eq(200)
         end
 
         it 'should return valid responce' do
-          get '/api/cart'
           expect(response_body).to eq(cart_response)
         end
       end
