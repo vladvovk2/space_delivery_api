@@ -11,7 +11,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
       let(:header) { { 'Content-Type' => 'application/json' } }
       let(:valid_body) do
         {
-          phone_number: '+380687285102',
+          phone_number: user.phone_number,
           password: 'vladvovk2'
         }
       end

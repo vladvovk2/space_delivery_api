@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    title { Faker::Food.vegetables }
+    title { Faker::Food.unique.vegetables }
     picture
 
     factory :category_with_products do
@@ -15,7 +15,7 @@ FactoryBot.define do
   end
 
   factory :product do
-    title         { Faker::Food.dish }
+    title         { Faker::Food.unique.dish }
     description   { Faker::Food.description }
     product_types { |i| [i.association(:product_type)] }
     category

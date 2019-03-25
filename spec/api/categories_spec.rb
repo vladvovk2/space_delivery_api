@@ -10,6 +10,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
     let(:category_1) { create(:category_with_products, products_count: 1) }
     let(:category_2) { create(:category_with_products, products_count: 2) }
     let(:category_3) { create(:category_with_products, products_count: 3) }
+
     let(:category_responce) do
       lambda do |category|
         {
@@ -93,7 +94,7 @@ describe DeliveryApi::Controllers::CategoryApi, type: :api do
         end
       end
 
-      context 'GET /api/categories/:id/products/id' do
+      context 'GET /api/categories/:id/products/:id' do
         it 'shoud return positive status' do
           get "/api/categories/#{category_3.id}/products/#{category_3.products.first.id}"
           expect(last_response.status).to eq(200)
