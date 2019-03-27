@@ -1,2 +1,2 @@
-class ProductsController < ActionController::Base
+class ProductsController < ApplicationController
 end

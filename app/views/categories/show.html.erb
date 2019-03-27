@@ -1,0 +1,12 @@
+<h2><%= @category.title %></h2>
+
+<%= link_to 'Назад', :back, class: 'btn btn-blue' %>
+
+<% @category.products.each do |product| %>
+  <div><%= product.title %></div>
+  <div><%= image_tag product.picture.image_name.url(:large) %></div>
+  <div class="ui animated fade button" tabindex="0">
+    <div class="visible content">Add to cart</div>
+    <div class="hidden content">$12.99 в месяц </div>
+  </div>
+<% end %>

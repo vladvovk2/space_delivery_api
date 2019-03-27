@@ -1,2 +1,2 @@
-class CartsController < ActionController::Base
+class CartsController < ApplicationController
 end

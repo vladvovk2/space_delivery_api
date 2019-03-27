@@ -1,4 +1,4 @@
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
   def confirm_email
     user = User.find_by(confirm_token: params[:id])
     if user
@@ -7,7 +7,7 @@ class UsersController < ActionController::Base
       redirect_to confirm_email_user_path
     else
       flash[:error] = 'Sorry. User does not exist'
-      # redirect_to root_url
+      redirect_to root_url
     end
   end
 end

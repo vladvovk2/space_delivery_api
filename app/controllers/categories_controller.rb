@@ -1,4 +1,4 @@
-class CategoriesController < ActionController::Base
+class CategoriesController < ApplicationController
   before_action :set_category, only: :show
 
   def index
@@ -10,6 +10,6 @@ class CategoriesController < ActionController::Base
   private
 
   def set_category
-    @category = Category.includes(products: %i[product_types picture]).find(params[:id])
+    @category = Category.includes(products: :picture).find(params[:id])
   end
 end
