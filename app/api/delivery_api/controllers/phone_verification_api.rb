@@ -24,7 +24,11 @@ module DeliveryApi
 
         desc 'Activation account with verification code.'
         params { requires :validation, type: Boolean }
-        patch(:confirmation) { current_user.verify(declared_params[:validation]) }
+        patch :confirmation do
+          return present(message: 'Already verify!') if current_user.verification
+
+          present(status: true) if current_user.verify(declared_params[:validation])
+        end
       end
     end
   end

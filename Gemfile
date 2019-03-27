@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
 
-# Gems which iʼm used for made Grape API.
+# Gems which i've used for made Grape API.
 gem 'rack-cors'
 gem 'grape'
 gem 'grape-entity'
@@ -19,34 +19,34 @@ gem 'pg'
 # ENV gem.
 gem 'dotenv-rails'
 
-# Gems which iʼm used for made Authentication.
+# Gems which i've used for made Authentication.
 gem 'jwt'
 gem 'bcrypt'
 
-# Gem which iʼm used for made commands.
+# Gem which i've used for made commands.
 gem 'rectify'
 
-# Gems which iʼm used for background works.
+# Gems which i've used for background works.
 gem 'redis'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'redis-namespace'
 
-# Gems which iʼm used for clear code.
+# Gems which i've used for clear code.
 gem 'rubocop'
 gem 'fasterer'
 gem 'rubocop-rails_config'
 
-# Gem which iʼm used for upload files.
+# Gem which i've used for upload files.
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
 gem 'mini_magick', '~> 4.8'
 gem 'carrierwave', '~> 1.0'
 
-# Gem which iʼm used for send verify message to user sing_up.
+# Gem which i've used for send verify message to user sing_up.
 gem 'twilio-ruby'
 
-# Gem which iʼm used for admin panel.
+# Gem which i've used for admin panel.
 gem 'devise'
 gem 'activeadmin'
 

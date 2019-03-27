@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-describe DeliveryApi::Controllers::AuthApi, type: :api do
+describe DeliveryApi::Controllers::UserApi, type: :api do
+  let(:user) { create(:user) }
   let(:user_response) do
     lambda do |user|
       {
@@ -50,8 +51,23 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
       expect(response_body).to eq(auth_error)
     end
 
-    it 'ensure error in PATCH /api/users/profile' do
-      patch '/api/users/profile'
+    it 'ensure error in GET /api/users/profile/email/confirm' do
+      patch '/api/users/profile/email/confirm'
+      expect(response_body).to eq(auth_error)
+    end
+
+    it 'ensure error in GET /api/users/profile/email' do
+      patch '/api/users/profile/email'
+      expect(response_body).to eq(auth_error)
+    end
+
+    it 'ensure error in PUT /api/users/profile' do
+      put '/api/users/profile'
+      expect(response_body).to eq(auth_error)
+    end
+
+    it 'ensure error in PATCH /api/users/profile/email/get_receipt' do
+      patch '/api/users/profile/email/get_receipt'
       expect(response_body).to eq(auth_error)
     end
   end
@@ -59,6 +75,7 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
   context 'POST /api/users' do
     context 'valid data' do
       before { post '/api/users', valid_params }
+
       it 'should return status 201' do
         expect(last_response.status).to eq(201)
       end
@@ -77,8 +94,17 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
   end
 
   context 'GET /api/users/profile' do
-  end
+    before do
+      header 'Authorization', user.auth_token
+      get '/api/users/profile'
+    end
 
-  context 'PUT /api/users/profile' do
+    it 'should return status 200' do
+      expect(last_response.status).to eq(200)
+    end
+
+    it 'should return confirm message' do
+      expect(response_body).to eq(user_response[User.last])
+    end
   end
 end
