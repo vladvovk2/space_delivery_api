@@ -12,6 +12,8 @@ gem 'turbolinks', '~> 5'
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 
+gem 'bootstrap'
+
 # Gems which i've used for made Grape API.
 gem 'rack-cors'
 gem 'grape'
