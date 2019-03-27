@@ -86,12 +86,12 @@ describe DeliveryApi::Controllers::AuthApi, type: :api do
         expect(response_body[:user][:email_confirm]).to eq(user.email_confirm)
       end
 
-      it 'should return user[:user_balance]' do
-        expect(response_body[:user][:user_balance]).to eq(user.user_balance.balance)
+      it 'should return user[:balance]' do
+        expect(response_body[:user][:balance]).to eq(user.user_balance.balance)
       end
 
-      it 'should return user[:user_promo_code]' do
-        expect(response_body[:user][:user_promo_code]).to eq(user.promo_code.code)
+      it 'should return user[:promo_code]' do
+        expect(response_body[:user][:promo_code]).to eq(user.promo_code.code)
       end
     end
   end
