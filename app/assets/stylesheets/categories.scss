@@ -1,0 +1,20 @@
+div.categories-list {
+  list-style-type: none;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+div.categories-item {
+  margin-left: 60px;
+  margin-right: 70px;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.item {
+  text-decoration: none;
+}

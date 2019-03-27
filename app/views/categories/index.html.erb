@@ -1,6 +1,0 @@
-<h1>Categories</h1>
-
-<% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %></br>
-  <%= image_tag category.picture.image_name.url(:large) if category.picture.present? %>
-<% end %>

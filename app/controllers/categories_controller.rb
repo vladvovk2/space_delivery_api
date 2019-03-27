@@ -1,15 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: :show
 
-  def index
-    @categories = Category.all
-  end
-
-  def show; end
-
-  private
-
-  def set_category
-    @category = Category.includes(products: :picture).find(params[:id])
+  def show
+    @category = Category.includes(products: %i[picture product_types]).find(params[:id])
   end
 end

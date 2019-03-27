@@ -9,9 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
-   <body>
-    <div class='container'>
-    <%= yield %>
+  <body>
+    <div class='main'>
+      <%= render 'shared/info' %>
+      <%= render 'categories/category' %>
+      <%= yield %>
     </div>
   </body>
 </html>

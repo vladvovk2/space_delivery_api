@@ -1,0 +1,16 @@
+div.main {
+  padding-top: 3em;
+  padding-left: 8em;
+  padding-right: 5em;
+  text-decoration: none;
+}
+
+div.info {
+  position: relative;
+  top: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
