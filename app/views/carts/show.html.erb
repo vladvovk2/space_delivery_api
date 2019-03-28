@@ -1,0 +1,15 @@
+<h1>You are in cart</h1>
+
+<div class='empty-cart'>
+  <% if @cart.line_items.empty? %>
+    <h3> Cart is empty</h3>
+  <% end %>
+</div>
+
+<% @cart.line_items.each do |line_item| %>
+  <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
+  <%= line_item.product_type.product.title %>
+  <%= line_item.product_type.proportion %>
+  <%= line_item.product_type.price %>
+  <%= line_item.quantity %>
+<% end %>

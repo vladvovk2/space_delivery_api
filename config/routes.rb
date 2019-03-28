@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :products, only: :show
   end
 
-  resources :carts
+  resources :carts do
+    member { get :add_product }
+  end
+
+  resources :line_items
   resources :orders
 end
