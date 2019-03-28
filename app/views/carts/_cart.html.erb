@@ -6,20 +6,6 @@
 
 <div class='cart'>
   <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Товар</th>
-        <th>Цена</th>
-        <th>Количество</th>
-      </tr>
-    </thead>
-
-    <%= render(current_cart.line_items) %>
-
-    <tr>
-      <td><b>Общая стоимость</b></td>
-      <td><%= number_to_currency @cart.total_price%></td>
-    </tr>
+    <%= render(current_cart.line_items.order(:created_at)) %>
   </table>
 </div>

@@ -1,14 +1,49 @@
-<tbody id='line-item'>
-  <tr>
-    <td><%= image_tag line_item.product_type.product.picture.image_name.url(:small) %></td>
-    <td><%= line_item.product_type.product.title %></td>
-    <td><%= line_item.product_type.price %></td>
-
-    <td>
-      <%= link_to '-', quantity_reduce_line_item_path(line_item), method: :put, remote: true, class: 'reduce' %>
-      <%= line_item.quantity %>
-      <%= link_to '+', quantity_increase_line_item_path(line_item), method: :put, remote: true, class: 'increase' %>
+<tr>
+  <div class='line-item'>
+    <td class='one'>
+      <div class='image-line-item'>
+        <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
+      </div>
     </td>
-    <td><%= link_to 'Delete', line_item, method: :delete, remote: true, class: 'destroy' %></td>
-  </tr>
-</tbody>
+
+    <td class='two'>
+      <div class='title-line-item'>
+      <%= line_item.product_type.product.title %>
+      </div>
+    </td>
+
+    <td class='three'>
+      <section class='line-item-buttons'>
+        <div class='down-item-buttons'>
+          <%= link_to quantity_reduce_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
+            <i class="arrow alternate circle left outline icon"></i>
+          <% end %>
+        </div>
+
+        <div class='quantity-line-item'>
+          <%= line_item.quantity %>
+        </div>
+
+        <div class='up-item-buttons'>
+          <%= link_to quantity_increase_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
+            <i class="arrow alternate circle right outline icon"></i>
+          <% end %>
+        </div>
+      </section>
+    </td>
+
+    <td class='four'>
+      <div class='price-line-item'>
+        <%= number_to_currency(line_item.product_type.price * line_item.quantity) %>
+      </div>
+    </td>
+
+    <td class='five'>
+      <div class='delete-line-item'>
+        <%= link_to line_item, method: :delete, remote: true, class: 'destroy' do %>
+          <i class="trash alternate outline icon"></i>
+        <% end %>
+      </div>
+    </td>
+  </div>
+</tr>
