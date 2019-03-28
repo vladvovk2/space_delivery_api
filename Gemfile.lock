@@ -62,8 +62,6 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.5.0)
-      execjs
     aws-eventstream (1.0.1)
     aws-partitions (1.141.0)
     aws-sdk-core (3.46.2)
@@ -87,9 +85,6 @@ GEM
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.3)
     bullet (5.9.0)
       activesupport (>= 3.0.0)
@@ -376,15 +371,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sassc (2.0.1)
-      ffi (~> 1.9)
-      rake
-    sassc-rails (2.1.0)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -456,7 +442,6 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt
   bootsnap (>= 1.1.0)
-  bootstrap-sass (~> 3.4.1)
   bullet
   byebug
   capybara (>= 2.15)
@@ -477,7 +462,7 @@ DEPENDENCIES
   grape-swagger-rails
   hashie-forbidden_attributes
   jbuilder (~> 2.5)
-  jquery-rails
+  jquery-rails (~> 4.3, >= 4.3.1)
   jwt
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)
@@ -495,7 +480,6 @@ DEPENDENCIES
   rubocop
   rubocop-rails_config
   sass-rails (~> 5.0)
-  sassc-rails (>= 2.1.0)
   selenium-webdriver
   semantic-ui-sass
   sidekiq

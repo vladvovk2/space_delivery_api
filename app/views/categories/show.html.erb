@@ -16,7 +16,7 @@
             Add to cart
           </div>
           <div class="hidden content">
-            <%= link_to "#{product.product_types.first.price} UA", add_product_cart_path(product.product_types.first.id), style: 'text-decoration: none' %>
+            <%= link_to "#{product.product_types.first.price} UA", add_product_cart_path(product.product_types.first), method: :put, style: 'text-decoration: none' %>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
 <div class='cart'>
   <%= semantic_icon('cart arrow down') %>
-  <%= link_to 'Cart', cart_path(current_cart)%>
+  <%= link_to current_cart.total_price, cart_path(current_cart)%>
 </div>

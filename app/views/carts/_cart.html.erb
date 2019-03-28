@@ -1,0 +1,25 @@
+<div class='empty-cart'>
+  <% if current_cart.line_items.empty? %>
+    <h3> Cart is empty</h3>
+  <% end %>
+</div>
+
+<div class='cart'>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Товар</th>
+        <th>Цена</th>
+        <th>Количество</th>
+      </tr>
+    </thead>
+
+    <%= render(current_cart.line_items) %>
+
+    <tr>
+      <td><b>Общая стоимость</b></td>
+      <td><%= number_to_currency @cart.total_price%></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+<tbody id='line-item'>
+  <tr>
+    <td><%= image_tag line_item.product_type.product.picture.image_name.url(:small) %></td>
+    <td><%= line_item.product_type.product.title %></td>
+    <td><%= line_item.product_type.price %></td>
+
+    <td>
+      <%= link_to '-', quantity_reduce_line_item_path(line_item), method: :put, remote: true, class: 'reduce' %>
+      <%= line_item.quantity %>
+      <%= link_to '+', quantity_increase_line_item_path(line_item), method: :put, remote: true, class: 'increase' %>
+    </td>
+    <td><%= link_to 'Delete', line_item, method: :delete, remote: true, class: 'destroy' %></td>
+  </tr>
+</tbody>

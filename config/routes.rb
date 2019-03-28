@@ -19,9 +19,15 @@ Rails.application.routes.draw do
   end
 
   resources :carts do
-    member { get :add_product }
+    member { put :add_product }
   end
 
-  resources :line_items
+  resources :line_items do
+    member do
+      put :quantity_reduce
+      put :quantity_increase
+    end
+  end
+
   resources :orders
 end
