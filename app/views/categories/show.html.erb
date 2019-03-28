@@ -12,9 +12,11 @@
       </div>
       <div class='button'>
         <div class="ui animated fade button" tabindex="0">
-          <div class="visible content">Add to cart</div>
+          <div class="visible content">
+            Add to cart
+          </div>
           <div class="hidden content">
-            <%= product.product_types.first.price %> UA
+            <%= link_to "#{product.product_types.first.price} UA", root_path, style: 'text-decoration: none' %>
           </div>
         </div>
       </div>

@@ -11,9 +11,11 @@
 
   <body>
     <div class='main'>
+      <%= render 'shared/header' %>
       <%= render 'shared/info' %>
       <%= render 'categories/category' %>
       <%= yield %>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>

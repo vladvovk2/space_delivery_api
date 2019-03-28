@@ -2,7 +2,7 @@
   <div class='categories-list'>
     <% @categories.each do |category| %>
       <div class='item categories-item'>
-        <%= link_to category.title, category_path(category), class: "#{'active' if current_page? category_path(category)} item", style: 'text-decoration: none'%>
+        <%= link_to category.title, category_path(category), class: "#{'active' if current_page? category_path(category)} item", style: 'text-decoration: none' %>
       </div>
     <% end %>
   </div>
