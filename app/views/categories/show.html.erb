@@ -1,27 +1,2 @@
-<div class='list'>
-  <% @category.products.each do |product| %>
-    <div class='product'>
-      <div class='title'>
-        <%= product.title %>
-      </div>
-      <div class='weight'>
-        <%= product.product_types.first.weight %> грам
-      </div>
-      <div class='image'>
-        <%= image_tag product.picture.image_name.url(:large) %>
-      </div>
-      <div class='button'>
-        <%= link_to add_product_cart_path(product.product_types.first), method: :put, style: 'text-decoration: none' do %>
-          <div class="ui animated fade button" tabindex="0">
-            <div class="visible content">
-              Add to cart
-            </div>
-            <div class="hidden content">
-              <%= "#{product.product_types.first.price} UA" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render 'category' %>
+<%= render 'product_list' %>

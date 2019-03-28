@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
+  before_action :set_category
   before_action :set_categories
   before_action :load_cart
 
   private
+
+  def set_category
+    @cate = Category.first
+  end
 
   def set_categories
     @categories = Category.all
