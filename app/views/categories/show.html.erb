@@ -1,19 +1,23 @@
-<% @category.products.each do |product| %>
-  <div class='product'>
-    <div class='title'>
-      <%= product.title %>
-    </div>
-    <div class='image'>
-      <%= image_tag product.picture.image_name.url(:large) %>
-    </div>
-    <div class='weight'>
-      <%= product.product_types.first.weight %>
-    </div>
-    <div class="ui animated fade button" tabindex="0">
-      <div class="visible content">Add to cart</div>
-      <div class="hidden content">
-        <%= product.product_types.first.price %> UA
+<div class='list'>
+  <% @category.products.each do |product| %>
+    <div class='product'>
+      <div class='title'>
+        <%= product.title %>
+      </div>
+      <div class='weight'>
+        <%= product.product_types.first.weight %> грам
+      </div>
+      <div class='image'>
+        <%= image_tag product.picture.image_name.url(:large) %>
+      </div>
+      <div class='button'>
+        <div class="ui animated fade button" tabindex="0">
+          <div class="visible content">Add to cart</div>
+          <div class="hidden content">
+            <%= product.product_types.first.price %> UA
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

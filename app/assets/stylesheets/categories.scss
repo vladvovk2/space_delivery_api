@@ -4,17 +4,16 @@ div.categories-list {
   padding-bottom: 1em;
   display: flex;
   justify-content: space-between;
-  text-decoration: none;
 }
 
 div.categories-item {
-  margin-left: 60px;
+  margin-left: 100px;
   margin-right: 70px;
   font-weight: bold;
   font-size: 20px;
-  text-decoration: none;
 }
 
-.item {
-  text-decoration: none;
+div.list {
+  display: grid;
+  grid-template-areas: "a a a ";
 }
