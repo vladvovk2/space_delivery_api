@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+  skip_before_action :load_cart
   menu false
   permit_params :email, :password, :password_confirmation
 

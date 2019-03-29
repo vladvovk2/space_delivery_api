@@ -5,7 +5,6 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Kryla Api"
-
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #

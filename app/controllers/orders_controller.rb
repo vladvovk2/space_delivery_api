@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to root_path
     else
-      render @order
+      render :new
     end
   end
 

@@ -1,4 +1,6 @@
 div.order {
+  padding-top: 5em;
+  height: 500px;
   width: 600px;
   margin-right: auto;
   margin-left: auto;
@@ -10,15 +12,30 @@ section.name {
   padding-bottom: 1em;
   display: flex;
   justify-content: space-between;
+
+  div.first_name {
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 4.5em;
+    width: 300px;
+
+    .first-name-input{
+      width: 170px;
+    }
+  }
+
+  div.last_name {
+    font-size: 15px;
+    font-weight: bold;
+    width: 300px;
+    padding-left: 4em;
+
+    .last-name-input{
+      width: 170px;
+    }
+  }
 }
 
-div.first_name {
-  width: 300px;
-}
-
-div.last_name {
-  width: 300px;
-}
 
 section.dropdown {
   padding-top: 1em;
@@ -28,12 +45,35 @@ section.dropdown {
 }
 
 div.user_number {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  width: 200px;
+  padding-left: 4.5em;
+
+  #user-number {
+    width: 100px;
+  }
 }
 
+div.pay-type {
+  padding-right: 5em;
+}
+div.delivery-type {
+  padding-right: 3em;
+}
+
+div.address {
+  text-align: center;
+}
 div.description {
+  text-align:  center;
   padding-top: 1em;
   padding-bottom: 1em;
+
+  .description-input {
+    height: 150px;
+    resize: none;
+  }
+
+}
+
+div.order-button {
+  text-align: center;
 }
