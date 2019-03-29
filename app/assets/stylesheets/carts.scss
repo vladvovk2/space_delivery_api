@@ -1,18 +1,33 @@
+#cart{
+  background-color: #F7F2F2;
+  border: 2px solid#848484;
+  border-radius: 30px;
+  width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+}
 table {
   width: 800px;
   margin-top: 50px;
   margin-right: auto;
+  margin-left: auto;
 }
 
 div.cart-footer {
+  padding-right: 3em;
+  margin-left: auto;
   margin-right: auto;
   padding-top: 1.5em;
-  padding-bottom: 4em;
+  padding-bottom: 2em;
   width: 750px;
   display: flex;
   justify-content: space-between;
 }
-
+div.cart-image {
+  margin-top: 40px;
+  font-size: 50px;
+  text-align: center;
+}
 div.make-order {
   font-size: 25px;
 }
@@ -20,7 +35,6 @@ div.make-order {
 div.total-price {
   font-weight: bold;
   font-size: 18px;
-
 }
 
 td.one {
@@ -28,7 +42,7 @@ td.one {
 }
 
 td.two {
-  width: 30%;
+  width: 25%;
 }
 
 td.three {

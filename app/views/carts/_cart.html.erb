@@ -1,10 +1,8 @@
-<div class='empty-cart'>
-  <% if current_cart.line_items.empty? %>
-    <h3> Cart is empty</h3>
-  <% end %>
-</div>
-
 <div class='cart'>
+  <div class='cart-image'>
+    <%= semantic_icon('nutritionix') %>
+    Your cart
+  </div>
   <table>
     <%= render(current_cart.line_items.order(:created_at)) %>
   </table>
