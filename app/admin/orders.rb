@@ -37,6 +37,14 @@ ActiveAdmin.register Order do
 
     helper_method :status_complete?
 
+    def index
+      def scoped_collection
+        super.includes(:user)
+      end
+
+      super
+    end
+
     def show
       def scoped_collection
         super.includes(:user, line_items: { product_type: { product: :picture } })
