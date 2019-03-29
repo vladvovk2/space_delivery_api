@@ -1,10 +1,18 @@
 div.order {
+  padding-right: 1.5em;
   padding-top: 5em;
-  height: 500px;
+  height: 550px;
   width: 600px;
   margin-right: auto;
   margin-left: auto;
   background-color: #F7F2F2;
+  border: 2px solid#848484;
+  border-radius: 30px;
+}
+
+div.image-order {
+  font-size: 50px;
+  text-align: center;
 }
 
 section.name {
@@ -28,14 +36,13 @@ section.name {
     font-size: 15px;
     font-weight: bold;
     width: 300px;
-    padding-left: 4em;
+    padding-left: 3em;
 
     .last-name-input{
       width: 170px;
     }
   }
 }
-
 
 section.dropdown {
   padding-top: 1em;
@@ -45,6 +52,8 @@ section.dropdown {
 }
 
 div.user_number {
+  font-size: 15px;
+  font-weight: bold;
   padding-left: 4.5em;
 
   #user-number {
@@ -60,6 +69,8 @@ div.delivery-type {
 }
 
 div.address {
+  font-size: 15px;
+  font-weight: bold;
   text-align: center;
 }
 div.description {
@@ -76,4 +87,5 @@ div.description {
 
 div.order-button {
   text-align: center;
+
 }

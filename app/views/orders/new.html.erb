@@ -1,4 +1,7 @@
 <div class='order'>
+  <div class=image-order>
+    <%= semantic_icon('cloudversify') %>
+  </div>
   <%= form_for @order do |f| %>
     <section class='name' >
       <div class='first_name'>
@@ -15,7 +18,7 @@
     <section class='dropdown' >
       <div class='user_number'>
         <%= f.label '+380' %>
-        <%= f.text_field :user_number, id: 'user-number' %>
+        <%= f.text_field :user_number, id: 'user-number', class: 'ui transparent input', placeholder: '687285102' %>
       </div>
 
       <div class='delivery-type'>
