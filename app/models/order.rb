@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
+  DELIVERY_TYPE = %w[Pickup Delivery].freeze
+  PAY_TYPE = %w[Cash Terminal].freeze
+
   has_many :line_items, dependent: :destroy
-  belongs_to :user
 
   scope :pending, -> { where(status: 'Pending') }
   scope :complete, -> { where(status: 'Complete') }

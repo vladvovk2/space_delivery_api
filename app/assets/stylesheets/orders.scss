@@ -1,0 +1,39 @@
+div.order {
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #F7F2F2;
+}
+
+section.name {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.first_name {
+  width: 300px;
+}
+
+div.last_name {
+  width: 300px;
+}
+
+section.dropdown {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.user_number {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  width: 200px;
+}
+
+div.description {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}

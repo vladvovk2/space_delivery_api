@@ -1,0 +1,48 @@
+<center><h1>Order</h1></center>
+
+<div class='order'>
+  <%= form_for @order do |f| %>
+    <section class='name' >
+      <div class='first_name'>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name%>
+      </div>
+
+      <div class='last_name'>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
+    </section>
+
+    <section class='dropdown' >
+      <div class='delivery_type'>
+        <%= f.label :delivery_type %>
+        <%= f.select :delivery_type, Order::DELIVERY_TYPE, { include_blank: true }%>
+      </div>
+
+      <div class='pay_type'>
+        <%= f.label :pay_type %>
+        <%= f.select :pay_type, Order::PAY_TYPE, { include_blank: true } %>
+      </div>
+    </section>
+
+    <div class='user_number'>
+      <%= f.label '+380' %>
+      <%= f.text_field :user_number, id: 'user-number' %>
+    </div>
+
+    <div class='address'>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class='description'>
+      <%= f.label :description %>
+      <%= f.text_area :description, style: '  width: 400; height: 400;' %>
+    </div>
+
+    <div>
+     <%= f.submit 'Order' %>
+    </div>
+  <% end %>
+</div>

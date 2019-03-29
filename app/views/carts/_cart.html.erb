@@ -9,8 +9,16 @@
     <%= render(current_cart.line_items.order(:created_at)) %>
   </table>
 
-  <div class='total-price'>
-    Total price:
-    <%= number_to_currency  current_cart.total_price %>
+  <div class='cart-footer'>
+    <div class='make-order'>
+      <%= link_to new_order_path, style: 'text-decoration: none' do %>
+        <%= semantic_icon('money bill alternate') %>
+        Order
+      <% end %>
+    </div>
+    <div class='total-price'>
+      Total price:
+      <%= number_to_currency  current_cart.total_price %>
+    </div>
   </div>
 </div>

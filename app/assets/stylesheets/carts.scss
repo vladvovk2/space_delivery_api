@@ -1,15 +1,26 @@
 table {
   width: 800px;
   margin-top: 50px;
-  margin-left: 150px;
+  margin-right: auto;
+}
+
+div.cart-footer {
+  margin-right: auto;
+  padding-top: 1.5em;
+  padding-bottom: 4em;
+  width: 750px;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.make-order {
+  font-size: 25px;
 }
 
 div.total-price {
-  text-align: center;
   font-weight: bold;
   font-size: 18px;
-  padding-top: 1.5em;
-  margin-right: 140px;
+
 }
 
 td.one {
