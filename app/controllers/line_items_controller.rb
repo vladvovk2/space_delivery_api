@@ -31,10 +31,6 @@ class LineItemsController < ApplicationController
   private
 
   def set_line_item
-    @line_item = LineItem.find(params[:id])
-  end
-
-  def line_item_params
-    params.require(:line_item).permit(:quantity)
+    @line_item = LineItem.includes(product_type: [product: :picture]).find(params[:id])
   end
 end

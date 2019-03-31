@@ -4,7 +4,7 @@
     Your cart
   </div>
   <table>
-    <%= render(current_cart.line_items.order(:created_at)) %>
+    <%= render(@cart.line_items.order(:created_at)) %>
   </table>
 
   <div class='cart-footer'>
@@ -16,7 +16,7 @@
     </div>
     <div class='total-price'>
       Total price:
-      <%= number_to_currency  current_cart.total_price %>
+      <%= number_to_currency @cart.total_price %>
     </div>
   </div>
 </div>
