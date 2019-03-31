@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  belongs_to :user, optional: true
 
   def add_product(product)
     item = line_items.find_by(product_type: product)
