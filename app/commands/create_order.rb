@@ -23,7 +23,7 @@ class CreateOrder < Rectify::Command
     order = user.orders.build(order_params.merge(total_price: order_total_price))
     if order.save
       order.get_product(cart)
-      send_receipt(user, order) if user.get_receipt
+      send_receipt(user, order) if user&.get_receipt
       broadcast(:ok, order)
     else
       broadcast(:fail, order)
