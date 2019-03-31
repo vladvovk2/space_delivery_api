@@ -4,5 +4,7 @@ module CartsHelper
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
     session[:cart_id] = @cart.id
+  ensure
+    @cart
   end
 end

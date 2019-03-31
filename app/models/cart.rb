@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  has_many :product_types, through: :line_items
   belongs_to :user, optional: true
 
   def add_product(product)
@@ -13,6 +14,6 @@ class Cart < ApplicationRecord
   end
 
   def total_price
-    line_items.map { |item| item.quantity * item.product_type.price }.sum
+    line_items.map { |line_item| line_item.quantity * line_item.product_type.price }.sum
   end
 end

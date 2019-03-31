@@ -1,4 +1,4 @@
-<% if current_cart.line_items.empty? %>
+<% if @cart.line_items.empty? %>
 
 <div class='empty-cart'>
   <h3> Cart is empty</h3>
@@ -7,7 +7,7 @@
 <% else %>
 
 <div id='cart'>
-  <%= render current_cart %>
+  <%= render @cart %>
 </div>
 
 <% end %>
