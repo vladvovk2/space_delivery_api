@@ -1,0 +1,32 @@
+div.product {
+  width: 250px;
+  height: 350px;
+  border: 2px solid#848484;
+  border-radius: 15px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+div.title {
+  text-align: center;
+  color: 848484;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+div.image {
+  margin-top: 20px;
+  text-align:  center;
+}
+
+div.weight {
+  text-align:  center;
+}
+
+div.button {
+  text-align:  center;
+  margin-top: 50px;
+}

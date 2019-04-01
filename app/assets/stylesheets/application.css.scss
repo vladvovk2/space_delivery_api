@@ -1,0 +1,12 @@
+/*
+ *= require_tree .
+ *= require_self
+*/
+
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
+
+body {
+  height: 100%;
+  padding-bottom: 1em;
+}

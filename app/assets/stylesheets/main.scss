@@ -1,0 +1,34 @@
+div.main {
+  padding-top: 3em;
+  padding-left: 8em;
+  padding-right: 8em;
+}
+
+div.footer {
+  left: 0;
+  bottom: 0;
+  left: 0; bottom: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+div.info {
+  position: relative;
+  top: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 3em;
+}
+
+div.github{
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-right: 4em;
+  text-align: center;
+  font-size: 25px;
+}
+
+

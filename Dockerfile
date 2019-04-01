@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -qq -y \
     build-essential git nodejs libpq-dev libgit2-dev pkg-config \
     --fix-missing --no-install-recommends
 RUN apt-get install -y --no-install-recommends apt-utils
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+&& apt-get install -y nodejs
 
 ENV GEM_HOME /bundle
 ENV BUNDLE_PATH /bundle

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KrylaApi</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </head>
+
+  <body>
+    <div class='main'>
+      <%= render 'shared/header' %>
+      <%= render 'shared/info' %>
+      <%= yield %>
+    </div>
+    <div class='footer'>
+      <%= render 'shared/footer' %>
+    </div>
+  </body>
+</html>

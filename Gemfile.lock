@@ -374,6 +374,8 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    semantic-ui-sass (2.4.0.1)
+      sass (>= 3.2)
     sexp_processor (4.12.0)
     sidekiq (5.2.5)
       connection_pool (~> 2.2, >= 2.2.2)
@@ -460,6 +462,7 @@ DEPENDENCIES
   grape-swagger-rails
   hashie-forbidden_attributes
   jbuilder (~> 2.5)
+  jquery-rails (~> 4.3, >= 4.3.1)
   jwt
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)
@@ -478,6 +481,7 @@ DEPENDENCIES
   rubocop-rails_config
   sass-rails (~> 5.0)
   selenium-webdriver
+  semantic-ui-sass
   sidekiq
   sinatra
   spring

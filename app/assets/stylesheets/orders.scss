@@ -1,0 +1,91 @@
+div.order {
+  padding-right: 1.5em;
+  padding-top: 5em;
+  height: 550px;
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #F7F2F2;
+  border: 2px solid#848484;
+  border-radius: 30px;
+}
+
+div.image-order {
+  font-size: 50px;
+  text-align: center;
+}
+
+section.name {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+
+  div.first_name {
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 4.5em;
+    width: 300px;
+
+    .first-name-input{
+      width: 170px;
+    }
+  }
+
+  div.last_name {
+    font-size: 15px;
+    font-weight: bold;
+    width: 300px;
+    padding-left: 3em;
+
+    .last-name-input{
+      width: 170px;
+    }
+  }
+}
+
+section.dropdown {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.user_number {
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 4.5em;
+
+  #user-number {
+    width: 100px;
+  }
+}
+
+div.pay-type {
+  padding-right: 5em;
+}
+div.delivery-type {
+  padding-right: 3em;
+}
+
+div.address {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+div.description {
+  text-align:  center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  .description-input {
+    height: 150px;
+    resize: none;
+  }
+
+}
+
+div.order-button {
+  text-align: center;
+
+}

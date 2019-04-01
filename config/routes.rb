@@ -8,7 +8,27 @@ Rails.application.routes.draw do
   mount GrapeSwaggerRails::Engine => '/swagger'
   mount Sidekiq::Web => '/sidekiq'
 
+  root 'blogs#index'
+
   resources :users do
     member { get :confirm_email }
   end
+
+  resources :categories do
+    resources :products, only: :show
+  end
+
+  resources :carts do
+    member { put :add_product }
+  end
+
+  resources :line_items do
+    member do
+      put :quantity_reduce
+      put :quantity_increase
+    end
+  end
+
+  resources :orders
+  resources :blogs
 end

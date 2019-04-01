@@ -2,7 +2,7 @@ module DeliveryApi
   module Controllers
     class CategoryApi < Root
       resources :categories do
-        # before { authenticate! }
+        before { authenticate! }
 
         desc 'Categories list' do
           detail <<-NOTE

@@ -1,0 +1,22 @@
+<div class='cart'>
+  <div class='cart-image'>
+    <%= semantic_icon('nutritionix') %>
+    Your cart
+  </div>
+  <table>
+    <%= render cart.line_items %>
+  </table>
+
+  <div class='cart-footer'>
+    <div class='make-order'>
+      <%= link_to new_order_path, style: 'text-decoration: none' do %>
+        <%= semantic_icon('money bill alternate') %>
+        Order
+      <% end %>
+    </div>
+    <div class='total-price'>
+      Total price:
+      <%= number_to_currency cart.total_price %>
+    </div>
+  </div>
+</div>

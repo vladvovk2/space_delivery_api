@@ -1,0 +1,13 @@
+<% if @cart.line_items.empty? %>
+
+<div class='empty-cart'>
+  <h3> Cart is empty</h3>
+</div>
+
+<% else %>
+
+<div id='cart'>
+  <%= render @cart %>
+</div>
+
+<% end %>

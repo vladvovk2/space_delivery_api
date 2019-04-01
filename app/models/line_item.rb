@@ -7,4 +7,8 @@ class LineItem < ApplicationRecord
     update(quantity: value) if value.positive?
     self
   end
+
+  def total_price
+    product_type.price * quantity
+  end
 end

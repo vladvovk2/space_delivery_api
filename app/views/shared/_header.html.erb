@@ -1,0 +1,22 @@
+<div class='nav-bar'>
+  <div class='blog'>
+    <%= link_to root_path, style: 'text-decoration: none' do %>
+      <%= semantic_icon('newspaper') %>
+      Blog
+    <% end %>
+  </div>
+
+  <div class='delivery'>
+    <%= link_to category_path(@cate), style: 'text-decoration: none' do %>
+      <%= semantic_icon('shopping bag') %>
+      Delivery
+    <% end %>
+  </div>
+
+  <div class='cart'>
+    <%= link_to cart_path(current_cart), style: 'text-decoration: none' do %>
+      <%= semantic_icon('cart arrow down') %>
+      <%= number_to_currency current_cart.total_price %>
+    <% end %>
+  </div>
+</div>

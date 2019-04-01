@@ -1,0 +1,47 @@
+<div class='order'>
+  <div class=image-order>
+    <%= semantic_icon('cloudversify') %>
+    Order
+  </div>
+  <%= form_for @order do |f| %>
+    <section class='name' >
+      <div class='first_name'>
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, class: 'first-name-input' %>
+      </div>
+
+      <div class='last_name'>
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, class: 'last-name-input' %>
+      </div>
+    </section>
+
+    <section class='dropdown' >
+      <div class='user_number'>
+        <%= f.label '+380' %>
+        <%= f.text_field :user_number, id: 'user-number', class: 'ui transparent input', placeholder: '687285102' %>
+      </div>
+
+      <div class='delivery-type'>
+        <%= f.select :delivery_type, Order::DELIVERY_TYPE, { include_blank: 'Delivery type' } %>
+      </div>
+
+      <div class='pay-type'>
+        <%= f.select :pay_type, Order::PAY_TYPE, { include_blank: 'Pay type' } %>
+      </div>
+    </section>
+
+    <div class='address'>
+      <%= f.label :address %><br>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class='description'>
+      <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
+    </div>
+
+    <div class='order-button'>
+     <%= f.submit %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,38 @@
+div.line-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.title-line-item {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+section.line-item-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.down-item-buttons {
+  font-size: 25px;
+}
+
+div.quantity-line-item {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+div.up-item-buttons {
+  font-size: 25px;
+  margin-left: 3px;
+}
+
+div.price-line-item {
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+div.delete-line-item {
+  font-size: 25px;
+}

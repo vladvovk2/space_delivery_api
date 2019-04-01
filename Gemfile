@@ -4,6 +4,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
 
+# Gems which i've used for made WEB.
+gem 'uglifier', '>= 1.3.0'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'jbuilder', '~> 2.5'
+gem 'turbolinks', '~> 5'
+gem 'sass-rails', '~> 5.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'semantic-ui-sass'
+
+
 # Gems which i've used for made Grape API.
 gem 'rack-cors'
 gem 'grape'
@@ -77,10 +88,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'uglifier', '>= 1.3.0'
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'jbuilder', '~> 2.5'
-gem 'turbolinks', '~> 5'
-gem 'sass-rails', '~> 5.0'
-gem 'coffee-rails', '~> 4.2'
