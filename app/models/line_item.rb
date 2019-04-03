@@ -3,6 +3,8 @@ class LineItem < ApplicationRecord
   belongs_to :order, optional: true
   belongs_to :product_type, optional: true
 
+  default_scope { order(:created_at) }
+
   def change_quantity(value)
     update(quantity: value) if value.positive?
     self
