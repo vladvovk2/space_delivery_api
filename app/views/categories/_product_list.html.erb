@@ -10,16 +10,19 @@
       <div class='image'>
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
+
       <div class='button'>
-        <%= link_to add_product_cart_path(product.product_types.first), method: :put, style: 'text-decoration: none' do %>
-          <div class="ui animated fade button" tabindex="0">
-            <div class="visible content">
-              Add to cart
+        <% product.product_types.each do |product_type|%>
+          <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
+            <div class="ui vertical animated button" tabindex="0">
+              <div class="hidden content">
+                <%= product_type.proportion %>
+              </div>
+              <div class="visible content">
+                <%= product_type.price %> $
+              </div>
             </div>
-            <div class="hidden content">
-              <%= "#{product.product_types.first.price} UA" %>
-            </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
