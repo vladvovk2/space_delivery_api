@@ -20,7 +20,8 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :first_name, :last_name, :delivery_type, :pay_type, :address, :user_number, :decription, :promo_code
+      :first_name, :last_name, :delivery_type, :pay_type, :address, :user_number, :decription, :promo_code,
+      place_attributes: %i[id address latitude longitude]
     )
   end
 end

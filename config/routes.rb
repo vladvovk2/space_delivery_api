@@ -29,12 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :places
   resources :orders
   resources :blogs
-
-  resources :places do
-    collection do
-      put :get_locations
-    end
-  end
 end

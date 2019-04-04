@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+        document.addEventListener("DOMContentLoaded", initMap3);
+    </script>
+<% end %>
+
+
 <div class='order'>
   <div class=image-order>
     <%= semantic_icon('cloudversify') %>
@@ -31,13 +39,26 @@
       </div>
     </section>
 
-    <div class='address'>
-      <%= f.label :address %><br>
-      <%= f.text_field :address %>
-    </div>
-
     <div class='description'>
       <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
+    </div>
+
+    <div>
+      <%= f.fields_for :place_attributes, @order.place do |form| %>
+        <div class="field" style='visibility: hidden'>
+          <%= form.label :latitude %>
+          <%= form.text_field :latitude %>
+        </div>
+
+        <div class="field" style='visibility: hidden'>
+          <%= form.label :longitude %>
+          <%= form.text_field :longitude %>
+        </div>
+
+        <p>
+          <div id="map3"></div>
+        </p>
+      <% end %>
     </div>
 
     <div class='order-button'>
