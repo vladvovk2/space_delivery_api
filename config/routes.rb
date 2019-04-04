@@ -31,4 +31,10 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :blogs
+
+  resources :places do
+    collection do
+      put :get_locations
+    end
+  end
 end
