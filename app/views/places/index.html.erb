@@ -6,20 +6,17 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Address</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody id='places'>
-    <%= render @places %>
+  <tbody>
+    <%= render @places, place: @places %>
   </tbody>
 </table>
 
 <br>
 
 <%= link_to 'New Place', new_place_path %>
-<%= content_tag :button, 'Get Places', class: 'btn btn-info get_location' %>
-<%= tag :div, class: 'location_results_list' %>

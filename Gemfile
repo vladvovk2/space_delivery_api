@@ -15,6 +15,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'semantic-ui-sass'
 
 gem 'geocoder'
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
 
 # Gems which i've used for made Grape API.
 gem 'rack-cors'

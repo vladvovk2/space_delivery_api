@@ -5,5 +5,5 @@
   <td><%= place.longitude %></td>
   <td><%= link_to 'Show', place %></td>
   <td><%= link_to 'Edit', edit_place_path(place) %></td>
-  <td><%= link_to 'Destroy', place, method: :delete %></td>
+  <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
