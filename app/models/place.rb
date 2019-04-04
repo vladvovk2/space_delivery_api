@@ -1,4 +1,12 @@
 class Place < ApplicationRecord
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  belongs_to :order, optional: true
+
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
+  before_save :split_address
+
+  def split_address
+    self.address = address.split(',').first(3).join(', ')
+  end
 end
