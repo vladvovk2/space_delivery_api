@@ -1,7 +1,13 @@
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+        document.addEventListener("DOMContentLoaded", initMap3);
+    </script>
+<% end %>
+
 <div class='order'>
   <div class=image-order>
     <%= semantic_icon('cloudversify') %>
-    Order
   </div>
   <%= form_for @order do |f| %>
     <section class='name' >
@@ -31,9 +37,17 @@
       </div>
     </section>
 
-    <div class='address'>
-      <%= f.label :address %><br>
-      <%= f.text_field :address %>
+    <div class='order-map'>
+      <%= f.fields_for :place_attributes, @order.place do |form| %>
+        <%= form.text_field :latitude, style: 'visibility: hidden' %>
+        <%= form.text_field :longitude, style: 'visibility: hidden' %>
+        <div class='address'>
+        <%= form.label 'Pull marker to your address in the map:' %>
+        </div>
+        <p>
+          <div id="map3"></div>
+        </p>
+      <% end %>
     </div>
 
     <div class='description'>

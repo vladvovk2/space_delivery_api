@@ -2,6 +2,9 @@ class Order < ApplicationRecord
   DELIVERY_TYPE = %w[Pickup Delivery].freeze
   PAY_TYPE = %w[Cash Terminal].freeze
 
+  has_one :place, dependent: :destroy
+  accepts_nested_attributes_for :place
+
   has_many :line_items, dependent: :destroy
   belongs_to :user, optional: true
 
@@ -15,7 +18,6 @@ class Order < ApplicationRecord
             length: { is: 9 },
             numericality: { only_integer: true }
   validates :description, allow_nil: true, length: { in: 2..250 }
-  validates :address, presence: true
   validates :delivery_type, presence: true, acceptance: { accept: %w[Pickup Delivery] }
   validates :pay_type, presence: true, acceptance: { accept: %w[Cash Terminal] }
 

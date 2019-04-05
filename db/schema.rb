@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_222405) do
+ActiveRecord::Schema.define(version: 2019_04_03_161635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,16 @@ ActiveRecord::Schema.define(version: 2019_03_28_222405) do
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
   end
 
+  create_table "places", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_places_on_order_id"
+  end
+
   create_table "product_types", force: :cascade do |t|
     t.string "proportion"
     t.integer "price"
@@ -196,6 +206,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_222405) do
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "places", "orders"
   add_foreign_key "products", "categories"
   add_foreign_key "promo_codes", "users"
   add_foreign_key "user_balances", "users"
