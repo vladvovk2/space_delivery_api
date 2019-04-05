@@ -84,6 +84,10 @@ ActiveAdmin.register Order do
       row(:status) { |order| status_tag order.status, color_for_status(order.status) }
       row :pay_type
       row :delivery_type
+      row(:address) { |order| order.place.address }
+      row :map do |order|
+        image_tag "http://maps.google.com/maps/api/staticmap?key=#{Rails.application.secrets.google_place_key}&size=600x400&sensor=false&zoom=17&markers=#{order.place.latitude}%2C#{order.place.longitude}"
+      end
       row :created_at
       row :promo_code
       row :description

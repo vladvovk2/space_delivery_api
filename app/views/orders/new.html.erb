@@ -5,11 +5,9 @@
     </script>
 <% end %>
 
-
 <div class='order'>
   <div class=image-order>
     <%= semantic_icon('cloudversify') %>
-    Order
   </div>
   <%= form_for @order do |f| %>
     <section class='name' >
@@ -39,26 +37,21 @@
       </div>
     </section>
 
-    <div class='description'>
-      <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
-    </div>
-
-    <div>
+    <div class='order-map'>
       <%= f.fields_for :place_attributes, @order.place do |form| %>
-        <div class="field" style='visibility: hidden'>
-          <%= form.label :latitude %>
-          <%= form.text_field :latitude %>
+        <%= form.text_field :latitude, style: 'visibility: hidden' %>
+        <%= form.text_field :longitude, style: 'visibility: hidden' %>
+        <div class='address'>
+        <%= form.label 'Pull marker to your address in the map:' %>
         </div>
-
-        <div class="field" style='visibility: hidden'>
-          <%= form.label :longitude %>
-          <%= form.text_field :longitude %>
-        </div>
-
         <p>
           <div id="map3"></div>
         </p>
       <% end %>
+    </div>
+
+    <div class='description'>
+      <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
     </div>
 
     <div class='order-button'>
