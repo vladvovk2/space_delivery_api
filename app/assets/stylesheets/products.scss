@@ -7,6 +7,9 @@ div.product {
   display: inline-block;
   margin-top: 20px;
   margin-bottom: 20px;
+  flex-basis: 300px;
+  flex-shrink: 0;
+  margin:20px;
 }
 
 div.title {

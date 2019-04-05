@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function(){
   $('#user-number').attr('maxlength', '9');
 });
 
-function initMap3() {
+function initMap2() {
   var lat = document.getElementById('order_place_attributes_latitude').value;
   var lng = document.getElementById('order_place_attributes_longitude').value;
 
@@ -17,7 +17,7 @@ function initMap3() {
   center: myCoords,
   zoom: 14
   };
-  var map = new google.maps.Map(document.getElementById('map3'), mapOptions);
+  var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
   var marker = new google.maps.Marker({
       position: myCoords,
       animation: google.maps.Animation.DROP,

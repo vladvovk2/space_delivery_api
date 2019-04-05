@@ -1,61 +1,7 @@
-<% provide :head_tags do %>
-    <meta name='turbolinks-visit-control' content='reload'>
-    <script>
-        document.addEventListener("DOMContentLoaded", initMap3);
-    </script>
-<% end %>
-
 <div class='order'>
   <div class=image-order>
     <%= semantic_icon('cloudversify') %>
   </div>
-  <%= form_for @order do |f| %>
-    <section class='name' >
-      <div class='first_name'>
-        <%= f.label :first_name %><br>
-        <%= f.text_field :first_name, class: 'first-name-input' %>
-      </div>
 
-      <div class='last_name'>
-        <%= f.label :last_name %><br>
-        <%= f.text_field :last_name, class: 'last-name-input' %>
-      </div>
-    </section>
-
-    <section class='dropdown' >
-      <div class='user_number'>
-        <%= f.label '+380' %>
-        <%= f.text_field :user_number, id: 'user-number', class: 'ui transparent input', placeholder: '687285102' %>
-      </div>
-
-      <div class='delivery-type'>
-        <%= f.select :delivery_type, Order::DELIVERY_TYPE, { include_blank: 'Delivery type' } %>
-      </div>
-
-      <div class='pay-type'>
-        <%= f.select :pay_type, Order::PAY_TYPE, { include_blank: 'Pay type' } %>
-      </div>
-    </section>
-
-    <div class='order-map'>
-      <%= f.fields_for :place_attributes, @order.place do |form| %>
-        <%= form.text_field :latitude, style: 'visibility: hidden' %>
-        <%= form.text_field :longitude, style: 'visibility: hidden' %>
-        <div class='address'>
-        <%= form.label 'Pull marker to your address in the map:' %>
-        </div>
-        <p>
-          <div id="map3"></div>
-        </p>
-      <% end %>
-    </div>
-
-    <div class='description'>
-      <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
-    </div>
-
-    <div class='order-button'>
-     <%= f.submit %>
-    </div>
-  <% end %>
+  <%= render 'form', order: @order %>
 </div>
