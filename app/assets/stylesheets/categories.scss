@@ -14,7 +14,7 @@ div.categories-item {
 }
 
 div.list {
-  display: grid;
-  grid-template-areas: "a a a";
-  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
