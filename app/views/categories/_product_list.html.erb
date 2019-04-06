@@ -4,26 +4,32 @@
       <div class='title'>
         <%= product.title %>
       </div>
-      <div class='weight'>
-        <%= product.product_types.first.weight %> грам
-      </div>
       <div class='image'>
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
 
-      <div class='button'>
-        <% product.product_types.each do |product_type|%>
-          <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
-            <div class="ui vertical animated button" tabindex="0">
-              <div class="hidden content">
-                <%= product_type.weight %>гр.
-              </div>
-              <div class="visible content">
-                <%= product_type.price %> $
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+      <div class="tabs">
+        <button class="tablinks" onclick="openDetails(event, 'first-tab-content')">Prop 1</button>
+        <button class="tablinks tab" onclick="openDetails(event, 'second-tab-content')">Prop 2</button>
+        <button class="tablinks" onclick="openDetails(event, 'third-tab-content')">Prop 3</button>
+      </div>
+
+      <div id="first-tab-content" class="tabcontent">
+        <div class="weight">200 грам</div>
+        <div class="price">200$</div>
+        <button class="add-to-cart"></button>
+      </div>
+
+      <div id="second-tab-content" class="tabcontent">
+        <div class="weight">200 грам</div>
+        <div class="price">200$</div>
+        <button class="add-to-cart"></button>
+      </div>
+
+      <div id="third-tab-content" class="tabcontent">
+        <div class="weight">200 грам</div>
+        <div class="price">200$</div>
+        <button class="add-to-cart"></button>
       </div>
     </div>
   <% end %>
