@@ -10,6 +10,11 @@ Rails.application.routes.draw do
 
   root 'blogs#index'
 
+  resources :places
+  resources :orders
+  resources :blogs
+  resources :sessions
+
   resources :users do
     member { get :confirm_email }
   end
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :places
-  resources :orders
-  resources :blogs
+  get :signup, to: 'users#new',        as: :signup
+  get :login,  to: 'sessions#new',     as: :login
+  get :logout, to: 'sessions#destroy', as: :logout
 end
