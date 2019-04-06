@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :users do
-    member { get :confirm_email }
+    member do
+      get :confirm_email
+      get :order_list
+    end
   end
 
   resources :categories do

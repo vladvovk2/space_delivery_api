@@ -1,15 +1,14 @@
 class OrdersController < ApplicationController
-  include CartsHelper
-
   def new
     @order = Order.new
   end
 
   def create
-    @order = Order.new(order_params.merge(total_price: current_cart.total_price))
+    @order = Order.new(order_params.merge(total_price: current_cart.total_price, user_id: current_user&.id))
 
     if @order.save
       @order.get_product(current_cart)
+      send_receipt(current_user, @order) if current_user&.get_receipt
       redirect_to root_path
     else
       render :new

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include UsersHelper
+  include CartsHelper
 
   before_action :set_category
 

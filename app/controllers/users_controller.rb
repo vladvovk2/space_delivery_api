@@ -26,6 +26,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def order_list
+    @orders = current_user.orders
+  end
+
   private
 
   def user_params
