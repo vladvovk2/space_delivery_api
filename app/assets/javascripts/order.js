@@ -1,7 +1,3 @@
-$(document).on('turbolinks:load', function(){
-  $('#user-number').attr('maxlength', '9');
-});
-
 function initMap2() {
   var lat = document.getElementById('order_place_attributes_latitude').value;
   var lng = document.getElementById('order_place_attributes_longitude').value;

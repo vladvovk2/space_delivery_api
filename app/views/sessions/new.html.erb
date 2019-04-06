@@ -1,7 +1,7 @@
 <%= form_tag sessions_path do |form| %>
   <div>
-    <%= label_tag :phone_number  %>
-    <%= text_field_tag :phone_number %>
+    <%= label_tag '+380'  %>
+    <%= text_field_tag :phone_number, nil, maxlength: 9 %>
   </div>
 
   <div>

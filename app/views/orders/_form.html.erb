@@ -21,7 +21,7 @@
   <section class='dropdown' >
     <div class='user_number'>
       <%= f.label '+380' %>
-      <%= f.text_field :user_number, id: 'user-number', class: 'ui transparent input', placeholder: '687285102' %>
+      <%= f.text_field :user_number, maxlength: 9, class: 'ui transparent input', placeholder: '687285102' %>
     </div>
 
     <div class='delivery-type'>
