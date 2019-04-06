@@ -13,6 +13,20 @@
     <% end %>
   </div>
 
+  <div class='delivery'>
+    <% if current_user %>
+      <%= link_to logout_path, style: 'text-decoration: none' do %>
+        <%= semantic_icon('sign-out') %>
+        Logout
+      <% end %>
+      <% else %>
+      <%= link_to login_path, style: 'text-decoration: none' do %>
+        <%= semantic_icon('user') %>
+        Login
+      <% end %>
+    <% end %>
+  </div>
+
   <div class='cart'>
     <%= link_to cart_path(current_cart), style: 'text-decoration: none' do %>
       <%= semantic_icon('cart arrow down') %>
