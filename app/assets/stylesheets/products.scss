@@ -1,10 +1,10 @@
 /* Style the tab */
 .tabs {
-  background-color: #c7c6c4;
+  // background-color: #c7c6c4;
   display: flex;
   overflow: hidden;
   border: none;
-  border-top: 1px solid black;
+  // border-top: 1px solid black;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -17,10 +17,11 @@
   cursor: pointer;
   padding: 14px 16px;
   text-align: center;
+  border-radius: 15px 15px 0 0;
 }
 .tabs .tablinks:nth-child(2) {
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  // border-left: 1px solid black;
+  // border-right: 1px solid black;
 }
 
 /* Change background color of buttons on hover */
@@ -31,7 +32,10 @@
 /* Create an active/current tablink class */
 .tabs .tablinks.active {
   background-color: #DCDCDC;
+  border: 1px solid black;
   border-bottom: 1px solid #DCDCDC;
+  // border-left: 1px solid black;
+  // border-right: 1px solid black;
 }
 
 /* Style the tab content */
