@@ -59,6 +59,7 @@
 }
 
 .product {
+  position: relative;
   width: 270px;
   height: 410px;
   border: 2px solid #848484;
@@ -91,4 +92,8 @@
 }
 .add-to-cart-icon {
   font-size: 20px;
+}
+#tabs-content {
+  position: absolute;
+  bottom: 0;
 }

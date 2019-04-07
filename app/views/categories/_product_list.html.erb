@@ -1,3 +1,7 @@
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+<% end %>
+
 <div class='list'>
   <% @category.products.each do |product| %>
     <div class='product'>
@@ -7,30 +11,31 @@
       <div class='image'>
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
+      <div id="tabs-content">
+        <div class="tabs">
+          <% product.product_types.each do |product_type| %>
+            <div class="tablinks defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
+             <%= product_type.proportion %>
+            </div>
+          <% end %>
+        </div>
 
-      <div class="tabs">
         <% product.product_types.each do |product_type| %>
-          <div class="tablinks defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
-           <%= product_type.proportion %>
+          <div id="<%= product_type.id %>" class="tabcontent">
+            <div class="weight">
+              <%= product_type.weight %> гр.
+            </div>
+            <div class="price">
+              <%= product_type.price %>$
+            </div>
+            <div class="add-to-cart-icon">
+              <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
+                <%= semantic_icon('cart arrow down') %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
-
-      <% product.product_types.each do |product_type| %>
-        <div id="<%= product_type.id %>" class="tabcontent">
-          <div class="weight">
-            <%= product_type.weight %> гр.
-          </div>
-          <div class="price">
-            <%= product_type.price %>$
-          </div>
-          <div class="add-to-cart-icon">
-            <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
-              <%= semantic_icon('cart arrow down') %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
       
       <script>
         document.getElementsByClassName("defaultOpen")[0].click();
