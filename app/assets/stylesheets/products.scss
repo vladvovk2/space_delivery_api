@@ -1,10 +1,8 @@
 /* Style the tab */
 .tabs {
-  // background-color: #c7c6c4;
   display: flex;
   overflow: hidden;
   border: none;
-  // border-top: 1px solid black;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -19,10 +17,6 @@
   text-align: center;
   border-radius: 15px 15px 0 0;
 }
-.tabs .tablinks:nth-child(2) {
-  // border-left: 1px solid black;
-  // border-right: 1px solid black;
-}
 
 /* Change background color of buttons on hover */
 .tabs .tablinks:hover {
@@ -34,8 +28,6 @@
   background-color: #DCDCDC;
   border: 1px solid black;
   border-bottom: 1px solid #DCDCDC;
-  // border-left: 1px solid black;
-  // border-right: 1px solid black;
 }
 
 /* Style the tab content */
@@ -48,12 +40,12 @@
   padding: 6px 12px;
   border: none;
   border-radius: 0 0 15px 15px;
-  -webkit-animation: fadeEffect 1s;
-  animation: fadeEffect 1s;
 }
 .tabcontent > * {
   margin-top: 25px;
   margin-left: 5px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
 }
 
 @-webkit-keyframes fadeEffect {
