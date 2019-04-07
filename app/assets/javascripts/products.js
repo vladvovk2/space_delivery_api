@@ -20,4 +20,4 @@ function openDetails(evt, tabNum) {
 }
 
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+document.getElementsByClassName("defaultOpen")[0].click();

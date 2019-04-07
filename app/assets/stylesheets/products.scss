@@ -1,33 +1,34 @@
 /* Style the tab */
 .tabs {
+  display: flex;
   overflow: hidden;
   border: none;
   border-top: 1px solid black;
 }
 
 /* Style the buttons that are used to open the tab content */
-.tabs button {
+.tabs .tablinks {
   background-color: inherit;
-  width: 33.33%;
-  float: left;
+  flex-grow: 1;
   border: none;
   border-bottom: 1px solid black;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
+  text-align: center;
 }
-.tabs button:nth-child(2) {
+.tabs .tablinks:nth-child(2) {
   border-left: 1px solid black;
   border-right: 1px solid black;
 }
 
 /* Change background color of buttons on hover */
-.tabs button:hover {
-  /*background-color: #cacbcd;*/
+.tabs .tablinks:hover {
+  background-color: #cacbcd;
 }
 
 /* Create an active/current tablink class */
-.tabs button.active {
+.tabs .tablinks.active {
   border-bottom: 1px solid white;
 }
 
@@ -74,7 +75,7 @@
 
 .title {
   text-align: center;
-  color: 848484;
+  color: #848484;
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
@@ -88,14 +89,4 @@
 
 .weight {
   text-align: center;
-}
-
-.add-to-cart {
-  background: url(cart-icon.jpg) no-repeat;
-  background-size: cover;
-  width: 30px;
-  height: 30px;
-  border: none;
-  outline: none;
-  cursor: pointer;
 }
