@@ -19,12 +19,12 @@
       <% product.product_types.each do |product_type| %>
         <div id="<%= product_type.id %>" class="tabcontent">
           <div class="weight">
-            <%= product_type.weight %>
+            <%= product_type.weight %> гр.
           </div>
           <div class="price">
-            <%= product_type.price %>
+            <%= product_type.price %>$
           </div>
-          <div>
+          <div class="add-to-cart-icon">
             <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
               <%= semantic_icon('cart arrow down') %>
             <% end %>
@@ -32,6 +32,10 @@
         </div>
       <% end %>
       
+      <script>
+        document.getElementsByClassName("defaultOpen")[0].click();
+      </script>
+
     </div>
   <% end %>
 </div>

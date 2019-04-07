@@ -15,9 +15,6 @@ function openDetails(evt, tabNum) {
   }
 
   // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(tabNum).style.display = "block";
+  document.getElementById(tabNum).style.display = "flex";
   evt.currentTarget.className += " active";
 }
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementsByClassName("defaultOpen")[0].click();
