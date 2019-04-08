@@ -1,0 +1,13 @@
+<h1>Order list</h1>
+
+<% @orders.each do |order| %>
+  <%= order.first_name %>
+  <%= order.last_name %>
+  <%= order.user_number %>
+  <%= order.pay_type %>
+  <%= order.delivery_type %>
+  <%= order.address %>
+  <%= order.created_at %>
+  <%= order.total_price %>
+  <%= render 'places/map', place: order.place %>
+<% end %>
