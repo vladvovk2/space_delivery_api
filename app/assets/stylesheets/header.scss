@@ -12,14 +12,15 @@ div.nav-bar {
 }
 .nav-bar a {
   display: inline-block;
-  width: 60px;
+  width: 65px;
   height: 60px;
   color: black;
-  text-align: bottom;
 }
 i {
   color: black;
-  margin-bottom: 5px;
+}
+.nav-icon {
+  margin-top: 10px;
 }
 .nav-bar i::after {
   content: "";
@@ -27,10 +28,14 @@ i {
   width: 35px;
   height: 35px;
   top: -9px;
-  left: 11px;
+  left: 13px;
   background-color: #DCDCDC;
   border-radius: 100%;
   z-index: -1;
+}
+//Added because all icons are aligned except 'Cart' 
+.cart i::after {
+  left: 15px;
 }
 .content {
   margin-top: 8px;
@@ -50,7 +55,7 @@ ol {
   transition: background 0.3s ease-in-out;
 }
 
-.sub-menu:hover {
+.profile:hover .sub-menu {
   transform: rotateX(0deg);
 }
 

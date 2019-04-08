@@ -1,7 +1,10 @@
 <div class='nav-bar'>
   <div class='blog'>
     <%= link_to root_path, style: 'text-decoration: none' do %>
-      <%= semantic_icon('newspaper') %>
+      <div class="nav-icon">
+        <%= semantic_icon('newspaper') %>
+      </div>
+
       <div class="content">
         Blog
       </div>
@@ -10,7 +13,10 @@
 
   <div class='delivery'>
     <%= link_to category_path(@cate), style: 'text-decoration: none' do %>
-      <%= semantic_icon('shopping bag') %>
+      <div class="nav-icon">
+        <%= semantic_icon('shopping bag') %>
+      </div>
+
       <div class="content">
         Delivery
       </div>
@@ -19,7 +25,10 @@
 
   <div class='cart'>
     <%= link_to cart_path(current_cart), style: 'text-decoration: none' do %>
-      <%= semantic_icon('cart arrow down') %>
+      <div class="nav-icon">
+        <%= semantic_icon('cart arrow down') %>
+      </div>
+      
       <div class="content">
         <%= number_to_currency current_cart.total_price %>
       </div>
@@ -28,12 +37,17 @@
 
   <div class='profile'>
     <% if current_user %>
+
       <%= link_to user_path(current_user), style: 'text-decoration: none' do %>
-        <%= semantic_icon('user outline') %>
+        <div class="nav-icon">
+          <%= semantic_icon('user outline') %>
+        </div>
+
         <div class="content">
           Profile
         </div>
       <% end %>
+
       <ol class="sub-menu">
         <li class="menu-item">
           <%= link_to logout_path, style: 'text-decoration: none' do %>
@@ -54,11 +68,14 @@
           <% end %>
         </li>
       </ol>
-
+      
       <% else %>
 
       <%= link_to login_path, style: 'text-decoration: none' do %>
-        <%= semantic_icon('user') %>
+        <div class="nav-icon">
+          <%= semantic_icon('user') %>
+        </div>
+
         <div class="content">
           Login
         </div>
