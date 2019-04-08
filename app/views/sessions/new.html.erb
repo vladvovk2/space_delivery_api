@@ -1,0 +1,17 @@
+<%= form_tag sessions_path do |form| %>
+  <div>
+    <%= label_tag '+380'  %>
+    <%= text_field_tag :phone_number, nil, maxlength: 9, placeholder: '687285102' %>
+  </div>
+
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+
+  <div>
+    <%= submit_tag 'Login' %>
+  </div>
+<% end %>
+
+ Or you can <%= link_to 'Sign up', new_user_path %>
