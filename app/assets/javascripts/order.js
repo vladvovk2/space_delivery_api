@@ -10,8 +10,9 @@ function initMap2() {
   }
   var myCoords = new google.maps.LatLng(lat, lng);
   var mapOptions = {
-  center: myCoords,
-  zoom: 14
+    center: myCoords,
+    zoom: 14,
+    disableDefaultUI: true
   };
   var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
   var marker = new google.maps.Marker({

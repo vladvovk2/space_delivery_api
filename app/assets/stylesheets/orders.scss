@@ -49,6 +49,10 @@ section.dropdown {
   padding-bottom: 31px;
   display: flex;
   justify-content: space-evenly;
+
+  #user-number{
+    width: 200px;
+  }
 }
 
 .number-promo-fields div * {
@@ -73,6 +77,7 @@ section.dropdown {
   flex-direction: row;
 }
 .delivery-type div,
+
 .pay-type div {
   margin-left: 10px;
 }

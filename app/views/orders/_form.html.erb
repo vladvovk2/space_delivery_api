@@ -22,40 +22,39 @@
   <section class='dropdown' >
     <div class='number-promo-fields'>
       <div class='user-number'>
-        <label for="user-number">Phone number</label>
-        <input id="user-number" type="text">
+        <%= f.label :phone_number %>
+        <%= f.text_field :user_number, id: 'user-number', maxlength: 9, placeholder: '687285102' %>
       </div>
 
       <div class='promocode-block'>
-        <label for="promocode">Promocode</label>
-        <input id="promocode" type="text">
+        <%= f.label :promocode %>
+        <%= f.text_field :promo_code %>
       </div>
     </div>
-      
 
       <div class='delivery-type'>
         <h4>Delivery type:</h4>
         <div>
-          <input type="radio" id="pickup-radio-button">
-          <label for="pickup-radio-button">Pickup</label>
+          <%= f.radio_button :delivery_type, 'Pickup' %>
+          <%= f.label :pickup %>
         </div>
-        
+
         <div>
-          <input type="radio" id="delivery-radio-button">
-          <label for="delivery-radio-button">Delivery</label>
+          <%= f.radio_button :delivery_type, 'Delivery' %>
+          <%= f.label :delivery %>
         </div>
       </div>
 
       <div class='pay-type'>
         <h4>Pay type:</h4>
         <div>
-          <input type="radio" id="cash-radio-button">
-          <label for="cash-radio-button">Cash</label>
+          <%= f.radio_button :pay_type, 'Cash' %>
+          <%= f.label :cash %>
         </div>
-        
+
         <div>
-          <input type="radio" id="terminal-radio-button">
-          <label for="terminal-radio-button">Terminal</label>
+          <%= f.radio_button :pay_type, 'Terminal' %>
+          <%= f.label :terminal %>
         </div>
       </div>
     </section>
@@ -83,3 +82,4 @@
     <% end %>
   </div>
 <% end %>
+
