@@ -1,20 +1,19 @@
 div.order {
-  padding-right: 1.5em;
-  padding-top: 5em;
-
+  display: flex;
+  flex-flow: row;
+  height: 500px;
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
   background-color: #F7F2F2;
   border: 2px solid#848484;
   border-radius: 30px;
 }
 #map2 {
+  border-radius: 15px;
   margin-bottom: 20px;
   margin-right: auto;
   margin-left: auto;
-  width: 596px;
-  height: 400px;
+  width: 450px;
+  height: 420px;
 }
 
 div.image-order {
@@ -22,57 +21,60 @@ div.image-order {
   text-align: center;
 }
 
-section.name {
-  padding-top: 1em;
-  padding-bottom: 1em;
+.name {
+  padding-top: 50px;
+  padding-bottom: 31px;
   display: flex;
-  justify-content: space-between;
-
-  div.first_name {
-    font-size: 15px;
-    font-weight: bold;
-    padding-left: 4.5em;
-    width: 300px;
-
-    .first-name-input{
-      width: 170px;
-    }
-  }
-
-  div.last_name {
-    font-size: 15px;
-    font-weight: bold;
-    width: 300px;
-    padding-left: 3em;
-
-    .last-name-input{
-      width: 170px;
-    }
-  }
+  justify-content: space-evenly;
+}
+.name div * {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 section.dropdown {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  margin-bottom: 31px;
   display: flex;
-  justify-content: space-between;
+  flex-flow: wrap;
+  justify-content: center;
 }
 
-div.user_number {
+.dropdown input {
+  vertical-align: middle;
+}
+
+.number-promo-fields {
+  width: 100%;
+  padding-bottom: 31px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.number-promo-fields div * {
+  display: block;
   font-size: 15px;
   font-weight: bold;
-  padding-left: 4.5em;
-
-  #user-number {
-    width: 100px;
-  }
 }
 
-div.pay-type {
-  padding-right: 5em;
+.promocode-block * {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
 }
-div.delivery-type {
-  padding-right: 3em;
+
+.pay-type {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+}
+.delivery-type {
+  display: flex;
+  flex-direction: row;
+}
+.delivery-type div,
+.pay-type div {
+  margin-left: 10px;
 }
 
 div.address {
@@ -81,18 +83,23 @@ div.address {
   text-align: center;
 }
 div.description {
-  text-align:  center;
-  padding-top: 1em;
+  text-align: center;
   padding-bottom: 1em;
 
   .description-input {
+    width: 80%;
     height: 150px;
     resize: none;
   }
 
 }
-
 div.order-button {
-  padding-bottom: 1em;
   text-align: center;
+}
+.user-information {
+  width: 50%;
+  border-right: 1px solid black;
+}
+.order-map {
+  width: 50%;
 }

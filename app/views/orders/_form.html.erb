@@ -5,33 +5,69 @@
     </script>
 <% end %>
 
-<%= form_with(model: order, local: true) do |f| %>
+<div class="user-information">
+  <%= form_with(model: order, local: true) do |f| %>
   <section class='name' >
     <div class='first_name'>
-      <%= f.label :first_name %><br>
-      <%= f.text_field :first_name, class: 'first-name-input' %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'name-input' %>
     </div>
 
     <div class='last_name'>
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name, class: 'last-name-input' %>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'name-input' %>
     </div>
   </section>
 
   <section class='dropdown' >
-    <div class='user_number'>
-      <%= f.label '+380' %>
-      <%= f.text_field :user_number, id: 'user-number', class: 'ui transparent input', placeholder: '687285102' %>
-    </div>
+    <div class='number-promo-fields'>
+      <div class='user-number'>
+        <label for="user-number">Phone number</label>
+        <input id="user-number" type="text">
+      </div>
 
-    <div class='delivery-type'>
-      <%= f.select :delivery_type, Order::DELIVERY_TYPE, { include_blank: 'Delivery type' } %>
+      <div class='promocode-block'>
+        <label for="promocode">Promocode</label>
+        <input id="promocode" type="text">
+      </div>
     </div>
+      
 
-    <div class='pay-type'>
-      <%= f.select :pay_type, Order::PAY_TYPE, { include_blank: 'Pay type' } %>
-    </div>
-  </section>
+      <div class='delivery-type'>
+        <h4>Delivery type:</h4>
+        <div>
+          <input type="radio" id="pickup-radio-button">
+          <label for="pickup-radio-button">Pickup</label>
+        </div>
+        
+        <div>
+          <input type="radio" id="delivery-radio-button">
+          <label for="delivery-radio-button">Delivery</label>
+        </div>
+      </div>
+
+      <div class='pay-type'>
+        <h4>Pay type:</h4>
+        <div>
+          <input type="radio" id="cash-radio-button">
+          <label for="cash-radio-button">Cash</label>
+        </div>
+        
+        <div>
+          <input type="radio" id="terminal-radio-button">
+          <label for="terminal-radio-button">Terminal</label>
+        </div>
+      </div>
+    </section>
+
+  <div class='description'>
+    <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
+  </div>
+
+  <div class='order-button'>
+    <%= f.submit nil, class: 'ui inverted orange button' %>
+  </div>
+</div>
 
   <div class='order-map'>
       <%= f.fields_for :place_attributes, order.place do |form| %>
@@ -45,13 +81,5 @@
 
         <div id="map2"></div>
     <% end %>
-  </div>
-
-  <div class='description'>
-    <%= f.text_area :description, class: 'description-input', placeholder: 'Write all as you want' %>
-  </div>
-
-  <div class='order-button'>
-    <%= f.submit %>
   </div>
 <% end %>
