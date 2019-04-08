@@ -15,6 +15,11 @@
 
   <div class='delivery'>
     <% if current_user %>
+      <%= link_to user_path(current_user), style: 'text-decoration: none' do %>
+        <%= semantic_icon('user outline') %>
+        Profile
+      <% end %>
+
       <%= link_to logout_path, style: 'text-decoration: none' do %>
         <%= semantic_icon('heart') %>
         Favorites
