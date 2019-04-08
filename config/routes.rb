@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :confirm_email
       get :order_list
       get :send_confirm_email
+      patch :change_receipt_status
     end
   end
 

@@ -1,3 +1,5 @@
 <h1>User info</h1>
 
-Нужно подтвердить <%= link_to 'подтвердить', send_confirm_email_user_path %> ваш email.
+Нужно <%= link_to 'подтвердить', send_confirm_email_user_path %> ваш email.
+
+Получать квитанцию: <%= link_to @user.change_get_receipt_status, change_receipt_status_user_path %>
