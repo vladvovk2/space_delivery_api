@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get :confirm_email
       get :order_list
+      get :send_confirm_email
     end
   end
 
