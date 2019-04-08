@@ -13,27 +13,39 @@
     <% end %>
   </div>
 
-  <div class='delivery'>
+  <div class='cart'>
+    <%= link_to cart_path(current_cart), style: 'text-decoration: none' do %>
+      <%= semantic_icon('cart arrow down') %>
+      <%= number_to_currency current_cart.total_price %>
+    <% end %>
+  </div>
+
+  <div class='profile'>
     <% if current_user %>
       <%= link_to user_path(current_user), style: 'text-decoration: none' do %>
         <%= semantic_icon('user outline') %>
         Profile
       <% end %>
-
-      <%= link_to logout_path, style: 'text-decoration: none' do %>
-        <%= semantic_icon('heart') %>
-        Favorites
-      <% end %>
-
-      <%= link_to order_list_user_path(current_user), style: 'text-decoration: none' do %>
-        <%= semantic_icon('clipboard list') %>
-        Orders
-      <% end %>
-
-      <%= link_to logout_path, style: 'text-decoration: none' do %>
-        <%= semantic_icon('sign-out') %>
-        Logout
-      <% end %>
+      <ol class="sub-menu">
+        <li class="menu-item">
+          <%= link_to logout_path, style: 'text-decoration: none' do %>
+            <%= semantic_icon('heart') %>
+            <!-- Favorites -->
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to order_list_user_path(current_user), style: 'text-decoration: none' do %>
+            <%= semantic_icon('clipboard list') %>
+            <!-- Orders -->
+          <% end %>
+        </li>
+        <li class="menu-item">
+          <%= link_to logout_path, style: 'text-decoration: none' do %>
+            <%= semantic_icon('sign-out') %>
+            <!-- Logout -->
+          <% end %>
+        </li>
+      </ol>
 
       <% else %>
 
@@ -42,13 +54,6 @@
         Login
       <% end %>
 
-    <% end %>
-  </div>
-
-  <div class='cart'>
-    <%= link_to cart_path(current_cart), style: 'text-decoration: none' do %>
-      <%= semantic_icon('cart arrow down') %>
-      <%= number_to_currency current_cart.total_price %>
     <% end %>
   </div>
 </div>
