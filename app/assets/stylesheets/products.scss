@@ -41,6 +41,7 @@
   border: none;
   border-radius: 0 0 12px 12px;
 }
+
 .tabcontent > * {
   margin-top: 25px;
   margin-left: 5px;
@@ -58,11 +59,27 @@
   to {opacity: 1;}
 }
 
+.single-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: #DCDCDC;
+  height: 84px;
+  width: 296px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 0 0 12px 12px;
+}
+
+.single-content > * {
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
 .product {
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
   position: relative;
   width: 270px;
-  height: 410px;
+  height: 390px;
   border: 2px solid #848484;
   border-radius: 15px;
   background-color: white;
