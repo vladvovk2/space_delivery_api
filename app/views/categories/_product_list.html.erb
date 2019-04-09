@@ -26,17 +26,17 @@
               <%= product_type.weight %> гр.
             </div>
             <div class="price">
-              <%= product_type.price %>$
+              <%= number_to_currency product_type.price %>
             </div>
             <div class="add-to-cart-icon">
               <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
-                <%= semantic_icon('cart arrow down') %>
+                <%= semantic_icon('black cart arrow down') %>
               <% end %>
             </div>
           </div>
         <% end %>
       </div>
-      
+
       <script>
         document.getElementsByClassName("defaultOpen")[0].click();
 
