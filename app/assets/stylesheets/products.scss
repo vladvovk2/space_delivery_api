@@ -6,17 +6,18 @@
 }
 
 .tabs .tablinks {
-  width: 33.33%;
+  margin: 3px 3px 0;
+  width: 31%;
   background-color: #c7c6c4;
   flex-grow: 1;
   border: none;
   border: 1px solid #848484;
-  border-bottom: 2px solid #848484;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   text-align: center;
   border-radius: 10px 10px 0 0;
+  border-bottom: 1px #c7c6c4;
 }
 
 .tabs .tablinks:hover {
@@ -24,6 +25,7 @@
 }
 
 .tabs .tablinks.active {
+  box-shadow: 1px 0 4px rgba(0,0,0,0.5);
   background-color: #DCDCDC;
   border: 2px solid #848484;
   border-bottom: 1px solid #DCDCDC;
@@ -37,7 +39,7 @@
   width: 296px;
   padding: 6px 12px;
   border: none;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 12px 12px;
 }
 .tabcontent > * {
   margin-top: 25px;
@@ -70,6 +72,19 @@
   flex-basis: 300px;
   flex-shrink: 0;
   margin: 20px;
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+
+.product:hover {
+  box-shadow:
+    1px 1px 1px 1px #a0a3a0f8;
+
+  -webkit-transform: translateX(-2px);
+  transform: translateX(-2px);
 }
 
 .title {
@@ -90,7 +105,17 @@
   text-align: center;
 }
 .add-to-cart-icon {
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
   font-size: 20px;
+}
+
+.add-to-cart-icon:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 #tabs-content {
   position: absolute;
