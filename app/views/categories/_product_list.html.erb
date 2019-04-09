@@ -1,25 +1,30 @@
 <% provide :head_tags do %>
-    <meta name='turbolinks-visit-control' content='reload'>
+  <meta name='turbolinks-visit-control' content='reload'>
 <% end %>
 
 <div class='list'>
   <% @category.products.each do |product| %>
     <div class='product'>
-      <div class='title'>
-        <%= product.title %>
-      </div>
-      <div class='favorite'>
-        <%= link_to make_favorite_favorite_path(product), method: :post, remote: true do %>
-          <% if current_user.favorites.find_by(product_id: product.id).present? %>
-            <p id='like-<%= product.id %>'><%= semantic_icon('red heart') %></p>
-          <% else %>
-            <p id='dislike-<%= product.id %>'><%= semantic_icon('black heart outline')%></p>
+      <div class='product-header'>
+        <div class='title'>
+          <%= product.title %>
+        </div>
+
+        <div class='favorite'>
+          <%= link_to make_favorite_favorite_path(product), method: :post, remote: true do %>
+            <% if current_user.favorites.find_by(product_id: product.id).present? %>
+              <%= semantic_icon('red heart') %>
+            <% else %>
+              <%= semantic_icon('black heart outline')%>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
+
       <div class='image'>
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
+
       <div id="tabs-content">
         <% if product.product_types.count != 1 %>
           <%= render 'product_types/multi_product_type', product: product %>

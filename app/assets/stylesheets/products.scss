@@ -103,6 +103,10 @@
   -webkit-transform: translateX(-2px);
   transform: translateX(-2px);
 }
+.product-header {
+  display: flex;
+  justify-content: center;
+}
 
 .title {
   text-align: center;
@@ -111,6 +115,23 @@
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 25px;
+}
+
+.favorite {
+  font-size: 20px;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  position: absolute;
+  right: 10px;
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+.favorite:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .image {
