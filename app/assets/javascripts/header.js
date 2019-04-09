@@ -1,10 +1,15 @@
 $(document).ready(function(){
- // alert($(".sub-menu").height());
-  if ($(".sub-menu").css("height") === "0") {
-    $(".profile").css("background-color", "red");
-  }
-  //$("div").hide();
-  // if ($(".sub-menu").attr("height") === 0) {
-  //   $(".profile").attr("background-color", "red");
-  // }
+  var timeOut;
+
+  $(".profile").mouseleave(function() {
+    timeOut = setTimeout(function() {
+     $(".profile").css("background-color", "transparent");
+     $(".profile .content").css("visibility", "visible");
+    }, 305);
+  });
+  $(".profile, .profile .nav-icon, .profile .content").mouseenter(function() {
+    clearTimeout(timeOut);
+    $(".profile").css("background-color", "#C0C0C0");
+    $(".profile .content").css("visibility", "hidden");
+  });
 });

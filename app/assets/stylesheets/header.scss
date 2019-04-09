@@ -25,12 +25,14 @@ div.nav-bar {
   border-radius: 15px;
   z-index: 0;
 }
-.nav-bar .profile:hover {
+.nav-bar .profile {
+  //width: 40px;
   border-radius: 15px 15px 0 0;
 }
-.nav-bar .profile:hover .content {
-  visibility: hidden;
-}
+
+// .nav-bar .profile:hover .content {
+//   visibility: hidden;
+// }
 
 .nav-bar a {
   position: relative;
