@@ -29,7 +29,7 @@
               <%= number_to_currency product_type.price %>
             </div>
             <div class="add-to-cart-icon">
-              <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
+              <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none' do %>
                 <%= semantic_icon('black cart arrow down') %>
               <% end %>
             </div>
