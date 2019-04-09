@@ -51,20 +51,23 @@
       <ol class="sub-menu">
         <li class="menu-item">
           <%= link_to logout_path, style: 'text-decoration: none' do %>
-            <%= semantic_icon('heart') %>
-            <!-- Favorites -->
+            <div class="nav-menu-icon">
+             <%= semantic_icon('heart') %>
+            </div>
           <% end %>
         </li>
         <li class="menu-item">
           <%= link_to order_list_user_path(current_user), style: 'text-decoration: none' do %>
-            <%= semantic_icon('clipboard list') %>
-            <!-- Orders -->
+            <div class="nav-menu-icon">
+              <%= semantic_icon('clipboard list') %>
+            </div>
           <% end %>
         </li>
         <li class="menu-item">
           <%= link_to logout_path, style: 'text-decoration: none' do %>
-            <%= semantic_icon('sign-out') %>
-            <!-- Logout -->
+            <div class="nav-menu-icon">
+              <%= semantic_icon('sign-out') %>
+            </div>
           <% end %>
         </li>
       </ol>
