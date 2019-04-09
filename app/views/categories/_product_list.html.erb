@@ -8,6 +8,15 @@
       <div class='title'>
         <%= product.title %>
       </div>
+      <div class='favorite'>
+        <%= link_to make_favorite_favorite_path(product), method: :post, remote: true do %>
+          <% if current_user.favorites.find_by(product_id: product.id).present? %>
+            <p id='like-<%= product.id %>'><%= semantic_icon('red heart') %></p>
+          <% else %>
+            <p id='dislike-<%= product.id %>'><%= semantic_icon('black heart outline')%></p>
+          <% end %>
+        <% end %>
+      </div>
       <div class='image'>
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
