@@ -1,0 +1,32 @@
+<div class="tabs">
+  <% product.product_types.each do |product_type| %>
+    <div class="tablinks defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
+      <%= product_type.proportion %>
+    </div>
+  <% end %>
+</div>
+
+<% product.product_types.each do |product_type| %>
+  <div id="<%= product_type.id %>" class="tabcontent">
+    <div class="weight">
+      <%= product_type.weight %> гр.
+    </div>
+    <div class="price">
+      <%= number_to_currency product_type.price %>
+    </div>
+    <div class="add-to-cart-icon">
+      <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none' do %>
+        <%= semantic_icon('black shopping basket') %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  document.getElementsByClassName("defaultOpen")[0].click();
+
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+  }
+</script>

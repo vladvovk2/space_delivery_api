@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   root 'blogs#index'
 
-  resources :places
   resources :orders
   resources :blogs
   resources :sessions
@@ -24,7 +23,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories do
+  resources :favorites do
+    member { post :make_favorite }
+  end
+
+  resources :categories, only: :show do
     resources :products, only: :show
   end
 
@@ -39,7 +42,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get :signup, to: 'users#new',        as: :signup
-  get :login,  to: 'sessions#new',     as: :login
-  get :logout, to: 'sessions#destroy', as: :logout
+  get :signup,   to: 'users#new',        as: :signup
+  get :login,    to: 'sessions#new',     as: :login
+  get :logout,   to: 'sessions#destroy', as: :logout
 end

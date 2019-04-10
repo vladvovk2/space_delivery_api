@@ -1,3 +1,5 @@
 $('.destroy').bind('ajax:success', function(){
   $(this).closest('tr').fadeOut();
 })
+
+$("#cart-icon").html('<%=  number_to_currency current_cart.total_price %>');

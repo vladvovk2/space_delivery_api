@@ -1,51 +1,37 @@
 <% provide :head_tags do %>
-    <meta name='turbolinks-visit-control' content='reload'>
+  <meta name='turbolinks-visit-control' content='reload'>
 <% end %>
 
 <div class='list'>
   <% @category.products.each do |product| %>
     <div class='product'>
-      <div class='title'>
-        <%= product.title %>
+      <div class='product-header'>
+        <div class='title'>
+          <%= product.title %>
+        </div>
+
+        <div class='favorite'>
+          <%= link_to make_favorite_favorite_path(product), method: :post, remote: true do %>
+            <% if current_user.favorites.find_by(product_id: product.id).present? %>
+              <%= semantic_icon('red heart') %>
+            <% else %>
+              <%= semantic_icon('black heart outline')%>
+            <% end %>
+          <% end %>
+        </div>
       </div>
+
       <div class='image'>
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
-      <div id="tabs-content">
-        <div class="tabs">
-          <% product.product_types.each do |product_type| %>
-            <div class="tablinks defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
-             <%= product_type.proportion %>
-            </div>
-          <% end %>
-        </div>
 
-        <% product.product_types.each do |product_type| %>
-          <div id="<%= product_type.id %>" class="tabcontent">
-            <div class="weight">
-              <%= product_type.weight %> гр.
-            </div>
-            <div class="price">
-              <%= product_type.price %>$
-            </div>
-            <div class="add-to-cart-icon">
-              <%= link_to add_product_cart_path(product_type), method: :put, style: 'text-decoration: none' do %>
-                <%= semantic_icon('cart arrow down') %>
-              <% end %>
-            </div>
-          </div>
+      <div id="tabs-content">
+        <% if product.product_types.count != 1 %>
+          <%= render 'product_types/multi_product_type', product: product %>
+        <% else %>
+          <%= render 'product_types/single_product_type', product: product %>
         <% end %>
       </div>
-      
-      <script>
-        document.getElementsByClassName("defaultOpen")[0].click();
-
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
-        }
-      </script>
-
     </div>
   <% end %>
 </div>

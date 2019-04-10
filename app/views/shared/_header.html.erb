@@ -29,7 +29,7 @@
         <%= semantic_icon('cart arrow down') %>
       </div>
       
-      <div class="content">
+      <div class="content" id='cart-icon'>
         <%= number_to_currency current_cart.total_price %>
       </div>
     <% end %>
@@ -84,6 +84,6 @@
         </div>
       <% end %>
 
-    <% end %>
+    <%end%>
   </div>
 </div>
