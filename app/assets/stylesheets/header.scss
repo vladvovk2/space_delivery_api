@@ -24,15 +24,7 @@ div.nav-bar {
 .nav-bar div:hover {
   background-color: #C0C0C0;
   border-radius: 15px;
-  // z-index: 0;
 }
-
-
-// .profile a,
-
-// .nav-bar .profile:hover .content {
-//   visibility: hidden;
-// }
 
 .nav-bar a {
   position: relative;
@@ -78,18 +70,13 @@ ol {
 }
 .menu-item {
   display: flex;
-  // align-items: center;
   justify-content: center;
-  //border-top: 2px solid black;
   position: relative;
   z-index: 1;
   transition: background 0.3s ease-in-out;
   background-color: #C0C0C0;
 }
 
-// .profile .sub-menu {
-//   transform: rotateX(0deg);
-// }
 .profile:hover .sub-menu {
   transform: rotateX(0deg);
 }
@@ -113,28 +100,27 @@ ol {
 
 .sub-menu {
   position: absolute;
-  top: 80%;
+  top: 70%;
   width: 100%;
   transform-origin: top;
   transform: rotateX(-90deg);
   transition: transform 0.3s linear;
-  // background-color: #C0C0C0;
-  // border-radius: 0 0 50% 50%;
 }
 
 .menu-item:last-child {
   border-radius: 0 0 50% 50%;
-  // height: ;
 }
 .nav-menu-icon {
   margin-top: 20px;
 }
-// .profile i {
-//   bakcground-
-//   position: relative;
-//   left: 30px;
-// }
+.profile i {
+  position: relative;
+  left: 2px;
+}
+.profile .nav-menu-icon i {
+  top: 12px;
+}
 .profile i::after {
-  left: 11px;
+  left: -7px;
 }
 
