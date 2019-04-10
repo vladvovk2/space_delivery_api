@@ -7,6 +7,8 @@ class CartsController < ApplicationController
     product = ProductType.find(params[:id])
     current_cart.add_product(product).try(:save)
 
-    redirect_to current_cart
+    respond_to do |format|
+      format.js
+    end
   end
 end

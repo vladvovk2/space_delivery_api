@@ -1,38 +1,111 @@
-div.line-item {
+.line-item {
+  height: 80px;
+  width: 700px;
   display: flex;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  border: 1px solid #848484;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
 }
 
-div.title-line-item {
+.line-item:hover {
+  box-shadow:
+    1px 1px 1px 1px #a0a3a0f8;
+
+  -webkit-transform: translateX(-2px);
+  transform: translateX(-2px);
+}
+
+.cart-image {
+  width: 15%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 20px;
+}
+
+.cart-title {
+  width: 40%;
+  margin-top: auto;
+  margin-bottom: auto;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 15px;
 }
 
-section.line-item-buttons {
+.quantity-buttons {
+  width: 20%;
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-div.down-item-buttons {
-  font-size: 25px;
+.quantity-buttons .quantity-buttons-left {
+  font-size: 20px;
+  margin-left: 20px;
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
 }
 
-div.quantity-line-item {
-  font-weight: bold;
-  font-size: 17px;
+.quantity-buttons-left:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
-div.up-item-buttons {
-  font-size: 25px;
-  margin-left: 3px;
+.quantity-buttons .quantity-buttons-right {
+  font-size: 20px;
+  margin-right: 20px;
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
 }
 
-div.price-line-item {
+.quantity-buttons-right:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.quantity-buttons .line-item-quantity {
   text-align: center;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 15px;
 }
 
-div.delete-line-item {
-  font-size: 25px;
+.cart-total-price {
+  width: 20%;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.cart-delete-item {
+  width: 5%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+  font-size: 20px;
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+
+.cart-delete-item:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }

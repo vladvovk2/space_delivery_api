@@ -10,8 +10,9 @@ function initMap2() {
   }
   var myCoords = new google.maps.LatLng(lat, lng);
   var mapOptions = {
-  center: myCoords,
-  zoom: 14
+    center: myCoords,
+    zoom: 14,
+    disableDefaultUI: true
   };
   var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
   var marker = new google.maps.Marker({
@@ -42,4 +43,16 @@ function initMap2() {
   marker.addListener('dragend', function() {
       map.panTo(marker.getPosition());
   });
+}
+
+$( document ).on('turbolinks:load', function() {
+  resizeTextArea();
+  $( window ).resize(resizeTextArea);
+});
+
+function resizeTextArea() {
+  var elementsDistance = ( $( ".last_name" ).offset().left
+                        + $( ".last_name" ).width() )
+                        - $( ".first_name" ).offset().left;
+  $( ".description-input" ).width(elementsDistance);
 }

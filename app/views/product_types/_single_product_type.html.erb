@@ -1,0 +1,15 @@
+<div class='single-content'>
+  <% product.product_types.each do |product_type| %>
+    <div class="weight">
+      <%= product_type.weight %> гр.
+    </div>
+    <div class="price">
+      <%= number_to_currency product_type.price %>
+    </div>
+    <div class="add-to-cart-icon">
+      <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none' do %>
+        <%= semantic_icon('black shopping basket') %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

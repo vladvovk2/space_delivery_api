@@ -1,50 +1,38 @@
-<tr>
-  <div class='line-item'>
-    <td class='one'>
-      <div class='image-line-item'>
-        <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
-      </div>
-    </td>
-
-    <td class='two'>
-      <div class='title-line-item'>
-        <%= line_item.product_type.product.title %> (
-        <%= line_item.product_type.weight %>грам )
-      </div>
-    </td>
-
-    <td class='three'>
-      <section class='line-item-buttons'>
-        <div class='down-item-buttons'>
-          <%= link_to quantity_reduce_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
-            <i class="arrow alternate circle left outline icon"></i>
-          <% end %>
-        </div>
-
-        <div class='quantity-line-item'>
-          <%= line_item.quantity %>
-        </div>
-
-        <div class='up-item-buttons'>
-          <%= link_to quantity_increase_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
-            <i class="arrow alternate circle right outline icon"></i>
-          <% end %>
-        </div>
-      </section>
-    </td>
-
-    <td class='four'>
-      <div class='price-line-item'>
-        <%= number_to_currency(line_item.total_price) %>
-      </div>
-    </td>
-
-    <td class='five'>
-      <div class='delete-line-item'>
-        <%= link_to line_item, method: :delete, remote: true, class: 'destroy' do %>
-          <i class="trash alternate outline icon"></i>
-        <% end %>
-      </div>
-    </td>
+<div class='line-item'>
+  <div class='cart-image'>
+    <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
   </div>
-</tr>
+
+  <div class='cart-title'>
+    <%= line_item.product_type.product.title %> (
+    <%= line_item.product_type.weight %>грам )
+  </div>
+
+  <section class='quantity-buttons'>
+    <div class='quantity-buttons-left'>
+      <%= link_to quantity_reduce_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
+        <i class="arrow alternate circle left outline icon"></i>
+      <% end %>
+    </div>
+
+    <div class='line-item-quantity'>
+      <%= line_item.quantity %>
+    </div>
+
+    <div class='quantity-buttons-right'>
+      <%= link_to quantity_increase_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
+        <i class="arrow alternate circle right outline icon"></i>
+      <% end %>
+    </div>
+  </section>
+
+  <div class='cart-total-price'>
+    <%= number_to_currency(line_item.total_price) %>
+  </div>
+
+  <div class='cart-delete-item'>
+    <%= link_to line_item, method: :delete, remote: true, class: 'destroy' do %>
+      <i class="trash alternate outline icon"></i>
+    <% end %>
+  </div>
+</div>
