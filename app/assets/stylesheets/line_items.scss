@@ -9,8 +9,8 @@
   margin-bottom: 20px;
   position: relative;
   border: 1px solid #ffffff;
-  box-shadow: 0 0 20px rgba(246, 246, 246, 0.479);
-  background-color: rgba(151, 150, 150, 0.554);
+  box-shadow: 0 0 20px rgba(190, 189, 189, 0.479);
+  background-color: rgba(77, 77, 77, 0.705);
   border-radius: 5px;
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
@@ -83,6 +83,7 @@
   text-align: center;
   font-weight: bold;
   font-size: 15px;
+  color: white;
 }
 
 .cart-total-price {
@@ -92,6 +93,7 @@
   text-align: center;
   font-weight: bold;
   font-size: 15px;
+  color: white;
 }
 
 .cart-delete-item {

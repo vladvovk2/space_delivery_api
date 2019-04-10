@@ -10,8 +10,8 @@
 
   <section class='quantity-buttons'>
     <div class='quantity-buttons-left'>
-      <%= link_to quantity_reduce_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
-        <i class="arrow alternate circle left outline icon"></i>
+      <%= link_to quantity_reduce_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none; color: white;' do %>
+        <%= semantic_icon('arrow alternate circle left outline icon') %>
       <% end %>
     </div>
 
@@ -20,8 +20,8 @@
     </div>
 
     <div class='quantity-buttons-right'>
-      <%= link_to quantity_increase_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none' do %>
-        <i class="arrow alternate circle right outline icon"></i>
+      <%= link_to quantity_increase_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none; color: white;' do %>
+        <%= semantic_icon('arrow alternate circle right outline icon') %>
       <% end %>
     </div>
   </section>
@@ -31,8 +31,8 @@
   </div>
 
   <div class='cart-delete-item'>
-    <%= link_to line_item, method: :delete, remote: true, class: 'destroy' do %>
-      <i class="trash alternate outline icon"></i>
+    <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
+      <%= semantic_icon('trash alternate outline icon') %>
     <% end %>
   </div>
 </div>
