@@ -28,7 +28,7 @@
       <div class="nav-icon">
         <%= semantic_icon('cart arrow down') %>
       </div>
-      
+
       <div class="content" id='cart-icon'>
         <%= number_to_currency current_cart.total_price %>
       </div>
@@ -71,7 +71,6 @@
           <% end %>
         </li>
       </ol>
-      
       <% else %>
 
       <%= link_to login_path, style: 'text-decoration: none' do %>
