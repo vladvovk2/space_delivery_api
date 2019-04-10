@@ -10,6 +10,6 @@ $(document).ready(function(){
   $(".profile, .profile .nav-icon, .profile .content").mouseenter(function() {
     clearTimeout(timeOut);
     $(".profile").css("background-color", "#C0C0C0");
-    $(".profile .content").css("visibility", "hidden");
+    $(".profile a .content").css("visibility", "hidden");
   });
 });
