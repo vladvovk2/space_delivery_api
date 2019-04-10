@@ -6,13 +6,15 @@ div.nav-bar {
   top: 0;
   left: 8em;
   right: 8em;
+  height: 80px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   z-index: 1;
 
   background-color: white;
 
-  margin-top: 5px;
+  //padding-top: 10px;
   padding-bottom: 2px;
 }
 .nav-bar div {
@@ -28,7 +30,7 @@ div.nav-bar {
 
 .nav-bar a {
   position: relative;
-  top: 5px;
+  //top: 5px;
   display: inline-block;
   width: 80px;
   height: 65px;
@@ -95,6 +97,8 @@ ol {
   background-color: transparent;
 }
 .profile a {
+  top: 4px;
+  height: 69px;
   width: 60px;
   margin-right: 0;
 }

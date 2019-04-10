@@ -1,4 +1,4 @@
-$( window ).on( "load", function(){
+$(document).ready(function(){
   var timeOut;
   alert("hello" + $(".profile a .content").css("visibility"));
 
