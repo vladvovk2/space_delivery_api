@@ -1,6 +1,5 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   var timeOut;
-  alert("hello" + $(".profile a .content").css("visibility"));
 
   $(".profile").mouseleave(function() {
     timeOut = setTimeout(function() {
