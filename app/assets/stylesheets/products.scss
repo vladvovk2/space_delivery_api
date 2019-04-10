@@ -6,6 +6,8 @@
 }
 
 .tabs .tablinks {
+  font-size: 12px;
+  font-weight: bold;
   margin: 3px 3px 0;
   width: 31%;
   background-color: #c7c6c4;
@@ -32,6 +34,8 @@
 }
 
 .tabcontent {
+  font-size: 20px;
+  font-weight: bold;
   display: none;
   justify-content: space-between;
   background-color: #DCDCDC;
@@ -60,9 +64,10 @@
 }
 
 .single-content {
+  font-size: 20px;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
-  background-color: #DCDCDC;
   height: 84px;
   width: 296px;
   padding: 6px 12px;
@@ -143,11 +148,12 @@
   text-align: center;
 }
 .add-to-cart-icon {
+  font-size: 22px;
+
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
   transition: all 0.3s ease;
-  font-size: 20px;
 }
 
 .add-to-cart-icon:hover{
