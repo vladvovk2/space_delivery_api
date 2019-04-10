@@ -1,5 +1,5 @@
-$('.destroy').bind('ajax:success', function(){
-  $(this).closest('tr').fadeOut();
+$('.line-item').bind('ajax:success', function(){
+  $(this).closest('div').fadeOut();
 })
 
 $("#cart-icon").html('<%=  number_to_currency current_cart.total_price %>');
