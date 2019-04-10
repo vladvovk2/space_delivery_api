@@ -44,3 +44,15 @@ function initMap2() {
       map.panTo(marker.getPosition());
   });
 }
+
+$( document ).on('turbolinks:load', function() {
+  resizeTextArea();
+  $( window ).resize(resizeTextArea);
+});
+
+function resizeTextArea() {
+  var elementsDistance = ( $( ".last_name" ).offset().left
+                        + $( ".last_name" ).width() )
+                        - $( ".first_name" ).offset().left;
+  $( ".description-input" ).width(elementsDistance);
+}
