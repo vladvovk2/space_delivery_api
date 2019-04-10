@@ -1,17 +1,138 @@
+div {
+  font-size: 18px;
+}
 div.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 8em;
+  right: 8em;
+  height: 80px;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 3em;
+  align-items: flex-end;
+  z-index: 1;
+
+  background-color: white;
+
+  padding-bottom: 2px;
+}
+.nav-bar div {
+  position: relative;
+  text-align: center;
+  z-index: 0;
 }
 
-div.blog {
-  font-size: 25px;
+.nav-bar div:hover {
+  background-color: #C0C0C0;
+  border-radius: 15px;
 }
 
-div.delivery {
-  font-size: 25px;
+.nav-bar a {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 65px;
+  color: black;
+}
+.nav-bar a:hover {
+  color: black;
+  font-weight: 600;
 }
 
-div.cart {
-  font-size: 25px;
+i {
+  color: black;
+}
+.nav-icon {
+  margin-top: 15px;
+}
+.nav-bar i::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -9px;
+  left: 21px;
+  background-color: #DCDCDC;
+  border-radius: 100%;
+  z-index: -1;
+}
+//Added because all icons are aligned except 'Cart' 
+.cart i::after {
+  left: 22px;
+}
+.content {
+  margin-top: 8px;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu-item {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: background 0.3s ease-in-out;
+  background-color: #C0C0C0;
+}
+
+.profile:hover .sub-menu {
+  transform: rotateX(0deg);
+}
+.nav-bar .profile {
+  width: 60px;
+  border-radius: 50% 50% 0 0;
+}
+.nav-bar .profile:hover {
+  border-radius: 50% 50% 0 0;
+}
+.profile div {
+  width: 60px;
+}
+.profile div:hover {
+  background-color: transparent;
+}
+.profile a {
+  top: 4px;
+  height: 69px;
+  width: 60px;
+  margin-right: 0;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  transition: transform 0.3s linear;
+}
+
+.menu-item:last-child {
+  border-radius: 0 0 50% 50%;
+}
+.nav-menu-icon {
+  margin-top: 20px;
+}
+.profile i {
+  position: relative;
+  left: 2px;
+}
+.profile .nav-menu-icon i {
+  top: 2px;
+}
+.profile i::after {
+  left: -7px;
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+.profile i:hover::after {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
