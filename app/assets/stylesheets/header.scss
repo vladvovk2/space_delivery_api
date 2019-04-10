@@ -12,7 +12,7 @@ div.nav-bar {
 
   background-color: white;
 
-  padding-top: 10px;
+  margin-top: 5px;
   padding-bottom: 2px;
 }
 .nav-bar div {
@@ -28,6 +28,7 @@ div.nav-bar {
 
 .nav-bar a {
   position: relative;
+  top: 5px;
   display: inline-block;
   width: 80px;
   height: 65px;
@@ -100,7 +101,7 @@ ol {
 
 .sub-menu {
   position: absolute;
-  top: 70%;
+  top: 80%;
   width: 100%;
   transform-origin: top;
   transform: rotateX(-90deg);
@@ -118,9 +119,18 @@ ol {
   left: 2px;
 }
 .profile .nav-menu-icon i {
-  top: 12px;
+  top: 2px;
 }
 .profile i::after {
   left: -7px;
-}
 
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+.profile i:hover::after {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
