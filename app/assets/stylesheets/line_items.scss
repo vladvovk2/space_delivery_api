@@ -8,8 +8,9 @@
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
-  border: 1px solid #848484;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 20px rgba(246, 246, 246, 0.479);
+  background-color: rgba(151, 150, 150, 0.554);
   border-radius: 5px;
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
@@ -37,6 +38,7 @@
   margin-bottom: auto;
   font-weight: bold;
   font-size: 15px;
+  color: white;
 }
 
 .quantity-buttons {
