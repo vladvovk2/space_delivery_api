@@ -2,7 +2,7 @@
   <div class='blog'>
     <%= link_to root_path, style: 'text-decoration: none' do %>
       <div class="nav-icon">
-        <%= semantic_icon('newspaper') %>
+        <%= semantic_icon('black newspaper') %>
       </div>
 
       <div class="content">
@@ -14,7 +14,7 @@
   <div class='delivery'>
     <%= link_to category_path(@cate), style: 'text-decoration: none' do %>
       <div class="nav-icon">
-        <%= semantic_icon('shopping bag') %>
+        <%= semantic_icon('black shopping bag') %>
       </div>
 
       <div class="content">
@@ -26,7 +26,7 @@
   <div class='cart'>
     <%= link_to cart_path(current_cart), style: 'text-decoration: none' do %>
       <div class="nav-icon">
-        <%= semantic_icon('cart arrow down') %>
+        <%= semantic_icon('black cart arrow down') %>
       </div>
 
       <div class="content" id='cart-icon'>
@@ -40,7 +40,7 @@
 
       <%= link_to user_path(current_user), style: 'text-decoration: none' do %>
         <div class="nav-icon">
-          <%= semantic_icon('user outline') %>
+          <%= semantic_icon('black user outline') %>
         </div>
 
         <div class="content">
@@ -52,21 +52,21 @@
         <li class="menu-item">
           <%= link_to logout_path, style: 'text-decoration: none' do %>
             <div class="nav-menu-icon">
-             <%= semantic_icon('heart') %>
+             <%= semantic_icon('red heart') %>
             </div>
           <% end %>
         </li>
         <li class="menu-item">
           <%= link_to order_list_user_path(current_user), style: 'text-decoration: none' do %>
             <div class="nav-menu-icon">
-              <%= semantic_icon('clipboard list') %>
+              <%= semantic_icon('black clipboard list') %>
             </div>
           <% end %>
         </li>
         <li class="menu-item">
           <%= link_to logout_path, style: 'text-decoration: none' do %>
             <div class="nav-menu-icon">
-              <%= semantic_icon('sign-out') %>
+              <%= semantic_icon('black sign-out') %>
             </div>
           <% end %>
         </li>
