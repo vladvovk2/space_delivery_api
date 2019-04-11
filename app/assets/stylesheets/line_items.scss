@@ -12,6 +12,13 @@
   box-shadow: 0 0 20px rgba(190, 189, 189, 0.479);
   background-color: rgba(77, 77, 77, 0.705);
   border-radius: 5px;
+
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
   transition: all 0.3s ease;
@@ -25,20 +32,25 @@
   transform: translateX(-2px);
 }
 
-.cart-image {
+.line-item-image {
   width: 15%;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 20px;
 }
 
-.cart-title {
+.line-item-title {
   width: 40%;
   margin-top: auto;
   margin-bottom: auto;
   font-weight: bold;
   font-size: 15px;
   color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 }
 
 .quantity-buttons {
@@ -52,6 +64,13 @@
 .quantity-buttons .quantity-buttons-left {
   font-size: 20px;
   margin-left: 20px;
+
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
@@ -67,6 +86,13 @@
 .quantity-buttons .quantity-buttons-right {
   font-size: 20px;
   margin-right: 20px;
+
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
@@ -84,9 +110,14 @@
   font-weight: bold;
   font-size: 15px;
   color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 }
 
-.cart-total-price {
+.line-item-total-price {
   width: 20%;
   margin-top: auto;
   margin-bottom: auto;
@@ -94,9 +125,14 @@
   font-weight: bold;
   font-size: 15px;
   color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 }
 
-.cart-delete-item {
+.line-item-delete-item {
   width: 5%;
   margin-top: auto;
   margin-bottom: auto;
@@ -106,9 +142,14 @@
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
   transition: all 0.3s ease;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 }
 
-.cart-delete-item:hover {
+.line-item-delete-item:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);

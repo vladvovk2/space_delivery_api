@@ -1,9 +1,9 @@
 <div class='line-item'>
-  <div class='cart-image'>
+  <div class='line-item-image'>
     <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
   </div>
 
-  <div class='cart-title'>
+  <div class='line-item-title'>
     <%= line_item.product_type.product.title %> (
     <%= line_item.product_type.weight %>грам )
   </div>
@@ -26,11 +26,11 @@
     </div>
   </section>
 
-  <div class='cart-total-price'>
+  <div class='line-item-total-price'>
     <%= number_to_currency(line_item.total_price) %>
   </div>
 
-  <div class='cart-delete-item'>
+  <div class='line-item-delete-item'>
     <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
       <%= semantic_icon('trash alternate outline icon') %>
     <% end %>
