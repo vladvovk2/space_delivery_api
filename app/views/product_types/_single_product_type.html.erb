@@ -7,8 +7,8 @@
       <%= number_to_currency product_type.price %>
     </div>
     <div class="add-to-cart-icon">
-      <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none' do %>
-        <%= semantic_icon('black shopping basket') %>
+      <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
+        <%= semantic_icon('shopping basket') %>
       <% end %>
     </div>
   <% end %>

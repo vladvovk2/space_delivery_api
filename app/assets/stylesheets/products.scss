@@ -80,19 +80,27 @@
 }
 
 .product {
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
   position: relative;
   width: 270px;
   height: 390px;
-  border: 2px solid #848484;
-  border-radius: 15px;
-  background-color: white;
   display: inline-block;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin: 20px;
+
   flex-basis: 300px;
   flex-shrink: 0;
-  margin: 20px;
+
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  background-color: rgba(77, 77, 77, 0.705);
+
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3;
 
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
@@ -115,11 +123,17 @@
 
 .title {
   text-align: center;
-  color: #363333ed;
   margin-top: 20px;
   margin-bottom: 10px;
+
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 }
 
 .favorite {
@@ -128,11 +142,19 @@
   margin-bottom: 10px;
   position: absolute;
   right: 10px;
+
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
   transition: all 0.3s ease;
 }
+
 .favorite:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
@@ -140,15 +162,38 @@
 }
 
 .image {
-  margin: 20px 0 20px 0;
+  margin: 15px 0 20px 0;
   text-align: center;
 }
 
 .weight {
   text-align: center;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 }
+
+.price {
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+}
+
 .add-to-cart-icon {
   font-size: 22px;
+
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
 
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
@@ -161,6 +206,7 @@
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
+
 #tabs-content {
   position: absolute;
   bottom: 0;
