@@ -11,11 +11,11 @@
         </div>
 
         <div class='favorite'>
-          <%= link_to make_favorite_favorite_path(product), method: :post, remote: true do %>
+          <%= link_to make_favorite_favorite_path(product), method: :post, remote: true, style: 'color: white' do %>
             <% if current_user.favorites.find_by(product_id: product.id).present? %>
-              <%= semantic_icon('red heart') %>
+              <%= semantic_icon('heart') %>
             <% else %>
-              <%= semantic_icon('black heart outline')%>
+              <%= semantic_icon('heart outline')%>
             <% end %>
           <% end %>
         </div>

@@ -8,16 +8,17 @@
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
-  border: 1px solid #ffffff;
-  box-shadow: 0 0 20px rgba(190, 189, 189, 0.479);
+
+  letter-spacing: 1px;
   background-color: rgba(77, 77, 77, 0.705);
   border-radius: 5px;
-
+  border: 1px solid #ffffff;
   box-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #ac80a6,
-  0 0 10px #ac80a6;
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3;
 
   -moz-transition: all 0.3s ease;;
   -o-transition: all 0.3s ease;;
@@ -36,11 +37,11 @@
   width: 15%;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .line-item-title {
-  width: 40%;
+  width: 52%;
   margin-top: auto;
   margin-bottom: auto;
   font-weight: bold;
@@ -54,7 +55,7 @@
 }
 
 .quantity-buttons {
-  width: 20%;
+  width: 15%;
   display: flex;
   justify-content: space-between;
   margin-top: auto;
@@ -63,7 +64,7 @@
 
 .quantity-buttons .quantity-buttons-left {
   font-size: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
 
   text-shadow:
   0 0 1px #ffffff,
@@ -85,7 +86,7 @@
 
 .quantity-buttons .quantity-buttons-right {
   font-size: 20px;
-  margin-right: 20px;
+  margin-right: 5px;
 
   text-shadow:
   0 0 1px #ffffff,
@@ -118,7 +119,7 @@
 }
 
 .line-item-total-price {
-  width: 20%;
+  width: 13%;
   margin-top: auto;
   margin-bottom: auto;
   text-align: center;
@@ -136,7 +137,7 @@
   width: 5%;
   margin-top: auto;
   margin-bottom: auto;
-  margin-right: 20px;
+  margin-right: 15px;
   font-size: 20px;
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
