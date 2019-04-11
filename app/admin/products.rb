@@ -21,7 +21,7 @@ ActiveAdmin.register Product do
   index do
     id_column
     column :image do |product|
-      image_tag product.picture.image_name.url(:small) if product.picture.image_name.present?
+      image_tag product.picture.image_name.url(:small) if product.picture.present?
     end
     column :title
     column :category
@@ -43,7 +43,7 @@ ActiveAdmin.register Product do
       row :category
       row :description
       row :image do |product|
-        image_tag product.picture.image_name.url(:medium) if product.picture.image_name.present?
+        image_tag product.picture.image_name.url(:medium) if product.picture.present?
       end
       panel 'Product types' do
         table_for product.product_types do
