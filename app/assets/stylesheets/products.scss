@@ -9,40 +9,58 @@
   font-weight: bold;
   margin: 3px 3px 0;
   width: 31%;
-  background-color: #c7c6c4;
+  background-color: rgba(77, 77, 77, 0.342);
   flex-grow: 1;
   border: none;
-  border: 1px solid #848484;
+  border: 1px solid #f1f1f1;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   text-align: center;
   border-radius: 10px 10px 0 0;
   border-bottom: 1px #c7c6c4;
+
+  color: white;
+  font-weight: 2px;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff;
+
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #a19da1e3;
 }
 
 .tabs .tablinks:hover {
-  background-color: #cacbcd;
+  background-color: rgba(77, 77, 77, 0.671);
 }
 
 .tabs .tablinks.active {
-  box-shadow: 1px 0 4px rgba(0,0,0,0.5);
-  background-color: #DCDCDC;
-  border: 2px solid #848484;
-  border-bottom: 1px solid #DCDCDC;
+  background-color: rgba(77, 77, 77, 0.801);
+  border: 2px solid #ffffff;
+  border-bottom:  hidden;
+
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3;
 }
 
 .tabcontent {
-  font-size: 20px;
-  font-weight: bold;
+  background-color: rgba(77, 77, 77, 0.801);
   display: none;
   justify-content: space-between;
-  background-color: #DCDCDC;
   height: 84px;
   width: 296px;
   padding: 6px 12px;
+
   border: none;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 7px 7px;
+  border-top: 2px solid #ffffff;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3;
 }
 
 .tabcontent > * {
@@ -80,6 +98,7 @@
 }
 
 .product {
+  letter-spacing: 2px;
   position: relative;
   width: 270px;
   height: 390px;
@@ -92,7 +111,7 @@
   flex-shrink: 0;
 
   border: 2px solid #ffffff;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: rgba(77, 77, 77, 0.705);
 
   box-shadow:
@@ -127,13 +146,12 @@
   margin-bottom: 10px;
 
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   text-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #ac80a6,
-  0 0 10px #ac80a6;
+  0 0 5px #ac80a6;
 }
 
 .favorite {
@@ -146,8 +164,8 @@
   text-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #ac80a6,
-  0 0 10px #ac80a6;
+  0 0 5px #b960ad,
+  0 0 10px #b960ad;
 
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
@@ -172,8 +190,7 @@
   text-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #ac80a6,
-  0 0 10px #ac80a6;
+  0 0 5px #ac80a6;
 }
 
 .price {
@@ -181,8 +198,7 @@
   text-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #ac80a6,
-  0 0 10px #ac80a6;
+  0 0 5px #ac80a6;
 }
 
 .add-to-cart-icon {
@@ -192,8 +208,7 @@
   text-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #ac80a6,
-  0 0 10px #ac80a6;
+  0 0 5px #ac80a6;
 
   -webkit-transition: all 0.3s ease;;
   -moz-transition: all 0.3s ease;;
