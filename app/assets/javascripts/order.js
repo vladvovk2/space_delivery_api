@@ -246,5 +246,8 @@ function resizeTextArea() {
 }
 
 $(document).on('turbolinks:load', function () {
+  $('.name-input').attr('maxlength', '21');
   $('.user-number-input').attr('maxlength', '9');
+  $('.promocode-input').attr('maxlength', '21');
+  $('.description-input').attr('maxlength', '255');
 });
