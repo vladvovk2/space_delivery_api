@@ -32,32 +32,32 @@
       </div>
     </div>
 
-      <div class='delivery-type'>
-        <h4>Delivery type:</h4>
-        <div>
-          <%= f.radio_button :delivery_type, 'Pickup' %>
-          <%= f.label :pickup %>
-        </div>
-
-        <div>
-          <%= f.radio_button :delivery_type, 'Delivery' %>
-          <%= f.label :delivery %>
-        </div>
+    <div class='pay-type'>
+      <h3>Pay type:</h3>
+      <div>
+        <%= f.radio_button :pay_type, 'Cash' %>
+        <%= f.label :cash %>
       </div>
 
-      <div class='pay-type'>
-        <h4>Pay type:</h4>
-        <div>
-          <%= f.radio_button :pay_type, 'Cash' %>
-          <%= f.label :cash %>
-        </div>
-
-        <div>
-          <%= f.radio_button :pay_type, 'Terminal' %>
-          <%= f.label :terminal %>
-        </div>
+      <div>
+        <%= f.radio_button :pay_type, 'Terminal' %>
+        <%= f.label :terminal %>
       </div>
-    </section>
+    </div>
+
+    <div class='delivery-type'>
+      <h3>Delivery type:</h3>
+      <div>
+        <%= f.radio_button :delivery_type, 'Pickup' %>
+        <%= f.label :pickup %>
+      </div>
+
+      <div>
+        <%= f.radio_button :delivery_type, 'Delivery' %>
+        <%= f.label :delivery %>
+      </div>
+    </div>
+  </section>
 
   <div class='description'>
     <%= f.label :your_wishes %>
@@ -65,22 +65,22 @@
   </div>
 
   <div class='order-button'>
-    <%= f.submit nil, class: 'ui inverted orange button' %>
+    <%= f.submit 'Confirm', class: 'ui inverted button' %>
   </div>
 </div>
 
-  <div class='order-map'>
-      <%= f.fields_for :place_attributes, order.place do |form| %>
-        <%= form.text_field :latitude, style: 'visibility: hidden' %>
+<div class='order-map'>
+    <%= f.fields_for :place_attributes, order.place do |form| %>
+      <%= form.text_field :latitude, style: 'visibility: hidden' %>
 
-        <%= form.text_field :longitude, style: 'visibility: hidden' %>
+      <%= form.text_field :longitude, style: 'visibility: hidden' %>
 
-        <div class='address'>
-          <%= form.label 'Pull marker to your address in the map:' %>
-        </div>
+      <div class='address'>
+        <%= form.label 'Pull marker to your address in the map:' %>
+      </div>
 
-        <div id="map2"></div>
-    <% end %>
-  </div>
+      <div id="map2"></div>
+  <% end %>
+</div>
 <% end %>
 

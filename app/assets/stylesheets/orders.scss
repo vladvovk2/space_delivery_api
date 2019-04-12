@@ -20,12 +20,12 @@ div.order {
 }
 
 #map2 {
-  border-radius: 15px;
-  margin-bottom: 20px;
+  border-radius: 10px;
   margin-right: auto;
   margin-left: auto;
-  width: 450px;
-  height: 420px;
+  margin-bottom: 13px;
+  width: 550px;
+  height: 430px;
 }
 
 div.image-order {
@@ -115,27 +115,53 @@ section.dropdown {
   border-radius: 5px;
   border: 2px rgb(236, 240, 240) inset;
   background-color: rgba(77, 77, 77, 0.233);
+  text-decoration: none;
 }
+
 .pay-type {
   display: flex;
   flex-direction: row;
-  margin-left: 30px;
+  margin-right: 80px;
+  font-size: 35px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
 }
+
 .delivery-type {
   display: flex;
   flex-direction: row;
+  font-size: 20px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
+
 }
+
 .delivery-type div,
 
 .pay-type div {
-  margin-left: 10px;
+  font-size: 15px;
+  margin-left: 15px;
+  margin-top: 3px;
 }
 
 div.address {
-  font-size: 15px;
+  margin-bottom: 10px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
 }
+
 div.description {
   display: block;
   text-align: center;
