@@ -7,15 +7,15 @@
 
 <div class="user-information">
   <%= form_with(model: order, local: true) do |f| %>
-  <section class='name' >
+  <section class='name'>
     <div class='first_name'>
       <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: 'name-input' %>
+      <%= f.text_field :first_name, class: 'name-input', autocomplete: 'off' %>
     </div>
 
     <div class='last_name'>
       <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: 'name-input' %>
+      <%= f.text_field :last_name, class: 'name-input', autocomplete: 'off' %>
     </div>
   </section>
 
@@ -23,12 +23,12 @@
     <div class='number-promo-fields'>
       <div class='user-number'>
         <%= f.label :phone_number %>
-        <%= f.text_field :user_number, class: 'user-number-input' %>
+        <%= f.text_field :user_number, class: 'user-number-input', autocomplete: 'off' %>
       </div>
 
       <div class='promocode-block'>
         <%= f.label :promocode %>
-        <%= f.text_field :promo_code, class: 'promocode-input' %>
+        <%= f.text_field :promo_code, class: 'promocode-input', autocomplete: 'off' %>
       </div>
     </div>
 
