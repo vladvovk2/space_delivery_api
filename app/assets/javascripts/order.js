@@ -56,3 +56,7 @@ function resizeTextArea() {
                         - $( ".first_name" ).offset().left;
   $( ".description-input" ).width(elementsDistance);
 }
+
+$(document).on('turbolinks:load', function () {
+  $('.user-number-input').attr('maxlength', '9');
+});
