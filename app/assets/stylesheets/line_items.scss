@@ -9,7 +9,6 @@
   margin-bottom: 20px;
   position: relative;
 
-  letter-spacing: 1px;
   background-color: rgba(77, 77, 77, 0.705);
   border-radius: 5px;
   border: 1px solid #ffffff;
@@ -20,9 +19,9 @@
   0 0 10px #a19da1e3,
   0 0 15px #a19da1e3;
 
-  -moz-transition: all 0.3s ease;;
-  -o-transition: all 0.3s ease;;
-  transition: all 0.3s ease;
+  -moz-transition: all 0.2s ease;;
+  -o-transition: all 0.2s ease;;
+  transition: all 0.2s ease;
 }
 
 .line-item:hover {

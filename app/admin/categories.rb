@@ -15,7 +15,7 @@ ActiveAdmin.register Category do
   index do
     id_column
     column :image do |category|
-      image_tag category.picture.image_name.url(:small) if category.picture.image_name.present?
+      image_tag category.picture.image_name.url(:small) if category.picture.present?
     end
     column :title
     actions
@@ -25,7 +25,7 @@ ActiveAdmin.register Category do
     attributes_table do
       row :title
       row :image do |category|
-        image_tag category.picture.image_name.url(:medium) if category.picture.image_name.present?
+        image_tag category.picture.image_name.url(:medium) if category.picture.present?
       end
     end
   end

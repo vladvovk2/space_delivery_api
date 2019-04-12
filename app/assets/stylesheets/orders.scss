@@ -1,19 +1,32 @@
 div.order {
   display: flex;
   flex-flow: row;
-  height: 500px;
-  width: 100%;
+  height: 600px;
+  width: 1300px;
+  margin: auto;
+
   background-color: #F7F2F2;
-  border: 2px solid#848484;
-  border-radius: 30px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3,
+  0 0 30px #888588e3;
+
+  background-color: rgba(77, 77, 77, 0.609);
 }
+
 #map2 {
-  border-radius: 15px;
-  margin-bottom: 20px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
   margin-right: auto;
   margin-left: auto;
-  width: 450px;
-  height: 420px;
+  margin-bottom: 13px;
+  width: 550px;
+  height: 430px;
 }
 
 div.image-order {
@@ -29,8 +42,22 @@ div.image-order {
 }
 .name div * {
   display: block;
-  font-size: 15px;
+  text-align: center;
+  font-size: 20px;
   font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
+}
+
+.name-input {
+  height: 35px;
+  border-radius: 5px;
+  border: 2px rgb(236, 240, 240) inset;
+  background-color: rgba(77, 77, 77, 0.233);
 }
 
 section.dropdown {
@@ -38,6 +65,7 @@ section.dropdown {
   display: flex;
   flex-flow: wrap;
   justify-content: center;
+
 }
 
 .dropdown input {
@@ -50,15 +78,31 @@ section.dropdown {
   display: flex;
   justify-content: space-evenly;
 
-  #user-number{
-    width: 200px;
+  .user-number-input {
+    height: 35px;
+    border-radius: 5px;
+    border: 2px rgb(236, 240, 240) inset;
+    background-color: rgba(77, 77, 77, 0.233);
+
+    color: white;
+    text-shadow:
+    0 0 1px #ffffff,
+    0 0 2px #ffffff,
+    0 0 5px #ac80a6;
   }
 }
 
 .number-promo-fields div * {
   display: block;
-  font-size: 15px;
+  text-align: center;
+  font-size: 20px;
   font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
 }
 
 .promocode-block * {
@@ -67,43 +111,102 @@ section.dropdown {
   font-weight: bold;
 }
 
+.promocode-input {
+  height: 35px;
+  border-radius: 5px;
+  border: 2px rgb(236, 240, 240) inset;
+  background-color: rgba(77, 77, 77, 0.233);
+  text-decoration: none;
+}
+
 .pay-type {
   display: flex;
   flex-direction: row;
-  margin-left: 30px;
+  margin-right: 80px;
+  font-size: 35px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
 }
+
 .delivery-type {
   display: flex;
   flex-direction: row;
+  font-size: 20px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
+
 }
+
 .delivery-type div,
 
 .pay-type div {
-  margin-left: 10px;
+  font-size: 15px;
+  margin-left: 15px;
+  margin-top: 3px;
 }
 
 div.address {
-  font-size: 15px;
+  margin-bottom: 10px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
 }
+
 div.description {
+  display: block;
   text-align: center;
-  padding-bottom: 1em;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
 
   .description-input {
+    margin-top: 10px;
     height: 150px;
     resize: none;
+    border-radius: 5px;
+    border: 2px rgb(236, 240, 240) inset;
+    background-color: rgba(77, 77, 77, 0.233);
+    font-size: 15px;
+    color: white;
+    text-shadow:
+    0 0 1px #ffffff,
+    0 0 2px #ffffff,
+    0 0 5px #ac80a6;
+    padding:15px;
+    line-height:18px;
   }
 
 }
+
 div.order-button {
   text-align: center;
 }
+
 .user-information {
+  margin-left: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
   width: 50%;
-  border-right: 1px solid black;
 }
+
 .order-map {
+  margin-top: auto;
+  margin-bottom: auto;
   width: 50%;
 }

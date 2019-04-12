@@ -7,8 +7,8 @@
 .tabs .tablinks {
   font-size: 12px;
   font-weight: bold;
-  margin: 3px 3px 0;
-  width: 31%;
+  margin: 5px 5px 0;
+  width: 30%;
   background-color: rgba(77, 77, 77, 0.342);
   flex-grow: 1;
   border: none;
@@ -17,8 +17,7 @@
   cursor: pointer;
   padding: 14px 16px;
   text-align: center;
-  border-radius: 10px 10px 0 0;
-  border-bottom: 1px #c7c6c4;
+  border-radius: 7px;
 
   color: white;
   font-weight: 2px;
@@ -38,29 +37,23 @@
 .tabs .tablinks.active {
   background-color: rgba(77, 77, 77, 0.801);
   border: 2px solid #ffffff;
-  border-bottom:  hidden;
 
   box-shadow:
   0 0 1px #ffffff,
-  0 0 2px #ffffff,
-  0 0 5px #a19da1e3;
+  0 0 2px #fad7fa,
+  0 0 5px #fffeff;
 }
 
 .tabcontent {
-  background-color: rgba(77, 77, 77, 0.801);
   display: none;
   justify-content: space-between;
-  height: 84px;
+
+  height: 70px;
   width: 296px;
   padding: 6px 12px;
 
   border: none;
   border-radius: 0 0 7px 7px;
-  border-top: 2px solid #ffffff;
-  box-shadow:
-  0 0 1px #ffffff,
-  0 0 2px #ffffff,
-  0 0 5px #a19da1e3;
 }
 
 .tabcontent > * {
@@ -85,7 +78,7 @@
   font-weight: bold;
   display: flex;
   justify-content: space-between;
-  height: 84px;
+  height: 70px;
   width: 296px;
   padding: 6px 12px;
   border: none;
@@ -98,7 +91,6 @@
 }
 
 .product {
-  letter-spacing: 2px;
   position: relative;
   width: 270px;
   height: 390px;
