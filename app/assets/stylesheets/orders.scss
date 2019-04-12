@@ -4,9 +4,20 @@ div.order {
   height: 500px;
   width: 100%;
   background-color: #F7F2F2;
-  border: 2px solid#848484;
-  border-radius: 30px;
+
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3,
+  0 0 30px #888588e3;
+
+  background-color: rgba(77, 77, 77, 0.609);
 }
+
 #map2 {
   border-radius: 15px;
   margin-bottom: 20px;
@@ -33,6 +44,13 @@ div.image-order {
   font-weight: bold;
 }
 
+.name-input {
+  height: 35px;
+  border-radius: 5px;
+  border: 2px rgb(236, 240, 240) inset;
+  background-color: rgba(77, 77, 77, 0.233);
+}
+
 section.dropdown {
   margin-bottom: 31px;
   display: flex;
@@ -50,8 +68,12 @@ section.dropdown {
   display: flex;
   justify-content: space-evenly;
 
-  #user-number{
+  .user-number-input {
     width: 200px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px rgb(236, 240, 240) inset;
+    background-color: rgba(77, 77, 77, 0.233);
   }
 }
 
@@ -67,6 +89,12 @@ section.dropdown {
   font-weight: bold;
 }
 
+.promocode-input {
+  height: 35px;
+  border-radius: 5px;
+  border: 2px rgb(236, 240, 240) inset;
+  background-color: rgba(77, 77, 77, 0.233);
+}
 .pay-type {
   display: flex;
   flex-direction: row;
@@ -94,6 +122,9 @@ div.description {
   .description-input {
     height: 150px;
     resize: none;
+    border-radius: 5px;
+    border: 2px rgb(236, 240, 240) inset;
+    background-color: rgba(77, 77, 77, 0.233);
   }
 
 }
