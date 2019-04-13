@@ -142,11 +142,14 @@ ActiveRecord::Schema.define(version: 2019_04_13_191129) do
   end
 
   create_table "product_sales", force: :cascade do |t|
+    t.integer "sales_count", default: 0
     t.integer "active_id"
-    t.integer "pasive_id"
+    t.integer "passive_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["active_id", "pasive_id"], name: "index_product_sales_on_active_id_and_pasive_id", unique: true
+    t.index ["active_id", "passive_id"], name: "index_product_sales_on_active_id_and_passive_id", unique: true
+    t.index ["active_id"], name: "index_product_sales_on_active_id"
+    t.index ["passive_id"], name: "index_product_sales_on_passive_id"
   end
 
   create_table "product_types", force: :cascade do |t|
