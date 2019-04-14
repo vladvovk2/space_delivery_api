@@ -239,10 +239,10 @@ $( document ).on('turbolinks:load', function() {
 });
 
 function resizeTextArea() {
-  var elementsDistance = ( $( ".last_name" ).offset().left
-                        + $( ".last_name" ).width() )
-                        - $( ".first_name" ).offset().left;
-  $( ".description-input" ).css('width', elementsDistance);
+  var elementsDistance = ( $(".last_name").offset().left
+                        + $(".last_name").width() )
+                        - $(".first_name").offset().left;
+  $(".description-input").css('width', elementsDistance);
 }
 
 $(document).on('turbolinks:load', function () {
