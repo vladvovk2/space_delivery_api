@@ -1,8 +1,13 @@
+$fontSize: 15px;
+$checkboxLabelFontSize: 12px;
+$verticalMargin: 5px;
+$inputFieldHeight: 28px;
+
 div.order {
   display: flex;
   flex-flow: row;
-  height: 600px;
-  width: 1300px;
+  height: 500px;
+  width: 1060px;
   margin: auto;
 
   background-color: #F7F2F2;
@@ -25,27 +30,23 @@ div.order {
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 13px;
-  width: 550px;
-  height: 430px;
-}
-
-div.image-order {
-  font-size: 50px;
-  text-align: center;
+  width: 450px;
+  height: 390px;
 }
 
 .name {
-  padding-top: 50px;
   padding-bottom: 31px;
+  margin-right: 20px;
+  margin-left: 20px;
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
 }
 .name div * {
   display: block;
   text-align: center;
-  font-size: 20px;
+  font-size: $fontSize;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: $verticalMargin;
   color: white;
   text-shadow:
   0 0 1px #ffffff,
@@ -53,33 +54,33 @@ div.image-order {
   0 0 5px #ac80a6;
 }
 
+.first_name {
+  margin-right: 40px;
+}
+
 .name-input {
-  height: 35px;
+  height: $inputFieldHeight;
+  width: 220px;
   border-radius: 5px;
   border: 2px rgb(236, 240, 240) inset;
   background-color: rgba(77, 77, 77, 0.233);
 }
 
-section.dropdown {
-  margin-bottom: 31px;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: center;
-
-}
-
-.dropdown input {
-  vertical-align: middle;
-}
-
 .number-promo-fields {
   width: 100%;
-  padding-bottom: 31px;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-bottom: 38px;
   display: flex;
-  justify-content: space-evenly;
+  //justify-content: space-evenly;
+
+  .user-number {
+    margin-right: 40px;
+  }
 
   .user-number-input {
-    height: 35px;
+    height: $inputFieldHeight;
+    width: 220px;
     border-radius: 5px;
     border: 2px rgb(236, 240, 240) inset;
     background-color: rgba(77, 77, 77, 0.233);
@@ -90,40 +91,51 @@ section.dropdown {
     0 0 2px #ffffff,
     0 0 5px #ac80a6;
   }
-}
 
-.number-promo-fields div * {
-  display: block;
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: white;
-  text-shadow:
-  0 0 1px #ffffff,
-  0 0 2px #ffffff,
-  0 0 5px #ac80a6;
+  div * {
+    display: block;
+    text-align: center;
+    font-size: $fontSize;
+    font-weight: bold;
+    margin-bottom: $verticalMargin;
+    color: white;
+    text-shadow:
+    0 0 1px #ffffff,
+    0 0 2px #ffffff,
+    0 0 5px #ac80a6;
+  }
 }
 
 .promocode-block * {
   display: block;
-  font-size: 15px;
+  font-size: $fontSize;
   font-weight: bold;
 }
 
 .promocode-input {
-  height: 35px;
+  height: $inputFieldHeight;
+  width: 220px;
   border-radius: 5px;
   border: 2px rgb(236, 240, 240) inset;
   background-color: rgba(77, 77, 77, 0.233);
   text-decoration: none;
 }
 
+.checkboxes {
+  //float: left;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 33px;
+  //vertical-align: center;
+  // justify-content: space-evenly;
+}
+
 .pay-type {
   display: flex;
   flex-direction: row;
-  margin-right: 80px;
-  font-size: 35px;
+  margin-left: 20px;
+  margin-right: 76px;
+  //font-size: 13px;
   color: white;
   text-shadow:
   0 0 1px #ffffff,
@@ -134,26 +146,100 @@ section.dropdown {
 .delivery-type {
   display: flex;
   flex-direction: row;
-  font-size: 20px;
+  //font-size: 14px;
   color: white;
   text-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
   0 0 5px #ac80a6;
-
 }
 
 .delivery-type div,
-
 .pay-type div {
-  font-size: 15px;
-  margin-left: 15px;
-  margin-top: 3px;
+  position: relative;
+  font-size: $fontSize;
+  //margin-left: 30px;
+  // margin-top: 3px;
+  height: 20px;
+
+  // h4 {
+  //   font-size: 50px;
+  //   margin: 0;
+  // }
+
+  
+
+  label {
+    font-size: $checkboxLabelFontSize;
+    margin-left: 10px;
+    height: 19px;
+    //margin-bottom: 20px;
+    
+  }
+
 }
 
+.checkbox-header {
+  font-size: 14px;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    display: none;
+    //visibility: hidden;
+    //left: 10px;
+}
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 18px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: white;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: #555;
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
 div.address {
-  margin-bottom: 10px;
-  font-size: 20px;
+  margin-bottom: $verticalMargin;
+  font-size: $fontSize;
   font-weight: bold;
   text-align: center;
   color: white;
@@ -165,10 +251,12 @@ div.address {
 
 div.description {
   display: block;
+  margin-right: 20px;
+  margin-left: 20px;
   text-align: center;
-  font-size: 20px;
+  font-size: $fontSize;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: $verticalMargin;
   color: white;
   text-shadow:
   0 0 1px #ffffff,
@@ -176,8 +264,9 @@ div.description {
   0 0 5px #ac80a6;
 
   .description-input {
-    margin-top: 10px;
+    margin-top: $verticalMargin;
     height: 150px;
+    //width: 450px;
     resize: none;
     border-radius: 5px;
     border: 2px rgb(236, 240, 240) inset;
@@ -188,8 +277,8 @@ div.description {
     0 0 1px #ffffff,
     0 0 2px #ffffff,
     0 0 5px #ac80a6;
-    padding:15px;
-    line-height:18px;
+    padding: 15px;
+    line-height: 18px;
   }
 
 }
@@ -199,14 +288,13 @@ div.order-button {
 }
 
 .user-information {
-  margin-left: 20px;
-  margin-top: auto;
+  margin-left: $fontSize;
+  margin-top: 29px;
   margin-bottom: auto;
   width: 50%;
 }
 
 .order-map {
-  margin-top: auto;
   margin-bottom: auto;
   width: 50%;
 }
