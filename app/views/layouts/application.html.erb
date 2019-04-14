@@ -11,7 +11,7 @@
     <%= yield(:head_tags) %>
   </head>
 
-  <body>
+  <body style='background-image: url(<%= asset_path 'image-c.jpg' %>)'>
     <div class='main'>
       <%= render 'shared/header' %>
       <%= yield %>

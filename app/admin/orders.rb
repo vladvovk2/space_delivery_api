@@ -96,7 +96,7 @@ ActiveAdmin.register Order do
       panel 'Product list' do
         table_for order.line_items do
           column(:image) do |order|
-            image_tag order.product_type.product.picture.image_name.url(:small)
+            image_tag order.product_type.product.picture.image_name.url(:small) if order.product_type.product.picture.present?
           end
           column(:title) { |order| order.product_type.product.title }
           column(:proportion) do |order|

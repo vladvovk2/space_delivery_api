@@ -10,15 +10,17 @@
           <%= product.title %>
         </div>
 
-        <div class='favorite'>
-          <%= link_to make_favorite_favorite_path(product), method: :post, remote: true do %>
-            <% if current_user.favorites.find_by(product_id: product.id).present? %>
-              <%= semantic_icon('red heart') %>
-            <% else %>
-              <%= semantic_icon('black heart outline')%>
+        <% if current_user %>
+          <div class='favorite'>
+            <%= link_to make_favorite_favorite_path(product), method: :post, remote: true, style: 'color: white' do %>
+              <% if current_user.favorites.find_by(product_id: product.id).present? %>
+                <%= semantic_icon('heart') %>
+              <% else %>
+                <%= semantic_icon('heart outline')%>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
 
       <div class='image'>

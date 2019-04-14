@@ -1,15 +1,13 @@
 <div class='cart'>
-
   <%= render cart.line_items %>
 
   <div class='cart-footer'>
-    <div class='make-order'>
-      <%= link_to new_order_path, style: 'text-decoration: none' do %>
-        <%= semantic_icon('money bill alternate') %>
-        Order
+    <div class='cart-order-button'>
+      <%= link_to new_order_path, style: 'text-decoration: none; color: white;' do %>
+        Proceed to Checkout
       <% end %>
     </div>
-    <div class='total-price'>
+    <div class='cart-total-price'>
       Total price:
       <%= number_to_currency cart.total_price %>
     </div>
