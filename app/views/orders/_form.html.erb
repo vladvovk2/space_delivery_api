@@ -34,31 +34,27 @@
 
   <div class="checkboxes">
     <div class='pay-type'>
-      <h4>Pay type:</h4>
+      <span class="checkbox-header">Pay type:</span>
       <div>
         <%= f.radio_button :pay_type, 'Cash', checked: true %>
-        <!-- <span class="checkmark"></span> -->
         <%= f.label :pay_type, :value => 'Cash' %>
       </div>
 
       <div>
         <%= f.radio_button :pay_type, 'Terminal' %>
-        <!-- <span class="checkmark"></span> -->
         <%= f.label :pay_type, :value => 'Terminal' %>
       </div>
     </div>
 
     <div class='delivery-type'>
-      <h4>Delivery type:</h4>
+      <span class="checkbox-header">Delivery type:</span>
       <div>
         <%= f.radio_button :delivery_type, 'Pickup', checked: true %>
-        <!-- <span class="checkmark"></span> -->
         <%= f.label :delivery_type, :value => 'Pickup' %>
       </div>
 
       <div>
         <%= f.radio_button :delivery_type, 'delivery' %>
-        <!-- <span class="checkmark"></span> -->
         <%= f.label :delivery_type, :value => 'Delivery' %>
       </div>
     </div>
