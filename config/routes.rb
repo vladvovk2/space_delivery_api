@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   root 'blogs#index'
+  get  'blogs/download_menu'
 
   resources :orders
   resources :blogs
