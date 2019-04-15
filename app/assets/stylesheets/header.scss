@@ -80,8 +80,9 @@ ol {
   justify-content: center;
   position: relative;
   z-index: 1;
+  left: -1px;
+  width: 60px;
   transition: background 0.3s ease-in-out;
-  //background-color: #C0C0C0;
   background-color: rgba(77, 77, 77, 0.705);
   border-right: 1px solid #ffffff;
   border-left: 1px solid #ffffff;
@@ -113,7 +114,7 @@ ol {
 
 .sub-menu {
   position: absolute;
-  top: 80%;
+  top: 90%;
   width: 100%;
   transform-origin: top;
   transform: rotateX(-90deg);
