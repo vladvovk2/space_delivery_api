@@ -22,6 +22,10 @@ div.nav-bar {
   z-index: 0;
 }
 
+.nav-bar > div {
+  border: 1px solid transparent;
+}
+
 .nav-bar > div:hover {
   background-color: rgba(77, 77, 77, 0.705);
   border: 1px solid #ffffff;
@@ -94,6 +98,7 @@ ol {
 .nav-bar .profile {
   width: 60px;
   border-radius: 50% 50% 0 0;
+  border: 1px solid transparent;
 }
 .nav-bar .profile:hover {
   border-radius: 50% 50% 0 0;
@@ -119,7 +124,6 @@ ol {
   transform-origin: top;
   transform: rotateX(-90deg);
   transition: transform 0.3s linear;
-  border-collapse: collapse;
 }
 
 .menu-item:last-child {
