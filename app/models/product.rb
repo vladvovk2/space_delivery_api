@@ -3,11 +3,12 @@ class Product < ApplicationRecord
 
   has_many :product_types, dependent: :destroy
   has_many :active_product_sales, class_name: 'ProductSale',
-                                  foreign_key: :active_id,
+                                  foreign_key: 'active_id',
                                   dependent: :destroy
   has_many :passive_product_sales, class_name: 'ProductSale',
-                                   foreign_key: :passive_id,
+                                   foreign_key: 'passive_id',
                                    dependent: :destroy
+
   has_many :active_sales, through: :active_product_sales, source: :active
   has_many :passive_sales, through: :passive_product_sales, source: :passive
 
