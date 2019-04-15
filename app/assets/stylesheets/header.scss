@@ -11,7 +11,7 @@ div.nav-bar {
   justify-content: space-between;
   align-items: flex-end;
   z-index: 1;
-  background-color: rgba(151, 150, 150, 0.554);
+  background-color: transparent;
   border-radius: 0 0 10px 10px;
   padding-bottom: 2px;
   color: white;
@@ -22,8 +22,9 @@ div.nav-bar {
   z-index: 0;
 }
 
-.nav-bar div:hover {
-  background-color: #C0C0C0;
+.nav-bar > div:hover {
+  background-color: rgba(77, 77, 77, 0.705);
+  border: 1px solid #ffffff;
   border-radius: 15px;
 }
 
@@ -49,9 +50,15 @@ div.nav-bar {
   height: 35px;
   top: -9px;
   left: 21px;
-  background-color: #DCDCDC;
+  background-color: white;
   border-radius: 100%;
   z-index: -1;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3;
 }
 //Added because all icons are aligned except 'Cart' 
 .cart i::after {
@@ -59,6 +66,8 @@ div.nav-bar {
 }
 .content {
   margin-top: 8px;
+  background-color: white;
+  border-radius: 100%;
 }
 
 ol {
@@ -72,7 +81,10 @@ ol {
   position: relative;
   z-index: 1;
   transition: background 0.3s ease-in-out;
-  background-color: #C0C0C0;
+  //background-color: #C0C0C0;
+  background-color: rgba(77, 77, 77, 0.705);
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
 }
 
 .profile:hover .sub-menu {
@@ -84,6 +96,7 @@ ol {
 }
 .nav-bar .profile:hover {
   border-radius: 50% 50% 0 0;
+  border-bottom: none;
 }
 .profile div {
   width: 60px;
@@ -105,10 +118,12 @@ ol {
   transform-origin: top;
   transform: rotateX(-90deg);
   transition: transform 0.3s linear;
+  border-collapse: collapse;
 }
 
 .menu-item:last-child {
   border-radius: 0 0 50% 50%;
+  border-bottom: 1px solid #ffffff;
 }
 .nav-menu-icon {
   margin-top: 20px;

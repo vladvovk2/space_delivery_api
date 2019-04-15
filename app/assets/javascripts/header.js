@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function(){
   });
   $(".profile, .profile .nav-icon, .profile .content").mouseenter(function() {
     clearTimeout(timeOut);
-    $(".profile").css("background-color", "#C0C0C0");
+    $(".profile").css("background-color", "rgba(77, 77, 77, 0.705)");
     $(".profile a .content").css("visibility", "hidden");
   });
 });
