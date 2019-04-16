@@ -6,7 +6,7 @@ div.nav-bar {
   top: 0;
   left: 8em;
   right: 8em;
-  height: 80px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -112,6 +112,7 @@ ol {
   width: 60px;
   border-radius: 50% 50% 0 0;
   border: 1px solid transparent;
+  top: -10px;
 }
 .nav-bar .profile:hover {
   border-radius: 50% 50% 0 0;
