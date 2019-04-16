@@ -11,14 +11,7 @@ Rails.application.routes.draw do
   root 'blogs#index'
 
   resources :orders
-
-  resources :blogs do
-    collection do
-      get :generate_menu
-      get :download_menu
-    end
-  end
-
+  resources :blogs
   resources :sessions
 
   resources :users do
@@ -35,7 +28,10 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: :show do
-    resources :products, only: :show
+    collection do
+      get :generate_menu
+      get :download_menu
+    end
   end
 
   resources :carts do
