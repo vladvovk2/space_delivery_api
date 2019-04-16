@@ -11,7 +11,7 @@ div.nav-bar {
   justify-content: space-between;
   align-items: flex-end;
   z-index: 1;
-  background-color: rgba(151, 150, 150, 0.554);
+  background-color: transparent;
   border-radius: 0 0 10px 10px;
   padding-bottom: 2px;
   color: white;
@@ -22,8 +22,13 @@ div.nav-bar {
   z-index: 0;
 }
 
-.nav-bar div:hover {
-  background-color: #C0C0C0;
+.nav-bar > div {
+  border: 1px solid transparent;
+}
+
+.nav-bar > div:hover {
+  background-color: rgba(77, 77, 77, 0.705);
+  border: 1px solid #ffffff;
   border-radius: 15px;
 }
 
@@ -31,12 +36,12 @@ div.nav-bar {
   position: relative;
   display: inline-block;
   width: 80px;
-  height: 65px;
+  height: 70px;
   color: black;
-}
-.nav-bar a:hover {
-  color: black;
-  font-weight: 600;
+
+  &:hover {
+    color: black;
+  }
 }
 
 .nav-icon {
@@ -49,16 +54,23 @@ div.nav-bar {
   height: 35px;
   top: -9px;
   left: 21px;
-  background-color: #DCDCDC;
+  background-color: white;
   border-radius: 100%;
   z-index: -1;
-}
-//Added because all icons are aligned except 'Cart' 
-.cart i::after {
-  left: 22px;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3;
 }
 .content {
-  margin-top: 8px;
+  font-size: 14px;
+  margin-top: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 25px;
 }
 
 ol {
@@ -71,8 +83,12 @@ ol {
   justify-content: center;
   position: relative;
   z-index: 1;
+  left: -1px;
+  width: 60px;
   transition: background 0.3s ease-in-out;
-  background-color: #C0C0C0;
+  background-color: rgba(77, 77, 77, 0.705);
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
 }
 
 .profile:hover .sub-menu {
@@ -81,9 +97,11 @@ ol {
 .nav-bar .profile {
   width: 60px;
   border-radius: 50% 50% 0 0;
+  border: 1px solid transparent;
 }
 .nav-bar .profile:hover {
   border-radius: 50% 50% 0 0;
+  border-bottom: none;
 }
 .profile div {
   width: 60px;
@@ -93,14 +111,17 @@ ol {
 }
 .profile a {
   top: 4px;
-  height: 69px;
+  height: 64px;
   width: 60px;
-  margin-right: 0;
+}
+
+.profile > a {
+  right: 1px;
 }
 
 .sub-menu {
   position: absolute;
-  top: 80%;
+  top: 90%;
   width: 100%;
   transform-origin: top;
   transform: rotateX(-90deg);
@@ -109,6 +130,7 @@ ol {
 
 .menu-item:last-child {
   border-radius: 0 0 50% 50%;
+  border-bottom: 1px solid #ffffff;
 }
 .nav-menu-icon {
   margin-top: 20px;
@@ -116,6 +138,9 @@ ol {
 .profile i {
   position: relative;
   left: 2px;
+}
+.profile .content {
+  margin-left: 0;
 }
 .profile .nav-menu-icon i {
   top: 2px;
