@@ -389,6 +389,8 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    sidekiq-batch (0.1.5)
+      sidekiq (>= 3)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -494,6 +496,7 @@ DEPENDENCIES
   selenium-webdriver
   semantic-ui-sass
   sidekiq
+  sidekiq-batch
   sinatra
   spring
   spring-watcher-listen (~> 2.0.0)

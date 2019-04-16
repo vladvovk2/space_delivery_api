@@ -9,10 +9,16 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   root 'blogs#index'
-  get  'blogs/download_menu'
 
   resources :orders
-  resources :blogs
+
+  resources :blogs do
+    collection do
+      get :generate_menu
+      get :download_menu
+    end
+  end
+
   resources :sessions
 
   resources :users do

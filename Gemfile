@@ -14,9 +14,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'semantic-ui-sass'
 
+gem 'sidekiq-batch'
 gem 'geocoder'
 gem 'rails-assets-jquery', source: 'https://rails-assets.org'
 gem "prawn"
+
 # Gems which i've used for made Grape API.
 gem 'rack-cors'
 gem 'grape'
