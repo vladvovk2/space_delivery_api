@@ -79,8 +79,8 @@ div.nav-bar {
 .delivery .nav-icon {
   margin-left: 2px;
 }
-.delivery i {
-  margin-left: 30px;
+.delivery i::before {
+  margin-left: 3px;
 }
 
 .cart .nav-icon {
