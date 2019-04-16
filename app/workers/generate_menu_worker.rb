@@ -3,12 +3,8 @@ require 'prawn'
 class GenerateMenuWorker
   include Sidekiq::Worker
 
-  def perform(user)
-    generate_pdf(user)
-  end
-
-  def generate_pdf(string)
-    Prawn::Document.generate("/public/menu_#{string}.pdf") do |pdf|
+  def perform
+    Prawn::Document.generate('public/pdfs/menu_5.pdf') do |pdf|
       Category.includes(products: :product_types).all.each do |category|
         pdf.text "Category: #{category.title}", align: :center, size: 20
         category.products.each do |product|
