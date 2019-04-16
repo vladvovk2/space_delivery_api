@@ -1,5 +1,5 @@
-class DeleteMenuWorker
-  include Sidekiq::Worker
+class DeleteMenuJob < ApplicationJob
+  queue_as :pdf
 
   def perform(time)
     path = "#{Rails.root}/public/pdfs/menu_#{time}.pdf"

@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  mount Sidekiq::Web => '/sidekiq'
   mount DeliveryApi::Root => '/'
   mount GrapeSwaggerRails::Engine => '/swagger'
-  mount Sidekiq::Web => '/sidekiq'
 
   root 'blogs#index'
 
+  resources :notifications
   resources :orders
   resources :blogs
   resources :sessions

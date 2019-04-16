@@ -1,5 +1,5 @@
-class GenerateMenuWorker
-  include Sidekiq::Worker
+class GenerateMenuJob < ApplicationJob
+  queue_as :pdf
 
   def perform(time)
     generate_pdf(time)
