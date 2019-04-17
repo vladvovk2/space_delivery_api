@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_161635) do
+ActiveRecord::Schema.define(version: 2019_04_13_191129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,17 @@ ActiveRecord::Schema.define(version: 2019_04_03_161635) do
     t.index ["order_id"], name: "index_places_on_order_id"
   end
 
+  create_table "product_sales", force: :cascade do |t|
+    t.integer "sales_count", default: 0
+    t.integer "active_id"
+    t.integer "passive_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active_id", "passive_id"], name: "index_product_sales_on_active_id_and_passive_id", unique: true
+    t.index ["active_id"], name: "index_product_sales_on_active_id"
+    t.index ["passive_id"], name: "index_product_sales_on_passive_id"
+  end
+
   create_table "product_types", force: :cascade do |t|
     t.string "proportion"
     t.integer "price"
@@ -160,6 +171,7 @@ ActiveRecord::Schema.define(version: 2019_04_03_161635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.boolean "published"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["title"], name: "index_products_on_title", unique: true
   end

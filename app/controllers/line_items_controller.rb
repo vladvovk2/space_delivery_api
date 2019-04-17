@@ -4,7 +4,6 @@ class LineItemsController < ApplicationController
   def quantity_increase
     @line_item.quantity += 1
     @line_item.save
-
     respond_to do |format|
       format.js
     end
