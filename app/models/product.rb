@@ -1,6 +1,16 @@
 class Product < ApplicationRecord
-  has_one    :picture, as: :imageable, dependent: :destroy
-  has_many   :product_types, dependent: :destroy
+  has_one  :picture, as: :imageable, dependent: :destroy
+
+  has_many :product_types, dependent: :destroy
+  has_many :active_product_sales, class_name: 'ProductSale',
+                                  foreign_key: 'active_id',
+                                  dependent: :destroy
+  has_many :passive_product_sales, class_name: 'ProductSale',
+                                   foreign_key: 'passive_id',
+                                   dependent: :destroy
+
+  has_many :active_sales, through: :active_product_sales, source: :active
+  has_many :passive_sales, through: :passive_product_sales, source: :passive
 
   belongs_to :category, optional: true
   belongs_to :favorite, optional: true
