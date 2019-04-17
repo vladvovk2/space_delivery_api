@@ -8,10 +8,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=' + Rails.application.secrets.google_place_key %>
+    <%= action_cable_meta_tag %>
     <%= yield(:head_tags) %>
   </head>
 
   <body style='background-image: url(<%= asset_path 'image-c.jpg' %>)'>
+    <div id='notification-messages' style='color: white'>hey</div>
     <div class='main'>
       <%= render 'shared/header' %>
       <%= yield %>
