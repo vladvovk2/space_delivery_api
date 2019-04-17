@@ -19,45 +19,46 @@
     </div>
   </section>
 
-  <section class='dropdown' >
-    <div class='number-promo-fields'>
-      <div class='user-number'>
-        <%= f.label :phone_number %>
-        <%= f.text_field :user_number, class: 'user-number-input', autocomplete: 'off' %>
-      </div>
 
-      <div class='promocode-block'>
-        <%= f.label :promocode %>
-        <%= f.text_field :promo_code, class: 'promocode-input', autocomplete: 'off' %>
-      </div>
+  <div class='number-promo-fields'>
+    <div class='user-number'>
+      <%= f.label :phone_number %>
+      <%= f.text_field :user_number, class: 'user-number-input', autocomplete: 'off' %>
     </div>
 
+    <div class='promocode-block'>
+      <%= f.label :promocode %>
+      <%= f.text_field :promo_code, class: 'promocode-input', autocomplete: 'off' %>
+    </div>
+  </div>
+
+  <div class="checkboxes">
     <div class='pay-type'>
-      <h3>Pay type:</h3>
+      <span class="checkbox-header">Pay type:</span>
       <div>
-        <%= f.radio_button :pay_type, 'Cash' %>
-        <%= f.label :cash %>
+        <%= f.radio_button :pay_type, 'Cash', checked: true %>
+        <%= f.label :pay_type, :value => 'Cash' %>
       </div>
 
       <div>
         <%= f.radio_button :pay_type, 'Terminal' %>
-        <%= f.label :terminal %>
+        <%= f.label :pay_type, :value => 'Terminal' %>
       </div>
     </div>
 
     <div class='delivery-type'>
-      <h3>Delivery type:</h3>
+      <span class="checkbox-header">Delivery type:</span>
       <div>
-        <%= f.radio_button :delivery_type, 'Pickup' %>
-        <%= f.label :pickup %>
+        <%= f.radio_button :delivery_type, 'Pickup', checked: true %>
+        <%= f.label :delivery_type, :value => 'Pickup' %>
       </div>
 
       <div>
-        <%= f.radio_button :delivery_type, 'Delivery' %>
-        <%= f.label :delivery %>
+        <%= f.radio_button :delivery_type, 'delivery' %>
+        <%= f.label :delivery_type, :value => 'Delivery' %>
       </div>
     </div>
-  </section>
+  </div>
 
   <div class='description'>
     <%= f.label :your_wishes %>

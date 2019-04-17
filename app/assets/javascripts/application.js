@@ -6,3 +6,4 @@
 //= require semantic-ui/modal
 //= require semantic-ui/dropdown
 //= require_tree .
+//= require_tree ./channels

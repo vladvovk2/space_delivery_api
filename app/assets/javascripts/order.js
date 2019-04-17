@@ -11,14 +11,6 @@ function initMap2() {
       ]
     },
     {
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
       "elementType": "labels.text.fill",
       "stylers": [
         {
@@ -52,14 +44,7 @@ function initMap2() {
         }
       ]
     },
-    {
-      "featureType": "administrative.land_parcel",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
+
     {
       "featureType": "administrative.locality",
       "elementType": "labels.text.fill",
@@ -239,10 +224,10 @@ $( document ).on('turbolinks:load', function() {
 });
 
 function resizeTextArea() {
-  var elementsDistance = ( $( ".last_name" ).offset().left
-                        + $( ".last_name" ).width() )
-                        - $( ".first_name" ).offset().left;
-  $( ".description-input" ).width(elementsDistance);
+  var elementsDistance = ( $(".last_name").offset().left
+                        + $(".last_name").width() )
+                        - $(".first_name").offset().left;
+  $(".description-input").css('width', elementsDistance);
 }
 
 $(document).on('turbolinks:load', function () {

@@ -35,6 +35,8 @@ services:
 
   sidekiq:
     container_name: kryla_api_sidekiq
+    volumes:
+      - .:/myapp
     build: .
     command: sidekiq -C config/sidekiq.yml
     restart: always
