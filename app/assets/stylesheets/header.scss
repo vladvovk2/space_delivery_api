@@ -160,15 +160,17 @@ ol {
 .profile .nav-menu-icon i {
   top: 2px;
 }
+
 .profile i::after {
   left: -7px;
-
-  -webkit-transition: all 0.3s ease;;
-  -moz-transition: all 0.3s ease;;
-  -o-transition: all 0.3s ease;;
+}
+.profile i {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.profile i:hover::after {
+.profile i:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
