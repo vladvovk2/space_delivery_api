@@ -1,6 +1,8 @@
 class GenerateMenuJob < ApplicationJob
   queue_as :pdf
 
+  after_enqueue { ActionCable.server.broadcast :notifiations, message: 'PDF is ready for dowload.' }
+
   def perform(time)
     generate_pdf(time)
   end

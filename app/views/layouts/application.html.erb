@@ -13,8 +13,8 @@
   </head>
 
   <body style='background-image: url(<%= asset_path 'image-c.jpg' %>)'>
-    <div id='notification-messages' style='color: white'>hey</div>
     <div class='main'>
+      <%= render 'notifications/message'%>
       <%= render 'shared/header' %>
       <%= yield %>
     </div>

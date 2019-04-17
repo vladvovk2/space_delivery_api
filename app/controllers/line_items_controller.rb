@@ -3,8 +3,7 @@ class LineItemsController < ApplicationController
 
   def quantity_increase
     @line_item.quantity += 1
-    ActionCable.server.broadcast :notifiations, message: 'quantity increase' if @line_item.save
-
+    @line_item.save
     respond_to do |format|
       format.js
     end
@@ -13,8 +12,7 @@ class LineItemsController < ApplicationController
   def quantity_reduce
     unless @line_item.quantity.eql? 1
       @line_item.quantity -= 1
-
-      ActionCable.server.broadcast :notifiations, message: 'quantity reduce' if @line_item.save
+      @line_item.save
     end
 
     respond_to do |format|

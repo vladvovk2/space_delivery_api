@@ -12,7 +12,6 @@ class MenuJob
 
   class Create
     def on_success(_status, identifier)
-      ActionCable.server.broadcast :notifiations, message: 'PDF is ready for dowload.'
       DeleteMenuJob.set(wait: 10.minutes).perform_later(identifier)
     end
   end
