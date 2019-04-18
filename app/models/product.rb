@@ -9,8 +9,8 @@ class Product < ApplicationRecord
                                    foreign_key: 'passive_id',
                                    dependent: :destroy
 
-  has_many :active_sales, through: :active_product_sales, source: :active
-  has_many :passive_sales, through: :passive_product_sales, source: :passive
+  has_many :active_sales, through: :passive_product_sales, source: :active
+  has_many :passive_sales, through: :active_product_sales, source: :passive
 
   belongs_to :category, optional: true
   belongs_to :favorite, optional: true

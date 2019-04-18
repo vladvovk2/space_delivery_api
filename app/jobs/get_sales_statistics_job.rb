@@ -7,11 +7,10 @@ class GetSalesStatisticsJob < ApplicationJob
 
   private
 
-  # ln eql line_item
-
   def get_products_ids(order)
     ids = []
 
+    # ln eql line_item
     order.line_items.map do |ln|
       ids << ln.product_type.product.id
     end
@@ -21,14 +20,15 @@ class GetSalesStatisticsJob < ApplicationJob
 
   def increase_sales_count(order)
     product_ids = get_products_ids(order)
+    products = Product.find(product_ids)
 
-    order.line_items.each do |ln|
+    products.each do |product|
       product_ids.each do |id|
-        next if ln.product_type.product.id.eql? id
+        next unless product.id != id
 
-        product = ln.product_type.product.active_product_sales.find_or_create_by(passive_id: id)
-        sales_count = product.sales_count + 1
-        product.update(sales_count: sales_count)
+        set_of_products = product.active_product_sales.find_or_initialize_by(passive_id: id)
+        set_of_products.sales_count += 1
+        set_of_products.save
       end
     end
   end
