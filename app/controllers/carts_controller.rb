@@ -17,9 +17,11 @@ class CartsController < ApplicationController
   end
 
   def buy_together
-    ids = product_ids(current_cart)
+    ids = product_ids(current_cart).uniq
 
-    product_ids = ProductSale.where(active_id: ids.uniq).order(sales_count: :desc).limit(3).pluck(:passive_id)
+    product_ids = ProductSale.where('active_id IN (?) AND passive_id NOT IN (?)', ids, ids).order(sales_count: :desc)
+                             .pluck(:passive_id).uniq.first(3)
+
     @products = Product.where(id: product_ids)
   end
 end

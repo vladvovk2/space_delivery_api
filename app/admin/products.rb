@@ -53,21 +53,15 @@ ActiveAdmin.register Product do
 
   index do
     id_column
-    column :image do |product|
-      image_tag product.picture.image_name.url(:small) if product.picture.present?
-    end
+    column(:image) { |product| image_tag product.picture.image_name.url(:small) if product.picture.present? }
     column :title
     column(:published) { |product| status_tag product.published }
     column :category
     column :type do |product|
       status_tag product.product_types.first.proportion, color_for_type(product.product_types.first.proportion)
     end
-    column :price do |product|
-      number_to_currency product.product_types.first.price
-    end
-    column :weight do |product|
-      product.product_types.first.weight
-    end
+    column(:price) { |product| number_to_currency product.product_types.first.price }
+    column(:weight) { |product| product.product_types.first.weight }
     actions
   end
 
@@ -77,9 +71,8 @@ ActiveAdmin.register Product do
       row :category
       row(:published) { |product| status_tag product.published }
       row :description
-      row :image do |product|
-        image_tag product.picture.image_name.url(:medium) if product.picture.present?
-      end
+      row(:image) { |product| image_tag product.picture.image_name.url(:medium) if product.picture.present? }
+
       panel 'Product types' do
         table_for product.product_types do
           column(:proportion) { |type| status_tag type.proportion, color_for_type(type.proportion) }
