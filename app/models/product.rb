@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
+
   has_one  :picture, as: :imageable, dependent: :destroy
 
   has_many :product_types, dependent: :destroy
