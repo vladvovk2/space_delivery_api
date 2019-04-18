@@ -20,12 +20,65 @@ div.info {
   padding-bottom: 3em;
 }
 
-div.github{
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  padding-right: 4em;
+div.github {
+  width: 82px;
+  height: 72px;
+  position: relative;
+  left: 47%;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent;
   text-align: center;
-  font-size: 25px;
+  z-index: 0;
 }
 
+div.github:hover {
+  background-color: rgba(77, 77, 77, 0.705);
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+}
 
+div.github i::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 6px;
+  left: 22px;
+  background-color: white;
+  border-radius: 100%;
+  z-index: -1;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1,
+  0 0 10px #a19da1,
+  0 0 15px #a19da1;
+}
+div.github i::before {
+  position: relative;
+  height: 35px;
+  width: 35px;
+  left: 1px;
+  color: black;
+  font-size: 20px;
+}
+
+div.github .content {
+  font-size: 14px;
+  margin-top: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 25px;
+  color: black;
+  top: 20px;
+  text-align: center;
+
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3;
+}

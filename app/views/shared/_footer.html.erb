@@ -1,3 +1,11 @@
 <div class='github'>
-  <i class="github icon"><%= link_to 'GitHub', 'https://github.com/vladvovk2', style: 'text-decoration: none' %></i>
+  <%= link_to 'https://github.com/vladvovk2', style: 'text-decoration: none' do %>
+    <div class="nav-icon">
+      <%= semantic_icon('github icon') %>
+    </div>
+
+    <div class="content">
+      GitHub
+    </div>
+  <% end %>
 </div>
