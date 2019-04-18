@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  include ProductsHelper
+
   def new
     @order = Order.new
   end
@@ -8,8 +10,8 @@ class OrdersController < ApplicationController
 
     if @order.save
       @order.get_product(current_cart)
-      send_receipt(current_user, @order) if current_user&.get_receipt
-      GetSalesStatisticsJob.perform_later(@order)
+      OrderMailer.issued_order(current_user, @order).deliver_later if current_user&.get_receipt
+      GetSalesStatisticsJob.perform_later(product_ids(@order).uniq)
 
       redirect_to root_path
     else

@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  include ProductsHelper
+
   def show
     @cart = Cart.includes(line_items: [product_type: [product: :picture]]).find(session[:cart_id])
 
@@ -15,13 +17,9 @@ class CartsController < ApplicationController
   end
 
   def buy_together
-    ids = []
-
-    current_cart.line_items.map do |ln|
-      ids << ln.product_type.product.id
-    end
+    ids = product_ids(current_cart)
 
     product_ids = ProductSale.where(active_id: ids.uniq).order(sales_count: :desc).limit(3).pluck(:passive_id)
-    @products = Product.find(product_ids)
+    @products = Product.where(id: product_ids)
   end
 end
