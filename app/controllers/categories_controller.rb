@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :path_identifier, only: %i[generate_menu download_menu]
 
   def show
-    @products = Category.includes(products: %i[picture product_types]).find(params[:id]).products.published
+    @category = Category.includes(products: %i[picture product_types]).where(products: { published: true }).find(params[:id])
   end
 
   def generate_menu
