@@ -35,8 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts do
-    member { put :add_product }
+  resources :carts, only: :show do
+    put :add_product, on: :member
+    get :buy_together, on: :member
   end
 
   resources :line_items do

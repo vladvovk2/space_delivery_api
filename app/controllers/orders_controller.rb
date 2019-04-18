@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
     if @order.save
       @order.get_product(current_cart)
       send_receipt(current_user, @order) if current_user&.get_receipt
+      GetSalesStatisticsJob.perform_later(@order)
+
       redirect_to root_path
     else
       render :new
