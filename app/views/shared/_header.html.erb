@@ -35,9 +35,10 @@
     <% end %>
   </div>
 
-  <div class='profile'>
-    <% if current_user %>
-
+  
+  <% if current_user %>
+  <div class="profile-wrapper">
+    <div class='profile'>
       <%= link_to user_path(current_user), style: 'text-decoration: none' do %>
         <div class="nav-icon">
           <%= semantic_icon('black user outline') %>
@@ -71,8 +72,12 @@
           <% end %>
         </li>
       </ol>
-      <% else %>
+    </div>
+  </div>
 
+  <% else %>
+
+    <div class='login'>
       <%= link_to login_path, style: 'text-decoration: none' do %>
         <div class="nav-icon">
           <%= semantic_icon('user') %>
@@ -82,7 +87,7 @@
           Login
         </div>
       <% end %>
+    </div>
 
     <%end%>
-  </div>
 </div>
