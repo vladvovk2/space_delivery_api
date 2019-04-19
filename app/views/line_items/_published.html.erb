@@ -1,0 +1,36 @@
+  <div class='line-item-image'>
+    <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
+  </div>
+
+  <div class='line-item-title'>
+    <%= line_item.product_type.product.title %> (
+    <%= line_item.product_type.weight %>грам )
+  </div>
+
+  <section class='quantity-buttons'>
+    <div class='quantity-buttons-left'>
+      <%= link_to quantity_reduce_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none; color: white;' do %>
+        <%= semantic_icon('arrow alternate circle left outline icon') %>
+      <% end %>
+    </div>
+
+    <div class='line-item-quantity', id='line-item-quantity'>
+      <%= line_item.quantity %>
+    </div>
+
+    <div class='quantity-buttons-right'>
+      <%= link_to quantity_increase_line_item_path(line_item), method: :put, remote: true, style: 'text-decoration: none; color: white;' do %>
+        <%= semantic_icon('arrow alternate circle right outline icon') %>
+      <% end %>
+    </div>
+  </section>
+
+  <div class='line-item-total-price'>
+    <%= number_to_currency(line_item.total_price) %>
+  </div>
+
+  <div class='line-item-delete-item'>
+    <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
+      <%= semantic_icon('trash alternate outline icon') %>
+    <% end %>
+  </div>
