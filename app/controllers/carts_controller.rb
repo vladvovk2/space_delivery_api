@@ -20,8 +20,9 @@ class CartsController < ApplicationController
     ids = product_ids(current_cart).uniq
 
     product_ids = ProductSale.where('active_id IN (?) AND passive_id NOT IN (?)', ids, ids).order(sales_count: :desc)
-                             .pluck(:passive_id).uniq.first(3)
+                             .pluck(:passive_id).uniq
 
-    @products = Product.includes(:product_types, :picture).where(id: product_ids)
+    @products = Product.includes(:product_types, :picture)
+                       .where('id IN (?) AND published IS ?', product_ids, true).limit(3)
   end
 end
