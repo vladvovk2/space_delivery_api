@@ -60,9 +60,9 @@ div.nav-bar {
   box-shadow:
   0 0 1px #ffffff,
   0 0 2px #ffffff,
-  0 0 5px #a19da1e3,
-  0 0 10px #a19da1e3,
-  0 0 15px #a19da1e3;
+  0 0 5px #a19da1,
+  0 0 10px #a19da1,
+  0 0 15px #a19da1;
 }
 .content {
   font-size: 14px;
@@ -71,6 +71,12 @@ div.nav-bar {
   margin-right: 5px;
   background-color: white;
   border-radius: 25px;
+
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 1px 5px #a19da1,
+  0 1px 5px #a19da1;
 }
 
 .delivery .content {
@@ -85,6 +91,9 @@ div.nav-bar {
 
 .cart .nav-icon {
   margin-left: 0;
+}
+.cart i::before {
+  margin-left: 1px;
 }
 
 ol {
