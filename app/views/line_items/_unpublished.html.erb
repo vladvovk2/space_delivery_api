@@ -1,0 +1,13 @@
+<div class='unpublished-line-item-image'>
+  <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
+</div>
+
+<div class='unpublished-line-item-title'>
+  <%= line_item.product_type.product.title %> currently unavailable!
+</div>
+
+<div class='unpublished-line-item-delete-item'>
+  <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
+    <%= semantic_icon('trash alternate outline icon') %>
+  <% end %>
+</div>
