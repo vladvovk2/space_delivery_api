@@ -1,0 +1,17 @@
+<div class='cart-footer'>
+  <div class='cart-order-button' id='order-button'>
+    <%= link_to new_order_path, style: 'text-decoration: none; color: white;' do %>
+      Proceed to Checkout
+    <% end %>
+  </div>
+  <div class='cart-total-price'>
+    <span>Total price:</span>
+    <span id='cart-total-price'><%= number_to_currency cart.total_price %></span>
+  </div>
+
+  <script>
+    $('#order-button').click(function() {
+      return false;
+      });
+  </script>
+</div>
