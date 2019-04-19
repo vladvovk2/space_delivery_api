@@ -6,7 +6,7 @@ div.nav-bar {
   top: 0;
   left: 8em;
   right: 8em;
-  height: 80px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -73,6 +73,20 @@ div.nav-bar {
   border-radius: 25px;
 }
 
+.delivery .content {
+  padding-left: 2px;
+}
+.delivery .nav-icon {
+  margin-left: 2px;
+}
+.delivery i::before {
+  margin-left: 1px;
+}
+
+.cart .nav-icon {
+  margin-left: 0;
+}
+
 ol {
   list-style: none;
   padding: 0;
@@ -91,6 +105,10 @@ ol {
   border-left: 1px solid #ffffff;
 }
 
+.profile-wrapper {
+  width: 82px;
+  visibility: hidden;
+}
 .profile:hover .sub-menu {
   transform: rotateX(0deg);
 }
@@ -98,6 +116,9 @@ ol {
   width: 60px;
   border-radius: 50% 50% 0 0;
   border: 1px solid transparent;
+  top: -10px;
+  right: -8px;
+  visibility: visible;
 }
 .nav-bar .profile:hover {
   border-radius: 50% 50% 0 0;
@@ -145,15 +166,17 @@ ol {
 .profile .nav-menu-icon i {
   top: 2px;
 }
+
 .profile i::after {
   left: -7px;
-
-  -webkit-transition: all 0.3s ease;;
-  -moz-transition: all 0.3s ease;;
-  -o-transition: all 0.3s ease;;
+}
+.profile i {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.profile i:hover::after {
+.profile i:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);

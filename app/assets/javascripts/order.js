@@ -218,18 +218,6 @@ function initMap2() {
   });
 }
 
-$( document ).on('turbolinks:load', function() {
-  resizeTextArea();
-  $( window ).resize(resizeTextArea);
-});
-
-function resizeTextArea() {
-  var elementsDistance = ( $(".last_name").offset().left
-                        + $(".last_name").width() )
-                        - $(".first_name").offset().left;
-  $(".description-input").css('width', elementsDistance);
-}
-
 $(document).on('turbolinks:load', function () {
   $('.name-input').attr('maxlength', '21');
   $('.user-number-input').attr('maxlength', '9');
