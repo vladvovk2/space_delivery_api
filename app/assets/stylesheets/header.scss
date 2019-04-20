@@ -2,7 +2,7 @@ div {
   font-size: 18px;
 }
 div.nav-bar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 8em;
   right: 8em;
@@ -86,7 +86,7 @@ div.nav-bar {
   margin-left: 2px;
 }
 .delivery i::before {
-  margin-left: 1px;
+  margin-left: 2px;
 }
 
 .cart .nav-icon {
