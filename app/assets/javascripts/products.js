@@ -19,3 +19,13 @@ function openDetails(evt, tabContentNum) {
   document.getElementById(tabContentNum).style.display = "flex";
   evt.currentTarget.className += " active";
 }
+
+function changeHeartIcon(elem) {
+  var heartIcon = $('i', elem);
+  if (heartIcon.hasClass('heart outline icon')) {
+    heartIcon.removeClass('outline');
+  } else {
+    heartIcon.removeClass('heart icon');
+    heartIcon.addClass('heart outline icon');
+  }
+}
