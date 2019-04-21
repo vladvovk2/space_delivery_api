@@ -8,4 +8,14 @@
     <span>Total price:</span>
     <span id='cart-total-price'><%= number_to_currency cart.total_price %></span>
   </div>
+
+  <script>
+    $('#order-button').click(function() {
+        var unpublishedItem = $('.unpublished-line-item');
+        var deletedUnpublishedItem = $('.unpublished-line-item[style="display: none;"]');
+        if (unpublishedItem.length > deletedUnpublishedItem.length) {
+          return false;
+        }
+      });
+  </script>
 </div>

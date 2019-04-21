@@ -183,11 +183,13 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.boolean "percentage"
+    t.boolean "percentage", default: false
+    t.boolean "used", default: false
     t.date "limitation"
     t.index ["code"], name: "index_promo_codes_on_code", unique: true
     t.index ["limitation"], name: "index_promo_codes_on_limitation"
     t.index ["percentage"], name: "index_promo_codes_on_percentage"
+    t.index ["used"], name: "index_promo_codes_on_used"
     t.index ["user_id"], name: "index_promo_codes_on_user_id"
   end
 
