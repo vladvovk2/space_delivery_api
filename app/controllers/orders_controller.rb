@@ -6,16 +6,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params.merge(total_price: current_cart.total_price, user_id: current_user&.id))
-
-    if @order.save
-      @order.get_product(current_cart)
-      OrderMailer.issued_order(current_user, @order).deliver_later if current_user&.get_receipt
-      GetSalesStatisticsJob.perform_later(product_ids(@order).uniq)
-
-      redirect_to root_path
-    else
-      render :new
+    CreateOrder.call(order_params, params[:promo_code], current_user, current_cart) do
+      on(:created) do
+        redirect_to root_path
+        ActionCable.server.broadcast :notifiations, message: 'Successfully. Wait for our call.'
+      end
+      on(:fail) do
+        render :new
+      end
     end
   end
 
@@ -23,7 +21,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :first_name, :last_name, :delivery_type, :pay_type, :address, :user_number, :decription, :promo_code,
+      :first_name, :last_name, :delivery_type, :pay_type, :address, :user_number, :decription,
       place_attributes: %i[id address latitude longitude]
     )
   end

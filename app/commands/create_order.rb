@@ -1,41 +1,41 @@
 class CreateOrder < Rectify::Command
-  def initialize(user, cart, order_params)
-    @user         = user
-    @cart         = cart
+  def initialize(order_params, promocode, user, cart)
     @order_params = order_params
+    @promocode = PromoCode.find_by(code: promocode)
+    @user = user
+    @cart = cart
   end
 
   def call
-    return broadcast(:empty_cart) if cart.line_items.empty?
-
     order
   end
 
   private
 
-  attr_reader :user, :cart, :order_params
-
-  def send_receipt(customer, order)
-    OrderMailer.issued_order(customer, order).deliver_later
-  end
+  attr_reader :order_params, :promocode, :user, :cart
 
   def order
-    order = user.orders.build(order_params.merge(total_price: order_total_price))
-    if order.save
-      order.get_product(cart)
-      send_receipt(user, order) if user&.get_receipt
-      broadcast(:ok, order)
+    @order = Order.new(order_params.merge(total_price: total_price, user_id: user&.id))
+
+    if @order.save
+      @order.get_product(cart)
+      OrderMailer.issued_order(user, @order).deliver_later if user&.get_receipt
+      GetSalesStatisticsJob.perform_later(product_ids(@order).uniq)
+      broadcast(:created, @order)
     else
-      broadcast(:fail, order)
+      broadcast(:fail, @order)
     end
   end
 
-  def order_total_price
-    cart.total_price - promo_code_amount
-  end
-
-  def promo_code_amount
-    promo_code = PromoCode.find_by(code: order_params[:promo_code])
-    promo_code.present? ? promo_code.amount : 0
+  def total_price
+    if promocode.present?
+      if promocode.percentage
+        cart.total_price * (1 - promocode.amount.to_f / 100.to_f)
+      else
+        cart.total_price - promocode.amount
+      end
+    else
+      cart.total_price
+    end
   end
 end
