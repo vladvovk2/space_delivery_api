@@ -89,7 +89,7 @@ ActiveAdmin.register Order do
         image_tag "http://maps.google.com/maps/api/staticmap?key=#{Rails.application.secrets.google_place_key}&size=600x400&sensor=false&zoom=16&markers=#{order.place.latitude}%2C#{order.place.longitude}"
       end
       row :created_at
-      row :promo_code
+      row(:promo_code) { |order| order.promo_code&.code }
       row :description
       row(:total_price) { |order| number_to_currency(order.total_price) }
 

@@ -1,0 +1,2 @@
+class PromoCodeMailer < ApplicationMailer
+end

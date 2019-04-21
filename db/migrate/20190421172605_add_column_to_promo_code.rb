@@ -8,5 +8,7 @@ class AddColumnToPromoCode < ActiveRecord::Migration[5.2]
       t.index :percentage
       t.index :limitation
     end
+    add_reference :promo_codes, :order, foreign_key: true
+    remove_column :orders, :promo_code, :string
   end
 end

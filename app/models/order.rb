@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   DELIVERY_TYPE = %w[Pickup Delivery].freeze
   PAY_TYPE = %w[Cash Terminal].freeze
 
+  has_one :promo_code, dependent: :destroy
   has_one :place, dependent: :destroy
   accepts_nested_attributes_for :place
 

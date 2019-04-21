@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
     t.string "pay_type"
     t.string "last_name"
     t.string "first_name"
-    t.string "promo_code"
     t.string "user_number"
     t.string "delivery_type"
     t.string "status"
@@ -186,8 +185,10 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
     t.boolean "percentage", default: false
     t.boolean "used", default: false
     t.date "limitation"
+    t.bigint "order_id"
     t.index ["code"], name: "index_promo_codes_on_code", unique: true
     t.index ["limitation"], name: "index_promo_codes_on_limitation"
+    t.index ["order_id"], name: "index_promo_codes_on_order_id"
     t.index ["percentage"], name: "index_promo_codes_on_percentage"
     t.index ["used"], name: "index_promo_codes_on_used"
     t.index ["user_id"], name: "index_promo_codes_on_user_id"
@@ -226,6 +227,7 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
   add_foreign_key "orders", "users"
   add_foreign_key "places", "orders"
   add_foreign_key "products", "categories"
+  add_foreign_key "promo_codes", "orders"
   add_foreign_key "promo_codes", "users"
   add_foreign_key "user_balances", "users"
 end
