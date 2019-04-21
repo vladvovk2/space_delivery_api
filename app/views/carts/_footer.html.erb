@@ -11,7 +11,12 @@
 
   <script>
     $('#order-button').click(function() {
-      return false;
+        var unpublishedItem = $('.unpublished-line-item');
+        var deletedUnpublishedItem = $('.unpublished-line-item[style="display: none;"]');
+        
+        if (unpublishedItem.length > deletedUnpublishedItem.length) {
+          return false;
+        }
       });
   </script>
 </div>

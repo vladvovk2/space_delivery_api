@@ -1,2 +1,8 @@
 <%= render 'category' %>
 <%= render 'product_list' %>
+
+<script>
+  $(document).on('turbolinks:load', function () {
+    $('.nav-bar').css('position', 'fixed');
+  });
+</script>
