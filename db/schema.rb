@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_191129) do
+ActiveRecord::Schema.define(version: 2019_04_21_172605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,7 +183,11 @@ ActiveRecord::Schema.define(version: 2019_04_13_191129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "percentage"
+    t.date "limitation"
     t.index ["code"], name: "index_promo_codes_on_code", unique: true
+    t.index ["limitation"], name: "index_promo_codes_on_limitation"
+    t.index ["percentage"], name: "index_promo_codes_on_percentage"
     t.index ["user_id"], name: "index_promo_codes_on_user_id"
   end
 
