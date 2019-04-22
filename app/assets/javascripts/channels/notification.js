@@ -5,6 +5,7 @@ App.notifications = App.cable.subscriptions.create('NotificationsChannel', {
   },
 
   renderNotification: function(data) {
-    return "<p>" + data.message + "</p>";
+    return "<div class='notification-wrapper'>" +
+            "<p>" + data.message + "</p></div>";
   }
 });
