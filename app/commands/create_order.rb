@@ -15,7 +15,7 @@ class CreateOrder < Rectify::Command
   attr_reader :order_params, :promocode, :user, :cart
 
   def order
-    @order = Order.new(order_params.merge(total_price: total_price, user_id: user&.id))
+    @order = Order.new(order_params.merge(total_price: total_price, user_id: user&.id, discount: discount))
 
     if @order.save
       @order.get_product(cart)
@@ -28,14 +28,18 @@ class CreateOrder < Rectify::Command
   end
 
   def total_price
+    cart.total_price - discount
+  end
+
+  def discount
     if promocode.present?
       if promocode.percentage
-        cart.total_price * (1 - promocode.amount.to_f / 100.to_f)
+        cart.total_price * (promocode.amount.to_f / 100.to_f)
       else
-        cart.total_price - promocode.amount
+        promocode.amount
       end
     else
-      cart.total_price
+      0
     end
   end
 end

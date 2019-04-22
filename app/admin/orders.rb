@@ -91,6 +91,7 @@ ActiveAdmin.register Order do
       row :created_at
       row(:promo_code) { |order| order.promo_code&.code }
       row :description
+      row(:discount) { |order| number_to_currency(order.discount) }
       row(:total_price) { |order| number_to_currency(order.total_price) }
 
       panel 'Product list' do
