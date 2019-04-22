@@ -6,15 +6,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    CreateOrder.call(order_params, params[:promo_code], current_user, current_cart) do
+    CreateOrderWeb.call(order_params, params[:promo_code], current_user, current_cart) do
+      on(:empty_cart) do
+        redirect_to new_order_path
+        flash[:error] = 'Cart is empty!'
+      end
       on(:created) do
-        redirect_to root_path
-        ActionCable.server.broadcast :notifiations, message: 'Successfully. Wait for our call.'
+        redirect_to @order
       end
       on(:fail) do
-        render :new
+        redirect_to new_order_path
       end
     end
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   private

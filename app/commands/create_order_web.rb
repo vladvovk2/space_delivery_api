@@ -1,4 +1,4 @@
-class CreateOrder < Rectify::Command
+class CreateOrderWeb < Rectify::Command
   def initialize(order_params, promocode, user, cart)
     @order_params = order_params
     @promocode = PromoCode.find_by(code: promocode)
@@ -7,6 +7,8 @@ class CreateOrder < Rectify::Command
   end
 
   def call
+    return broadcast(:empty_cart) if cart.line_items.empty?
+
     order
   end
 
@@ -19,8 +21,10 @@ class CreateOrder < Rectify::Command
 
     if @order.save
       @order.get_product(cart)
+      promocode.update(used: true, order_id: @order.id) if promocode.present?
       OrderMailer.issued_order(user, @order).deliver_later if user&.get_receipt
       GetSalesStatisticsJob.perform_later(product_ids(@order).uniq)
+
       broadcast(:created, @order)
     else
       broadcast(:fail, @order)
