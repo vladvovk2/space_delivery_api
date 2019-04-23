@@ -10,21 +10,21 @@ class OrdersController < ApplicationController
       on(:blank) { true }
       on(:expired) do
         flash[:error] = 'Promocode is expired.'
-        render :new
+        redirect_to new_order_path
       end
       on(:owner) do
         flash[:error] = 'You can`t use your own promocode.'
-        render :new
+        redirect_to new_order_path
       end
       on(:used) do
         flash[:error] = 'Promocode already used.'
-        render :new
+        redirect_to new_order_path
       end
     end
 
     CreateOrderWeb.call(order_params, params[:promo_code], current_user, current_cart) do
       on(:empty_cart) do
-        render :new
+        redirect_to new_order_path
         flash[:error] = 'Cart is empty!'
       end
       on(:created) do

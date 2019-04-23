@@ -5,7 +5,8 @@
  <%= item.product_type.product.title %> x<%= item.quantity%>: <%= item.product_type.price * item.quantity %>,00грн.
 <% end %>
 Тип доставки: <%= @order.delivery_type %>
-Адрес: <%= @order.address %>
+Адрес: <%= @order.place.address %>
+Скидка: <%= @order.discount %>,00грн.
 Сума к оплате: <%= @order.total_price %>,00грн.
 
 Обращайтесь к нам еще.

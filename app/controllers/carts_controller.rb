@@ -10,6 +10,7 @@ class CartsController < ApplicationController
   def add_product
     product = ProductType.find(params[:id])
     current_cart.add_product(product).try(:save)
+    ActionCable.server.broadcast :notifiations, message: "#{product.product.title} added to cart."
 
     respond_to do |format|
       format.js

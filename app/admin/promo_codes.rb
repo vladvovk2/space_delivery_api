@@ -9,7 +9,7 @@ ActiveAdmin.register PromoCode do
     column :code
     column(:user, &:user)
     column(:order, &:order)
-    column(:amount) { |pc| pc.percentage ? "#{pc.amount}%" : "#{pc.amount}грн." }
+    column(:amount) { |promocode| promocode.percentage ? "#{promocode.amount}%" : "#{promocode.amount}грн." }
     column :invite
     column :percentage
     column :used

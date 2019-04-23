@@ -47,10 +47,14 @@ class UsersController < ApplicationController
   def change_receipt_status
     if @user.email_confirm
       @user.change_get_receipt_status
-      flash[:success] = 'Status changed.'
+      ActionCable.server.broadcast :notifiations, message: 'Status changed.'
     else
       flash[:error] = 'You must confirm your email.'
       redirect_to @user
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 

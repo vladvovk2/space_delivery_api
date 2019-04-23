@@ -35,7 +35,6 @@
     <% end %>
   </div>
 
-  
   <% if current_user %>
   <div class="profile-wrapper">
     <div class='profile'>
@@ -51,7 +50,7 @@
 
       <ol class="sub-menu">
         <li class="menu-item">
-          <%= link_to logout_path, style: 'text-decoration: none' do %>
+          <%= link_to favorites_path, style: 'text-decoration: none' do %>
             <div class="nav-menu-icon">
              <%= semantic_icon('red heart') %>
             </div>
