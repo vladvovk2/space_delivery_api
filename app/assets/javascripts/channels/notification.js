@@ -1,10 +1,13 @@
 App.notifications = App.cable.subscriptions.create('NotificationsChannel', {
   received: function(data) {
     $("#notification-messages").removeClass('hidden')
-    return $('#notification-messages').append(this.renderNotification(data));
+    var notificationContent = $('#notification-messages').append(this.renderNotification(data));
+    $('.notification-wrapper').fadeOut(5000);
+    return notificationContent;
   },
 
   renderNotification: function(data) {
-    return "<p>" + data.message + "</p>";
+    return "<div class='notification-wrapper'>" +
+            "<p>" + data.message + "</p></div>";
   }
 });

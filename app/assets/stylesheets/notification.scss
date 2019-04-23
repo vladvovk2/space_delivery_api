@@ -1,0 +1,40 @@
+#notification-messages {
+  position: absolute;
+  right: 10px;
+  z-index: 3;
+}
+
+.notification-wrapper {
+  float: right;
+  clear: both;
+  width: 270px;
+  height: 70px;
+  margin-bottom: 30px;
+  border: 1px solid white;
+  background-color: rgba(77, 77, 77, 0.705);
+  border-radius: 5px;
+  z-index: 4;
+
+  box-shadow:
+  0 0 1px aqua,
+  0 0 2px aqua,
+  0 0 5px aqua,
+  0 0 10px aqua,
+  0 0 15px aqua;
+
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
+}
+
+#notification-messages p {
+  display: table-cell;
+  width: 270px;
+  height: 65px;
+  line-height: 15px;
+  vertical-align: middle;
+  font-size: 15px;
+  text-align: center;
+  padding: 0 5px;
+}
