@@ -5,7 +5,10 @@ ActiveAdmin.register PromoCode do
   permit_params :amount, :percentage, :limitation
 
   controller do
-
+    def create
+      SendPromocodeJob.perform_later(permitted_params[:promo_code])
+      redirect_to admin_promo_codes_path
+    end
   end
 
   index do
