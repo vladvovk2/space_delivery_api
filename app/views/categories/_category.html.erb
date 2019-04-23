@@ -1,7 +1,7 @@
 <div class="ui link list">
   <div class='categories-list'>
     <% @categories.each do |category| %>
-      <div class='item categories-item'>
+      <div class='categories-item-title'>
         <%= link_to category.title, category_path(category), class: "#{'active' if current_page? category_path(category)} item", style: 'text-decoration: none' %>
       </div>
     <% end %>

@@ -6,11 +6,18 @@ div.categories-list {
   justify-content: space-between;
 }
 
-div.categories-item {
+div.categories-item-title {
   margin-left: 100px;
   margin-right: 100px;
   font-weight: bold;
   font-size: 20px;
+
+  & > a {
+    color: rgba(255, 77, 77, 0.5);
+    text-shadow:
+    0 0 1px #ffffff,
+    0 0 2px #ffffff;
+  }
 }
 
 div.list {
