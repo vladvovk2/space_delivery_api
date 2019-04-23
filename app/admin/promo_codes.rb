@@ -4,6 +4,10 @@ ActiveAdmin.register PromoCode do
 
   permit_params :amount, :percentage, :limitation
 
+  controller do
+
+  end
+
   index do
     id_column
     column :code
