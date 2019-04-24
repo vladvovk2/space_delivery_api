@@ -13,14 +13,21 @@ div.categories-item-title {
   font-size: 20px;
 
   & > a {
-    color: rgba(255, 77, 77, 0.5);
+    color: #ccc;
+    text-shadow:
+    0 0 1px #ccc,
+    0 0 2px #ccc;
+  }
+
+  & > a.active {
+    color: white;
     text-shadow:
     0 0 1px #ffffff,
     0 0 2px #ffffff;
   }
 }
 
-div.list {
+div.list, .list-l {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
