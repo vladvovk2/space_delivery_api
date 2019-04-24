@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_191129) do
+ActiveRecord::Schema.define(version: 2019_04_21_172605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_04_13_191129) do
     t.string "pay_type"
     t.string "last_name"
     t.string "first_name"
-    t.string "promo_code"
     t.string "user_number"
     t.string "delivery_type"
     t.string "status"
@@ -118,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_191129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "discount", default: 0
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -183,7 +183,15 @@ ActiveRecord::Schema.define(version: 2019_04_13_191129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "percentage", default: false
+    t.boolean "used", default: false
+    t.date "limitation"
+    t.bigint "order_id"
     t.index ["code"], name: "index_promo_codes_on_code", unique: true
+    t.index ["limitation"], name: "index_promo_codes_on_limitation"
+    t.index ["order_id"], name: "index_promo_codes_on_order_id"
+    t.index ["percentage"], name: "index_promo_codes_on_percentage"
+    t.index ["used"], name: "index_promo_codes_on_used"
     t.index ["user_id"], name: "index_promo_codes_on_user_id"
   end
 
@@ -220,6 +228,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_191129) do
   add_foreign_key "orders", "users"
   add_foreign_key "places", "orders"
   add_foreign_key "products", "categories"
+  add_foreign_key "promo_codes", "orders"
   add_foreign_key "promo_codes", "users"
   add_foreign_key "user_balances", "users"
 end

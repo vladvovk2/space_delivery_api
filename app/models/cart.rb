@@ -14,6 +14,6 @@ class Cart < ApplicationRecord
   end
 
   def total_price
-    line_items.map { |line_item| line_item.quantity * line_item.product_type.price }.sum
+    line_items.map { |ln| ln.product_type.product.published ? (ln.quantity * ln.product_type.price) : 0 }.sum
   end
 end

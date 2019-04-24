@@ -6,24 +6,46 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params.merge(total_price: current_cart.total_price, user_id: current_user&.id))
-
-    if @order.save
-      @order.get_product(current_cart)
-      OrderMailer.issued_order(current_user, @order).deliver_later if current_user&.get_receipt
-      GetSalesStatisticsJob.perform_later(product_ids(@order).uniq)
-
-      redirect_to root_path
-    else
-      render :new
+    PromocodeValidation.call(params[:promo_code], current_user) do
+      on(:blank) { true }
+      on(:expired) do
+        flash[:error] = 'Promocode is expired.'
+        redirect_to new_order_path
+      end
+      on(:owner) do
+        flash[:error] = 'You can`t use your own promocode.'
+        redirect_to new_order_path
+      end
+      on(:used) do
+        flash[:error] = 'Promocode already used.'
+        redirect_to new_order_path
+      end
     end
+
+    CreateOrderWeb.call(order_params, params[:promo_code], current_user, current_cart) do
+      on(:empty_cart) do
+        redirect_to new_order_path
+        flash[:error] = 'Cart is empty!'
+      end
+      on(:created) do
+        redirect_to @order
+        flash[:success] = 'Created.'
+      end
+      on(:fail) do
+        redirect_to new_order_path
+      end
+    end
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
     params.require(:order).permit(
-      :first_name, :last_name, :delivery_type, :pay_type, :address, :user_number, :decription, :promo_code,
+      :first_name, :last_name, :delivery_type, :pay_type, :address, :user_number, :decription,
       place_attributes: %i[id address latitude longitude]
     )
   end

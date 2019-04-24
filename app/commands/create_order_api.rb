@@ -1,4 +1,4 @@
-class CreateOrder < Rectify::Command
+class CreateOrderApi < Rectify::Command
   def initialize(user, cart, order_params)
     @user         = user
     @cart         = cart
