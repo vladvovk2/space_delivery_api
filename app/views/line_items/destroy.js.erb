@@ -1,9 +1,9 @@
-$('.line-item').bind('ajax:success', function(){
-  $(this).closest('div').fadeOut();
-});
+$('[class*="line-item"]').bind('ajax:success', function(){
+  var lineItem = $(this);
 
-$('.unpublished-line-item').bind('ajax:success', function(){
-  $(this).closest('div').fadeOut();
+  lineItem.animate({opacity: 0}, 100, function() {
+      lineItem.animate({height: 0, margin: 0}, 100);
+  });
 });
 
 $("#cart-icon").html('<%=  number_to_currency current_cart.total_price %>');
