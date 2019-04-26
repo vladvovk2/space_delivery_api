@@ -11,19 +11,23 @@ class OrdersController < ApplicationController
       on(:expired) do
         flash[:error] = 'Promocode is expired.'
         redirect_to new_order_path
+        return
       end
       on(:owner) do
         flash[:error] = 'You can`t use your own promocode.'
         redirect_to new_order_path
+        return
       end
       on(:used) do
         flash[:error] = 'Promocode already used.'
         redirect_to new_order_path
+        return
       end
       on(:category) do |title|
-        flash[:error] = "The promocode applies only to products in the category: #{title} \
-        but products in this category are not in the cart"
+        flash[:error] = "The promocode applies only to products in the category: #{title.downcase}. \
+        But products in this category are not in the cart"
         redirect_to new_order_path
+        return
       end
     end
 

@@ -23,11 +23,11 @@ class PromocodeValidation < Rectify::Command
   end
 
   def expired?
-    promocode.limitation.present? && promocode.limitation < Time.zone.today
+    promocode.limitation && promocode.limitation < Time.zone.today
   end
 
   def user_owner?
-    user.present? && user.promo_code.id.eql?(promocode.id)
+    user && user.promo_code.id.eql?(promocode.id)
   end
 
   def used?
@@ -35,6 +35,6 @@ class PromocodeValidation < Rectify::Command
   end
 
   def cart_include_category?
-    cart.product_types.select { |pt| pt.product.category_id.eql? promocode.category_id }.empty? if promocode.category_id.present?
+    cart.product_types.select { |pt| pt.product.category_id.eql? promocode.category_id }.empty? if promocode.category_id
   end
 end
