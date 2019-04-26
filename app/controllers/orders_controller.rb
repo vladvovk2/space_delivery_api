@@ -5,40 +5,32 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def create
-    PromocodeValidation.call(params[:promo_code], current_user) do
+    PromocodeValidation.call(params[:promo_code], current_user, current_cart) do
       on(:blank) { true }
-      on(:expired) do
-        flash[:error] = 'Promocode is expired.'
-        redirect_to new_order_path
-      end
-      on(:owner) do
-        flash[:error] = 'You can`t use your own promocode.'
-        redirect_to new_order_path
-      end
-      on(:used) do
-        flash[:error] = 'Promocode already used.'
-        redirect_to new_order_path
+      on(:error) do |message|
+        flash[:error] = message
+        return redirect_to new_order_path
       end
     end
 
     CreateOrderWeb.call(order_params, params[:promo_code], current_user, current_cart) do
       on(:empty_cart) do
-        redirect_to new_order_path
         flash[:error] = 'Cart is empty!'
+        redirect_to new_order_path
       end
       on(:created) do
-        redirect_to @order
         flash[:success] = 'Created.'
+        redirect_to @order
       end
       on(:fail) do
         redirect_to new_order_path
       end
     end
-  end
-
-  def show
-    @order = Order.find(params[:id])
   end
 
   private

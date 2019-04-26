@@ -14,6 +14,7 @@ class CreateOrderWeb < Rectify::Command
 
   private
 
+  attr_accessor :discount
   attr_reader :order_params, :promocode, :user, :cart
 
   def order
@@ -36,14 +37,8 @@ class CreateOrderWeb < Rectify::Command
   end
 
   def discount
-    if promocode.present?
-      if promocode.percentage
-        cart.total_price * (promocode.amount.to_f / 100.to_f)
-      else
-        promocode.amount
-      end
-    else
-      0
+    Discount.call(promocode, cart) do
+      on(:discount) { |disc| return disc }
     end
   end
 end
