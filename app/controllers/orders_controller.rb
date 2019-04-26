@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    PromocodeValidation.call(params[:promo_code], current_user) do
+    PromocodeValidation.call(params[:promo_code], current_user, current_cart) do
       on(:blank) { true }
       on(:expired) do
         flash[:error] = 'Promocode is expired.'
@@ -18,6 +18,11 @@ class OrdersController < ApplicationController
       end
       on(:used) do
         flash[:error] = 'Promocode already used.'
+        redirect_to new_order_path
+      end
+      on(:category) do |title|
+        flash[:error] = "The promocode applies only to products in the category: #{title} \
+        but products in this category are not in the cart"
         redirect_to new_order_path
       end
     end
