@@ -2,7 +2,7 @@ ActiveAdmin.register PromoCode do
   menu priority: 6
   actions :all, except: %i[edit destroy show]
 
-  permit_params :amount, :percentage, :limitation
+  permit_params :amount, :percentage, :limitation, :category_id
 
   controller do
     def create
@@ -16,6 +16,7 @@ ActiveAdmin.register PromoCode do
     column :code
     column(:user, &:user)
     column(:order, &:order)
+    column(:category, &:category)
     column(:amount) { |promocode| promocode.percentage ? "#{promocode.amount}%" : "#{promocode.amount}грн." }
     column :invite
     column :percentage
@@ -30,6 +31,7 @@ ActiveAdmin.register PromoCode do
       f.input :amount
       f.input :percentage
       f.input :limitation
+      f.input :category, as: :select, collection: Category.all
     end
     f.actions
   end

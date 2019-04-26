@@ -1,6 +1,7 @@
 class PromoCode < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :order, optional: true
+  belongs_to :category, optional: true
 
   private
 
