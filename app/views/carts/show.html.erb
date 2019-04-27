@@ -8,6 +8,10 @@
 
 <div id='cart'>
   <%= render @cart %>
+  <% @gifts.each do |line_item| %>
+    <%= render 'line_items/gifts', line_item: line_item %>
+  <% end %>
+  <%= render 'carts/footer', cart: @cart %>
 </div>
 
 <div id='buy_together'>
