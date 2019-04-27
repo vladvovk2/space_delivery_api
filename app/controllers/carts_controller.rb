@@ -2,8 +2,7 @@ class CartsController < ApplicationController
   include ProductsHelper
 
   def show
-    @cart = Cart.includes(line_items: [product_type: [product: :picture]])
-                .find(session[:cart_id])
+    @cart = Cart.includes(line_items: [product_type: [product: :picture]]).find(session[:cart_id])
 
     give_away
     buy_together
@@ -30,20 +29,17 @@ class CartsController < ApplicationController
   end
 
   def give_away
-    gift = Gift.where('limitation > ?', Time.zone.today).first
     line_items = current_cart.line_items
-    product_type = gift.product.product_types.order(price: :desc).first
 
-    if current_cart.total_price >= gift.amount_target
-      if line_items.where('product_type_id = ? AND gift_id = ?', product_type.id, gift.id).empty?
+    Gift.where('limitation > ?', Time.zone.today).each do |gift|
+      product_type = gift.product.product_types.order(price: :desc).first
+      gifts_products = line_items.where('product_type_id = ? AND gift_id = ?', product_type.id, gift.id)
+
+      if current_cart.total_price >= gift.amount_target && gifts_products.empty?
         line_items.create(product_type: product_type, gift_id: gift.id)
-      end
-    else
-      unless line_items.where('product_type_id = ? AND gift_id = ?', product_type.id, gift.id).empty?
+      else
         line_items.where(gift_id: gift.id).destroy_all
       end
     end
-
-    @gifts = current_cart.line_items.where('gift_id IS NOT NULL')
   end
 end
