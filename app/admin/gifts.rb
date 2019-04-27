@@ -17,7 +17,7 @@ ActiveAdmin.register Gift do
     f.inputs 'Atributes' do
       f.input :amount_target
       f.input :limitation
-      f.input :product, as: :select, collection: Product.all
+      f.input :product, as: :select, collection: Product.where(published: true)
     end
     f.actions
   end

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   resources :carts, only: :show do
+    get :give_away, on: :member
     put :add_product, on: :member
     get :buy_together, on: :member
   end
