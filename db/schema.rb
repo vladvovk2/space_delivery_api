@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_21_172605) do
+ActiveRecord::Schema.define(version: 2019_04_27_145000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,15 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "gifts", force: :cascade do |t|
+    t.integer "amount_target"
+    t.date "limitation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_gifts_on_product_id"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.bigint "cart_id"
@@ -99,7 +108,9 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
     t.bigint "product_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "gift_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["gift_id"], name: "index_line_items_on_gift_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_type_id"], name: "index_line_items_on_product_type_id"
   end
@@ -227,6 +238,8 @@ ActiveRecord::Schema.define(version: 2019_04_21_172605) do
   add_foreign_key "carts", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
+  add_foreign_key "gifts", "products"
+  add_foreign_key "line_items", "gifts"
   add_foreign_key "orders", "users"
   add_foreign_key "places", "orders"
   add_foreign_key "products", "categories"
