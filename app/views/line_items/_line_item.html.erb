@@ -1,8 +1,12 @@
-<% if line_item.product_type.product.published %>
+<% if line_item.product_type.product.published && line_item.gift_id.nil? %>
   <div class='line-item'>
     <%= render 'line_items/published', line_item: line_item %>
   </div>
-<% else %>
+<% elsif line_item.product_type.product.published && line_item.gift_id %>
+  <div class='gift-line-item'>
+    <%= render 'line_items/gift', line_item: line_item %>
+  </div>
+<% elsif %>
   <div class='unpublished-line-item'>
     <%= render 'line_items/unpublished', line_item: line_item %>
   </div>

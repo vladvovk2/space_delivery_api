@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.includes(line_items: [product_type: [product: :picture]])
-                .where(line_items: { gift_id: nil }).find(session[:cart_id])
+                .find(session[:cart_id])
 
     give_away
     buy_together
@@ -32,12 +32,15 @@ class CartsController < ApplicationController
   def give_away
     gift = Gift.where('limitation > ?', Time.zone.today).first
     line_items = current_cart.line_items
+    product_type = gift.product.product_types.order(price: :desc).first
 
     if current_cart.total_price >= gift.amount_target
-      product_type = gift.product.product_types.order(price: :desc).first
-
       if line_items.where('product_type_id = ? AND gift_id = ?', product_type.id, gift.id).empty?
         line_items.create(product_type: product_type, gift_id: gift.id)
+      end
+    else
+      unless line_items.where('product_type_id = ? AND gift_id = ?', product_type.id, gift.id).empty?
+        line_items.where(gift_id: gift.id).destroy_all
       end
     end
 
