@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show send_confirm_email change_receipt_status]
+  before_action :set_user, only: %i[show send_confirm_email change_receipt_status order_list]
 
   def new
     @user = User.new
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def order_list
-    @orders = current_user.orders
+    @orders = @user.orders
   end
 
   def send_confirm_email
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def change_receipt_status
     if @user.email_confirm
       @user.change_get_receipt_status
-      ActionCable.server.broadcast :notifiations, message: 'Status changed.'
+      send_notification 'Status changed.'
     else
       flash[:error] = 'You must confirm your email.'
       redirect_to @user

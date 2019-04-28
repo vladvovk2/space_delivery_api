@@ -29,7 +29,7 @@ class PromocodeValidation < Rectify::Command
 
   def user_owner?
     message = 'You can`t use your own promocode.'
-    return broadcast(:error, message) if user && user.promo_code.id.eql?(promocode.id)
+    return broadcast(:error, message) if user&.promo_code.id.eql?(promocode.id)
   end
 
   def used?
