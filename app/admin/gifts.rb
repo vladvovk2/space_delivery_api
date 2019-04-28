@@ -1,6 +1,6 @@
 ActiveAdmin.register Gift do
   menu priority: 7
-  actions :all, except: %i[edit destroy]
+  actions :all, except: %i[show]
 
   permit_params :amount_target, :limitation, :product_id
 
@@ -10,6 +10,7 @@ ActiveAdmin.register Gift do
     column :amount_target
     column :limitation
     column :created_at
+    actions
   end
 
   form(html: { multipart: true }) do |f|
