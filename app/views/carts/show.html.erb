@@ -10,9 +10,11 @@
   <%= render @cart %>
 </div>
 
-<div id='buy_together'>
+<div id='buy-together'>
   <% @products.each do |product| %>
-    <%= product.title %>
+    <p class="buy-together-item">
+      <%= product.title %>
+    </p>
   <% end %>
 </div>
 <% end %>
