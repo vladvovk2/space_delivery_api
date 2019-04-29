@@ -13,9 +13,7 @@ class FavoritesController < ApplicationController
       send_notification "#{@product.title} add to favorites"
     end
 
-    respond_to do |format|
-      format.js
-    end
+    respond_to { |format| format.js }
   end
 
   private

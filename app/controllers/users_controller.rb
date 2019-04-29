@@ -53,9 +53,7 @@ class UsersController < ApplicationController
       redirect_to @user
     end
 
-    respond_to do |format|
-      format.js
-    end
+    respond_to { |format| format.js }
   end
 
   private

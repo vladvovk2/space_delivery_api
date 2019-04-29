@@ -17,9 +17,7 @@ class LineItemsController < ApplicationController
   private
 
   def set_respond_to_js
-    respond_to do |format|
-      format.js
-    end
+    respond_to { |format| format.js }
   end
 
   def set_line_item
