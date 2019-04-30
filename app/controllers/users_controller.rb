@@ -24,23 +24,24 @@ class UsersController < ApplicationController
 
   def send_confirm_email
     if @user.email_confirm
-      flash[:error] = 'Email already confirmed.'
+      send_notification 'Email already confirmed.'
     else
-      UserMailer.confirm_email(@user).deliver_later
-      flash[:success] = 'Email was sent.'
+      send_notification "Email was sent to: #{@user.email}"
+      UserMailer.confirm_email(@user.id).deliver
     end
+
+    respond_to { |format| format.js }
   end
 
   def confirm_email
     @user = User.find_by(confirm_token: params[:id])
 
-    if @user
-      @user.email_activate
-      flash[:success] = 'Your email has been confirmed.'
-      redirect_to confirm_email_user_path
+    if @user.email_activate
+      send_notification 'Your email has been confirmed.'
+      redirect_to @user
     else
-      flash[:error] = 'Sorry. User does not exist.'
       redirect_to root_url
+      send_notification 'Sorry. User does not exist.'
     end
   end
 
@@ -49,8 +50,7 @@ class UsersController < ApplicationController
       @user.change_get_receipt_status
       send_notification 'Status changed.'
     else
-      flash[:error] = 'You must confirm your email.'
-      redirect_to @user
+      send_notification 'You must confirm your email.'
     end
 
     respond_to { |format| format.js }

@@ -1,6 +1,6 @@
 ActiveAdmin.register Gift do
   menu priority: 7
-  actions :all, except: %i[show]
+  actions :all, except: :show
 
   permit_params :amount_target, :limitation, :product_id
 
