@@ -10,12 +10,12 @@
   <section class='name'>
     <div class='first_name'>
       <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: 'name-input', autocomplete: 'off' %>
+      <%= f.text_field :first_name, value: current_user&.first_name, class: 'name-input', autocomplete: 'off' %>
     </div>
 
     <div class='last_name'>
       <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: 'name-input', autocomplete: 'off' %>
+      <%= f.text_field :last_name, value: current_user&.last_name, class: 'name-input', autocomplete: 'off' %>
     </div>
   </section>
 
@@ -23,7 +23,7 @@
   <div class='number-promo-fields'>
     <div class='user-number'>
       <%= f.label :phone_number %>
-      <%= f.text_field :user_number, class: 'user-number-input', autocomplete: 'off' %>
+      <%= f.text_field :user_number, value: current_user&.phone_number&.last(9), class: 'user-number-input', autocomplete: 'off' %>
     </div>
 
     <div class='promocode-block'>

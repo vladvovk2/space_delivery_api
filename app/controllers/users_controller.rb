@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show send_confirm_email change_receipt_status]
+  before_action :set_user, only: %i[show send_confirm_email change_receipt_status order_list]
 
   def new
     @user = User.new
@@ -19,43 +19,41 @@ class UsersController < ApplicationController
   end
 
   def order_list
-    @orders = current_user.orders
+    @orders = @user.orders
   end
 
   def send_confirm_email
     if @user.email_confirm
-      flash[:error] = 'Email already confirmed.'
+      send_notification 'Email already confirmed.'
     else
-      UserMailer.confirm_email(@user).deliver_later
-      flash[:success] = 'Email was sent.'
+      send_notification "Email was sent to: #{@user.email}"
+      UserMailer.confirm_email(@user.id).deliver
     end
+
+    respond_to { |format| format.js }
   end
 
   def confirm_email
     @user = User.find_by(confirm_token: params[:id])
 
-    if @user
-      @user.email_activate
-      flash[:success] = 'Your email has been confirmed.'
-      redirect_to confirm_email_user_path
+    if @user.email_activate
+      send_notification 'Your email has been confirmed.'
+      redirect_to @user
     else
-      flash[:error] = 'Sorry. User does not exist.'
       redirect_to root_url
+      send_notification 'Sorry. User does not exist.'
     end
   end
 
   def change_receipt_status
     if @user.email_confirm
       @user.change_get_receipt_status
-      ActionCable.server.broadcast :notifiations, message: 'Status changed.'
+      send_notification 'Status changed.'
     else
-      flash[:error] = 'You must confirm your email.'
-      redirect_to @user
+      send_notification 'You must confirm your email.'
     end
 
-    respond_to do |format|
-      format.js
-    end
+    respond_to { |format| format.js }
   end
 
   private

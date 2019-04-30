@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     member do
       get :confirm_email
       get :order_list
-      get :send_confirm_email
       patch :change_receipt_status
     end
+    get :send_confirm_email, on: :collection
   end
 
   resources :favorites do
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   resources :carts, only: :show do
+    get :give_away, on: :member
     put :add_product, on: :member
     get :buy_together, on: :member
   end
