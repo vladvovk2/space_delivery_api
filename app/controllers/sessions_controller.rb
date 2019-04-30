@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def create
     @user = User.find_by(phone_number: "+380#{params[:phone_number]}")
-    if @user&.authenticate(params[:password])
+                .try(:authenticate, params[:password])
+
+    if @user
       session[:user_id] = @user.id
       redirect_to blogs_path
     else
