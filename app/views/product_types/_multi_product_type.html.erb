@@ -12,7 +12,7 @@
       <%= product_type.weight %> гр.
     </div>
     <div class="price">
-      <%= number_to_currency product_type.price %>
+      <%= product_type.price %> UA
     </div>
     <div class="add-to-cart-icon">
       <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>

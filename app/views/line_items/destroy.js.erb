@@ -6,5 +6,5 @@ $('[class*="line-item"]').bind('ajax:success', function(){
   });
 });
 
-$("#cart-icon").html('<%=  number_to_currency current_cart.total_price %>');
-$("#cart-total-price").html('<%=  number_to_currency current_cart.total_price %>');
+$("#cart-icon").html('<%= current_cart.total_price %> UA');
+$("#cart-total-price").html('<%= current_cart.total_price %> UA');

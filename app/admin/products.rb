@@ -88,6 +88,7 @@ ActiveAdmin.register Product do
     f.inputs 'Product atributes' do
       f.input :title
       f.input :description
+      f.input :per_bonuses
       f.input :category, as: :select, collection: Category.all
     end
     f.inputs 'Product type' do
