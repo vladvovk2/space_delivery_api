@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   include ProductsHelper
 
-  before_action :set_line_items, only: %i[add_product show]
+  before_action :set_line_items, only: %i[add_product show buy_per_bonuses]
 
   def show
     @cart = Cart.includes(line_items: [product_type: [product: :picture]])
@@ -12,15 +12,35 @@ class CartsController < ApplicationController
   end
 
   def add_product
-    product_type = ProductType.find(params[:id])
-    item = @line_items.find_by(product_type: product_type)
+    @product_type = ProductType.find(params[:id])
+    item = @line_items.find_by(product_type: @product_type)
 
     if item
       item.update(quantity: item.quantity + 1)
-      send_notification "#{product_type.product.title} quantity increase to: #{item.quantity}."
+      send_notification "#{@product_type.product.title} quantity increase to: #{item.quantity}."
     else
-      @line_items.create(product_type: product_type)
-      send_notification "#{product_type.product.title} added to cart."
+      @line_items.create(product_type: @product_type)
+      send_notification "#{@product_type.product.title} added to cart."
+    end
+
+    respond_to { |format| format.js }
+  end
+
+  def buy_per_bonuses
+    @product_type = ProductType.find(params[:id])
+
+    if @product_type.product.per_bonuses
+      if current_user.user_balance.balance >= @product_type.price
+        item = @line_items.find_by(product_type: @product_type, per_bonuses: true)
+
+        if item
+          item.update(quantity: item.quantity + 1) if current_user.user_balance.update(balance: current_user.user_balance.balance - @product_type.price)
+          send_notification "#{@product_type.product.title} quantity increase to: #{item.quantity}."
+        else
+          @line_items.create(product_type: @product_type, per_bonuses: true) if current_user.user_balance.update(balance: current_user.user_balance.balance - @product_type.price)
+          send_notification "#{@product_type.product.title} added to cart."
+        end
+      end
     end
 
     respond_to { |format| format.js }

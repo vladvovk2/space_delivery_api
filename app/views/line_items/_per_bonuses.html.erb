@@ -1,0 +1,17 @@
+<div class='per-bonuses-line-item-image'>
+  <%= image_tag line_item.product_type.product.picture.image_name.url(:small) %>
+</div>
+
+<div class='per-bonuses-line-item-title'>
+  <%= line_item.product_type.product.title %>
+</div>
+
+<div class='per-bonuses-line-item-quantity'>
+  <%= line_item.quantity %>
+</div>
+
+<div class='per-bonuses-line-item-delete-item'>
+  <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
+    <%= semantic_icon('trash alternate outline icon') %>
+  <% end %>
+</div>

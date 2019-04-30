@@ -1,10 +1,14 @@
-<% if line_item.product_type.product.published && line_item.gift_id.nil? %>
+<% if line_item.product_type.product.published && line_item.gift_id.nil? && !line_item.per_bonuses %>
   <div class='line-item'>
     <%= render 'line_items/published', line_item: line_item %>
   </div>
 <% elsif line_item.product_type.product.published && line_item.gift_id %>
   <div class='gift-line-item'>
     <%= render 'line_items/gift', line_item: line_item %>
+  </div>
+<% elsif line_item.product_type.product.per_bonuses %>
+  <div class='per-bonuses-line-item'>
+    <%= render 'line_items/per_bonuses', line_item: line_item %>
   </div>
 <% elsif %>
   <div class='unpublished-line-item'>

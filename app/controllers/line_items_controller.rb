@@ -11,6 +11,13 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
+    if @line_item.per_bonuses
+      current_user.user_balance.tap do |u|
+        u.balance += @line_item.total_price
+        send_notification "Return #{@line_item.total_price} bonuses to your balance." if u.save
+      end
+    end
+
     @line_item.destroy
   end
 

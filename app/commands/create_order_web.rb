@@ -22,6 +22,7 @@ class CreateOrderWeb < Rectify::Command
 
     if @order.save
       @order.get_product(cart)
+      cart.destroy
       promocode.update(used: true, order_id: @order.id) if promocode.present? && promocode.invite.nil?
 
       OrderMailer.issued_order(user, @order).deliver_later if user&.get_receipt

@@ -15,8 +15,14 @@
       <%= product_type.price %> UA
     </div>
     <div class="add-to-cart-icon">
-      <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
-        <%= semantic_icon('shopping basket') %>
+      <% if product_type.product.per_bonuses %>
+        <%= link_to buy_per_bonuses_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
+          <%= semantic_icon('bitcoin') %>
+        <% end %>
+      <% else %>
+        <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
+          <%= semantic_icon('shopping basket') %>
+        <% end %>
       <% end %>
     </div>
   </div>
