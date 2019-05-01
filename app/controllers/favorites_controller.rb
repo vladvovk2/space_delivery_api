@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorites, only: %i[show make_favorite]
+  before_action :set_favorites, only: %i[index show make_favorite]
+
+  def index; end
 
   def show; end
 

@@ -3,6 +3,7 @@ ActiveAdmin.register Product do
   before_action :set_product, only: %i[publish unpublish]
   permit_params(:title,
                 :description,
+                :per_bonuses,
                 :category_id,
                 picture_attributes: %i[id image_name],
                 product_types_attributes: %i[id proportion price weight _destroy])
@@ -56,6 +57,7 @@ ActiveAdmin.register Product do
     column(:image) { |product| image_tag product.picture.image_name.url(:small) if product.picture.present? }
     column :title
     column(:published) { |product| status_tag product.published }
+    column(:per_bonuses) { |product| status_tag product.per_bonuses }
     column :category
     column :type do |product|
       status_tag product.product_types.first.proportion, color_for_type(product.product_types.first.proportion)
@@ -70,6 +72,7 @@ ActiveAdmin.register Product do
       row :title
       row :category
       row(:published) { |product| status_tag product.published }
+      row(:per_bonuses) { |product| status_tag product.per_bonuses }
       row :description
       row(:image) { |product| image_tag product.picture.image_name.url(:medium) if product.picture.present? }
 
@@ -88,6 +91,7 @@ ActiveAdmin.register Product do
     f.inputs 'Product atributes' do
       f.input :title
       f.input :description
+      f.input :per_bonuses
       f.input :category, as: :select, collection: Category.all
     end
     f.inputs 'Product type' do

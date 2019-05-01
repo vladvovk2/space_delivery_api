@@ -27,19 +27,14 @@ class Order < ApplicationRecord
       line_item.cart_id = nil
       line_items.push(line_item)
     end
+    cart.delete
   end
 
   private
 
   before_create :set_status
-  before_update :charge_bonuses_to_promo_code_owner
 
   def set_status
     self.status = 'Pending'
-  end
-
-  def charge_bonuses_to_promo_code_owner
-    validation_conditions = status_changed? && (status.eql? true) && promo_code
-    ChargeBonusesJob.perform_later(promo_code) if validation_conditions
   end
 end

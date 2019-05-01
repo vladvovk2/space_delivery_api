@@ -30,7 +30,7 @@
       </div>
 
       <div class="content" id='cart-icon'>
-        <%= number_to_currency current_cart.total_price %>
+        <%= current_cart.total_price %> UA
       </div>
     <% end %>
   </div>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="content">
-          Profile
+          <span id='total-bonuses'><%= current_user.user_balance.balance %> Bon</span>
         </div>
       <% end %>
 

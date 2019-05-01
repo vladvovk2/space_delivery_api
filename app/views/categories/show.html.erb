@@ -1,5 +1,5 @@
 <%= render 'category' %>
-<%= render 'product_list' %>
+<%= render 'product_list', category: @category %>
 
 <script>
   $(document).on('turbolinks:load', function () {
