@@ -15,6 +15,10 @@ class LineItem < ApplicationRecord
     per_bonuses
   end
 
+  def gift?
+    gift_id.present?
+  end
+
   def total_price
     product_type.price * quantity
   end
