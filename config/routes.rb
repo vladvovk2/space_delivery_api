@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     member do
       get :give_away
       put :add_product
-      put :buy_per_bonuses
       get :buy_together
     end
   end

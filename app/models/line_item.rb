@@ -11,6 +11,10 @@ class LineItem < ApplicationRecord
     self
   end
 
+  def per_bonuses?
+    per_bonuses
+  end
+
   def total_price
     product_type.price * quantity
   end
