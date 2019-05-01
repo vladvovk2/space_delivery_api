@@ -14,8 +14,8 @@ class Cart < ApplicationRecord
   end
 
   def total_price
-    ln = line_items.map do |ln|
-      ln.product_type.product.published && !ln.gift? && !ln.per_bonuses? ? (ln.quantity * ln.product_type.price) : 0
+    ln = line_items.map do |l|
+      l.product_type.product.published && !l.gift? && !l.per_bonuses? ? (l.quantity * l.product_type.price) : 0
     end
 
     ln.sum

@@ -10,6 +10,10 @@
   <%= line_item.quantity %>
 </div>
 
+<div class='per-bonuses-line-item-total-price'>
+  <%= line_item.total_price %> Bon
+</div>
+
 <div class='per-bonuses-line-item-delete-item'>
   <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
     <%= semantic_icon('trash alternate outline icon') %>
