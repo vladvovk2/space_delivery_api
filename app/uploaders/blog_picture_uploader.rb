@@ -8,7 +8,7 @@ class BlogPictureUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process resize_to_fit: [400, 400]
+    process resize_to_fit: [250, 250]
   end
 
   version :medium do

@@ -1,0 +1,19 @@
+<div class='post-list'>
+  <% @posts.each do |post| %>
+    <div class='post'>
+      <div class='post-image'>
+        <%= image_tag post.picture.blog_image.url(:large) %>
+      </div>
+
+      <ul class='post-list'>
+        <li class='post-head'>
+          <p class='post-title'><%= post.title %></p>
+          <p class='post-created-at'><%= post.created_at.strftime("%B %d, %Y") %></p>
+        </li>
+        <li class='post-foot'>
+          <p class='post-description'><%= post.description %></p>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>

@@ -7,5 +7,5 @@ class Blog < ApplicationRecord
                     uniqueness: true
   validates :description,
             presence: true,
-            length: { in: 10..250 }
+            length: { in: 10..1000 }
 end
