@@ -14,7 +14,6 @@ class CreateOrderWeb < Rectify::Command
 
   private
 
-  attr_accessor :discount
   attr_reader :order_params, :promocode, :user, :cart
 
   def order

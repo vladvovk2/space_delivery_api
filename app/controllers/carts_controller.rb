@@ -4,6 +4,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.includes(line_items: [product_type: [product: :picture]])
                 .find(session[:cart_id])
+    #.order('line_items.gift_id, line_items.per_bonuses asc')
 
     give_away
     buy_together

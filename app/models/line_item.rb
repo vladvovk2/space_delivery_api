@@ -4,7 +4,7 @@ class LineItem < ApplicationRecord
   belongs_to :gift, optional: true
   belongs_to :product_type, optional: true
 
-  default_scope { order(gift_id: :desc, per_bonuses: :asc) }
+  default_scope { order(gift_id: :desc, per_bonuses: :asc, id: :desc) }
 
   def change_quantity(value)
     update(quantity: value) if value.positive?
