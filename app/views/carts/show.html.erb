@@ -13,33 +13,45 @@
 <div id='buy-together'>
   <% @products.each do |product| %>
     <div class="buy-together-item">
-      <%= image_tag product.picture.image_name.url(:medium), class: 'suggested-product-icon' %>
-      <%= product.title %>
-      <div class="suggested-tabs">
+      <div class="col">
+        <p class="suggested-title">
+          <%= product.title %>
+        </p>
+        <%= image_tag product.picture.image_name.url(:small), class: 'suggested-product-icon' %>
+      </div>
+      
+      <div class="col">
+        <div class="suggested-tabs">
+          <% product.product_types.each do |product_type| %>
+            <div class="suggested-tablinks defaultOpen">  <!-- onclick="openDetails(event, <%= product_type.id %> )" -->
+              <%= product_type.proportion %>
+            </div>
+          <% end %>
+        </div>
+
         <% product.product_types.each do |product_type| %>
-          <div class="tablins defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
-            <%= product_type.proportion %>
+          <div id="<%= product_type.id %>" class="suggested-tabcontent">
+            <div class="suggested-weight">
+              <%= product_type.weight %> гр.
+            </div>
+            <div class="suggested-price">
+              <%= number_to_currency product_type.price %>
+            </div>
+            <div class="suggested-add-to-cart-icon">
+              <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
+                <%= semantic_icon('shopping basket') %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
 
-      <% product.product_types.each do |product_type| %>
-        <div id="<%= product_type.id %>" class="tacontent">
-          <div class="weight">
-            <%= product_type.weight %> гр.
-          </div>
-          <div class="price">
-            <%= number_to_currency product_type.price %>
-          </div>
-          <div class="add-to-cart-icon">
-            <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
-              <%= semantic_icon('shopping basket') %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <!-- <div class="col">
+        
+      </div> -->
     </div>
-    
+    <% end %>
+
   <script>
     document.getElementsByClassName("defaultOpen")[0].click();
 
@@ -48,7 +60,7 @@
       tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
     }
   </script>
-    <% end %>
+
 </div>
 
 
