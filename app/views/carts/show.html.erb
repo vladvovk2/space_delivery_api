@@ -12,9 +12,44 @@
 
 <div id='buy-together'>
   <% @products.each do |product| %>
-    <p class="buy-together-item">
+    <div class="buy-together-item">
+      <%= image_tag product.picture.image_name.url(:medium), class: 'suggested-product-icon' %>
       <%= product.title %>
-    </p>
-  <% end %>
+      <div class="suggested-tabs">
+        <% product.product_types.each do |product_type| %>
+          <div class="tablins defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
+            <%= product_type.proportion %>
+          </div>
+        <% end %>
+      </div>
+
+      <% product.product_types.each do |product_type| %>
+        <div id="<%= product_type.id %>" class="tacontent">
+          <div class="weight">
+            <%= product_type.weight %> гр.
+          </div>
+          <div class="price">
+            <%= number_to_currency product_type.price %>
+          </div>
+          <div class="add-to-cart-icon">
+            <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
+              <%= semantic_icon('shopping basket') %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+  <script>
+    document.getElementsByClassName("defaultOpen")[0].click();
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+    }
+  </script>
+    <% end %>
 </div>
+
+
 <% end %>
