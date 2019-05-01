@@ -8,3 +8,4 @@ $('[class*="line-item"]').bind('ajax:success', function(){
 
 $("#cart-icon").html('<%= current_cart.total_price %> UA');
 $("#cart-total-price").html('<%= current_cart.total_price %> UA');
+$("#total-bonuses").html('<%= current_user.user_balance.balance %> Bon');
