@@ -1,0 +1,35 @@
+<div class='list'>
+  <% @favorites.each do |favorite| %>
+    <div class='product'>
+      <div class='product-header'>
+        <div class='title'>
+          <%= favorite.product.title %>
+        </div>
+
+        <% if current_user %>
+          <div class='favorite' onclick="changeHeartIcon(this)">
+            <%= link_to make_favorite_favorite_path(favorite.product), method: :post, remote: true, style: 'color: white' do %>
+              <% if current_user.favorites.find_by(product_id: favorite.product.id).present? %>
+                <%= semantic_icon('heart') %>
+              <% else %>
+                <%= semantic_icon('heart outline')%>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class='image'>
+        <%= image_tag favorite.product.picture.image_name.url(:large) %>
+      </div>
+
+      <div id="tabs-content">
+        <% if favorite.product.product_types.count != 1 %>
+          <%= render 'product_types/multi_product_type', product: favorite.product %>
+        <% else %>
+          <%= render 'product_types/single_product_type', product: favorite.product %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -27,6 +27,7 @@ class Order < ApplicationRecord
       line_item.cart_id = nil
       line_items.push(line_item)
     end
+    cart.delete
   end
 
   private
