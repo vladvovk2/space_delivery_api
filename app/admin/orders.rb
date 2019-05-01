@@ -96,16 +96,24 @@ ActiveAdmin.register Order do
 
       panel 'Product list' do
         table_for order.line_items do
-          column(:image) do |order|
-            image_tag order.product_type.product.picture.image_name.url(:small) if order.product_type.product.picture.present?
+          column(:image) do |ln|
+            image_tag ln.product_type.product.picture.image_name.url(:small) if ln.product_type.product.picture.present?
           end
-          column(:title) { |order| order.product_type.product.title }
-          column(:proportion) do |order|
-            status_tag order.product_type.proportion, color_for_type(order.product_type.proportion)
+          column(:title) { |ln| ln.product_type.product.title }
+          column(:proportion) do |ln|
+            status_tag ln.product_type.proportion, color_for_type(ln.product_type.proportion)
           end
           column :quantity
-          column(:price) { |order| number_to_currency(order.product_type.price) }
-          column(:total_price) { |order| number_to_currency(order.product_type.price * order.quantity) }
+          column :price do |ln|
+            price = ln.per_bonuses? ? "#{ln.product_type.price} Bon" : "#{ln.product_type.price} UA"
+            price = 'Gift' if ln.gift?
+            price
+          end
+          column :total_price do |ln|
+            price = ln.per_bonuses? ? "#{ln.product_type.price * ln.quantity} Bon" : "#{ln.product_type.price * ln.quantity} UA"
+            price = 'Gift' if ln.gift?
+            price
+          end
         end
       end
     end

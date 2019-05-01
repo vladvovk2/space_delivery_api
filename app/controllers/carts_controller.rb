@@ -1,26 +1,20 @@
 class CartsController < ApplicationController
   include ProductsHelper
 
-  before_action :set_line_items, only: %i[add_product show]
-
   def show
     @cart = Cart.includes(line_items: [product_type: [product: :picture]])
                 .find(session[:cart_id])
+    #.order('line_items.gift_id, line_items.per_bonuses asc')
 
     give_away
     buy_together
   end
 
   def add_product
-    product_type = ProductType.find(params[:id])
-    item = @line_items.find_by(product_type: product_type)
+    @product_type = ProductType.find(params[:id])
 
-    if item
-      item.update(quantity: item.quantity + 1)
-      send_notification "#{product_type.product.title} quantity increase to: #{item.quantity}."
-    else
-      @line_items.create(product_type: product_type)
-      send_notification "#{product_type.product.title} added to cart."
+    AddProduct.call(@product_type, current_cart, current_user) do
+      on(:ok) { |message| send_notification(message) }
     end
 
     respond_to { |format| format.js }
@@ -39,6 +33,8 @@ class CartsController < ApplicationController
   end
 
   def give_away
+    @line_items = current_cart.line_items
+
     Gift.where('limitation > ?', Time.zone.today).each do |gift|
       product_type = gift.product.product_types.order(price: :desc).first
       gifts_products = @line_items.where('product_type_id = ? AND gift_id = ?', product_type.id, gift.id)
@@ -49,11 +45,5 @@ class CartsController < ApplicationController
         @line_items.where(gift_id: gift.id).destroy_all
       end
     end
-  end
-
-  private
-
-  def set_line_items
-    @line_items = current_cart.line_items
   end
 end

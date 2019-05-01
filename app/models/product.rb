@@ -29,4 +29,8 @@ class Product < ApplicationRecord
   validates :description,
             presence: true,
             length: { in: 10..250 }
+
+  def per_bonuses?
+    per_bonuses
+  end
 end

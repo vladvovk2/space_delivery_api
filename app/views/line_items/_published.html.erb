@@ -3,8 +3,7 @@
 </div>
 
 <div class='line-item-title'>
-  <%= line_item.product_type.product.title %> (
-  <%= line_item.product_type.weight %>грам )
+  <%= line_item.product_type.product.title %>
 </div>
 
 <section class='quantity-buttons'>
@@ -26,7 +25,7 @@
 </section>
 
 <div class='line-item-total-price'>
-  <%= number_to_currency(line_item.total_price) %>
+  <%= line_item.total_price %> UA
 </div>
 
 <div class='line-item-delete-item'>

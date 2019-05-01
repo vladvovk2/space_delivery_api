@@ -1,5 +1,13 @@
 <h1>User info</h1>
 
-Нужно <%= link_to 'подтвердить', send_confirm_email_users_path, method: :get, remote: true %> ваш email.
+<p style='color: white'>
+  Нужно <%= link_to 'подтвердить', send_confirm_email_users_path, method: :get, remote: true,  style: 'color: yellow' %> ваш email.
+</p>
 
-Получать квитанцию: <%= link_to 'Change', change_receipt_status_user_path(current_user), method: :patch, remote: true %>
+<p style='color: white'>
+  Получать квитанцию: <%= link_to 'Change', change_receipt_status_user_path(current_user), method: :patch, remote: true,  style: 'color: yellow' %>
+</p>
+
+<p style='color: white'>
+  Ваш баланс: <%= current_user.user_balance.balance %>
+</p>

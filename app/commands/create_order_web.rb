@@ -14,7 +14,6 @@ class CreateOrderWeb < Rectify::Command
 
   private
 
-  attr_accessor :discount
   attr_reader :order_params, :promocode, :user, :cart
 
   def order
@@ -22,8 +21,10 @@ class CreateOrderWeb < Rectify::Command
 
     if @order.save
       @order.get_product(cart)
-      promocode.update(used: true, order_id: @order.id) if promocode.present?
+      promocode.update(used: true, order_id: @order.id) if promocode.present? && promocode.invite.nil?
+
       OrderMailer.issued_order(user, @order).deliver_later if user&.get_receipt
+      ChargeBonusesJob.perform_later(user&.id, promocode&.id, @order.total_price)
       GetSalesStatisticsJob.perform_later(product_ids(@order).uniq)
 
       broadcast(:created, @order)
