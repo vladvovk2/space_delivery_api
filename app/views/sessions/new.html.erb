@@ -1,17 +1,20 @@
-<%= form_tag sessions_path do |form| %>
-  <div>
-    <%= label_tag '+380'  %>
-    <%= text_field_tag :phone_number, nil, maxlength: 9, placeholder: '687285102' %>
-  </div>
+<div class='login-form'>
+  <%= form_tag sessions_path do |form| %>
+    <div class='login-phone'>
+      <%= label_tag :phone_number  %>
+      <%= text_field_tag :phone_number, nil, maxlength: 9, class: 'login-phone-input', autocomplete: 'off' %>
+    </div>
 
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
+    <div class='login-password'>
+      <%= label_tag :password %>
+      <%= password_field_tag :password, nil, class: 'login-password-input' %>
+    </div>
 
-  <div>
-    <%= submit_tag 'Login' %>
+    <div class='login-button'>
+      <%= submit_tag 'Login', class: 'ui inverted button' %>
+    </div>
+  <% end %>
+  <div class='login-sign-up'>
+    <%= link_to 'Or you can Sign up', new_user_path, style: 'color: white' %>
   </div>
-<% end %>
-
- Or you can <%= link_to 'Sign up', new_user_path %>
+ </div>
