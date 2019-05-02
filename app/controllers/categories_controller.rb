@@ -26,6 +26,6 @@ class CategoriesController < ApplicationController
 
   def path_identifier
     @path_identifier ||= current_user.phone_number.last(7)
-    @path = Rails.root.join "/public/pdfs/menu_#{@path_identifier}.pdf"
+    @path = Rails.root.join('public', 'pdfs', "menu_#{@path_identifier}.pdf")
   end
 end
