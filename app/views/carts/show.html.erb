@@ -17,7 +17,7 @@
         <p class="suggested-title">
           <%= product.title %>
         </p>
-        <%= image_tag product.picture.image_name.url(:small), class: 'suggested-product-icon' %>
+        <%= image_tag product.picture.image_name.url(:medium), class: 'suggested-product-icon' %>
       </div>
       
       <div class="col">
@@ -46,22 +46,17 @@
         <% end %>
       </div>
 
-      <!-- <div class="col">
-        
-      </div> -->
+      <script>
+        document.getElementsByClassName("defaultOpen")[0].click();
+
+        tablinks = document.getElementsByClassName("suggested-tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+        }
+      </script>
+
     </div>
     <% end %>
 
-  <script>
-    document.getElementsByClassName("defaultOpen")[0].click();
-
-    // tablinks = document.getElementsByClassName("suggested-tablinks");
-    // for (i = 0; i < tablinks.length; i++) {
-    //   tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
-    // }
-  </script>
-
 </div>
-
-
 <% end %>
