@@ -10,6 +10,14 @@
   0 0 15px #a19da1e3;
 }
 
+@mixin text-style {
+  color: white;
+  font-weight: 2px;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff;
+}
+
 .line-item {
   height: 80px;
   width: 700px;
@@ -158,15 +166,11 @@
 }
 
 #buy-together {
-  position: absolute;
+  position: fixed;
   right: 40px;
   top: 137px;
   bottom: 0;
   height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
   .suggested-product-icon {
     margin: auto auto;
@@ -183,69 +187,72 @@
   }
 
   .col:nth-child(2) {
-    //display: inline-block;
-    //float: left;
-    width: 75%;
-    //height: 100%;
-    //text-align: center;
+    width: 75%; 
   }
 
   .suggested-title {
     margin: 4px 0 14px 0;
+
+    @include text-style;
   }
 }
 
 .buy-together-item {
   height: 120px;
   //width: 410px;
+  margin-bottom: 15px;
 
   @include line-item-styles;
 
-  &:last-child {
-    margin-bottom: 95px;
-  }
+  // &:last-child {
+  //   margin-bottom: 95px;
+  // }
 
   
 
   .suggested-tabcontent {
     display: none;
-    // justify-content: space-between;
+    justify-content: space-between;
 
-    // height: 70px;
-    // width: 296px;
+     height: 64px;
+     width: 220px;
     // padding: 6px 12px;
 
     // border: none;
     // border-radius: 0 0 7px 7px;
+  }
+
+  .suggested-tabcontent > * {
+    margin-top: 25px;
+    margin-left: 5px;
+
+    @include text-style;
   }
 }
 
 .suggested-tabs {
     //display: inline-block;
     display: flex;
-    overflow: hidden;
+    width: 230px;
+    //overflow: hidden;
     border: none;
 
   .suggested-tablinks {
     font-size: 12px;
     font-weight: bold;
     margin: 5px 5px 0;
-    width: 30%;
+    width: 33.33%;
     background-color: rgba(77, 77, 77, 0.342);
     flex-grow: 1;
     border: none;
     border: 1px solid #f1f1f1;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 14px 0;
     text-align: center;
     border-radius: 7px;
 
-    color: white;
-    font-weight: 2px;
-    text-shadow:
-    0 0 1px #ffffff,
-    0 0 2px #ffffff;
+    @include text-style;
 
     box-shadow:
     0 0 1px #ffffff,

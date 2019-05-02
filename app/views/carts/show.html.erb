@@ -23,7 +23,7 @@
       <div class="col">
         <div class="suggested-tabs">
           <% product.product_types.each do |product_type| %>
-            <div class="suggested-tablinks defaultOpen">  <!-- onclick="openDetails(event, <%= product_type.id %> )" -->
+            <div class="suggested-tablinks defaultOpen" onclick="openSuggDetails(event, <%= product_type.id %> )">  <!--  -->
               <%= product_type.proportion %>
             </div>
           <% end %>
@@ -55,10 +55,10 @@
   <script>
     document.getElementsByClassName("defaultOpen")[0].click();
 
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
-    }
+    // tablinks = document.getElementsByClassName("suggested-tablinks");
+    // for (i = 0; i < tablinks.length; i++) {
+    //   tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+    // }
   </script>
 
 </div>
