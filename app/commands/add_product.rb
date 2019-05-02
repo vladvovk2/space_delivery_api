@@ -27,11 +27,10 @@ class AddProduct < Rectify::Command
   end
 
   def check_bonus
-    if product_per_bonuses?
-      return broadcast(:ok, 'Not enough bonuses.') unless enough_bonuses?
+    return unless product_per_bonuses?
+    return broadcast(:ok, 'Not enough bonuses.') unless enough_bonuses?
 
-      bonuses_back
-    end
+    bonuses_back
   end
 
   def product_per_bonuses?

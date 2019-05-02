@@ -13,23 +13,17 @@ class Discount < Rectify::Command
   attr_reader :cart, :promocode
 
   def promocode_discount
-    if promocode.present?
-      if promocode.percentage
-        total_price * (promocode.amount.to_f / 100.to_f)
-      else
-        promocode.amount
-      end
+    return 0 if promocode.blank?
+
+    if promocode.percentage
+      total_price * (promocode.amount.to_f / 100.to_f)
     else
-      0
+      promocode.amount
     end
   end
 
   def total_price
-    if promocode.category.present?
-      promocode_for_category
-    else
-      cart.total_price
-    end
+    promocode.category.present? ? promocode_for_category : cart.total_price
   end
 
   def promocode_for_category

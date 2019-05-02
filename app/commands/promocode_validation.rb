@@ -29,7 +29,7 @@ class PromocodeValidation < Rectify::Command
 
   def user_owner?
     message = 'You can`t use your own promocode.'
-    return broadcast(:error, message) if user&.promo_code.id.eql?(promocode.id)
+    return broadcast(:error, message) if user&.promo_code&.id&.eql? promocode.id
   end
 
   def used?
@@ -38,11 +38,11 @@ class PromocodeValidation < Rectify::Command
   end
 
   def cart_include_category?
-    if promocode.category_id
-      message = "The promocode applies only to products in the category: #{promocode.category.title.downcase}. \
-      But products in this category are not in the cart"
+    return unless promocode.category_id
 
-      return broadcast(:error, message) if cart.product_types.select { |pt| pt.product.category_id.eql? promocode.category_id }.empty?
-    end
+    message = "The promocode applies only to products in the category: #{promocode.category.title.downcase}. \
+    But products in this category are not in the cart"
+
+    return broadcast(:error, message) if cart.product_types.select { |pt| pt.product.category_id.eql? promocode.category_id }.empty?
   end
 end
