@@ -1,5 +1,8 @@
 <h1>User info</h1>
 
+<%= link_to 'Generate menu', generate_menu_categories_path, remote: :true, style: 'color: white' %>
+<%= link_to 'Download menu', download_menu_categories_path(format: :pdf), style: 'color: white'  %>
+
 <p style='color: white'>
   Нужно <%= link_to 'подтвердить', send_confirm_email_users_path, method: :get, remote: true,  style: 'color: yellow' %> ваш email.
 </p>
