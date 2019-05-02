@@ -1,13 +1,14 @@
 class LineItemsController < ApplicationController
+  before_action :set_quantity,      only: %i[quantity_increase quantity_reduce]
   before_action :set_line_item,     only: %i[quantity_increase quantity_reduce destroy]
   before_action :set_respond_to_js, only: %i[quantity_increase quantity_reduce destroy]
 
   def quantity_increase
-    @line_item.update(quantity: @line_item.quantity + 1)
+    @line_item.update(quantity: @quantity + 1)
   end
 
   def quantity_reduce
-    @line_item.update(quantity: @line_item.quantity - 1) unless @line_item.quantity.eql? 1
+    @line_item.update(quantity: @quantity - 1) unless @quantity.eql? 1
   end
 
   def destroy
@@ -25,6 +26,10 @@ class LineItemsController < ApplicationController
 
   def set_respond_to_js
     respond_to { |format| format.js }
+  end
+
+  def set_quantity
+    @quantity = @line_item.quantity
   end
 
   def set_line_item
