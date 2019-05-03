@@ -14,13 +14,13 @@
   <% @products.each do |product| %>
     <div class="buy-together-item">
       <div class="col">
-        <p class="suggested-title">
-          <%= product.title %>
-        </p>
-        <%= image_tag product.picture.image_name.url(:medium), class: 'suggested-product-icon' %>
+        <%= image_tag product.picture.image_name.url(:lmedium), class: 'suggested-product-icon' %>
       </div>
       
       <div class="col">
+        <p class="suggested-title">
+          <%= product.title %>
+        </p>
         <div class="suggested-tabs">
           <% product.product_types.each do |product_type| %>
             <div class="suggested-tablinks defaultOpen" onclick="openSuggDetails(event, <%= product_type.id %> )">  <!--  -->

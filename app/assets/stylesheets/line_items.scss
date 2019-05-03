@@ -173,21 +173,19 @@
   height: 100%;
 
   .suggested-product-icon {
-    margin: auto auto;
-    //clear: left;
-    //height: 60%;
+    padding: 30px 10px;
   }
 
   .col {
     display: inline-block;
     float: left;
-    width: 25%;
+    width: 30%;
     height: 100%;
     text-align: center;
   }
 
   .col:nth-child(2) {
-    width: 75%; 
+    width: 70%; 
   }
 
   .suggested-title {
@@ -215,7 +213,7 @@
     justify-content: space-between;
 
      height: 64px;
-     width: 220px;
+     width: 88%;
     // padding: 6px 12px;
 
     // border: none;
@@ -233,7 +231,7 @@
 .suggested-tabs {
     //display: inline-block;
     display: flex;
-    width: 230px;
+    //width: 230px;
     //overflow: hidden;
     border: none;
 
