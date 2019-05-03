@@ -47,11 +47,6 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'redis-namespace'
 
-# Gems which i've used for clear code.
-gem 'rubocop'
-gem 'fasterer'
-gem 'rubocop-rails_config'
-
 # Gem which i've used for upload files.
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
@@ -66,6 +61,12 @@ gem 'devise'
 gem 'activeadmin'
 
 group :development, :test do
+  # Gems which i've used for clear code.
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'prettier'
+  gem 'fasterer'
+
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

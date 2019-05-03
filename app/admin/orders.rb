@@ -86,7 +86,8 @@ ActiveAdmin.register Order do
       row :delivery_type
       row(:address) { |order| order.place.address }
       row :map do |order|
-        image_tag "http://maps.google.com/maps/api/staticmap?key=#{Rails.application.secrets.google_place_key}&size=600x400&sensor=false&zoom=16&markers=#{order.place.latitude}%2C#{order.place.longitude}"
+        image_tag "http://maps.google.com/maps/api/staticmap?key=#{Rails.application.secrets.google_place_key} \
+                  &size=600x400&sensor=false&zoom=16&markers=#{order.place.latitude}%2C#{order.place.longitude}"
       end
       row :created_at
       row(:promo_code) { |order| order.promo_code&.code }

@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
-  before_action :set_quantity,      only: %i[quantity_increase quantity_reduce]
   before_action :set_line_item,     only: %i[quantity_increase quantity_reduce destroy]
+  before_action :set_quantity,      only: %i[quantity_increase quantity_reduce]
   before_action :set_respond_to_js, only: %i[quantity_increase quantity_reduce destroy]
 
   def quantity_increase
