@@ -10,9 +10,53 @@
   <%= render @cart %>
 </div>
 
-<div id='buy_together'>
+<div id='buy-together'>
   <% @products.each do |product| %>
-    <%= product.title %>
-  <% end %>
+    <div class="buy-together-item">
+      <div class="col">
+        <%= image_tag product.picture.image_name.url(:lmedium), class: 'suggested-product-icon' %>
+      </div>
+      
+      <div class="col">
+        <p class="suggested-title">
+          <%= product.title %>
+        </p>
+        <div class="suggested-tabs">
+          <% product.product_types.each do |product_type| %>
+            <div class="suggested-tablinks defaultOpen" onclick="openSuggDetails(event, <%= product_type.id %> )">  <!--  -->
+              <%= product_type.proportion %>
+            </div>
+          <% end %>
+        </div>
+
+        <% product.product_types.each do |product_type| %>
+          <div id="<%= product_type.id %>" class="suggested-tabcontent">
+            <div class="suggested-weight">
+              <%= product_type.weight %> гр.
+            </div>
+            <div class="suggested-price">
+              <%= number_to_currency product_type.price %>
+            </div>
+            <div class="suggested-add-to-cart-icon">
+              <%= link_to add_product_cart_path(product_type), method: :put, remote: true,  style: 'text-decoration: none; color: white;' do %>
+                <%= semantic_icon('shopping basket') %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <script>
+        document.getElementsByClassName("defaultOpen")[0].click();
+
+        tablinks = document.getElementsByClassName("suggested-tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+        }
+      </script>
+
+    </div>
+    <% end %>
+
 </div>
 <% end %>
