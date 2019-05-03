@@ -1,0 +1,84 @@
+$fontSize: 20px;
+$verticalMargin: 5px;
+$inputFieldHeight: 35px;
+
+.login-form {
+  position: relative;
+  height: 400px;
+  width: 600px;
+  margin: auto;
+
+  background-color: #F7F2F2;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3,
+  0 0 30px #888588e3;
+
+  background-color: rgba(77, 77, 77, 0.609);
+}
+
+.login-form div * {
+  display: block;
+  text-align: center;
+  font-size: $fontSize;
+  font-weight: bold;
+  margin-bottom: $verticalMargin;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6;
+}
+
+.login-phone {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  label {
+    margin-bottom: 10px;
+  }
+}
+
+.login-phone-input {
+  margin-left: auto;
+  margin-right: auto;
+  height: $inputFieldHeight;
+  width: 340px;
+  border-radius: 5px;
+  border: 2px rgb(236, 240, 240) inset;
+  background-color: rgba(77, 77, 77, 0.233);
+}
+
+.login-password {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  label {
+    margin-bottom: 10px;
+  }
+}
+.login-password-input {
+  margin-left: auto;
+  margin-right: auto;
+  height: $inputFieldHeight;
+  width: 340px;
+  border-radius: 5px;
+  border: 2px rgb(236, 240, 240) inset;
+  background-color: rgba(77, 77, 77, 0.233);
+}
+
+.login-button {
+  margin-top: 30px;
+  text-align: center;
+}
+.login-sign-up {
+  margin-top: 30px;
+  text-align: center;
+}
