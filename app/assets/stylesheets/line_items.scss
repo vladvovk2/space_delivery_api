@@ -202,22 +202,12 @@
 
   @include line-item-styles;
 
-  // &:last-child {
-  //   margin-bottom: 95px;
-  // }
-
-  
-
   .suggested-tabcontent {
     display: none;
     justify-content: space-between;
 
      height: 64px;
      width: 88%;
-    // padding: 6px 12px;
-
-    // border: none;
-    // border-radius: 0 0 7px 7px;
   }
 
   .suggested-tabcontent > * {
@@ -229,10 +219,7 @@
 }
 
 .suggested-tabs {
-    //display: inline-block;
     display: flex;
-    //width: 230px;
-    //overflow: hidden;
     border: none;
 
   .suggested-tablinks {
