@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_172920) do
+ActiveRecord::Schema.define(version: 2019_05_04_164220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,12 +93,16 @@ ActiveRecord::Schema.define(version: 2019_05_01_172920) do
   end
 
   create_table "gifts", force: :cascade do |t|
-    t.integer "amount_target"
+    t.integer "amount_target", default: 0
     t.date "limitation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "product_id"
+    t.integer "quantity", default: 0
+    t.string "gift_type"
+    t.index ["gift_type"], name: "index_gifts_on_gift_type"
     t.index ["product_id"], name: "index_gifts_on_product_id"
+    t.index ["quantity"], name: "index_gifts_on_quantity"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -200,7 +204,9 @@ ActiveRecord::Schema.define(version: 2019_05_01_172920) do
     t.boolean "percentage", default: false
     t.boolean "used", default: false
     t.date "limitation"
+    t.bigint "category_id"
     t.bigint "order_id"
+    t.index ["category_id"], name: "index_promo_codes_on_category_id"
     t.index ["code"], name: "index_promo_codes_on_code", unique: true
     t.index ["limitation"], name: "index_promo_codes_on_limitation"
     t.index ["order_id"], name: "index_promo_codes_on_order_id"
@@ -244,6 +250,7 @@ ActiveRecord::Schema.define(version: 2019_05_01_172920) do
   add_foreign_key "orders", "users"
   add_foreign_key "places", "orders"
   add_foreign_key "products", "categories"
+  add_foreign_key "promo_codes", "categories"
   add_foreign_key "promo_codes", "orders"
   add_foreign_key "promo_codes", "users"
   add_foreign_key "user_balances", "users"
