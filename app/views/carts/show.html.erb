@@ -23,7 +23,7 @@
         </p>
         <div class="suggested-tabs">
           <% product.product_types.each do |product_type| %>
-            <div class="suggested-tablinks defaultOpen" onclick="openSuggDetails(event, <%= product_type.id %> )">  <!--  -->
+            <div class="suggested-tablinks" onclick="openSuggDetails(event, <%= product_type.id %> )">
               <%= product_type.proportion %>
             </div>
           <% end %>
@@ -47,11 +47,10 @@
       </div>
 
       <script>
-        document.getElementsByClassName("defaultOpen")[0].click();
+        var suggestedTabs = document.getElementsByClassName("suggested-tabs");
 
-        tablinks = document.getElementsByClassName("suggested-tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+        for (var tab = 0; tab < suggestedTabs.length; tab++) {
+          suggestedTabs.item(tab).getElementsByClassName('suggested-tablinks')[0].click();
         }
       </script>
 
