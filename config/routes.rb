@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   root 'blogs#index'
 
+  resource :session
+
   resources :notifications
   resources :orders
   resources :blogs
-  resources :sessions
 
   resources :users do
     member do
