@@ -1,11 +1,12 @@
 class CartsController < ApplicationController
   include ProductsHelper
 
+  before_action :give_away, only: :show
+
   def show
     @cart = Cart.includes(line_items: [product_type: [product: :picture]])
                 .find(session[:cart_id])
 
-    give_away
     buy_together
   end
 
@@ -29,7 +30,9 @@ class CartsController < ApplicationController
                 .limit(3)
   end
 
+  private
+
   def give_away
-    GiveAway.call(current_cart)
+    GiveAwayJob.perform_later(current_cart.id)
   end
 end

@@ -31,15 +31,15 @@ class GiveAway < Rectify::Command
   def quantity_type(gift, product_type, gift_products)
     gift_product = cart.line_items.detect { |ln| ln.product_type.product.id.eql?(gift.product.id) && ln.quantity >= gift.quantity }
 
-    if gift_product.present? && gift_products.empty?
-      line_items.create(product_type: product_type, gift_id: gift.id)
-    else
-      line_items.where(gift_id: gift.id).destroy_all
-    end
+    create_or_delete_if(product_type, gift) { gift_product.present? && gift_products.empty? }
   end
 
   def target_type(gift, product_type, gift_products)
-    if cart.total_price >= gift.amount_target && gift_products.empty?
+    create_or_delete_if(product_type, gift) { cart.total_price >= gift.amount_target && gift_products.empty? }
+  end
+
+  def create_or_delete_if(product_type, gift)
+    if yield
       line_items.create(product_type: product_type, gift_id: gift.id)
     else
       line_items.where(gift_id: gift.id).destroy_all
@@ -47,7 +47,7 @@ class GiveAway < Rectify::Command
   end
 
   def product_type(gift)
-    gift.product.product_types.order(price: :desc).first
+    gift.product.product_types.order(price: :asc).first
   end
 
   def gift_products(product_type, gift)
