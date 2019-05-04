@@ -8,10 +8,6 @@ ActiveAdmin.register User do
   filter :phone_number
   filter :verification
 
-  controller do
-    include ActiveAdmin::OrdersHelper
-  end
-
   index do
     id_column
     column :email
@@ -37,7 +33,7 @@ ActiveAdmin.register User do
       panel 'Order History' do
         table_for user.orders do
           column(:id) { |order| link_to "Order ##{order.id}", admin_order_path(order) }
-          column(:status) { |order| status_tag order.status, color_for_status(order.status) }
+          column(:status) { |order| status_tag order.status }
           column(:total_price) { |order| number_to_currency(order.total_price) }
           column :created_at
         end

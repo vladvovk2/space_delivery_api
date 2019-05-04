@@ -15,33 +15,30 @@ class AddProduct < Rectify::Command
   attr_accessor :line_items, :user_balance
 
   def some_result
-    line_item = if product_type.product.per_bonuses?
-                  line_items.find_by(product_type: product_type, per_bonuses: true)
-                else
-                  line_items.find_by(product_type: product_type)
-                end
+    check_bonus
 
     if line_item
-      if line_item.per_bonuses?
-        return broadcast(:ok, 'Not enough bonuses.') unless enough_bonuses?
-
-        line_item.update(quantity: line_item.quantity + 1) if bonuses_back
-      else
-        line_item.update(quantity: line_item.quantity + 1)
-      end
-
+      line_item.update(quantity: line_item.quantity + 1)
       broadcast(:ok, "#{product_type.product.title} quantity increase to: #{line_item.quantity}.")
     else
-      if product_type.product.per_bonuses?
-        return broadcast(:ok, 'Not enough bonuses.') unless enough_bonuses?
-
-        line_items.create(product_type: product_type, per_bonuses: true) if bonuses_back
-      else
-        line_items.create(product_type: product_type)
-      end
-
+      line_items.create(product_type: product_type, per_bonuses: product_per_bonuses?)
       broadcast(:ok, "#{product_type.product.title} added to cart.")
     end
+  end
+
+  def check_bonus
+    return unless product_per_bonuses?
+    return broadcast(:ok, 'Not enough bonuses.') unless enough_bonuses?
+
+    bonuses_back
+  end
+
+  def product_per_bonuses?
+    product_type.product.per_bonuses?
+  end
+
+  def line_item
+    line_items.find_by(product_type: product_type, per_bonuses: product_per_bonuses?)
   end
 
   def bonuses_back

@@ -1,11 +1,14 @@
 class SessionsController < ApplicationController
-  def create
-    @user = User.find_by(phone_number: "+380#{params[:phone_number]}")
-                .try(:authenticate, params[:password])
+  def new
+    @session_form = SessionForm.new
+  end
 
-    if @user
-      session[:user_id] = @user.id
-      redirect_to blogs_path
+  def create
+    @session_form = SessionForm.new(session_form_params)
+
+    if @session_form.valid?
+      session[:user_id] = @session_form.user.id
+      redirect_to root_path
     else
       render :new
     end
@@ -14,5 +17,11 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to login_path
+  end
+
+  private
+
+  def session_form_params
+    params.require(:session_form).permit(:phone_number, :password)
   end
 end

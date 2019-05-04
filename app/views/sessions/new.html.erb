@@ -1,17 +1,17 @@
 <div class='login-form'>
-  <%= form_tag sessions_path do |form| %>
+  <%= form_for @session_form, url: session_path do |f| %>
     <div class='login-phone'>
-      <%= label_tag :phone_number  %>
-      <%= text_field_tag :phone_number, nil, maxlength: 9, class: 'login-phone-input', autocomplete: 'off' %>
+      <%= f.label :phone_number  %>
+      <%= f.text_field :phone_number, maxlength: 9, class: 'login-phone-input', autocomplete: 'off' %>
     </div>
 
     <div class='login-password'>
-      <%= label_tag :password %>
-      <%= password_field_tag :password, nil, class: 'login-password-input' %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'login-password-input' %>
     </div>
 
     <div class='login-button'>
-      <%= submit_tag 'Login', class: 'ui inverted button' %>
+      <%= f.submit 'Login', class: 'ui inverted button' %>
     </div>
   <% end %>
   <div class='login-sign-up'>

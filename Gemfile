@@ -13,11 +13,13 @@ gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'semantic-ui-sass'
-
-gem 'sidekiq-batch'
-gem 'geocoder'
 gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+
+gem 'geocoder'
+
 gem "prawn"
+
+gem 'virtus'
 
 # Gems which i've used for made Grape API.
 gem 'rack-cors'
@@ -43,14 +45,11 @@ gem 'rectify'
 
 # Gems which i've used for background works.
 gem 'redis'
-gem 'sidekiq'
-gem 'sinatra', require: false
 gem 'redis-namespace'
 
-# Gems which i've used for clear code.
-gem 'rubocop'
-gem 'fasterer'
-gem 'rubocop-rails_config'
+gem 'sidekiq'
+gem 'sidekiq-batch'
+gem 'sinatra', require: false
 
 # Gem which i've used for upload files.
 gem 'fog-aws'
@@ -66,6 +65,10 @@ gem 'devise'
 gem 'activeadmin'
 
 group :development, :test do
+  # Gems which i've used for clear code.
+  gem 'rubocop'
+  gem 'fasterer'
+
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

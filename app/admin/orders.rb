@@ -32,10 +32,7 @@ ActiveAdmin.register Order do
   end
 
   controller do
-    include ActiveAdmin::OrdersHelper
-    include ActiveAdmin::ProductsHelper
-
-    helper_method :status_complete?
+    helper_method :status_complete?, :color_for_status
 
     def index
       def scoped_collection
@@ -62,6 +59,14 @@ ActiveAdmin.register Order do
     def set_order
       @order = Order.find(params[:id])
     end
+
+    def color_for_status(status)
+      case status
+      when 'Pending'    then 'active'
+      when 'Complete'   then 'active'
+      when 'Processing' then 'active'
+      end
+    end
   end
 
   index do
@@ -69,7 +74,7 @@ ActiveAdmin.register Order do
     column :first_name
     column :last_name
     column :user_number
-    column(:status) { |order| status_tag order.status, color_for_status(order.status) }
+    column(:status) { |order| status_tag order.status }
     column(:total_price) { |order| number_to_currency(order.total_price) }
     column :created_at
     actions
@@ -81,12 +86,13 @@ ActiveAdmin.register Order do
       row :first_name
       row :last_name
       row :user_number
-      row(:status) { |order| status_tag order.status, color_for_status(order.status) }
+      row(:status) { |order| status_tag order.status}
       row :pay_type
       row :delivery_type
       row(:address) { |order| order.place.address }
       row :map do |order|
-        image_tag "http://maps.google.com/maps/api/staticmap?key=#{Rails.application.secrets.google_place_key}&size=600x400&sensor=false&zoom=16&markers=#{order.place.latitude}%2C#{order.place.longitude}"
+        image_tag "http://maps.google.com/maps/api/staticmap?key=#{Rails.application.secrets.google_place_key} \
+                  &size=600x400&sensor=false&zoom=16&markers=#{order.place.latitude}%2C#{order.place.longitude}"
       end
       row :created_at
       row(:promo_code) { |order| order.promo_code&.code }
@@ -101,7 +107,7 @@ ActiveAdmin.register Order do
           end
           column(:title) { |ln| ln.product_type.product.title }
           column(:proportion) do |ln|
-            status_tag ln.product_type.proportion, color_for_type(ln.product_type.proportion)
+            status_tag ln.product_type.proportion
           end
           column :quantity
           column :price do |ln|
