@@ -34,8 +34,7 @@ ActiveAdmin.register Product do
   end
 
   controller do
-    include ActiveAdmin::ProductsHelper
-    helper_method :published?
+    helper_method :published?, :color_for_type
 
     def scoped_collection
       super.includes(:product_types, :category, :picture)
@@ -59,9 +58,6 @@ ActiveAdmin.register Product do
     column(:published) { |product| status_tag product.published }
     column(:per_bonuses) { |product| status_tag product.per_bonuses }
     column :category
-    column :type do |product|
-      status_tag product.product_types.first.proportion, color_for_type(product.product_types.first.proportion)
-    end
     column(:price) { |product| number_to_currency product.product_types.first.price }
     column(:weight) { |product| product.product_types.first.weight }
     actions
@@ -78,7 +74,7 @@ ActiveAdmin.register Product do
 
       panel 'Product types' do
         table_for product.product_types do
-          column(:proportion) { |type| status_tag type.proportion, color_for_type(type.proportion) }
+          column(:proportion) { |type| status_tag type.proportion }
           column(:price) { |type| number_to_currency(type.price) }
           column :weight
         end

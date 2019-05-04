@@ -5,6 +5,10 @@ ActiveAdmin.register PromoCode do
   permit_params :amount, :percentage, :limitation, :category_id
 
   controller do
+    def scoped_collection
+      super.includes(:category, :order, :user)
+    end
+
     def create
       SendPromocodeJob.perform_later(permitted_params[:promo_code])
       redirect_to admin_promo_codes_path
