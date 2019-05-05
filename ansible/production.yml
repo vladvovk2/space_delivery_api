@@ -1,0 +1,17 @@
+---
+- name: production deploy
+  hosts: production
+  remote_user: app
+  vars:
+    ansistrano_deploy_to: '/home/app/ma'
+    ansistrano_version_dir: 'releases'
+    ansistrano_current_dir: 'current'
+    ansistrano_keep_releases: 3
+    ansistrano_deploy_via: 'git'
+    ansistrano_allow_anonymous_stats: false
+    ansistrano_git_repo: 'git@github.com:vladvovk2/space_delivery_api.git'
+    ansistrano_git_branch: 'master'
+    ansistrano_git_identity_key_remote_path: '/home/app/.ssh/id_rsa'
+    ansistrano_after_cleanup_tasks_file: '{{ playbook_dir }}/after-deploy.yml'
+  roles:
+    - role: ansistrano.deploy

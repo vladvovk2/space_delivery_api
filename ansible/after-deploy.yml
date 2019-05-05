@@ -1,0 +1,10 @@
+- name: copy dotenv file
+  become: true
+  become_user: app
+  shell: bash -c "cp /home/app/.env /home/app/ma/current/.env"
+- name: up project
+  become: true
+  become_user: app
+  shell: bash -c "cd /home/app/ma/current/ansible && ./up_project.sh"
+  register: ps
+- debug: msg={{ ps.stdout }}
