@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   before_action :give_away, only: :show
 
   def show
-    @cart = Cart.includes(line_items: [product_type: [product: :picture]])
+    @cart = Cart.includes(line_items: [burger: [components: :ingredient], product_type: [product: :picture]])
                 .find(session[:cart_id])
 
     buy_together
@@ -19,6 +19,8 @@ class CartsController < ApplicationController
   end
 
   def buy_together
+    puts product_ids(current_cart).uniq
+
     product_ids = ProductSale
                   .where('active_id IN (:ids) AND passive_id NOT IN (:ids)', ids: product_ids(current_cart).uniq)
                   .order(sales_count: :desc)

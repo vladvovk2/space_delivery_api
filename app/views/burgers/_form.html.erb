@@ -1,12 +1,12 @@
 <%= form_with(model: burger, local: true) do |f| %>
-
-
-
   <% @ingredient_types.each do |type, ingredients| %>
     <h3><%= type %></h3>
+
     <% ingredients.each do |ingredient| %>
-      <%= ingredient.title %>
-      <%= ingredient.price %>
+
+    <%= f.check_box ingredient.id %>
+    <%= f.label type, value: ingredient.id %>
+
       <%= image_tag ingredient.picture.image_name.url(:medium) if  ingredient.picture.present? %>
     <% end %>
   <% end%>
