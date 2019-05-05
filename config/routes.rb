@@ -16,6 +16,17 @@ Rails.application.routes.draw do
   resources :orders
   resources :blogs
 
+  resources :burgers do
+    put :add_component, on: :member
+  end
+
+  resources :components do
+    member do
+      put :quantity_reduce
+      put :quantity_increase
+    end
+  end
+
   resources :users do
     member do
       get :confirm_email
