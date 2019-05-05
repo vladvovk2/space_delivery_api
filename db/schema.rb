@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_164220) do
+ActiveRecord::Schema.define(version: 2019_05_05_180018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 2019_05_04_164220) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "burgers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,6 +86,17 @@ ActiveRecord::Schema.define(version: 2019_05_04_164220) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_categories_on_title", unique: true
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "burger_id"
+    t.bigint "ingredient_id"
+    t.index ["burger_id"], name: "index_components_on_burger_id"
+    t.index ["ingredient_id"], name: "index_components_on_ingredient_id"
+    t.index ["quantity"], name: "index_components_on_quantity"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -105,6 +121,16 @@ ActiveRecord::Schema.define(version: 2019_05_04_164220) do
     t.index ["quantity"], name: "index_gifts_on_quantity"
   end
 
+  create_table "ingredients", force: :cascade do |t|
+    t.integer "price", default: 0
+    t.string "ingredient_type"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price"], name: "index_ingredients_on_price"
+    t.index ["title"], name: "index_ingredients_on_title"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.bigint "cart_id"
@@ -114,6 +140,8 @@ ActiveRecord::Schema.define(version: 2019_05_04_164220) do
     t.datetime "updated_at", null: false
     t.bigint "gift_id"
     t.boolean "per_bonuses", default: false
+    t.bigint "burger_id"
+    t.index ["burger_id"], name: "index_line_items_on_burger_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["gift_id"], name: "index_line_items_on_gift_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
@@ -243,9 +271,12 @@ ActiveRecord::Schema.define(version: 2019_05_04_164220) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "carts", "users"
+  add_foreign_key "components", "burgers"
+  add_foreign_key "components", "ingredients"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "gifts", "products"
+  add_foreign_key "line_items", "burgers"
   add_foreign_key "line_items", "gifts"
   add_foreign_key "orders", "users"
   add_foreign_key "places", "orders"
