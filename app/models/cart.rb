@@ -15,6 +15,8 @@ class Cart < ApplicationRecord
 
   def total_price
     ln = line_items.map do |l|
+      next l.burger.total_price if l.burger_id.present?
+
       l.product_type.product.published && !l.gift? && !l.per_bonuses? ? (l.quantity * l.product_type.price) : 0
     end
 

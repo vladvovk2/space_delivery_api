@@ -1,0 +1,21 @@
+<div class='myself-line-item-image' style= 'text-decoration: none; color: white; font-size: 25px;'>
+  <%= semantic_icon('optin monster') %>
+</div>
+
+<div class='myself-line-item-title'>
+  <%= line_item.burger.try(:title) %>
+</div>
+
+<div class='myself-line-item-quantity'>
+  <%= line_item.quantity %>
+</div>
+
+<div class='myself-line-item-total-price'>
+  <%= line_item.burger.total_price %> UA
+</div>
+
+<div class='myself-line-item-delete-item'>
+  <%= link_to line_item, method: :delete, remote: true, class: 'destroy', style: 'text-decoration: none; color: white;' do %>
+    <%= semantic_icon('trash alternate outline icon') %>
+  <% end %>
+</div>

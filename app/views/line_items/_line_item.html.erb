@@ -1,4 +1,8 @@
-<% if line_item.product_type.product.published && line_item.gift_id.nil? && !line_item.per_bonuses %>
+<% if line_item.burger_id.present? %>
+  <div class='myself-line-item'>
+    <%= render 'line_items/myself', line_item: line_item %>
+  </div>
+<% elsif line_item.product_type.product.published && line_item.gift_id.nil? && !line_item.per_bonuses %>
   <div class='line-item'>
     <%= render 'line_items/published', line_item: line_item %>
   </div>

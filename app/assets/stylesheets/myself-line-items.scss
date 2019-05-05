@@ -1,0 +1,106 @@
+.myself-line-item {
+  height: 80px;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-bottom: 20px;
+  position: relative;
+
+  background-color: rgba(77, 77, 77, 0.705);
+  border-radius: 5px;
+  border: 1px solid #fd9533c2;
+  box-shadow:
+  0 0 1px #fd9533c2,
+  0 0 2px #fd9533c2,
+  0 0 5px #eb7b12c2,
+  0 0 10px #fd9533c2,
+  0 0 15px #fd9533c2;
+
+  -moz-transition: all 0.2s ease;;
+  -o-transition: all 0.2s ease;;
+  transition: all 0.2s ease;
+}
+
+.myself-line-item:hover {
+  box-shadow:
+    1px 1px 1px 1px #fd9533c2;
+
+  -webkit-transform: translateX(-2px);
+  transform: translateX(-2px);
+}
+
+.myself-line-item-image {
+  width: 15%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 25px;
+}
+
+.myself-line-item-title {
+  width: 54%;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+}
+
+.myself-line-item-quantity {
+  width: 13%;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+}
+
+.myself-line-item-total-price {
+  width: 14%;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+}
+
+.myself-line-item-delete-item {
+  width: 5%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 15px;
+  font-size: 20px;
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+  text-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #ac80a6,
+  0 0 10px #ac80a6;
+}
+
+.myself-line-item-delete-item:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
