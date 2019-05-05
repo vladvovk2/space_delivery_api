@@ -7,7 +7,7 @@ class GiveAway < Rectify::Command
   def initialize(cart)
     @cart       = cart
     @gifts      = Gift.includes(:product).where('limitation > ?', Time.zone.today)
-    @line_items = cart.line_items
+    @line_items = cart.line_items.where(burger_id: nil)
   end
 
   def call
@@ -29,7 +29,7 @@ class GiveAway < Rectify::Command
   end
 
   def quantity_type(gift, product_type, gift_products)
-    gift_product = cart.line_items.detect { |ln| ln.product_type.product.id.eql?(gift.product.id) && ln.quantity >= gift.quantity }
+    gift_product = line_items.detect { |ln| ln.product_type.product.id.eql?(gift.product.id) && ln.quantity >= gift.quantity }
 
     create_or_delete_if(product_type, gift) { gift_product.present? && gift_products.empty? }
   end

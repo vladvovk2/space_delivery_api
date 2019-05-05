@@ -19,8 +19,6 @@ class CartsController < ApplicationController
   end
 
   def buy_together
-    puts product_ids(current_cart).uniq
-
     product_ids = ProductSale
                   .where('active_id IN (:ids) AND passive_id NOT IN (:ids)', ids: product_ids(current_cart).uniq)
                   .order(sales_count: :desc)
