@@ -233,9 +233,7 @@ ActiveRecord::Schema.define(version: 2019_05_05_214242) do
     t.boolean "percentage", default: false
     t.boolean "used", default: false
     t.date "limitation"
-    t.bigint "category_id"
     t.bigint "order_id"
-    t.index ["category_id"], name: "index_promo_codes_on_category_id"
     t.index ["code"], name: "index_promo_codes_on_code", unique: true
     t.index ["limitation"], name: "index_promo_codes_on_limitation"
     t.index ["order_id"], name: "index_promo_codes_on_order_id"
@@ -282,7 +280,6 @@ ActiveRecord::Schema.define(version: 2019_05_05_214242) do
   add_foreign_key "orders", "users"
   add_foreign_key "places", "orders"
   add_foreign_key "products", "categories"
-  add_foreign_key "promo_codes", "categories"
   add_foreign_key "promo_codes", "orders"
   add_foreign_key "promo_codes", "users"
   add_foreign_key "user_balances", "users"

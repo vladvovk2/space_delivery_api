@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.burger-ingredients-item {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 700px;
+  background-color: silver;
+
+  left: 0;
+  right: 0;
+  margin: 50px auto;
+}
+.ingredients-wrapper {
+  position: relative;
+  display: inline-block;
+  background-color: yellow;
+  height: 100%;
+  width: 90%;
+  overflow: hidden;
+}
+#ingredient {
+  position: relative;
+  visibility: hidden;
+}
+.ingredient-content-wrapper {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background-color: green;
+  margin-right: -4px;
+
+  -webkit-transition: left 2s;
+  -moz-transition: left 2s;
+  -o-transition: left 2s;
+  transition: left 2s;
+}
+.prev, .next {
+  position: absolute;
+  top: 35px;
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+
+  cursor: pointer;
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}
