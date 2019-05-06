@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: postgres:9.6
+    container_name: "db"
     ports:
       - 5432:5432
     env_file:
@@ -17,7 +18,7 @@ services:
   rails:
     build: .
     image: ma-rails
-    command: sh -c 'cd /app/ma && bundle install && rails s -b 0.0.0.0'
+    command: sh -c 'cd /myapp && bundle install && rails s -b 0.0.0.0'
     depends_on:
       - db
       - redis
@@ -27,7 +28,7 @@ services:
       - .env
   sidekiq:
     image: ma-rails
-    command: sh -c 'cd /app/ma && sidekiq'
+    command: sidekiq -C config/sidekiq.yml
     depends_on:
       - redis
       - db
