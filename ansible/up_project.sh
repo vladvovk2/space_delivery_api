@@ -1,10 +1,10 @@
 cd /home/app/ma/current
 
-docker-compose stop
-docker-compose rm -f -v
-docker-compose build
-docker-compose run --rm rails rake assets:precompile && rake db:migrate
-docker-compose stop
-docker-compose up -d
+docker-compose -f docker-compose.yml stop
+docker-compose -f docker-compose.yml rm -f -v
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml run backend rake assets:precompile && rake db:migrate
+docker-compose -f docker-compose.yml stop
+docker-compose -f docker-compose.yml up -d
 sleep 5
 docker ps
