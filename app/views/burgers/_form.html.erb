@@ -1,19 +1,25 @@
 <%= form_with(model: burger, local: true) do |f| %>
   <% @ingredient_types.each do |type, ingredients| %>
+    <h3><%= type %></h3>
     <div class="burger-ingredients-item">
       <a class="prev" onclick="moveSlides(-1)"></a>
 
-      <h3><%= type %></h3>
-
       <div class="ingredients-wrapper">
-        <% ingredients.each do |ingredient| %>  
-          <div class="ingredient-content-wrapper">
-            <%= f.check_box ingredient.id %>
-            <%= f.label type, value: ingredient.id %>
+        <div class="ingredients-sliders-container">
+          <% ingredients.each do |ingredient| %>  
+            <div class="ingredient-content-wrapper">
+              <%= f.check_box ingredient.id %>
+              <%= f.label type, value: ingredient.id %>
 
-            <%= image_tag ingredient.picture.image_name.url(:medium) if  ingredient.picture.present? %>
-          </div>
-        <% end %>
+              <div class="ingredient">
+                <span class="title-ingredient"><%= ingredient.title %></span>
+                <%= image_tag ingredient.picture.image_name.url(:small) if  ingredient.picture.present? %>
+                <span class="price-ingredient"><%= ingredient.price %></span>   
+              </div>
+                     
+            </div>
+          <% end %>
+        </div>
       </div>
 
       <a class="next" onclick="moveSlides(1)"></a>

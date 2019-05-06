@@ -7,23 +7,71 @@
   position: relative;
   justify-content: center;
   width: 700px;
+  height: 110px;
   background-color: silver;
 
   left: 0;
   right: 0;
   margin: 50px auto;
+
+  background-color: rgba(77, 77, 77, 0.705);
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  box-shadow:
+  0 0 1px #ffffff,
+  0 0 2px #ffffff,
+  0 0 5px #a19da1e3,
+  0 0 10px #a19da1e3,
+  0 0 15px #a19da1e3;
 }
 .ingredients-wrapper {
   position: relative;
   display: inline-block;
-  background-color: yellow;
   height: 100%;
   width: 90%;
   overflow: hidden;
 }
-#ingredient {
+.ingredients-sliders-container {
+  display: flex;
+  justify-content: space-around;
   position: relative;
-  visibility: hidden;
+  height: 100%;
+  width: 630px;
+
+}
+.ingredient {
+  position: relative;
+  top: -18px;
+  height: 100%;
+  width: 50%;
+  margin: 0 auto;
+
+  & > * {
+    display: block;
+    text-align: center;
+    padding: 3px;
+  }
+
+  & > img {
+    margin: 0 auto;
+  }
+
+  .title-ingredient {
+    color: #ffffff;
+    text-shadow:
+     0 0 2.5px #ffffff,
+     0 0 5px #ffffff,
+     0 0 10px #ac80a6,
+     0 0 20px #ac80a6;
+  }
+  .price-ingredient {
+    color: #ffffff;
+    text-shadow:
+     0 0 2.5px #ffffff,
+     0 0 5px #ffffff,
+     0 0 10px #ac80a6,
+     0 0 20px #ac80a6;
+  }
 }
 .ingredient-content-wrapper {
   display: inline-block;
@@ -31,13 +79,21 @@
   left: 0;
   width: 25%;
   height: 100%;
-  background-color: green;
   margin-right: -4px;
 
   -webkit-transition: left 2s;
   -moz-transition: left 2s;
   -o-transition: left 2s;
   transition: left 2s;
+
+  & > input {
+    visibility: hidden;
+    position: relative;
+  }
+  & > label {
+    visibility: hidden;
+    position: relative;
+  }
 }
 .prev, .next {
   position: absolute;
