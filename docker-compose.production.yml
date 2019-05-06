@@ -12,8 +12,6 @@ services:
     build: .
     image: ma-rails
     command: /bin/sh -c "rm -f /myapp/tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
-    volumes:
-      - .:/myapp
     ports:
       - 3000:3000
     depends_on:
@@ -24,8 +22,6 @@ services:
   sidekiq:
     image: ma-rails
     command: sidekiq -C config/sidekiq.yml
-    volumes:
-      - .:/myapp
     depends_on:
       - redis
       - db
