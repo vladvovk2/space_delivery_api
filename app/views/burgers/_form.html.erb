@@ -1,6 +1,6 @@
 <%= form_with(model: burger, local: true) do |f| %>
   <% @ingredient_types.each do |type, ingredients| %>
-    <h3><%= type %></h3>
+    <h2><%= type %></h2>
     <div class="burger-ingredients-item">
       <a class="prev" onclick="moveSlides(-1)"></a>
 
@@ -25,6 +25,7 @@
       <a class="next" onclick="moveSlides(1)"></a>
     </div>
   <% end%>
-
-  <%= f.submit %>
+  <div class="create-burger-btn">
+    <%= f.submit "Create Burger", class: 'ui inverted button' %>
+  </div>
 <% end %>

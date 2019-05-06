@@ -2,6 +2,15 @@
   margin: 0;
   padding: 0;
 }
+.burger h2 {
+  text-align: center;
+  color: #ffffff;
+  text-shadow:
+   0 0 2.5px #ffffff,
+   0 0 5px #ffffff,
+   0 0 10px #ac80a6,
+   0 0 20px #ac80a6;
+}
 .burger-ingredients-item {
   display: flex;
   position: relative;
@@ -12,7 +21,8 @@
 
   left: 0;
   right: 0;
-  margin: 50px auto;
+  margin: 0 auto;
+  margin-bottom: 80px;
 
   background-color: rgba(77, 77, 77, 0.705);
   border-radius: 5px;
@@ -95,7 +105,15 @@
     position: relative;
   }
 }
+.create-burger-btn {
+  text-align: center;
+
+  & > input {
+    margin: 0;
+  }
+}
 .prev, .next {
+  visibility: hidden;
   position: absolute;
   top: 35px;
   width: 30px;
