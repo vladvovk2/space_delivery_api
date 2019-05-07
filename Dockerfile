@@ -23,6 +23,6 @@ COPY Gemfile ./
 COPY Gemfile.lock ./
 RUN bundle check | bundle install
 
-COPY . .
+COPY . /myapp
 
 ENTRYPOINT ["bundle", "exec"]
