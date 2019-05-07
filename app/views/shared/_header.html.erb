@@ -11,6 +11,18 @@
     <% end %>
   </div>
 
+  <div class='diy-burger'>
+    <%= link_to new_burger_path, style: 'text-decoration: none' do %>
+      <div class="nav-icon">
+        <%= semantic_icon('bars') %>
+      </div>
+
+      <div class="content">
+        DIY Burger
+      </div>
+    <% end %>
+  </div>
+
   <div class='delivery'>
     <%= link_to category_path(@cate), style: 'text-decoration: none' do %>
       <div class="nav-icon">
