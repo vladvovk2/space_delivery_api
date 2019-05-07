@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-  INGREDIENT_TYPES = %i[sauce cutlet vegetables cheese supplements].freeze
+  INGREDIENT_TYPES = %i[sauce cutlet vegetables cheese supplements buns].freeze
 
   has_one  :picture, as: :imageable, dependent: :destroy
   has_many :components, dependent: :destroy

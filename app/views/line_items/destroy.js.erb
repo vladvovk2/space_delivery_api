@@ -6,8 +6,8 @@ $('[class*="line-item"]').bind('ajax:success', function(){
   });
 });
 
-$("#cart-icon").html('<%= current_cart.total_price %> UA');
-$("#cart-total-price").html('<%= current_cart.total_price %> UA');
+$("#cart-icon").on('ajax:success').html('<%= current_cart.total_price %> UA');
+$("#cart-total-price").on('ajax:success').html('<%= current_cart.total_price %> UA');
 <% if current_user %>
-  $("#total-bonuses").html('<%= current_user.user_balance.balance %> Bon');
+  $("#total-bonuses").on('ajax:success').html('<%= current_user.user_balance.balance %> Bon');
 <% end %>

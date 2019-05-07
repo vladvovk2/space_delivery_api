@@ -1,4 +1,6 @@
-$("#cart-icon").html('<%= current_cart.total_price %> UA');
+$("#cart-icon").on('ajax:success').html('<%= current_cart.total_price %> UA');
 <% if current_user %>
-  $("#total-bonuses").html('<%= current_user.user_balance.balance %> Bon');
+  $("#total-bonuses").on('ajax:success').html('<%= current_user.user_balance.balance %> Bon');
 <% end %>
+
+$('#cart').on('ajax:success').html("<%= j render(@cart) %>");

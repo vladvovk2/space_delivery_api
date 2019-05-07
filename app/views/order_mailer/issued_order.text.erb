@@ -2,7 +2,15 @@
 
 Ваш заказ:
 <% @order.line_items.each do |item| %>
- <%= item.product_type.product.title %> x<%= item.quantity%>: <%= item.product_type.price * item.quantity %>,00грн.
+  <% if item.burger.present? %>
+    My burger: <%= item.burger.title %>
+    <% item.burger.components.each do |com| %>
+      <%= com.ingredient.title %>: <%= com.ingredient.price %>
+    <% end %>
+    My burger price: <%= item.burger.total_price %>
+  <% else %>
+    <%= item.product_type.product.title %> x<%= item.quantity%>: <%= item.product_type.price * item.quantity %>,00грн.
+  <% end %>
 <% end %>
 Тип доставки: <%= @order.delivery_type %>
 Адрес: <%= @order.place.address %>
