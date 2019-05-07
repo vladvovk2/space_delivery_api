@@ -12,6 +12,7 @@ ActiveAdmin.register Gift do
     id_column
     column(:product, &:product)
     column :amount_target
+    column :quantity, as: :quantity_target
     column :limitation
     column :created_at
     actions

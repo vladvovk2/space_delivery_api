@@ -1,4 +1,4 @@
-$('#cart').html("<%= j render(current_cart) %>");
+$('#cart').on('ajax:success').html("<%= j render(current_cart) %>");
 
-$("#cart-icon").html('<%= current_cart.total_price %> UA');
-$("#cart-total-price").html('<%= current_cart.total_price %> UA');
+$("#cart-icon").on('ajax:success').html('<%= current_cart.total_price %> UA');
+$("#cart-total-price").on('ajax:success').html('<%= current_cart.total_price %> UA');
