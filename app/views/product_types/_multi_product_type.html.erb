@@ -1,6 +1,6 @@
 <div class="tabs">
   <% product.product_types.each do |product_type| %>
-    <div class="tablinks defaultOpen" onclick="openDetails(event, <%= product_type.id %> )">
+    <div class="tablinks" onclick="openDetails(event, <%= product_type.id %> )">
       <%= product_type.proportion %>
     </div>
   <% end %>
@@ -23,10 +23,9 @@
 <% end %>
 
 <script>
-  document.getElementsByClassName("defaultOpen")[0].click();
+  var suggestedTabs = document.getElementsByClassName("tabs");
 
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" defaultOpen", "");
+  for (var tab = 0; tab < suggestedTabs.length; tab++) {
+    suggestedTabs.item(tab).getElementsByClassName('tablinks')[0].click();
   }
 </script>

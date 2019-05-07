@@ -27,7 +27,7 @@
         <%= image_tag product.picture.image_name.url(:large) %>
       </div>
 
-      <div id="tabs-content">
+      <div class="tabs-content">
         <% if product.product_types.count != 1 %>
           <%= render 'product_types/multi_product_type', product: product %>
         <% else %>
