@@ -8,14 +8,15 @@
         <div class="ingredients-sliders-container">
           <% ingredients.each do |ingredient| %>  
             <div class="ingredient-content-wrapper">
+              
+              <%= f.label ingredient.id do %>              
               <%= f.check_box ingredient.id %>
-              <%= f.label type, value: ingredient.id %>
-
               <div class="ingredient">
                 <span class="title-ingredient"><%= ingredient.title %></span>
                 <%= image_tag ingredient.picture.image_name.url(:small) if  ingredient.picture.present? %>
                 <span class="price-ingredient"><%= ingredient.price %></span>   
               </div>
+              <% end %>
                      
             </div>
           <% end %>

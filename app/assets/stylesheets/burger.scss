@@ -51,10 +51,12 @@
 }
 .ingredient {
   position: relative;
-  top: -18px;
-  height: 100%;
-  width: 50%;
+  top: -17px;
+  height: 95%;
+  width: 110px;
   margin: 0 auto;
+  
+  border: 1px solid transparent;
 
   & > * {
     display: block;
@@ -87,7 +89,7 @@
   display: inline-block;
   position: relative;
   left: 0;
-  width: 25%;
+  width: 110px;
   height: 100%;
   margin-right: -4px;
 
@@ -96,13 +98,19 @@
   -o-transition: left 2s;
   transition: left 2s;
 
-  & > input {
+  & input {
     visibility: hidden;
     position: relative;
   }
-  & > label {
-    visibility: hidden;
-    position: relative;
+
+  & input:checked ~ .ingredient {
+    border: 1px solid #ffffff;
+    box-shadow:
+    0 0 1px #ffffff,
+    0 0 2px #ffffff,
+    0 0 5px #a19da1e3,
+    0 0 10px #a19da1e3,
+    0 0 15px #a19da1e3;
   }
 }
 .create-burger-btn {
